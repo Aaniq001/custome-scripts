@@ -101,7 +101,7 @@ function getCustomerId() {
 
 if (Shopify.shop == "imarku-us.myshopify.com") 
 {
-   $jq321("head").append('<style type="text/css">#spin_a_sale_cc_store_front_module .checkbox{background:transperent; border:none; height:auto; width:auto;}</style>');
+   carecartJquery("head").append('<style type="text/css">#spin_a_sale_cc_store_front_module .checkbox{background:transperent; border:none; height:auto; width:auto;}</style>');
 } 
 
 function AbandonedCart() {
