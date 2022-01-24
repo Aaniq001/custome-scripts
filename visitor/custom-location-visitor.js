@@ -9,7 +9,7 @@
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
 
-function scriptInjection(src, callback) {
+ function scriptInjection(src, callback) {
     var script = document.createElement('script');
     script.type = "text/javascript";
 
@@ -147,8 +147,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         if (windowWidth < 575) {
             $jq321("head").append(
                 '<style type="text/css"> .content-div-visitor-detail-carecartbysalespop-2020{display:flex !important; justify-content:center}</style>');
-            }
         }
+    }
+    if (Shopify.shop == "luxury-white-nl.myshopify.com")
+    {
+    	customSelctor = $jq321(".product-form__payment-container");
+    	finalSelector = customSelctor[0];
+    }
 
     
    
