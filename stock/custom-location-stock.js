@@ -151,17 +151,24 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         $jq321("head").append('<style type="text/css">.timer-store-front{margin-top: 14px; !important}</style>');
     }
-
-
     if (Shopify.shop == "facciobusiness222.myshopify.com") {
         customSelector = $jq321(".purchase-details");
         finalSelector = customSelector[0];
         console.log(customSelector);
     }    
- if (Shopify.shop == "the-bella-cottage-inc.myshopify.com") {
-        customSelector = $jq321(".ruk_rating_snippet");
+    if (Shopify.shop == "the-bella-cottage-inc.myshopify.com") 
+    {
+        var t = 0;
+        $jq321("form[action='/cart/add']").find('.quantity-submit-row__submit').each(function () {
+            $(this).attr("data-id-"+t, "1");
+            t++;
+        });
+
+        customSelector = $jq321("[data-id-1=1]");
         finalSelector = customSelector[0];
-        console.log(customSelector);
+        //console.log(customSelector);
+
+        $jq321("head").append('<style type="text/css">div.stock-top { display: block !important; }</style>');
     }    
 
     if (Shopify.shop == "internet-retail-connection.myshopify.com") {
@@ -174,11 +181,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         customSelector = $jq321(".js-qty");
         finalSelector = customSelector[0];
         console.log(customSelector);
-    }    
-
-
-  
-
+    } 
+    
      function stockCountdown(response) {
          
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
