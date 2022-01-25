@@ -99,11 +99,6 @@ function getCustomerId() {
     return null;
 }
 
-if (Shopify.shop == "imarku-us.myshopify.com") 
-{
-   carecartJquery("head").append('<style type="text/css">#spin_a_sale_cc_store_front_module .checkbox{background:transperent; border:none; height:auto; width:auto;}</style>');
-} 
-
 function AbandonedCart() {
 
     var customer = {"id": getCustomerId()};
@@ -1218,6 +1213,11 @@ function AbandonedCart() {
                 abandonedCart.process(0);
             }, 2000);
         });
+
+        if (Shopify.shop == "imarku-us.myshopify.com") 
+        {
+            carecartJquery('head').append('<style type="text/css"> :root{--customCare-background: transparent !important;} #spin_a_sale_cc_store_front_module .checkbox{background: var(--customCare-background); border:none; height:auto; width:auto; } #spin_a_sale_cc_store_front_module .checkbox label input{-moz-appearance: auto !important;display: flex;}</style>');
+        } 
 
 
         /*Support for whole sales app*/
