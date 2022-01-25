@@ -1840,6 +1840,11 @@
             $jq321("head").append('<style type="text/css">.notifyjs-corner{margin-bottom: 85px !important}</style>');
         }
     }
+    if (Shopify.shop == "jainmy.myshopify.com") 
+    {
+        masterSelector = $jq321(".docapp-coupon-input");
+        finalSelector = masterSelector[0];
+    } 
 
       function stockCountdown(responseStock) {
  
