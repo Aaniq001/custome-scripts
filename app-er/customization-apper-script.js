@@ -1216,7 +1216,7 @@ function AbandonedCart() {
 
         if (Shopify.shop == "imarku-us.myshopify.com") 
         {
-            carecartJquery('head').append('<style type="text/css"> :root{--customCare-background: transparent !important;} #spin_a_sale_cc_store_front_module .checkbox{background: var(--customCare-background); border:none; height:auto; width:auto; } #spin_a_sale_cc_store_front_module .checkbox label input{-moz-appearance: auto !important;display: flex;}</style>');
+            carecartJquery('head').append('<style type="text/css"> :root{--customCare-background: transparent !important;} #spin_a_sale_cc_store_front_module .checkbox{background: var(--customCare-background); border:none; height:auto; width:auto; } #spin_a_sale_cc_store_front_module .checkbox label input{-moz-appearance: auto !important;display: flex;} @media only screen and (max-width: 575px){#spin_a_sale_cc_store_front_module .signupContainer{min-height: 530px !important;}}</style>');
         } 
 
 
