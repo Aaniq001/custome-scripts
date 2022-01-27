@@ -1188,9 +1188,22 @@
         var block_url_store = window.location.origin + '/' + block_url[1] + '/' + block_url[2] + '/';
                 
         var b_url = true;
-        if (block_url_store == 'https://ellusionist.com/apps/downloads/')
+
+        if (Shopify.shop == "elusionist.myshopify.com") 
         {
-            b_url = false;
+            if (block_url_store == 'https://ellusionist.com/apps/downloads/')
+            {
+                b_url = false;
+            }
+        }
+
+        if (Shopify.shop == "gotechleb.myshopify.com") 
+        {
+            if ((block_url[4] == 'thank_you') || (block_url[2] == 'orders'))
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on "Thank You" page') 
+            }
         }
 
         return b_url;
@@ -1601,7 +1614,6 @@
      {
         cc_product_id = null;
      }
- console.log(cc_product_id);
  
      /////////////////////// Set flag to get notifications data //////////////////////////
      var fetchNotifications = 1;
