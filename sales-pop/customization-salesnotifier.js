@@ -1185,6 +1185,8 @@
 
         var block_url = window.location.pathname.split("/");
 
+        console.log(block_url);
+
         var block_url_store = window.location.origin + '/' + block_url[1] + '/' + block_url[2] + '/';
                 
         var b_url = true;
@@ -1204,6 +1206,16 @@
                 b_url = false;
                 console.log('SP Sales Notification Block on "Thank You" page') 
             }
+        }
+
+        if (Shopify.shop == "sheopal-s.myshopify.com") 
+        {
+            if (block_url[1] == 'blogs')
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on "Blog" pages') 
+            }
+
         }
 
         return b_url;
