@@ -1873,6 +1873,12 @@
     {
         masterSelector2 = $jq321(".price-container");
         finalSelector2 = masterSelector2[0];
+    }
+    if (Shopify.shop == "enduliance.myshopify.com") 
+    {
+        $jq321("head").append(
+          '<style type="text/css"> .quick-shop-addtocart button{background-color: #00B900 !important; color: #fff !important;} .sale-sticker{background-color: #FF6600 !important; color: #fff !important;}  .quickshop-quantity input{ border: 1px solid #000000 !important} .quantity-button.quantity-up{border-color: #000000 !important;} .quantity-button.quantity-down{border-color: #000000 !important;} </style>'
+        );
     } 
 
       function stockCountdown(responseStock) {
