@@ -1868,6 +1868,11 @@
     {
         masterSelector = $jq321(".docapp-coupon-input");
         finalSelector = masterSelector[0];
+    }
+    if (Shopify.shop == "shoperive.myshopify.com") 
+    {
+        masterSelector2 = $jq321(".price-container");
+        finalSelector2 = masterSelector2[0];
     } 
 
       function stockCountdown(responseStock) {
@@ -1980,9 +1985,11 @@
          var selectorTimer6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
  
          if (responseTimer.above_cart == 1) {
-            if (masterSelector.length > 0) {
+             if (masterSelector.length > 0) {
                 $jq321(responseTimer.view).insertBefore(finalSelector);
-              } else if (selectorTimer1.length == 1) {
+             } else if (masterSelector2.length > 0) {
+                $jq321(responseTimer.view).insertBefore(finalSelector2);
+             } else if (selectorTimer1.length == 1) {
                  selectorTimer1.prepend(responseTimer.view);
              } else if (selectorTimer2.length == 1) {
                  selectorTimer2.prepend(responseTimer.view);
@@ -1996,9 +2003,11 @@
                  selectorTimer6.prepend(responseTimer.view);
              }
          } else {
-            if (masterSelector.length > 0) {
+             if (masterSelector.length > 0) {
                 $jq321(responseTimer.view).insertAfter(finalSelector);
-              } else if (selectorTimer1.length == 1) {
+             } else if (masterSelector2.length > 0) {
+                $jq321(responseTimer.view).insertAfter(finalSelector2);
+             } else if (selectorTimer1.length == 1) {
                  selectorTimer1.append(responseTimer.view);
              } else if (selectorTimer2.length == 1) {
                  selectorTimer2.append(responseTimer.view);
