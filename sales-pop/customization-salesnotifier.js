@@ -1892,6 +1892,11 @@
         $jq321("head").append(
         '<style type="text/css">.notifyjs-corner{margin-bottom: 7px !important}</style>'
         );
+    }
+    if (Shopify.shop == "livingstocks.myshopify.com") 
+    {
+        masterSelector = $jq321(".htusb-placeholder-countdown");
+        finalSelector = masterSelector[0];
     } 
 
       function stockCountdown(responseStock) {
