@@ -1887,6 +1887,11 @@
                 '.quantity-nav{height: 41px!important;}'+
             '</style>'
           );
+    }
+    if (Shopify.shop == "sheopal-s.myshopify.com") {
+        $jq321("head").append(
+        '<style type="text/css">.notifyjs-corner{margin-bottom: 7px !important}</style>'
+        );
     } 
 
       function stockCountdown(responseStock) {
