@@ -1898,7 +1898,15 @@
     {
         masterSelector = $jq321(".htusb-placeholder-countdown");
         finalSelector = masterSelector[0];
-    } 
+    }
+    if (Shopify.shop == "agent11mporex.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">' +
+            '.stock-top{ margin-top: 21px !important;}' +  
+            '</style>'
+        );
+    }  
 
       function stockCountdown(responseStock) {
  
