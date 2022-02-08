@@ -154,6 +154,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	customSelctor = $jq321(".product-form__payment-container");
     	finalSelector = customSelctor[0];
     }
+    if (Shopify.shop == "perfume-harbour-usa.myshopify.com")
+    {
+    	$jq321("head").append(
+            '<style type="text/css">' + 
+                '.visitor-counter-content-box-carecartbysalespop-2020{margin-top: -23px !important; margin-bottom: -8px !important;}' +
+            '</style>');
+    }
 
     
    
