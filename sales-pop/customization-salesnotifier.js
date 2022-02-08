@@ -1795,6 +1795,7 @@
          });
      });
      var masterSelector = '';
+     var masterSelector2 = '';
      if (Shopify.shop == "woodpixlde.myshopify.com") {
         $jq321("head").append(
         '<style type="text/css">.grid-product__on-sale, .grid-product__sold-out, body [class*=badge], body [class*=Badge]{visibility: visible !important}</style>'
