@@ -1180,6 +1180,47 @@
  
          $jq321("body").append(statsHtml);
      };
+
+     var blockSpecificPage = function () {
+
+        var block_url = window.location.pathname.split("/");
+
+        console.log(block_url);
+
+        var block_url_store = window.location.origin + '/' + block_url[1] + '/' + block_url[2] + '/';
+                
+        var b_url = true;
+
+        if (Shopify.shop == "elusionist.myshopify.com") 
+        {
+            if (block_url_store == 'https://ellusionist.com/apps/downloads/')
+            {
+                b_url = false;
+            }
+        }
+
+        if (Shopify.shop == "gotechleb.myshopify.com") 
+        {
+            if ((block_url[4] == 'thank_you') || (block_url[2] == 'orders'))
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on "Thank You" page') 
+            }
+        }
+
+        if (Shopify.shop == "sheopal-s.myshopify.com") 
+        {
+            if (block_url[1] == 'blogs')
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on "Blog" pages') 
+            }
+
+        }
+
+        return b_url;
+
+     };
  
      window.checkmodule_popup = function (response) {
          spDebuger.storeLog("BACKEND-URL: ", salespoplib_vars_obj.backend_url);
@@ -1295,7 +1336,7 @@
              if (apiResponse && apiResponse.quickViewCollection && apiResponse.quickViewCollection == 1)
              {
                  setTimeout(function () {
- // PRODUCT QUICK VIEW FOR COLLECTION PAGES
+            // PRODUCT QUICK VIEW FOR COLLECTION PAGES
                      collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
                  }, 3000);
              }
@@ -1323,6 +1364,11 @@
             setTimeout(function () {
                 collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
             }, 2000);
+        }
+
+        var notAllowedBlockSpecificPage = blockSpecificPage();
+        if (!notAllowedBlockSpecificPage) {
+            return false;
         }
          
          if (shouldStatsBeShown()) {
@@ -1580,7 +1626,6 @@
      {
         cc_product_id = null;
      }
- console.log(cc_product_id);
  
      /////////////////////// Set flag to get notifications data //////////////////////////
      var fetchNotifications = 1;
@@ -1750,6 +1795,7 @@
          });
      });
      var masterSelector = '';
+     var masterSelector2 = '';
      if (Shopify.shop == "woodpixlde.myshopify.com") {
         $jq321("head").append(
         '<style type="text/css">.grid-product__on-sale, .grid-product__sold-out, body [class*=badge], body [class*=Badge]{visibility: visible !important}</style>'
@@ -1762,60 +1808,105 @@
     }  
    
     if (Shopify.shop == "tracilacei.myshopify.com") {
-        masterSelector = $jq321(".product-variants");
+        masterSelector = $jq321(".product-variants ");
         finalSelector = masterSelector[0];
-    }    
-
-     if (Shopify.shop == "thefallout.myshopify.com") {
+    } 
+    
+    if (Shopify.shop == "gamers247.myshopify.com") {
         $jq321("head").append(
-        '<style type="text/css"> #CloneBox {flex-wrap: nowrap !important;}</style>'
+        '<style type="text/css">.notifyjs-corner{margin-bottom: 50px !important}</style>'
         );
-   
     }  
-
+    if (Shopify.shop == "eaurave.myshopify.com") {
+        $jq321("head").append(
+        '<style type="text/css">.notifyjs-corner{margin-bottom: 90px !important}</style>'
+        );
+    }     
+    if (Shopify.shop == "sheopal-s.myshopify.com") {
+        masterSelector = $jq321(".paymentButtonsWrapper");
+        finalSelector = masterSelector[0];
+    }  
+    if (Shopify.shop == "mount-2.myshopify.com") {
+        $jq321("head").append(
+        '<style type="text/css">.stock-progress-foreground{width: 30% !important}</style>'
+        );
+    }
+    if (Shopify.shop == "thefallout.myshopify.com") {
+        masterSelector = $jq321(".description");
+        finalSelector = masterSelector[0];
+        $jq321("head").append(
+            '<style type="text/css"> #CloneBox {flex-wrap: nowrap !important;}</style>'
+        );
+    }  
     if (Shopify.shop == "adetoyinspalace.myshopify.com") {
         masterSelector = $jq321(".product-form__quantity-submit");
         finalSelector = masterSelector[0];
         $jq321("head").append(
             '<style type="text/css"> .icon-specific-text-carecartbysalespop-2020 {display: inline !important;}</style>'
             );
-
-    }   
-
-    if (Shopify.shop == "winssysilk.myshopify.com") {
+    } 
+    if (Shopify.shop == "compact-studios.myshopify.com") {
         $jq321("head").append(
-            '<style type="text/css"> .timer-store-front {margin-top: 10px !important;}</style>'
-            );
-}  
-
-
-if (Shopify.shop == "naptural-queen-hair-care.myshopify.com") {
-    masterSelector = $jq321(".groups-btn");
-    finalSelector = masterSelector[0];
-}  
-
-if (Shopify.shop == "azzalin-bozz.myshopify.com") {
-    masterSelector = $jq321(".groups-btn");
-    finalSelector = masterSelector[0];
-}     
-   
-if (Shopify.shop == "chilloutart.myshopify.com") {
-    masterSelector = $jq321(".product-block--price");
-    finalSelector = masterSelector[0];
-}  
-
-if (Shopify.shop == "orecsic-med.myshopify.com") {
-    masterSelector = $jq321(".product-form__buttons");
-    finalSelector = masterSelector[0];
-}  
-
-if (Shopify.shop == "mymensstyle-store-style-grooming-for-men.myshopify.com") {
-    var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
-    if (windowWidth < 575) {
-        masterSelector = $jq321(".js-gemini-add-to-cart");
+          '<style type="text/css"> .sale-sticker{background-color: #7A8BC1 !important; color: #fff !important;} .quick-shop-title a{color: #7A8BC1 !important;} .quick-shop-current-price{color: #000 !important;} .quick-shop-was-price{color: #9DA5B3 !important;} .view-full-details a{color: #000 !important}  .quick-product-size-opt span{color: #000 !important} .quick-product-size-opt .radio-toolbar label{margin: 3px !important} .quickshop-quantity input{ border: 1px solid #7A8BC1 !important} .quantity-button.quantity-up{border-color: #7A8BC1 !important;} .quantity-button.quantity-down{border-color: #7A8BC1 !important;} .quick-shop-addtocart button{background-color: #7A8BC1 !important; color: #fff !important;} </style>'
+        );
+    }
+    if (Shopify.shop == "azzalin-bozz.myshopify.com") {
+        masterSelector = $jq321(".groups-btn");
         finalSelector = masterSelector[0];
+    } 
+    if (Shopify.shop == "riverviewhomeware.myshopify.com") 
+    {
+        if (salespoplib_vars_obj.checkDevice == 'mobile')
+        {
+            $jq321("head").append('<style type="text/css">.notifyjs-corner{margin-bottom: 70px !important}</style>');
         }
-}  
+        else
+        {
+            $jq321("head").append('<style type="text/css">.notifyjs-corner{margin-bottom: 85px !important}</style>');
+        }
+    }
+    if (Shopify.shop == "jainmy.myshopify.com") 
+    {
+        masterSelector = $jq321(".docapp-coupon-input");
+        finalSelector = masterSelector[0];
+    }
+    if (Shopify.shop == "shoperive.myshopify.com") 
+    {
+        masterSelector2 = $jq321(".price-container");
+        finalSelector2 = masterSelector2[0];
+    }
+    if (Shopify.shop == "enduliance.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.quick-shop-addtocart button{background-color: #00B900 !important; color: #fff !important;}'+ 
+                '.sale-sticker{background-color: #FF6600 !important; color: #fff !important;}'+  
+                '.quickshop-quantity input{ border: 1px solid #000000 !important; height: 42px!important;}'+ 
+                '.quantity-button.quantity-up{border-color: #000000 !important; border-top-right-radius: 4px!important;}'+ 
+                '.quantity-button.quantity-down{border-color: #000000 !important; border-bottom-right-radius: 4px!important;}'+ 
+                '.quantity-button{border-width: 1px!important;}'+
+                '.quantity-nav{height: 41px!important;}'+
+            '</style>'
+          );
+    }
+    if (Shopify.shop == "sheopal-s.myshopify.com") {
+        $jq321("head").append(
+        '<style type="text/css">.notifyjs-corner{margin-bottom: 7px !important}</style>'
+        );
+    }
+    if (Shopify.shop == "livingstocks.myshopify.com") 
+    {
+        masterSelector = $jq321(".htusb-placeholder-countdown");
+        finalSelector = masterSelector[0];
+    }
+    if (Shopify.shop == "agent11mporex.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">' +
+            '.stock-top{ margin-top: 21px !important;}' +  
+            '</style>'
+        );
+    }  
 
       function stockCountdown(responseStock) {
  
@@ -1927,9 +2018,11 @@ if (Shopify.shop == "mymensstyle-store-style-grooming-for-men.myshopify.com") {
          var selectorTimer6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
  
          if (responseTimer.above_cart == 1) {
-            if (masterSelector.length > 0) {
+             if (masterSelector.length > 0) {
                 $jq321(responseTimer.view).insertBefore(finalSelector);
-              } else if (selectorTimer1.length == 1) {
+             } else if (masterSelector2.length > 0) {
+                $jq321(responseTimer.view).insertBefore(finalSelector2);
+             } else if (selectorTimer1.length == 1) {
                  selectorTimer1.prepend(responseTimer.view);
              } else if (selectorTimer2.length == 1) {
                  selectorTimer2.prepend(responseTimer.view);
@@ -1943,9 +2036,11 @@ if (Shopify.shop == "mymensstyle-store-style-grooming-for-men.myshopify.com") {
                  selectorTimer6.prepend(responseTimer.view);
              }
          } else {
-            if (masterSelector.length > 0) {
+             if (masterSelector.length > 0) {
                 $jq321(responseTimer.view).insertAfter(finalSelector);
-              } else if (selectorTimer1.length == 1) {
+             } else if (masterSelector2.length > 0) {
+                $jq321(responseTimer.view).insertAfter(finalSelector2);
+             } else if (selectorTimer1.length == 1) {
                  selectorTimer1.append(responseTimer.view);
              } else if (selectorTimer2.length == 1) {
                  selectorTimer2.append(responseTimer.view);
@@ -1975,7 +2070,6 @@ if (Shopify.shop == "mymensstyle-store-style-grooming-for-men.myshopify.com") {
          var selectorVisitor2 = $jq321("form[action='/cart/add']");
          var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
          var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
- 
          if (response.above_cart == 1) {
             if (masterSelector.length > 0) {
                 $jq321(response.view).insertBefore(finalSelector);
@@ -2001,10 +2095,13 @@ if (Shopify.shop == "mymensstyle-store-style-grooming-for-men.myshopify.com") {
                  selectorVisitor4.append(response.view);
              }
          }
- 
+         if (Shopify.shop == "sheopal-s.myshopify.com") {
+            $jq321(".fa-eye").html("&#xf06e;");
+        }  
          $jq321('m').html(function (i, v) {
              return v.replace(/(\d)/g, '<span ' + response.count + '>$1</span>');
          });
+
      }
  // ---------------------------------- <VISITOR COUNTER MODULE> --------------------------------
  
@@ -2208,13 +2305,15 @@ if (Shopify.shop == "mymensstyle-store-style-grooming-for-men.myshopify.com") {
          {
              var allLinks = [];
              var product_id = (meta.product && meta.product.id) ? meta.product.id : '';
- 
+            var selectorQuickview = $jq321('a');
              if (product_id == '')
              {
-                 $jq321("a").each(function() {
+                if(Shopify.shop === "mm-active.myshopify.com"){
+                    selectorQuickview = $jq321("main-collection-product-grid")
+                }
+                selectorQuickview.each(function() {
                      var href = $jq321(this).attr('href');
                      var url = href.split("/");
- 
                      if ($jq321.inArray("products", url) != -1)
                      {
                          allLinks.push(href);
@@ -2222,8 +2321,11 @@ if (Shopify.shop == "mymensstyle-store-style-grooming-for-men.myshopify.com") {
                  });
              }
              else
-             {
-                 $jq321("a").each(function() {
+             {  
+                 if(Shopify.shop === "mm-active.myshopify.com"){ 
+                    selectorQuickview = $jq321("main-collection-product-grid")
+                 }
+                 selectorQuickview.each(function() {
                      var href = $jq321(this).attr('href');
                      var url = href.split("/");
                      if ($jq321.inArray("products", url) != -1)
@@ -2237,7 +2339,7 @@ if (Shopify.shop == "mymensstyle-store-style-grooming-for-men.myshopify.com") {
                      }
                  });
              }
- 
+             console.log(selectorQuickview);
          // PRODUCT QUICK VIEW COLLECTION CREATE BUTTON
              var divCount = 0;
              var linkCount = 0;
@@ -2260,7 +2362,6 @@ if (Shopify.shop == "mymensstyle-store-style-grooming-for-men.myshopify.com") {
                      {
          // FOR QUICK VIEW EYE
                          var newButton = '<a id="positon-right" class="EyeViewBtn collection-quick-view ' + quickViewCollectionPosition + '" data-product-url="' + allLinks[linkCount] + '" data-quick-view="1" href="#"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="577.029px" height="577.029px" viewBox="0 0 577.029 577.029" style="enable-background:new 0 0 577.029 577.029;" xml:space="preserve"><path d="M288.514,148.629c73.746,0,136.162,33.616,175.539,61.821c46.652,33.415,70.66,65.737,76.885,78.065   c-6.232,12.327-30.232,44.649-76.885,78.065c-39.377,28.204-101.793,61.82-175.539,61.82c-73.746,0-136.161-33.616-175.539-61.82   c-46.661-33.416-70.66-65.738-76.894-78.065c6.234-12.328,30.233-44.65,76.885-78.065   C152.353,182.245,214.768,148.629,288.514,148.629 M288.514,113.657C129.176,113.657,0,253.543,0,288.515   s129.176,174.857,288.514,174.857c159.339,0,288.515-139.886,288.515-174.857S447.854,113.657,288.514,113.657L288.514,113.657z    M288.514,183.601c-57.939,0-104.914,46.975-104.914,104.914c0,57.938,46.975,104.914,104.914,104.914   s104.914-46.976,104.914-104.914C393.428,230.576,346.453,183.601,288.514,183.601z M260.266,288.515   c-24.515,0-44.388-19.873-44.388-44.388c0-24.515,19.873-44.387,44.388-44.387c24.515,0,44.388,19.873,44.388,44.387   C304.654,268.642,284.781,288.515,260.266,288.515z"/></svg></a>';
- 
                      }
  
                      var check = $jq321(this).parent();
@@ -2339,12 +2440,11 @@ if (Shopify.shop == "mymensstyle-store-style-grooming-for-men.myshopify.com") {
             var selectorTrustBadges2 = $jq321("form[action='/cart/add']");
             var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
-
-            if (masterSelector.length == 1) {
-                $jq321(".buy-btn-space").append(trustBadgesResponse.view);
-            }  
-            else 
-            if (selectorTrustBadges1.length == 1)
+            
+            if(masterSelector.length == 1){
+                masterSelector.append(trustBadgesResponse.view);
+            }
+            else if (selectorTrustBadges1.length == 1)
             {
                 selectorTrustBadges1.append(trustBadgesResponse.view);
             }

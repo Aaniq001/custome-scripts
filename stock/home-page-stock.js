@@ -123,7 +123,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if(Shopify.shop == "samraatthreads.myshopify.com"){
         productID = 7377156440233;
     }
-console.log("hewllo")
+
+    if(Shopify.shop == "nomorewetwet.myshopify.com"){
+        productID = 5649273028760;
+    }
+
     $jq321.ajax({
         type: "GET",
         url: salespoplib_vars_obj.backend_url + 'checkStore/',
