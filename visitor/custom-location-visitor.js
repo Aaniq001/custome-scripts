@@ -150,13 +150,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             }
         }
 
-        if(Shopify.shop == "usesthetics.myshopify.com")
+    if(Shopify.shop == "usesthetics.myshopify.com")
     {
     	customSelctor = $jq321(".product-form__submit");
     	finalSelector = customSelctor[0];
     }
-
-    
    
     console.log(customSelctor);
 
