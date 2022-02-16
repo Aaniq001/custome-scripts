@@ -82,7 +82,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 href: serverUrl.cssVisitor + "?v" + version
             }));
 
-            visitorCounter(apiResponse.visitor);
+            
+            visitorCounter(apiResponse.visitor)
+           
+            
+            
         }
     };
 	
@@ -150,11 +154,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             }
         }
 
-    if(Shopify.shop == "usesthetics.myshopify.com")
-    {
-    	customSelctor = $jq321(".product-form__submit button");
-    	finalSelector = customSelctor[0];
-    }
+    
    
     console.log(customSelctor);
 
@@ -164,7 +164,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var selectorVisitor2 = $jq321("form[action='/cart/add']");
         var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']");
         var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
-
+        
+        
         if (response.above_cart == 1)
         {
             if(customSelctor.length > 0){
@@ -207,6 +208,22 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             else if (selectorVisitor4.length == 1)
             {
                 selectorVisitor4.append(response.view);
+            }
+        }
+        if(Shopify.shop == "usesthetics.myshopify.com")
+        {
+            if($jq321('.visitor-counter-content-box-carecartbysalespop-2020').length > 0){
+                $jq321('.visitor-counter-content-box-carecartbysalespop-2020').css("display", "none");
+            }
+            customSelctor = $jq321(".expo-section-wrapper");
+            finalSelector = customSelctor[0];
+            if(customSelctor.length > 0){
+            	$jq321(response.view).insertAfter(finalSelector);
+            }
+            else{
+                customSelctor = $jq321(".expo-section-wrapper");
+                finalSelector = customSelctor[0];
+                $jq321(response.view).insertBefore(finalSelector);
             }
         }
 
