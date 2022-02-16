@@ -1152,6 +1152,54 @@
  
          return is_notification_allowed;
      };
+
+     var blockSpecificPage = function () {
+
+        var block_url = window.location.pathname.split("/");
+
+        var block_url_store = window.location.origin + '/' + block_url[1] + '/' + block_url[2] + '/';
+                
+        var b_url = true;
+
+        if (Shopify.shop == "elusionist.myshopify.com") 
+        {
+            if (block_url_store == 'https://ellusionist.com/apps/downloads/')
+            {
+                b_url = false;
+            }
+        }
+
+        if (Shopify.shop == "gotechleb.myshopify.com") 
+        {
+            if ((block_url[4] == 'thank_you') || (block_url[2] == 'orders'))
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on "Thank You" page') 
+            }
+        }
+
+        if (Shopify.shop == "sheopal-s.myshopify.com") 
+        {
+            if (block_url[1] == 'blogs')
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on "Blog" pages') 
+            }
+        }
+
+        if (Shopify.shop == "timbresonic.myshopify.com") 
+        {
+            if (block_url[1] == 'products')
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on "Product" pages') 
+            }
+
+        }
+
+        return b_url;
+
+     };
  
      var shouldStatsBeShown = function () {
          return (typeof URLSearchParams === "undefined") ? false : (new URLSearchParams(window.location.search)).has('show-sp-config');
@@ -1323,6 +1371,11 @@
             setTimeout(function () {
                 collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
             }, 2000);
+        }
+
+        var notAllowedBlockSpecificPage = blockSpecificPage();
+        if (!notAllowedBlockSpecificPage) {
+            return false;
         }
          
          if (shouldStatsBeShown()) {
