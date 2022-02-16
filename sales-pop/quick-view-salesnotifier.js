@@ -1695,6 +1695,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                                  '.quantity-button.quantity-down{border-color: #72B3BA !important;}' +  
                                '</style>');
     }
+    if (Shopify.shop == "lexuryextension.myshopify.com") 
+    {
+        $jq321("head").append('<style type="text/css">' +
+                                'li.grid__item .card-wrapper .full-unstyled-link::after{z-index: 1 !important;}' +  
+                              '</style>');
+    }
     
     function stockCountdown(responseStock) {
 
