@@ -9,7 +9,7 @@
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
 
-function scriptInjection(src, callback) {
+ function scriptInjection(src, callback) {
     var script = document.createElement('script');
     script.type = "text/javascript";
 
@@ -82,11 +82,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 href: serverUrl.cssVisitor + "?v" + version
             }));
 
-            
-            visitorCounter(apiResponse.visitor)
-           
-            
-            
+            setTimeout(function () {visitorCounter(apiResponse.visitor)}, 3000);
         }
     };
 	
@@ -215,8 +211,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         if(Shopify.shop == "usesthetics.myshopify.com")
         {
-            // customSelctor = $jq321(".expo-section-wrapper");
-            // finalSelector = customSelctor[0];
             if($jq321('.visitor-counter-content-box-carecartbysalespop-2020').length > 0){
                 $jq321('.visitor-counter-content-box-carecartbysalespop-2020').css("display", "none");
             }
