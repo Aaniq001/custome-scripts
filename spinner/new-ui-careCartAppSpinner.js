@@ -1160,7 +1160,15 @@
                                 carecartSpinnerJquery(".site-nav").append('<li><a id="wheelify-spin-trigger-2" onclick="displaySpinnerOnTigger()" href="javascript:void(0)" class="site-nav__link site-nav__link--main"><span class="site-nav__label">Spin to Win</span></a></li>');
                                 carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "none");
                             }
-
+                            if("almowear.myshopify.com" == Shopify.shop) {
+                                carecartSpinnerJquery(".wheelify-closeButton").on('click',(function(){
+                                    carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "none");
+                                    setTimeout(function(){
+                                    carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "block");
+                                    }, 5000);
+                                }))
+                            }
+                                                    
                             //****************************************** End - Allow Spinner on ONLY Specific URL ******************************
                             //console.log('response.records.store_settings.settings_data.display_home_page_enabled: ' + response.records.store_settings.settings_data.display_home_page_enabled);
                             //console.log('response.records.store_settings.settings_data.display_collections_page_enabled: ' + response.records.store_settings.settings_data.display_collections_page_enabled);
@@ -2771,7 +2779,9 @@
                         carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {bottom: 2vh !important;}</style>');
                     }
                 }
-                
+                if(Shopify.shop == 'gammalifestyle.myshopify.com' || Shopify.shop == 'almowear.myshopify.com'){
+                    carecartSpinnerJquery('head').append('<style type="text/css">.bar-top{bottom: auto;}</style>');
+                }
             });
 
         }, 1000);
