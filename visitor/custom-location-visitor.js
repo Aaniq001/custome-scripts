@@ -9,7 +9,7 @@
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
 
-function scriptInjection(src, callback) {
+ function scriptInjection(src, callback) {
     var script = document.createElement('script');
     script.type = "text/javascript";
 
@@ -82,7 +82,20 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 href: serverUrl.cssVisitor + "?v" + version
             }));
 
+<<<<<<< HEAD
             setTimeout(function () {visitorCounter(apiResponse.visitor)}, 3000);
+=======
+            if (Shopify.shop == "usesthetics.myshopify.com")
+            {
+                $jq321(window).scroll(function () {
+                    visitorCounter(apiResponse.visitor);
+                }); 
+            }
+            else
+            {
+                visitorCounter(apiResponse.visitor);
+            }  
+>>>>>>> 9bdeafe76a38af416cc3b3e0e199b8f6b82d7ab2
         }
     };
 	
@@ -113,6 +126,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     /* Custom script goes from here */
     let customSelctor = "";
     let finalSelector = "";
+
     if(Shopify.shop == "walea-shop.myshopify.com")
     {
     	customSelctor = $jq321(".one-whole");
@@ -149,6 +163,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 '<style type="text/css"> .content-div-visitor-detail-carecartbysalespop-2020{display:flex !important; justify-content:center}</style>');
         }
     }
+<<<<<<< HEAD
 
    
     
@@ -156,6 +171,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     console.log(customSelctor);
     console.log(finalSelector);
 
+=======
+>>>>>>> 9bdeafe76a38af416cc3b3e0e199b8f6b82d7ab2
 
     function visitorCounter(response) {
 
@@ -163,7 +180,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var selectorVisitor2 = $jq321("form[action='/cart/add']");
         var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']");
         var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
-        
         
         if (response.above_cart == 1)
         {
@@ -209,8 +225,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 selectorVisitor4.append(response.view);
             }
         }
-        if(Shopify.shop == "usesthetics.myshopify.com")
+
+        if (Shopify.shop == "usesthetics.myshopify.com")
         {
+<<<<<<< HEAD
             // customSelctor = $jq321(".expo-section-wrapper");
             // finalSelector = customSelctor[0];
             if($jq321('.visitor-counter-content-box-carecartbysalespop-2020').length > 0){
@@ -219,9 +237,20 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             customSelctor = $jq321(".expo-section-wrapper");
             finalSelector = customSelctor[0];
             if(customSelctor.length > 0){
+=======
+            if ($jq321('.visitor-counter-content-box-carecartbysalespop-2020').length > 0)
+            {
+                $jq321('.visitor-counter-content-box-carecartbysalespop-2020').css("display", "none");
+            }
+            customSelctor = $jq321(".expo-section-wrapper");
+            finalSelector = customSelctor[0];        
+            if (customSelctor.length > 0)
+            {
+>>>>>>> 9bdeafe76a38af416cc3b3e0e199b8f6b82d7ab2
                 $jq321(response.view).insertAfter(finalSelector);
             }
-            else{
+            else
+            {
                 customSelctor = $jq321(".expo-section-wrapper");
                 finalSelector = customSelctor[0];
                 $jq321(response.view).insertBefore(finalSelector);

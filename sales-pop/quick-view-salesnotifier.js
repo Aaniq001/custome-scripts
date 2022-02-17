@@ -1684,6 +1684,23 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "bee-convenient.myshopify.com") {
         $jq321("head").append('<style type="text/css">  .button-on-hover:hover{background-color: #F4F4F4 !important; color: #666 !important; visibility: visible !important;} .qview-button-container :not(.qview-button){ pointer-events: auto !important; } .quick-shop-addtocart button{background-color: #FFABAB !important; color: #fff !important;} </style>');
     }
+    if (Shopify.shop == "easytumblers-nc.myshopify.com") 
+    {
+        $jq321("head").append('<style type="text/css">' +
+                                 '.sale-sticker{background-color: #72B3BA !important; color: #fff !important;}' +
+                                 '.quick-shop-addtocart button{background-color: #72B3BA !important}' +
+                                 '.view-full-details a{color: #72B3BA !important}' +
+                                 '.quickshop-quantity input{ border: 1px solid #72B3BA !important}' + 
+                                 '.quantity-button.quantity-up{border-color: #72B3BA !important;}' + 
+                                 '.quantity-button.quantity-down{border-color: #72B3BA !important;}' +  
+                               '</style>');
+    }
+    if (Shopify.shop == "lexuryextension.myshopify.com") 
+    {
+        $jq321("head").append('<style type="text/css">' +
+                                'li.grid__item .card-wrapper .full-unstyled-link::after{z-index: 1 !important;}' +  
+                              '</style>');
+    }
     
     function stockCountdown(responseStock) {
 
