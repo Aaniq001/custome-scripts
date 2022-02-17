@@ -82,11 +82,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 href: serverUrl.cssVisitor + "?v" + version
             }));
 
-            
-            visitorCounter(apiResponse.visitor)
-           
-            
-            
+            setTimeout(function () {visitorCounter(apiResponse.visitor)}, 3000);
         }
     };
 	
@@ -151,12 +147,15 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         if (windowWidth < 575) {
             $jq321("head").append(
                 '<style type="text/css"> .content-div-visitor-detail-carecartbysalespop-2020{display:flex !important; justify-content:center}</style>');
-            }
         }
+    }
 
+   
     
    
     console.log(customSelctor);
+    console.log(finalSelector);
+
 
     function visitorCounter(response) {
 
@@ -169,7 +168,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         if (response.above_cart == 1)
         {
             if(customSelctor.length > 0){
-            	$jq321(response.view).insertBefore(finalSelector);
+            	$jq321(response.view).insertAfter(finalSelector);
             }
             else if (selectorVisitor1.length == 1)
             {
@@ -212,13 +211,15 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         if(Shopify.shop == "usesthetics.myshopify.com")
         {
+            // customSelctor = $jq321(".expo-section-wrapper");
+            // finalSelector = customSelctor[0];
             if($jq321('.visitor-counter-content-box-carecartbysalespop-2020').length > 0){
                 $jq321('.visitor-counter-content-box-carecartbysalespop-2020').css("display", "none");
             }
             customSelctor = $jq321(".expo-section-wrapper");
             finalSelector = customSelctor[0];
             if(customSelctor.length > 0){
-            	$jq321(response.view).insertAfter(finalSelector);
+                $jq321(response.view).insertAfter(finalSelector);
             }
             else{
                 customSelctor = $jq321(".expo-section-wrapper");
@@ -226,7 +227,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 $jq321(response.view).insertBefore(finalSelector);
             }
         }
-
+    
         $jq321('n').html(function(i, v){
             return v.replace(/(\d)/g, '<span '+response.count+'>$1</span>');
         });
