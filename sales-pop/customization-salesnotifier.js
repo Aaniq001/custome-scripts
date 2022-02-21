@@ -1875,6 +1875,7 @@
             '<style type="text/css">' + 
                 '.product-form--atc{position: relative;}' +
                 '.timer-store-front{position: absolute;left: 0;top: 50%;width:auto !important;}' +
+                '@media only screen and (max-width:650px) {.timer-store-front{position: static;}}' +
             '</style>'
             );
     } 
