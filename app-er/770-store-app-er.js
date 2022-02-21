@@ -1225,7 +1225,8 @@ function AbandonedCart() {
         if (Shopify.shop == "770-store.myshopify.com") 
         {
             carecartJquery('head').append('<style type="text/css">' +
-            '@media only screen and (max-width: 575px){#spin_a_sale_cc_store_front_module .content-spinner{padding:50px 10px 30px !important;}#spin_a_sale_cc_store_front_module .signupContainer{min-height: 520px !important;}}' +
+            '@media only screen and (max-width: 575px){#spin-trigger-cc{right:20px !important;} #spin_a_sale_cc_store_front_module .content-spinner{padding:50px 10px 30px !important;}#spin_a_sale_cc_store_front_module .signupContainer{min-height: 520px !important;}#spin_a_sale_cc_store_front_module .wheelSVG{height:auto!important;}}' +
+            '.checkbox label input{padding:0 0 !important;-webkit-appearance: checkbox !important;}' +
             '</style>');
         } 
 
