@@ -1839,36 +1839,45 @@
         $jq321("head").append(
             '<style type="text/css"> .timer-store-front {margin-top: 10px !important;}</style>'
             );
-}  
+    }  
 
 
-if (Shopify.shop == "naptural-queen-hair-care.myshopify.com") {
-    masterSelector = $jq321(".groups-btn");
-    finalSelector = masterSelector[0];
-}  
-
-if (Shopify.shop == "azzalin-bozz.myshopify.com") {
-    masterSelector = $jq321(".groups-btn");
-    finalSelector = masterSelector[0];
-}     
-   
-if (Shopify.shop == "chilloutart.myshopify.com") {
-    masterSelector = $jq321(".product-block--price");
-    finalSelector = masterSelector[0];
-}  
-
-if (Shopify.shop == "orecsic-med.myshopify.com") {
-    masterSelector = $jq321(".product-form__buttons");
-    finalSelector = masterSelector[0];
-}  
-
-if (Shopify.shop == "mymensstyle-store-style-grooming-for-men.myshopify.com") {
-    var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
-    if (windowWidth < 575) {
-        masterSelector = $jq321(".js-gemini-add-to-cart");
+    if (Shopify.shop == "naptural-queen-hair-care.myshopify.com") {
+        masterSelector = $jq321(".groups-btn");
         finalSelector = masterSelector[0];
-        }
-}  
+    }  
+
+    if (Shopify.shop == "azzalin-bozz.myshopify.com") {
+        masterSelector = $jq321(".groups-btn");
+        finalSelector = masterSelector[0];
+    }     
+    
+    if (Shopify.shop == "chilloutart.myshopify.com") {
+        masterSelector = $jq321(".product-block--price");
+        finalSelector = masterSelector[0];
+    }  
+
+    if (Shopify.shop == "orecsic-med.myshopify.com") {
+        masterSelector = $jq321(".product-form__buttons");
+        finalSelector = masterSelector[0];
+    }  
+
+    if (Shopify.shop == "mymensstyle-store-style-grooming-for-men.myshopify.com") {
+        var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
+        if (windowWidth < 575) {
+            masterSelector = $jq321(".js-gemini-add-to-cart");
+            finalSelector = masterSelector[0];
+            }
+    } 
+
+    if (Shopify.shop == "casefromspace-com.myshopify.com") {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+                '.product-form--atc{position: relative;}' +
+                '.timer-store-front{position: absolute;left: 0;top: 50%;width:auto !important;}' +
+            '</style>'
+            );
+    } 
 
       function stockCountdown(responseStock) {
  
