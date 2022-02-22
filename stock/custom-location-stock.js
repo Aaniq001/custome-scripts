@@ -98,6 +98,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
     };
 
+    if (Shopify.shop == "nefertum-scent.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+    } 
+
     $jq321.ajax({
         type: "GET",
         url: salespoplib_vars_obj.backend_url + 'checkStore/',
@@ -181,7 +186,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         customSelector = $jq321(".js-qty");
         finalSelector = customSelector[0];
         console.log(customSelector);
-    } 
+    }
     
      function stockCountdown(response) {
          
