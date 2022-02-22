@@ -1652,7 +1652,7 @@
          console.log(msg);
      };
      /////////////////////// Set flag to get notifications data //////////////////////////
-     
+
      $jq321.ajax({
          type: "GET",
          url: salespoplib_vars_obj.backend_url + 'checkStore/',
@@ -1878,7 +1878,12 @@
                 '@media only screen and (max-width:650px) {.timer-store-front{position: static;}}' +
             '</style>'
             );
-    } 
+    }
+    
+    if (Shopify.shop == "reveil-nyc.myshopify.com") {
+        masterSelector = $jq321(".payment-buttons");
+        finalSelector = masterSelector[0];
+    }
 
       function stockCountdown(responseStock) {
  
