@@ -155,55 +155,55 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
     }
 
-    function visitorCounter(response) {
+    function visitorCounter(responseVisitor) {
 
         var selectorVisitor1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
         var selectorVisitor2 = $jq321("form[action='/cart/add']");
         var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']");
         var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
         
-        if (response.above_cart == 1)
+        if (responseVisitor.above_cart == 1)
         {
             if(customSelctor.length > 0){
-            	$jq321(response.view).insertAfter(finalSelector);
+            	$jq321(responseVisitor.view).insertAfter(finalSelector);
             }
             else if (selectorVisitor1.length == 1)
             {
-                selectorVisitor1.prepend(response.view);
+                selectorVisitor1.prepend(responseVisitor.view);
             }
             else if (selectorVisitor2.length == 1)
             {
-                selectorVisitor2.prepend(response.view);
+                selectorVisitor2.prepend(responseVisitor.view);
             }
             else if (selectorVisitor3.length == 1)
             {
-                $jq321(response.view).insertBefore(selectorVisitor3);
+                $jq321(responseVisitor.view).insertBefore(selectorVisitor3);
             }
             else if (selectorVisitor4.length == 1)
             {
-                selectorVisitor4.prepend(response.view);
+                selectorVisitor4.prepend(responseVisitor.view);
             }
         }
         else
         {
             if(customSelctor.length > 0){
-            	$jq321(response.view).insertAfter(finalSelector);
+            	$jq321(responseVisitor.view).insertAfter(finalSelector);
             }
             else if (selectorVisitor1.length == 1)
             {
-                selectorVisitor1.append(response.view);
+                selectorVisitor1.append(responseVisitor.view);
             }
             else if (selectorVisitor2.length == 1)
             {
-                selectorVisitor2.append(response.view);
+                selectorVisitor2.append(responseVisitor.view);
             }
             else if (selectorVisitor3.length == 1)
             {
-                $jq321(response.view).insertAfter(selectorVisitor3);
+                $jq321(responseVisitor.view).insertAfter(selectorVisitor3);
             }
             else if (selectorVisitor4.length == 1)
             {
-                selectorVisitor4.append(response.view);
+                selectorVisitor4.append(responseVisitor.view);
             }
         }
         if(Shopify.shop == "usesthetics.myshopify.com")
@@ -214,17 +214,17 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             customSelctor = $jq321(".expo-section-wrapper");
             finalSelector = customSelctor[0];
             if(customSelctor.length > 0){
-                $jq321(response.view).insertAfter(finalSelector);
+                $jq321(responseVisitor.view).insertAfter(finalSelector);
             }
             else{
                 customSelctor = $jq321(".expo-section-wrapper");
                 finalSelector = customSelctor[0];
-                $jq321(response.view).insertBefore(finalSelector);
+                $jq321(responseVisitor.view).insertBefore(finalSelector);
             }
         }
     
         $jq321('n').html(function(i, v){
-            return v.replace(/(\d)/g, '<span '+response.count+'>$1</span>');
+            return v.replace(/(\d)/g, '<span '+responseVisitor.count+'>$1</span>');
         });
     }
 
