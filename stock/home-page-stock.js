@@ -128,6 +128,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         productID = 5649273028760;
     }
 
+    if (Shopify.shop == "fancybeauty-com.myshopify.com")
+    {
+        productID = 7204279386268;
+    }
+
+    
+
     $jq321.ajax({
         type: "GET",
         url: salespoplib_vars_obj.backend_url + 'checkStore/',
