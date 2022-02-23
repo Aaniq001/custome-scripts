@@ -85,6 +85,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             setTimeout(function () {visitorCounter(apiResponse.visitor)}, 3000);
         }
     };
+
+    if (Shopify.shop == "nefertum-scent.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+    } 
 	
     $jq321.ajax({
         type: "GET",
@@ -150,20 +155,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
     }
 
-   
-    
-   
-    console.log(customSelctor);
-    console.log(finalSelector);
-
-
     function visitorCounter(response) {
 
         var selectorVisitor1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
         var selectorVisitor2 = $jq321("form[action='/cart/add']");
         var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']");
         var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
-        
         
         if (response.above_cart == 1)
         {
