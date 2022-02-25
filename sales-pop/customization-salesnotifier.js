@@ -1893,6 +1893,11 @@
             );
     }
 
+    if (Shopify.shop == "timbresonic.myshopify.com") {
+        masterSelector = $jq321(".product-form-new-pdp");
+        finalSelector = masterSelector[0];
+    } 
+
       function stockCountdown(responseStock) {
  
          var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
