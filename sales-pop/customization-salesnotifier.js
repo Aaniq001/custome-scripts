@@ -1885,6 +1885,14 @@
         finalSelector = masterSelector[0];
     }
 
+    if (Shopify.shop == "hearty-spices-latte-mix.myshopify.com") {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+                '.add-to-cart-loader{display: none;}' +
+            '</style>'
+            );
+    }
+
       function stockCountdown(responseStock) {
  
          var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
