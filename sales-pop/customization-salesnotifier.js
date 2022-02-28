@@ -1896,7 +1896,12 @@
     if (Shopify.shop == "timbresonic.myshopify.com") {
         masterSelector = $jq321(".product-form-new-pdp");
         finalSelector = masterSelector[0];
-    } 
+    }
+    
+    if (Shopify.shop == "gizmooooo.myshopify.com") {
+        masterSelector = $jq321("#m-1638361528615");
+        finalSelector = masterSelector[0];
+    }
 
       function stockCountdown(responseStock) {
  
