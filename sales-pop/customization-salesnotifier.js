@@ -1288,7 +1288,16 @@
                      rel: "stylesheet",
                      href: serverUrl.cssStock + "?v" + version
                  }));
-                 stockCountdown(apiResponse.stock);
+
+                 if (Shopify.shop == "alex-alarie.myshopify.com") 
+                 {
+                    setTimeout(function(){ stockCountdown(apiResponse.stock); }, 2000);
+                 }
+                 else
+                 {
+                    stockCountdown(apiResponse.stock);
+                 }
+                 
              }
          }
      
@@ -1896,7 +1905,22 @@
     if (Shopify.shop == "timbresonic.myshopify.com") {
         masterSelector = $jq321(".product-form-new-pdp");
         finalSelector = masterSelector[0];
-    } 
+    }
+    
+    if (Shopify.shop == "gizmooooo.myshopify.com") {
+        masterSelector = $jq321("#m-1638361528615");
+        finalSelector = masterSelector[0];
+    }
+
+    if (Shopify.shop == "khmercuber.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+                '@media only screen and (max-width: 575px){.notificationPreview-box .np-col-right{width:74% !important;}' +
+                                                          '.notificationPreview-box .np-col-img{width:26% !important;}}' +
+            '</style>'
+            );
+    }
 
       function stockCountdown(responseStock) {
  
