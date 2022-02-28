@@ -1288,7 +1288,16 @@
                      rel: "stylesheet",
                      href: serverUrl.cssStock + "?v" + version
                  }));
-                 stockCountdown(apiResponse.stock);
+
+                 if (Shopify.shop == "alex-alarie.myshopify.com") 
+                 {
+                    setTimeout(function(){ stockCountdown(apiResponse.stock); }, 2000);
+                 }
+                 else
+                 {
+                    stockCountdown(apiResponse.stock);
+                 }
+                 
              }
          }
      
