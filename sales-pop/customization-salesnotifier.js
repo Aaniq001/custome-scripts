@@ -1912,6 +1912,16 @@
         finalSelector = masterSelector[0];
     }
 
+    if (Shopify.shop == "khmercuber.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+                '@media only screen and (max-width: 575px){.notificationPreview-box .np-col-right{width:74% !important;}' +
+                                                          '.notificationPreview-box .np-col-img{width:26% !important;}}' +
+            '</style>'
+            );
+    }
+
       function stockCountdown(responseStock) {
  
          var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
