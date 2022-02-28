@@ -1545,7 +1545,13 @@
  if(Shopify.shop == "siminn23.myshopify.com")
  {
     productID = 6710832660565;
-}
+ }
+ 
+ if(Shopify.shop == "yourperfectgiftforchild.myshopify.com")
+ {
+    productID = 6200124637343;
+ }
+
      $jq321.ajax({
          type: "GET",
          url: salespoplib_vars_obj.backend_url + 'checkStore/',
