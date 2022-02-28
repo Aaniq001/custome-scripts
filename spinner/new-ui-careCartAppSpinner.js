@@ -2881,6 +2881,17 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if("almowear.myshopify.com" == Shopify.shop) {  
+                    carecartSpinnerJquery("head").append(
+                        '<style type="text/css"> @media only screen and (max-width: 575px) {::-webkit-scrollbar{-webkit-appearance: "" !important;}}</style>'
+                    );
+                    carecartSpinnerJquery(".wheelify-closeButton").on('click',(function(){
+                        carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "none");
+                        setTimeout(function(){
+                            carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "block");
+                        }, 5000);
+                    }))
+                }
                 if (Shopify.shop == 'the-party-champions.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">.wheelify-signupContainer ::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: #aaaaaa;}</style>');
                     //console.log("SAS https://partychampions.com/");
