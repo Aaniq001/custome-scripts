@@ -2883,7 +2883,7 @@
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
                 if("almowear.myshopify.com" == Shopify.shop) {  
                     carecartSpinnerJquery("head").append(
-                        '<style type="text/css"> @media only screen and (max-width: 575px) {.wheelify-content-spinner::-webkit-scrollbar-thumb{background-color: transparent !important; border:0px solid transparent !important;}.wheelify-content-spinner::-webkit-scrollbar-track{background-color: transparent !important;} .wheelify-content-spinner{margin-left:6px !important;}}</style>'
+                        '<style type="text/css"> @media only screen and (max-width: 575px) {.wheelify-content-spinner::-webkit-scrollbar-thumb{background-color: transparent !important; border:0px solid transparent !important;}.wheelify-content-spinner::-webkit-scrollbar-track{background-color: transparent !important;} .wheelify-content-spinner{margin-left:3% !important;}}</style>'
                     );
                     carecartSpinnerJquery(".wheelify-closeButton").on('click',(function(){
                         carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "none");
