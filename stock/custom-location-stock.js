@@ -101,7 +101,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "nefertum-scent.myshopify.com") 
     {
         var meta = {"product":{"id":__st.rid}};
-    } 
+    }
+    else if (Shopify.shop == "fabricatextiles.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -184,6 +188,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     if (Shopify.shop == "mamano-chocolate.myshopify.com") {
         customSelector = $jq321(".js-qty");
+        finalSelector = customSelector[0];
+        console.log(customSelector);
+    }
+
+    if (Shopify.shop == "fabricatextiles.myshopify.com") {
+        customSelector = $jq321(".add-to-cart");
         finalSelector = customSelector[0];
         console.log(customSelector);
     }
