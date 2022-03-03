@@ -1322,6 +1322,11 @@
                                         '<style type="text/css">@media only screen and (max-width: 575px){#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {min-height: 378px !important;}#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview{height:540px!important;}} </style>'
                                     );
                                 }
+                                if(Shopify.shop == 'ellicious.myshopify.com'){
+                                    carecartSpinnerJquery("head").append(
+                                        '<style type="text/css">@media only screen and (max-width: 575px){#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {min-height: 440px !important;}#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview{height:590px!important;}} </style>'
+                                    );
+                                }
 
                                 /* Append triggered button */
                                     if (response.records.store_settings.settings_data.is_triggered_enable && parseInt(response.records.store_settings.settings_data.is_triggered_enable) == 1) {
@@ -2888,9 +2893,7 @@
                     carecartSpinnerJquery("head").append(
                         '<style type="text/css"> @media only screen and (max-width: 575px){.wheelify-content-spinner::-webkit-scrollbar{width: 1% !important;}}</style>'
                     );
-                    // carecartSpinnerJquery("head").append(
-                    //     '<style type="text/css"> @media only screen and (max-width: 440px) {.wheelify-content-spinner{margin-left: 0% !important;}}</style>'
-                    // );
+                    
                     carecartSpinnerJquery(".wheelify-closeButton").on('click',(function(){
                         carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "none");
                         setTimeout(function(){
@@ -2898,6 +2901,7 @@
                         }, 5000);
                     }))
                 }
+            
                 if (Shopify.shop == 'the-party-champions.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">.wheelify-signupContainer ::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: #aaaaaa;}</style>');
                     //console.log("SAS https://partychampions.com/");
