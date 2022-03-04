@@ -1335,7 +1335,6 @@
                  rel: "stylesheet",
                  href: serverUrl.cssSold + "?v" + version
              }));
- 
              soldCounter(apiResponse.sold);
          }
          
@@ -1934,6 +1933,11 @@
             );
     }
 
+    if(Shopify.shop == "redtag-pakistan.myshopify.com"){
+        masterSelector = $jq321(".shopify-product-form");
+        finalSelector = masterSelector[0];
+    }
+    console.log(finalSelector)
       function stockCountdown(responseStock) {
  
          var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -2131,17 +2135,19 @@
          var selectorSold2 = $jq321("form[action='/cart/add']");
          var selectorSold3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
          var selectorSold4 = $jq321("form[action='/cart/add']:first");
- 
+       
          if (response.above_cart == 1)
          {
+           
             if (masterSelector.length > 0) {
+                console.log("hello", selectorSold2)
                 $jq321(response.view).insertBefore(finalSelector);
             } else if (selectorSold1.length == 1)
              {
                  selectorSold1.prepend(response.view);
              }
              else if (selectorSold2.length == 1)
-             {
+             { 
                  selectorSold2.prepend(response.view);
              }
              else if (selectorSold3.length == 1)
