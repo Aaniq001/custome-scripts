@@ -1810,7 +1810,10 @@
              });
          });
      });
+     
      var masterSelector = '';
+     var finalSelector = '';
+
      if (Shopify.shop == "woodpixlde.myshopify.com") {
         $jq321("head").append(
         '<style type="text/css">.grid-product__on-sale, .grid-product__sold-out, body [class*=badge], body [class*=Badge]{visibility: visible !important}</style>'
@@ -1937,7 +1940,24 @@
         masterSelector = $jq321(".shopify-product-form");
         finalSelector = masterSelector[0];
     }
-    console.log(finalSelector)
+
+    if (Shopify.shop == "bohoem58.myshopify.com")
+    {
+        masterSelector = $jq321(".product-form--low-stock");
+        finalSelector = masterSelector[0];
+    }
+
+    if (Shopify.shop == "bohoem58.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+                '.visitor-counter-content-box-carecartbysalespop-2020{margin-top: -61px !important; position: relative; top: 74px; left: 34%;}' +
+                '.counter-text-carecartbysalespop-2020{border-radius: 0!important; min-height: 29px !important; border-left: 1px solid;}' +
+            '</style>'
+            );
+    }
+    console.log(finalSelector);
+    
       function stockCountdown(responseStock) {
  
          var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
