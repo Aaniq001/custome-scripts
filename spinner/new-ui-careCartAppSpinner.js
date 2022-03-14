@@ -1328,6 +1328,13 @@
                                     );
                                 }
 
+                                
+                                if(Shopify.shop == 'fastfittplus.myshopify.com'){
+                                    carecartSpinnerJquery("head").append(
+                                        '<style type="text/css">@media only screen and (max-width: 575px){#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-content-spinner {overflow: visible !important;}</style>'
+                                    );
+                                }
+
                                 /* Append triggered button */
                                     if (response.records.store_settings.settings_data.is_triggered_enable && parseInt(response.records.store_settings.settings_data.is_triggered_enable) == 1) {
                                         carecartSpinnerJquery("body").append(response.records.store_front_trigger_button);
