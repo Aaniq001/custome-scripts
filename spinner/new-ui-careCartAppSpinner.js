@@ -1331,7 +1331,7 @@
                                 
                                 if(Shopify.shop == 'fastfittplus.myshopify.com'){
                                     carecartSpinnerJquery("head").append(
-                                        '<style type="text/css">@media only screen and (max-width: 575px){#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-content-spinner {overflow: visible !important;}</style>'
+                                        '<style type="text/css">@media only screen and (max-width: 575px){#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {min-height: 440px !important;}#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview{height:590px!important;}} </style>'
                                     );
                                 }
 
@@ -2038,8 +2038,7 @@
 
                 function checkThanksYouCcSpinASale() {
                     //console.log('SAS inside checkThanksYouCcSpinASale');
-                    var is_page = !(!window.location.pathname.match("(.*)/orders/(.*)") && !window.location.pathname.match("(.*)/orders") || window.location.pathname.match("(.*)/checkouts/(.*)") || window.location.pathname.match("(.*)/thank_you"));
-                    //console.log(is_page);
+                    var is_page = (window.location.pathname.match("(.*)/orders/(.*)")  || window.location.pathname.match("(.*)/checkouts/(.*)") || window.location.pathname.match("(.*)/thank_you"));
                     return is_page;
                 }
 
