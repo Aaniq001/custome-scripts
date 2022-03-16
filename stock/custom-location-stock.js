@@ -74,6 +74,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     };
 
     window.checkmodule_countdown = function (response) {
+        console.log("Response received");
 
         apiResponse = response;
 
@@ -105,6 +106,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "fabricatextiles.myshopify.com") 
     {
         var meta = {"product":{"id":__st.rid}};
+    } else if (Shopify.shop == "rossocoffee.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
     }
 
     $jq321.ajax({
@@ -115,7 +118,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         crossDomain: true,
         data: {
 			"domain_url": Shopify.shop,
-            "product_id": (meta.product && meta.product.id)?meta.product.id:''
+            "product_id": (meta.product && meta.product.id) ? meta.product.id:''
         },
         beforeSend: function () {
         },
@@ -197,8 +200,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         finalSelector = customSelector[0];
         console.log(customSelector);
     }
+
+    if (Shopify.shop == "rossocoffee.myshopify.com") {
+        customSelector = $jq321(".product__cart-actions-holder");
+        finalSelector = customSelector[0];
+        console.log(customSelector);
+    }
     
-     function stockCountdown(response) {
+    function stockCountdown(response) {
          
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
         var selectorStock2 = $jq321("form[action='/cart/add']"); 
