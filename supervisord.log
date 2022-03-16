@@ -1,0 +1,17 @@
+2022-03-16 05:10:07,135 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2022-03-16 05:10:07,136 INFO Included extra file "/etc/supervisord.d/httpd.ini" during parsing
+2022-03-16 05:10:07,136 INFO Included extra file "/etc/supervisord.d/php-fpm.ini" during parsing
+2022-03-16 05:10:07,136 INFO Included extra file "/etc/supervisord.d/redis.ini" during parsing
+2022-03-16 05:10:07,136 INFO Included extra file "/etc/supervisord.d/varnish.ini" during parsing
+2022-03-16 05:10:07,227 INFO RPC interface 'supervisor' initialized
+2022-03-16 05:10:07,529 INFO RPC interface 'supervisor' initialized
+2022-03-16 05:10:07,529 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2022-03-16 05:10:07,529 INFO supervisord started with pid 1
+2022-03-16 05:10:08,531 INFO spawned: 'httpd_00' with pid 10
+2022-03-16 05:10:08,533 INFO spawned: 'redis-server_00' with pid 11
+2022-03-16 05:10:08,535 INFO spawned: 'php-fpm_00' with pid 12
+2022-03-16 05:10:08,539 INFO spawned: 'varnish_00' with pid 13
+2022-03-16 05:10:10,051 INFO success: httpd_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2022-03-16 05:10:10,051 INFO success: php-fpm_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2022-03-16 05:10:10,052 INFO success: varnish_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2022-03-16 05:10:12,056 INFO success: redis-server_00 entered RUNNING state, process has stayed up for > than 3 seconds (startsecs)
