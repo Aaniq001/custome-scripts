@@ -82,8 +82,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 href: serverUrl.cssVisitor + "?v" + version
             }));
 
-            //setTimeout(function () {visitorCounter(apiResponse.visitor)}, 3000);
-            visitorCounter(apiResponse.visitor);
+            if (Shopify.shop == "juliteste.myshopify.com") 
+            {
+                setTimeout(function () {visitorCounter(apiResponse.visitor)}, 3000);
+            }
+            else
+            {
+                visitorCounter(apiResponse.visitor);
+            }
 
             console.log(apiResponse.visitor);
         }
