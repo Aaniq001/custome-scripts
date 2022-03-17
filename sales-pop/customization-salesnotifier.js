@@ -1956,6 +1956,12 @@
             '</style>'
             );
     }
+
+    if (Shopify.shop == "onblackcom.myshopify.com")
+    {
+        masterSelector = $jq321(".price-area");
+        finalSelector = masterSelector[0];
+    }
     console.log(finalSelector);
     
       function stockCountdown(responseStock) {
