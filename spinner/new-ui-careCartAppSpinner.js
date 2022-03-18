@@ -2915,6 +2915,11 @@
                         '<style type="text/css">.checkbox{background: transparent !important; border: none !important; width:auto !important; height:auto !important;} </style>'
                     );
                 }
+                if (Shopify.shop == 'misigmamty.myshopify.com') {
+                    carecartSpinnerJquery("head").append(
+                        '<style type="text/css">.checkbox{background: transparent !important; border: none !important; width:auto !important; height:auto !important;} </style>'
+                    );
+                }
 
                 if (Shopify.shop == 'the-party-champions.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">.wheelify-signupContainer ::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: #aaaaaa;}</style>');
