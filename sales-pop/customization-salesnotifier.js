@@ -1194,7 +1194,15 @@
                 b_url = false;
                 console.log('SP Sales Notification Block on "Product" pages') 
             }
+        }
 
+        if (Shopify.shop == "high-streetshop.myshopify.com") 
+        {
+            if (window.location.href == 'https://high-street.pk/')
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on "Home" page') 
+            }
         }
 
         return b_url;
