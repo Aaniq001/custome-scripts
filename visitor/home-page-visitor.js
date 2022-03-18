@@ -94,6 +94,14 @@ if(Shopify.shop == "behappyfr.myshopify.com"){
 if(Shopify.shop == "blissin-skin.myshopify.com"){
     productID = 6939770716332;
 }
+if (Shopify.shop == "security-coque.myshopify.com") 
+{
+    var meta = {"product":{"id":__st.rid}};
+
+    productID = 6681807159347
+}
+
+
     $jq321.ajax({
         type: "GET",
         url: salespoplib_vars_obj.backend_url + 'checkStore/',
