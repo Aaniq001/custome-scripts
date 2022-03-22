@@ -903,8 +903,12 @@
      var getNotificationsByProduct = function (currentProductHandle) {
          spDebuger.storeLog("getNotificationsByProduct called");
          spDebuger.storeLog("currentProductHandle: " + currentProductHandle);
+
+         console.log(currentProductHandle);
  
          var collectionHandles = getCollectionHandlesByProductHandle(currentProductHandle);
+
+         console.log(collectionHandles);
  
          // if the product handle is not found
          // or the product doesn't belong to any collection
@@ -978,7 +982,7 @@
  
          switch (pathNameTokens[1]) {
              case "products":
-                 filteredNotifications = getNotificationsByProduct(pathNameTokens[2]);
+                 filteredNotifications = getNotificationsByProduct(decodeURIComponent(pathNameTokens[2]));
                  break;
  
              case "collections":
@@ -1001,6 +1005,12 @@
  
          var collectionHandles = "";
          Array.prototype.forEach.call(apiResponse.allProductsWithCollections, function (obj) {
+
+            console.log('hello');
+            currentProductHandle = decodeURIComponent(currentProductHandle);
+            console.log(currentProductHandle);
+            console.log(obj.product);
+
              if (obj.product === currentProductHandle) {
                  collectionHandles = obj.collections;
              }
@@ -1545,8 +1555,13 @@
          // cleanup ends
  
          var relevantNotifications = apiResponse.allNotifications;
+
+         console.log(relevantNotifications);
+
          if (parseInt(apiResponse.show_relevant) === 1) {
              relevantNotifications = getRelevantNotifications();
+
+             console.log(relevantNotifications);
          }
  
          spDebuger.storeLog("Total Relevant Notifications: " + relevantNotifications.length);
