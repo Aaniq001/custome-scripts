@@ -688,6 +688,7 @@
                  "cssSold": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/sold-box.css",
                  "cssQuick": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/quick-box.css",
                  "cssTrustBadges": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/badges-box.css",
+                 "cssAnnouncement": "https://sales-pop.carecart.io/lib/announcement.css",
                  "legacyCss": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/salesnotifier.css"
              };
          }
@@ -729,6 +730,7 @@
              "cssSold": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/sold-box.css",
              "cssQuick": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/quick-box.css",
              "cssTrustBadges": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/badges-box.css",
+             "cssAnnouncement": "https://" + tempAnchorTag.hostname + "/lib/announcement.css?v" + version,
              "legacyCss": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/salesnotifier.css"
          };
      }
@@ -1399,6 +1401,59 @@
             setTimeout(function () {
                 collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
             }, 2000);
+        }
+
+        // ANNOUNCEMENT BAR CALL
+        if (apiResponse && apiResponse.announcementBar && apiResponse.announcementBar != false) 
+        {
+            if ( ! isHideAnnouncementCookieSet())
+            {
+                var $allowed = 0;
+                var currentPageHandle = window.location.pathname.split("/");
+
+                if (apiResponse.announcementBar.pages_type == 2)
+                {
+                    if (($jq321.inArray("products", currentPageHandle) != -1) && (apiResponse.announcementBar.product_page == 1)) 
+                    {
+                        console.log('product page');
+                        $allowed = 1;
+                    }
+                    else if (($jq321.inArray("collections", currentPageHandle) != -1) && (apiResponse.announcementBar.collection_page == 1)) 
+                    {
+                        console.log('collection page');
+                        $allowed = 1;
+                    }
+                    else if (($jq321.inArray("cart", currentPageHandle) != -1) && (apiResponse.announcementBar.cart_page == 1)) 
+                    {
+                        console.log('cart page');
+                        $allowed = 1;
+                    }
+                    else if((currentPageHandle[1].length == 0) && (apiResponse.announcementBar.home_page == 1)) 
+                    {
+                        console.log("home page");
+                        $allowed = 1;
+                    }
+                    else
+                    {
+                        console.log('undefine page');
+                        $allowed = 0;
+                    }
+                }
+                else if(apiResponse.announcementBar.pages_type == 1)
+                {
+                    $allowed = 1;
+                }
+
+                if ($allowed == 1)
+                {
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssAnnouncement + "?v" + version
+                    }));
+        
+                    setTimeout(function () { announcementBar(apiResponse.announcementBar); }, 2000);
+                }
+            }
         }
 
         var notAllowedBlockSpecificPage = blockSpecificPage();
@@ -2724,6 +2779,76 @@
     }
 // ---------------------------------- </TIMER FOR COLLECTION PAGE> --------------------------------
  
+   // ---------------------------------- <ANNOUNCEMENT BAR MODULE> --------------------------------
+   function announcementBar(announcementBarResponse)
+   {
+       var selectorAnnouncementBar = $jq321("body");
+       var placement = announcementBarResponse.placement;
+       
+       if (placement == 'top')
+       {
+           selectorAnnouncementBar.prepend(announcementBarResponse.view);
+       }
+       else if(placement == 'bottom')
+       {
+           selectorAnnouncementBar.append(announcementBarResponse.view);
+       }
+
+       //Free shipping bar starts from here
+       if (announcementBarResponse.free_ship_settings !== null) {
+           doCalculationForShipping(announcementBarResponse.free_ship_settings);
+           addCartInterval(announcementBarResponse.free_ship_settings);
+       }	
+   }
+   
+   $jq321("body").on('click', '#ccannouncement-close', function (e) {
+       e.preventDefault();
+
+       $jq321('#ccannouncement-main').fadeOut();
+       setCookie("sp-hide-announcement", 1, 15);  // 15 minutes (UTC)
+   });
+
+   function isHideAnnouncementCookieSet() 
+   {
+       var cookie = getCookie("sp-hide-announcement");
+       return (typeof cookie == "null" || typeof cookie == "undefined" || cookie === "") ? false : true;
+   }
+
+   function addCartInterval(settings) { 
+       setInterval(function () {
+       doCalculationForShipping(settings);
+       }, 2000);
+   }
+
+   function doCalculationForShipping(settings)
+   {
+       var cartContents = fetch('/cart.json', {method: 'GET'})
+           .then(response => response.json())
+           .then(data => {
+               let cartValue = data.items;
+               if (cartValue.length == 0) {
+                   console.log("SP: Cart is empty");
+                   let initialMessage = settings.initial_message;
+                   initialMessage = initialMessage.replace("{{amount}}", settings.goal_value);
+                   initialMessage = initialMessage.replace("{{button}}", settings.button);
+                   initialMessage = initialMessage.replace("{{coupon}}", settings.coupon);
+                   $jq321(".getDiscoundText").html(initialMessage);
+               } else {
+                   let cartPrice = data.total_price;
+                   cartPrice = Math.floor(cartPrice / 1e2);
+                   let actualGoal = parseInt(settings.goal_value);
+                   if (cartPrice >= actualGoal) {
+                   $jq321(".getDiscoundText").html(settings.goal_message);
+                   } else if (cartPrice < actualGoal) {
+                       let remainingAmount = actualGoal - cartPrice;
+                       let progressMessage = settings.progress_message;
+                       progressMessage = progressMessage.replace("{{remaining_amount}}", remainingAmount);
+                       $jq321(".getDiscoundText").html(progressMessage);
+                   }
+               }
+           });
+   }
+   // ---------------------------------- </ANNOUNCEMENT BAR MODULE> --------------------------------
      
      
    });
