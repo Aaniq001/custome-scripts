@@ -1303,7 +1303,7 @@
  //////////////////////////////// .end local storage check
          
       // STOCK COUNTDOWN CALL
-         if(apiResponse && apiResponse.stock && apiResponse.stock!==null){
+         /* if(apiResponse && apiResponse.stock && apiResponse.stock!==null){
              if (apiResponse.stock.on_off == 1)
              {
                  $jq321("head").append($jq321("<link/>", {
@@ -1321,7 +1321,36 @@
                  }
                  
              }
-         }
+         } */
+         if (apiResponse && apiResponse.stock && apiResponse.stock !== null) {
+            if (apiResponse.stock.on_off == 1)
+            {
+                if(apiResponse.stock.stock_restriction_settings !== null){
+                    let stock_restriction_setting = JSON.parse(apiResponse.stock.stock_restriction_settings);
+                    if(stock_restriction_setting.stock_restriction_check == "on" && parseInt(stock_restriction_setting.stock_restriction_value) !== parseInt(apiResponse.stock.left_stock) && parseInt(apiResponse.stock.left_stock) > parseInt(stock_restriction_setting.stock_restriction_value)){
+                        console.log("SP: Stock restricted to display");
+                    } else {
+                        $jq321("head").append($jq321("<link/>", {
+                            rel: "stylesheet",
+                            href: serverUrl.cssStock + "?v" + version
+                        }));
+                        stockCountdown(apiResponse.stock);
+                        if (apiResponse.stock.variantCheck && apiResponse.stock.variantCheck == 1 && apiResponse.stock.variantsData !== null && apiResponse.stock.variantsData.length > 1) {
+                            enableStockForVariants(apiResponse.stock.variantsData, apiResponse.stock.variantHeading);
+                        }
+                    }
+                } else {
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssStock + "?v" + version
+                    }));
+                    stockCountdown(apiResponse.stock);
+                    if (apiResponse.stock.variantCheck && apiResponse.stock.variantCheck == 1 && apiResponse.stock.variantsData !== null && apiResponse.stock.variantsData.length > 1) {
+                        enableStockForVariants(apiResponse.stock.variantsData, apiResponse.stock.variantHeading);
+                    }
+                }
+             }
+        }
      
           // Time COUNTDOWN CALL
          if(apiResponse && apiResponse.timer && apiResponse.timer!==null)
@@ -2038,7 +2067,145 @@
         finalSelector = masterSelector[0];
     }
     //console.log(finalSelector);
-    
+
+     /** Stock for variants **/
+     function makeSelectors(variantHeading) {
+        
+        let formSelector;
+        let allForms = $jq321("form[action]");
+
+        $jq321.each(allForms, function (key, value) {
+            var formUrls = value.action;
+            if (formUrls.indexOf('/cart/add') > -1) {
+                formSelector = $jq321(value);
+            }
+        });
+
+        if (formSelector.length > 0) {
+            let variantSelector1 = $jq321(formSelector).find("select");
+            let variantSelector2 = $jq321(':contains("' + variantHeading + '")').find("input[type='radio']");
+            let variantSelector3 = $jq321(':contains("' + variantHeading + '")').find("select");
+
+            /** Make the final selectors **/
+            if (variantSelector2.length > 0) {
+                return { "selector_number": 2, "selector_value": variantSelector2 };
+            } else if (variantSelector1.length > 0) {
+                return { "selector_number": 1, "selector_value": variantSelector1 };
+            } else if (variantSelector3.length > 0) {
+                return { "selector_number": 3, "selector_value": variantSelector3 };
+            }
+            return false;
+        }
+    }
+
+    function stockForSelectedVariant(string, data) {
+        if (string !== "") {
+            $jq321.each(data, function (key, value) {
+                if (value.title == string) {
+                    let stockCountSpan = $jq321("#carecart-salespop-sc-number");
+                    if (stockCountSpan.length > 0) {
+                        $jq321(stockCountSpan).html(value.inventory_quantity);
+                        let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
+                        stockPercentage = stockPercentage + "%";
+                        $jq321(".stock-progress-foreground").width(stockPercentage);
+                        console.log("SP: Stock for selected variant");
+                }
+            }
+       });
+    }
+    }
+
+    function enableStockForVariants(variantsData, variantHeading) {
+
+        $jq321(document).ready(function () { 
+
+            let getSelectors = makeSelectors(variantHeading);
+
+            if (getSelectors != false) {
+
+                /** Let's define options here **/
+                let availableOptions = 0;
+
+                if (variantsData[0]["option1"] !== null && variantsData[0]["option2"] !== null && variantsData[0]["option3"] === null) {
+                    availableOptions = 1;
+                } else if (variantsData[0]["option1"] !== null && variantsData[0]["option2"] !== null && variantsData[0]["option3"] !== null) {
+                    availableOptions = 2;
+                }
+                /** Let's define options here **/
+
+                /** Make the final selectors **/
+                if (Shopify.shop == "herman-store.myshopify.com")
+                {
+                    attachEventOnOptions(".disclosure--option-link", variantsData);
+                }
+                else if (getSelectors.selector_number == 2) {
+                    let selectedVariantsValuesString = '';
+                    $jq321.each(getSelectors.selector_value, function (key, value) {
+                        
+                        attachEventOnOptions(value, variantsData);
+                        var val = this.checked ? true : false;
+                        if (val) {
+                            selectedVariantsValuesString = selectedVariantsValuesString+ $jq321(value).val() + " / ";
+                        }
+                    });
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                } else if (getSelectors.selector_number == 1) {
+
+                    let selectedVariantsValuesString = '';
+                    for (let i = 0; i <= availableOptions; i++) {
+                        attachEventOnOptions(getSelectors.selector_value[i], variantsData);
+                        selectedVariantsValuesString = selectedVariantsValuesString + $jq321(getSelectors.selector_value[i]).find(":selected").val() + " / ";
+                    }
+
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                } else if (getSelectors.selector_number == 3) {
+                    let selectedVariantsValuesString = '';
+                    for (let i = 0; i <= availableOptions; i++) {
+                        attachEventOnOptions(getSelectors.selector_value[i], variantsData);
+                        selectedVariantsValuesString = selectedVariantsValuesString + $jq321(getSelectors.selector_value[i]).find(":selected").val() + " / ";
+                    }
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                }
+            }
+            /** Make the final selectors **/
+        });
+    }
+
+    function attachEventOnOptions(variantSelector, variantsData)
+    {
+        console.log("SP: variant selector found");
+        $jq321(variantSelector).on("click", function () { 
+            setTimeout(function () {
+
+                let urlParams = new URLSearchParams(window.location.search);
+                let variantID = urlParams.get('variant');
+                if (variantsData !== null && variantID !== null) {
+                    $jq321.each(variantsData, function (key, value) {
+                        if (value.id == variantID) {
+                            let stockCountSpan = $jq321("#carecart-salespop-sc-number");
+                            if (stockCountSpan.length > 0) {
+                                $jq321(stockCountSpan).html(value.inventory_quantity);
+                                let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
+                                stockPercentage = stockPercentage + "%";
+                                $jq321(".stock-progress-foreground").width(stockPercentage);
+                        }
+                    }
+               });
+            }
+            }, 1000);
+        }); 
+    }
+    /** Stock for variants ends **/
+
       function stockCountdown(responseStock) {
  
          var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
