@@ -845,9 +845,21 @@
      })();
  
      Array.prototype.filterRelevantNotifications = function (a) {
-         return this.filter(function (i) {
-             return a.indexOf(i) === -1;
-         });
+        if (Shopify.shop == "the-diva-shop-nigeria.myshopify.com") 
+        {
+            if($jq321.isArray(a)) 
+            {   
+                return this.filter(function (i) {
+                    return a.indexOf(i) === -1;
+                });
+            }
+        }
+        else 
+        {
+            return this.filter(function (i) {
+                return a.indexOf(i) === -1;
+            });
+        }
      };
  
      var getNotificationsByCollectionHandles = function (collectionHandles) {
@@ -1649,7 +1661,7 @@
      {
         cc_product_id = null;
      }
- console.log(cc_product_id);
+ //console.log(cc_product_id);
  
      /////////////////////// Set flag to get notifications data //////////////////////////
      var fetchNotifications = 1;
@@ -1970,7 +1982,7 @@
         masterSelector = $jq321(".price-area");
         finalSelector = masterSelector[0];
     }
-    console.log(finalSelector);
+    //console.log(finalSelector);
     
       function stockCountdown(responseStock) {
  
