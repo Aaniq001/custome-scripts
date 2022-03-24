@@ -2075,6 +2075,10 @@
             '</style>'
             );
     }
+    if (Shopify.shop == "buster-and-bellas.myshopify.com") {
+        masterSelector = $jq321(".flexBox");
+        finalSelector = masterSelector[0];
+    }   
 
     if (Shopify.shop == "onblackcom.myshopify.com")
     {
