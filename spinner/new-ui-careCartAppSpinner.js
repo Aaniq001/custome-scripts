@@ -1323,10 +1323,11 @@
                                     carecartSpinnerJquery("head").append(
                                     '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight{ min-height: 560px;}} </style>'
                                 );
-                                if(Shopify.shop === ''){
+                                if(Shopify.shop === 'ultima-active.myshopify.com'){
                                     carecartSpinnerJquery("head").append(
-                                        '<style type="text/css"> @media only screen and (max-width: 768px){input{width:auto !important;min-width:auto!important;}} </style>'
+                                        '<style type="text/css"> @media only screen and (max-width: 768px){#cc-spin-a-sale-consent-checkbox{width:auto !important;min-width:auto!important;}} </style>'
                                     );
+                                    
                                 }
                                 /* Append triggered button */
                                     if (response.records.store_settings.settings_data.is_triggered_enable && parseInt(response.records.store_settings.settings_data.is_triggered_enable) == 1) {
