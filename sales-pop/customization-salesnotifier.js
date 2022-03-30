@@ -1932,6 +1932,8 @@
      
      var masterSelector = '';
      var finalSelector = '';
+     var masterSelector2 = '';
+     var finalSelector2 = '';
 
      if (Shopify.shop == "woodpixlde.myshopify.com") {
         $jq321("head").append(
@@ -2085,6 +2087,15 @@
         masterSelector = $jq321(".price-area");
         finalSelector = masterSelector[0];
     }
+
+    if (Shopify.shop == "lux-tab.myshopify.com")
+    {
+        masterSelector = $jq321("#r-1631157248467");
+        finalSelector = masterSelector[0];
+
+        masterSelector2 = $jq321("#m-1631095169667");
+        finalSelector2 = masterSelector2[0];
+    }
     //console.log(finalSelector);
 
      /** Stock for variants **/
@@ -2235,7 +2246,10 @@
          var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
  
          if (responseStock.above_cart == 1) {
-            if (masterSelector.length > 0) { 
+            if (masterSelector2.length > 0) { 
+                $jq321(responseStock.view).insertBefore(finalSelector2);
+            }
+            else if (masterSelector.length > 0) { 
                 $jq321(responseStock.view).insertBefore(finalSelector);
             }
             else if (selectorStock1.length == 1) {
@@ -2253,7 +2267,9 @@
              }
              
          } else {
-            if (masterSelector.length > 0) {
+             if (masterSelector2.length > 0) { 
+                $jq321(responseStock.view).insertAfter(finalSelector2);  
+             }else if (masterSelector.length > 0)  {
                 $jq321(responseStock.view).insertAfter(finalSelector);
               } else if (selectorStock1.length == 1) {
                  selectorStock1.append(responseStock.view);
