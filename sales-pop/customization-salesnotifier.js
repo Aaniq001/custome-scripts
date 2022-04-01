@@ -1556,7 +1556,7 @@
  
          var relevantNotifications = apiResponse.allNotifications;
 
-         console.log(relevantNotifications);
+         //console.log(relevantNotifications);
 
          if (parseInt(apiResponse.show_relevant) === 1) {
              relevantNotifications = getRelevantNotifications();
@@ -2095,6 +2095,12 @@
 
         masterSelector2 = $jq321("#m-1631095169667");
         finalSelector2 = masterSelector2[0];
+    }
+
+    if (Shopify.shop == "stuf-products.myshopify.com")
+    {
+        masterSelector = $jq321("#button-cart");
+        finalSelector = masterSelector[0];
     }
     //console.log(finalSelector);
 
