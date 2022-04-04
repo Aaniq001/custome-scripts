@@ -2115,7 +2115,7 @@
 
     if (Shopify.shop == "turboscrubx.myshopify.com") {
         $jq321("head").append(
-            '<style type="text/css"> .content-div-visitor-detail-carecartbysalespop-2020{display:flex; justify-content:center;}</style>'
+            '<style type="text/css"> .visitor-counter-content-box-carecartbysalespop-2020{margin-top: 0px !important;}</style>'
             );
     }  
 
