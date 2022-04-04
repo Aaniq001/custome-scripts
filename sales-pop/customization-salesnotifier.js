@@ -2112,14 +2112,7 @@
         masterSelector = $jq321("#button-cart");
         finalSelector = masterSelector[0];
     }
-    if (Shopify.shop == "turboscrubx.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">' + 
-                '.visitor-counter-content-box-carecartbysalespop-2020{margin-top: -11px !important;}' +
-            '</style>'
-            );
-    }
+
     if (Shopify.shop == "turboscrubx.myshopify.com") {
         $jq321("head").append(
             '<style type="text/css"> .content-div-visitor-detail-carecartbysalespop-2020{display:flex; justify-content:center;}</style>'
