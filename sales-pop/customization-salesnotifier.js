@@ -1229,6 +1229,16 @@
             }
         }
 
+        if (Shopify.shop == "shedtracks.myshopify.com") 
+        {
+            if (block_url[4] == 'shedtracksmembership')
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on "Shedtracksmembership" pages') 
+            }
+
+        }
+
         return b_url;
 
      };
@@ -2110,6 +2120,18 @@
             '</style>'
             );
     }
+    if (Shopify.shop == "turboscrubx.myshopify.com") {
+        $jq321("head").append(
+            '<style type="text/css"> .content-div-visitor-detail-carecartbysalespop-2020{display:flex; justify-content:center;}</style>'
+            );
+    }  
+
+    if (Shopify.shop == "customizedtattoodesign.myshopify.com") {
+        $jq321("head").append(
+            '<style type="text/css"> .timer-store-front{margin-top:30px;}</style>'
+            );
+    }
+
     //console.log(finalSelector);
 
      /** Stock for variants **/
