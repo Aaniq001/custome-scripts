@@ -3015,6 +3015,20 @@
    {
        var selectorAnnouncementBar = $jq321("body");
        var placement = announcementBarResponse.placement;
+
+       if (Shopify.shop == "cavaegypt.myshopify.com")
+       {
+           selectorAnnouncementBar.append(
+               '<style type="text/css"> .header-transparent-background{top:58px !important;}</style>'
+               );
+       }
+       
+       if (Shopify.shop == "modernepocket.myshopify.com")
+       {
+           selectorAnnouncementBar.append(
+               '<style type="text/css"> body{overflow-x:visible !important;}</style>'
+               );
+       }
        
        if (placement == 'top')
        {
