@@ -2513,11 +2513,11 @@
        
          if (response.above_cart == 1)
          {
-           
-            if (masterSelector.length > 0) {
-                console.log("hello", selectorSold2)
-                $jq321(response.view).insertBefore(finalSelector);
-            } else if (selectorSold1.length == 1)
+             if (masterSelector.length > 0) 
+             {
+                 $jq321(response.view).insertBefore(finalSelector);
+             } 
+             else if (selectorSold1.length == 1)
              {
                  selectorSold1.prepend(response.view);
              }
@@ -2536,9 +2536,11 @@
          }
          else
          {
-            if (masterSelector.length > 0) {
+             if (masterSelector.length > 0) 
+             {
                 $jq321(response.view).insertAfter(finalSelector);
-              } else if (selectorSold1.length == 1)
+             } 
+             else if (selectorSold1.length == 1)
              {
                  selectorSold1.append(response.view);
              }
@@ -2828,6 +2830,9 @@
      // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
      function trustBadges(trustBadgesResponse)
      {
+
+        console.log(trustBadgesResponse);
+
          if (trustBadgesResponse.product_page_show_hide == 1)
          {
              /* var selectorTrustBadges = $jq321("form[action='/cart/add']:first");
@@ -2838,11 +2843,18 @@
             var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
 
-            if (masterSelector.length == 1) {
-                $jq321(".buy-btn-space").append(trustBadgesResponse.view);
-            }  
-            else 
-            if (selectorTrustBadges1.length == 1)
+            if (masterSelector.length == 1) 
+            {
+                if (Shopify.shop == "lux-tab.myshopify.com")
+                {
+                    $jq321(trustBadgesResponse.view).insertAfter(finalSelector);
+                }
+                else
+                {
+                    $jq321(".buy-btn-space").append(trustBadgesResponse.view);
+                }       
+            }   
+            else if (selectorTrustBadges1.length == 1)
             {
                 selectorTrustBadges1.append(trustBadgesResponse.view);
             }
