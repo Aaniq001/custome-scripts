@@ -143,6 +143,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+
+    if (Shopify.shop == "tsm-aquatics.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 	
     $jq321.ajax({
         type: "GET",
@@ -197,6 +204,16 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	finalSelector = customSelctor[0];
     }
    
+    if(Shopify.shop == "tsm-aquatics.myshopify.com")
+    {
+        setTimeout(2000);
+        customSelctor = $jq321(".multivariants_add_to_cart_button_h");
+    	    finalSelector = customSelctor[0]; 
+     
+        
+            
+    	
+    }
     if(Shopify.shop == "awareness-avenue.myshopify.com")
     {
     	customSelctor = $jq321(".ProductForm__AddToCart");
@@ -244,7 +261,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	finalSelector = customSelctor[0];
     }
 
-    console.log(finalSelector);
+    console.log(customSelctor);
 
     function visitorCounter(responseVisitor) {
 
@@ -256,7 +273,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         if (responseVisitor.above_cart == 1)
         {
             if(customSelctor.length > 0){
-            	$jq321(responseVisitor.view).insertAfter(finalSelector);
+            	$jq321(responseVisitor.view).insertBefore(finalSelector);
             }
             else if (selectorVisitor1.length == 1)
             {
