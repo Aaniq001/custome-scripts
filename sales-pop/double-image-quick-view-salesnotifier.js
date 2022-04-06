@@ -675,6 +675,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 "cssSold": "https://sales-pop.carecart.io/lib/sold-box.css",
                 "cssQuick": "https://sales-pop.carecart.io/lib/quick-box.css",
                 "cssTrustBadges": "https://sales-pop.carecart.io/lib/badges-box.css",
+                "cssAnnouncement": "https://sales-pop.carecart.io/lib/announcement.css",
                 "legacyCss": "https://sales-pop.carecart.io/lib/salesnotifier.css"
             };
         }
