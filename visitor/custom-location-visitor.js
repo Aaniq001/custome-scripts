@@ -262,8 +262,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
     if (Shopify.shop == "mysweetsmileco.myshopify.com")
     {
-    	customSelctor = $jq321(".clearpay-paragraph");
-    	finalSelector = customSelctor[0];
+    	customSelctor = $jq321(".product-block");
+    	finalSelector = customSelctor[3];
     }
 
     console.log(customSelctor);
