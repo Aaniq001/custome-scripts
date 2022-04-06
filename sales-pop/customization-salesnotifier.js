@@ -8,7 +8,8 @@
  * Any unauthorized use and distribution of this and related files, is strictly forbidden.
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
- 
+
+
  //Create the element using the createElement method.
  var myDiv = document.createElement("ji");
 
@@ -688,6 +689,7 @@
                  "cssSold": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/sold-box.css",
                  "cssQuick": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/quick-box.css",
                  "cssTrustBadges": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/badges-box.css",
+                 "cssAnnouncement": "https://sales-pop.carecart.io/lib/announcement.css",
                  "legacyCss": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/salesnotifier.css"
              };
          }
@@ -729,6 +731,7 @@
              "cssSold": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/sold-box.css",
              "cssQuick": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/quick-box.css",
              "cssTrustBadges": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/badges-box.css",
+             "cssAnnouncement": "https://" + tempAnchorTag.hostname + "/lib/announcement.css?v" + version,
              "legacyCss": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/salesnotifier.css"
          };
      }
@@ -845,9 +848,21 @@
      })();
  
      Array.prototype.filterRelevantNotifications = function (a) {
-         return this.filter(function (i) {
-             return a.indexOf(i) === -1;
-         });
+        if (Shopify.shop == "the-diva-shop-nigeria.myshopify.com") 
+        {
+            if($jq321.isArray(a)) 
+            {   
+                return this.filter(function (i) {
+                    return a.indexOf(i) === -1;
+                });
+            }
+        }
+        else 
+        {
+            return this.filter(function (i) {
+                return a.indexOf(i) === -1;
+            });
+        }
      };
  
      var getNotificationsByCollectionHandles = function (collectionHandles) {
@@ -889,8 +904,12 @@
      var getNotificationsByProduct = function (currentProductHandle) {
          spDebuger.storeLog("getNotificationsByProduct called");
          spDebuger.storeLog("currentProductHandle: " + currentProductHandle);
+
+         console.log(currentProductHandle);
  
          var collectionHandles = getCollectionHandlesByProductHandle(currentProductHandle);
+
+         console.log(collectionHandles);
  
          // if the product handle is not found
          // or the product doesn't belong to any collection
@@ -964,7 +983,7 @@
  
          switch (pathNameTokens[1]) {
              case "products":
-                 filteredNotifications = getNotificationsByProduct(pathNameTokens[2]);
+                 filteredNotifications = getNotificationsByProduct(decodeURIComponent(pathNameTokens[2]));
                  break;
  
              case "collections":
@@ -987,6 +1006,12 @@
  
          var collectionHandles = "";
          Array.prototype.forEach.call(apiResponse.allProductsWithCollections, function (obj) {
+
+            console.log('hello');
+            currentProductHandle = decodeURIComponent(currentProductHandle);
+            console.log(currentProductHandle);
+            console.log(obj.product);
+
              if (obj.product === currentProductHandle) {
                  collectionHandles = obj.collections;
              }
@@ -1194,6 +1219,24 @@
                 b_url = false;
                 console.log('SP Sales Notification Block on "Product" pages') 
             }
+        }
+
+        if (Shopify.shop == "high-streetshop.myshopify.com") 
+        {
+            if (window.location.href == 'https://high-street.pk/')
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on "Home" page') 
+            }
+        }
+
+        if (Shopify.shop == "shedtracks.myshopify.com") 
+        {
+            if (block_url[4] == 'shedtracksmembership')
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on "Shedtracksmembership" pages') 
+            }
 
         }
 
@@ -1281,7 +1324,7 @@
  //////////////////////////////// .end local storage check
          
       // STOCK COUNTDOWN CALL
-         if(apiResponse && apiResponse.stock && apiResponse.stock!==null){
+         /* if(apiResponse && apiResponse.stock && apiResponse.stock!==null){
              if (apiResponse.stock.on_off == 1)
              {
                  $jq321("head").append($jq321("<link/>", {
@@ -1299,7 +1342,36 @@
                  }
                  
              }
-         }
+         } */
+         if (apiResponse && apiResponse.stock && apiResponse.stock !== null) {
+            if (apiResponse.stock.on_off == 1)
+            {
+                if(apiResponse.stock.stock_restriction_settings !== null){
+                    let stock_restriction_setting = JSON.parse(apiResponse.stock.stock_restriction_settings);
+                    if(stock_restriction_setting.stock_restriction_check == "on" && parseInt(stock_restriction_setting.stock_restriction_value) !== parseInt(apiResponse.stock.left_stock) && parseInt(apiResponse.stock.left_stock) > parseInt(stock_restriction_setting.stock_restriction_value)){
+                        console.log("SP: Stock restricted to display");
+                    } else {
+                        $jq321("head").append($jq321("<link/>", {
+                            rel: "stylesheet",
+                            href: serverUrl.cssStock + "?v" + version
+                        }));
+                        stockCountdown(apiResponse.stock);
+                        if (apiResponse.stock.variantCheck && apiResponse.stock.variantCheck == 1 && apiResponse.stock.variantsData !== null && apiResponse.stock.variantsData.length > 1) {
+                            enableStockForVariants(apiResponse.stock.variantsData, apiResponse.stock.variantHeading);
+                        }
+                    }
+                } else {
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssStock + "?v" + version
+                    }));
+                    stockCountdown(apiResponse.stock);
+                    if (apiResponse.stock.variantCheck && apiResponse.stock.variantCheck == 1 && apiResponse.stock.variantsData !== null && apiResponse.stock.variantsData.length > 1) {
+                        enableStockForVariants(apiResponse.stock.variantsData, apiResponse.stock.variantHeading);
+                    }
+                }
+             }
+        }
      
           // Time COUNTDOWN CALL
          if(apiResponse && apiResponse.timer && apiResponse.timer!==null)
@@ -1319,7 +1391,7 @@
  
          // VISITOR COUNTER CALL
          if (apiResponse && apiResponse.visitor && apiResponse.visitor !== null) {
- 
+            
              $jq321("head").append($jq321("<link/>", {
                  rel: "stylesheet",
                  href: serverUrl.cssVisitor + "?v" + version
@@ -1379,6 +1451,59 @@
             setTimeout(function () {
                 collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
             }, 2000);
+        }
+
+        // ANNOUNCEMENT BAR CALL
+        if (apiResponse && apiResponse.announcementBar && apiResponse.announcementBar != false) 
+        {
+            if ( ! isHideAnnouncementCookieSet())
+            {
+                var $allowed = 0;
+                var currentPageHandle = window.location.pathname.split("/");
+
+                if (apiResponse.announcementBar.pages_type == 2)
+                {
+                    if (($jq321.inArray("products", currentPageHandle) != -1) && (apiResponse.announcementBar.product_page == 1)) 
+                    {
+                        console.log('product page');
+                        $allowed = 1;
+                    }
+                    else if (($jq321.inArray("collections", currentPageHandle) != -1) && (apiResponse.announcementBar.collection_page == 1)) 
+                    {
+                        console.log('collection page');
+                        $allowed = 1;
+                    }
+                    else if (($jq321.inArray("cart", currentPageHandle) != -1) && (apiResponse.announcementBar.cart_page == 1)) 
+                    {
+                        console.log('cart page');
+                        $allowed = 1;
+                    }
+                    else if((currentPageHandle[1].length == 0) && (apiResponse.announcementBar.home_page == 1)) 
+                    {
+                        console.log("home page");
+                        $allowed = 1;
+                    }
+                    else
+                    {
+                        console.log('undefine page');
+                        $allowed = 0;
+                    }
+                }
+                else if(apiResponse.announcementBar.pages_type == 1)
+                {
+                    $allowed = 1;
+                }
+
+                if ($allowed == 1)
+                {
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssAnnouncement + "?v" + version
+                    }));
+        
+                    setTimeout(function () { announcementBar(apiResponse.announcementBar); }, 2000);
+                }
+            }
         }
 
         var notAllowedBlockSpecificPage = blockSpecificPage();
@@ -1441,8 +1566,13 @@
          // cleanup ends
  
          var relevantNotifications = apiResponse.allNotifications;
+
+         //console.log(relevantNotifications);
+
          if (parseInt(apiResponse.show_relevant) === 1) {
              relevantNotifications = getRelevantNotifications();
+
+             console.log(relevantNotifications);
          }
  
          spDebuger.storeLog("Total Relevant Notifications: " + relevantNotifications.length);
@@ -1641,7 +1771,7 @@
      {
         cc_product_id = null;
      }
- console.log(cc_product_id);
+ //console.log(cc_product_id);
  
      /////////////////////// Set flag to get notifications data //////////////////////////
      var fetchNotifications = 1;
@@ -1813,6 +1943,8 @@
      
      var masterSelector = '';
      var finalSelector = '';
+     var masterSelector2 = '';
+     var finalSelector2 = '';
 
      if (Shopify.shop == "woodpixlde.myshopify.com") {
         $jq321("head").append(
@@ -1956,14 +2088,196 @@
             '</style>'
             );
     }
+    if (Shopify.shop == "buster-and-bellas.myshopify.com") {
+        masterSelector = $jq321(".flexBox");
+        finalSelector = masterSelector[0];
+    }   
 
     if (Shopify.shop == "onblackcom.myshopify.com")
     {
         masterSelector = $jq321(".price-area");
         finalSelector = masterSelector[0];
     }
-    console.log(finalSelector);
-    
+
+    if (Shopify.shop == "lux-tab.myshopify.com")
+    {
+        masterSelector = $jq321("#r-1631157248467");
+        finalSelector = masterSelector[0];
+
+        masterSelector2 = $jq321("#m-1631095169667");
+        finalSelector2 = masterSelector2[0];
+    }
+
+    if (Shopify.shop == "stuf-products.myshopify.com")
+    {
+        masterSelector = $jq321("#button-cart");
+        finalSelector = masterSelector[0];
+    }
+    if (Shopify.shop == "turboscrubx.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+                '.visitor-counter-content-box-carecartbysalespop-2020{margin-top: -11px !important;}' +
+            '</style>'
+            );
+    }
+    if (Shopify.shop == "turboscrubx.myshopify.com") {
+        $jq321("head").append(
+            '<style type="text/css"> .content-div-visitor-detail-carecartbysalespop-2020{display:flex; justify-content:center;}</style>'
+            );
+    }  
+
+    if (Shopify.shop == "customizedtattoodesign.myshopify.com") {
+        $jq321("head").append(
+            '<style type="text/css"> .timer-store-front{margin-top:30px;}</style>'
+            );
+    }
+    if (Shopify.shop == "stuf-products.myshopify.com")
+    {
+        masterSelector = $jq321("#button-cart");
+        finalSelector = masterSelector[0];
+    }
+
+    //console.log(finalSelector);
+
+     /** Stock for variants **/
+     function makeSelectors(variantHeading) {
+        
+        let formSelector;
+        let allForms = $jq321("form[action]");
+
+        $jq321.each(allForms, function (key, value) {
+            var formUrls = value.action;
+            if (formUrls.indexOf('/cart/add') > -1) {
+                formSelector = $jq321(value);
+            }
+        });
+
+        if (formSelector.length > 0) {
+            let variantSelector1 = $jq321(formSelector).find("select");
+            let variantSelector2 = $jq321(':contains("' + variantHeading + '")').find("input[type='radio']");
+            let variantSelector3 = $jq321(':contains("' + variantHeading + '")').find("select");
+
+            /** Make the final selectors **/
+            if (variantSelector2.length > 0) {
+                return { "selector_number": 2, "selector_value": variantSelector2 };
+            } else if (variantSelector1.length > 0) {
+                return { "selector_number": 1, "selector_value": variantSelector1 };
+            } else if (variantSelector3.length > 0) {
+                return { "selector_number": 3, "selector_value": variantSelector3 };
+            }
+            return false;
+        }
+    }
+
+    function stockForSelectedVariant(string, data) {
+        if (string !== "") {
+            $jq321.each(data, function (key, value) {
+                if (value.title == string) {
+                    let stockCountSpan = $jq321("#carecart-salespop-sc-number");
+                    if (stockCountSpan.length > 0) {
+                        $jq321(stockCountSpan).html(value.inventory_quantity);
+                        let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
+                        stockPercentage = stockPercentage + "%";
+                        $jq321(".stock-progress-foreground").width(stockPercentage);
+                        console.log("SP: Stock for selected variant");
+                }
+            }
+       });
+    }
+    }
+
+    function enableStockForVariants(variantsData, variantHeading) {
+
+        $jq321(document).ready(function () { 
+
+            let getSelectors = makeSelectors(variantHeading);
+
+            if (getSelectors != false) {
+
+                /** Let's define options here **/
+                let availableOptions = 0;
+
+                if (variantsData[0]["option1"] !== null && variantsData[0]["option2"] !== null && variantsData[0]["option3"] === null) {
+                    availableOptions = 1;
+                } else if (variantsData[0]["option1"] !== null && variantsData[0]["option2"] !== null && variantsData[0]["option3"] !== null) {
+                    availableOptions = 2;
+                }
+                /** Let's define options here **/
+
+                /** Make the final selectors **/
+                if (Shopify.shop == "herman-store.myshopify.com")
+                {
+                    attachEventOnOptions(".disclosure--option-link", variantsData);
+                }
+                else if (getSelectors.selector_number == 2) {
+                    let selectedVariantsValuesString = '';
+                    $jq321.each(getSelectors.selector_value, function (key, value) {
+                        
+                        attachEventOnOptions(value, variantsData);
+                        var val = this.checked ? true : false;
+                        if (val) {
+                            selectedVariantsValuesString = selectedVariantsValuesString+ $jq321(value).val() + " / ";
+                        }
+                    });
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                } else if (getSelectors.selector_number == 1) {
+
+                    let selectedVariantsValuesString = '';
+                    for (let i = 0; i <= availableOptions; i++) {
+                        attachEventOnOptions(getSelectors.selector_value[i], variantsData);
+                        selectedVariantsValuesString = selectedVariantsValuesString + $jq321(getSelectors.selector_value[i]).find(":selected").val() + " / ";
+                    }
+
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                } else if (getSelectors.selector_number == 3) {
+                    let selectedVariantsValuesString = '';
+                    for (let i = 0; i <= availableOptions; i++) {
+                        attachEventOnOptions(getSelectors.selector_value[i], variantsData);
+                        selectedVariantsValuesString = selectedVariantsValuesString + $jq321(getSelectors.selector_value[i]).find(":selected").val() + " / ";
+                    }
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                }
+            }
+            /** Make the final selectors **/
+        });
+    }
+
+    function attachEventOnOptions(variantSelector, variantsData)
+    {
+        console.log("SP: variant selector found");
+        $jq321(variantSelector).on("click", function () { 
+            setTimeout(function () {
+
+                let urlParams = new URLSearchParams(window.location.search);
+                let variantID = urlParams.get('variant');
+                if (variantsData !== null && variantID !== null) {
+                    $jq321.each(variantsData, function (key, value) {
+                        if (value.id == variantID) {
+                            let stockCountSpan = $jq321("#carecart-salespop-sc-number");
+                            if (stockCountSpan.length > 0) {
+                                $jq321(stockCountSpan).html(value.inventory_quantity);
+                                let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
+                                stockPercentage = stockPercentage + "%";
+                                $jq321(".stock-progress-foreground").width(stockPercentage);
+                        }
+                    }
+               });
+            }
+            }, 1000);
+        }); 
+    }
+    /** Stock for variants ends **/
+
       function stockCountdown(responseStock) {
  
          var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -1973,40 +2287,75 @@
          var selectorStock5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
  
-         if (responseStock.above_cart == 1) {
-            if (masterSelector.length > 0) { 
+         if (responseStock.above_cart == 1) 
+         {
+            if (masterSelector2.length > 0) 
+            { 
+                $jq321(responseStock.view).insertBefore(finalSelector2);
+            }
+            else if (masterSelector.length > 0) 
+            { 
                 $jq321(responseStock.view).insertBefore(finalSelector);
             }
-            else if (selectorStock1.length == 1) {
+            else if (selectorStock1.length == 1) 
+            {
                  selectorStock1.prepend(responseStock.view);
-             } else if (selectorStock2.length == 1) {
+            } 
+            else if (selectorStock2.length == 1) 
+            {
                  selectorStock2.prepend(responseStock.view);
-             } else if (selectorStock3.length == 1) {
+            } 
+            else if (selectorStock3.length == 1) 
+            {
                  $jq321(responseStock.view).insertBefore(selectorStock3);
-             } else if (selectorStock4.length == 1) {
+            } 
+            else if (selectorStock4.length == 1) 
+            {
                  selectorStock4.prepend(responseStock.view);
-             } else if (selectorStock5.length == 1) {
+            } 
+            else if (selectorStock5.length == 1) 
+            {
                  $jq321(responseStock.view).insertBefore(selectorStock5);
-             } else if (selectorStock6.length == 1) {
+            } 
+            else if (selectorStock6.length == 1) 
+            {
                  selectorStock6.prepend(responseStock.view);
-             }
-             
-         } else {
-            if (masterSelector.length > 0) {
+            }  
+         } 
+         else 
+         {
+            if (masterSelector2.length > 0) 
+            { 
+                $jq321(responseStock.view).insertAfter(finalSelector2);  
+            }
+            else if (masterSelector.length > 0)  
+            {
                 $jq321(responseStock.view).insertAfter(finalSelector);
-              } else if (selectorStock1.length == 1) {
-                 selectorStock1.append(responseStock.view);
-             } else if (selectorStock2.length == 1) {
-                 selectorStock2.append(responseStock.view);
-             } else if (selectorStock3.length == 1) {
-                 $jq321(responseStock.view).insertAfter(selectorStock3);
-             } else if (selectorStock4.length == 1) {
-                 selectorStock4.append(responseStock.view);
-             } else if (selectorStock5.length == 1) {
-                 $jq321(responseStock.view).insertAfter(selectorStock5);
-             } else if (selectorStock6.length == 1) {
-                 selectorStock6.append(responseStock.view);
-             }
+            } 
+            else if (selectorStock1.length == 1) 
+            {
+                selectorStock1.append(responseStock.view);
+            } 
+            else if (selectorStock2.length == 1) 
+            {
+                selectorStock2.append(responseStock.view);
+            } 
+            else if (selectorStock3.length == 1) 
+            {
+                $jq321(responseStock.view).insertAfter(selectorStock3);
+            } 
+            else if (selectorStock4.length == 1) 
+            {
+                selectorStock4.append(responseStock.view);
+            } 
+            else if (selectorStock5.length == 1) 
+            {
+                $jq321(responseStock.view).insertAfter(selectorStock5);
+            } 
+            else if (selectorStock6.length == 1) 
+            {
+                selectorStock6.append(responseStock.view);
+            }
          }
      }
  
@@ -2164,11 +2513,11 @@
        
          if (response.above_cart == 1)
          {
-           
-            if (masterSelector.length > 0) {
-                console.log("hello", selectorSold2)
-                $jq321(response.view).insertBefore(finalSelector);
-            } else if (selectorSold1.length == 1)
+             if (masterSelector.length > 0) 
+             {
+                 $jq321(response.view).insertBefore(finalSelector);
+             } 
+             else if (selectorSold1.length == 1)
              {
                  selectorSold1.prepend(response.view);
              }
@@ -2187,9 +2536,11 @@
          }
          else
          {
-            if (masterSelector.length > 0) {
+             if (masterSelector.length > 0) 
+             {
                 $jq321(response.view).insertAfter(finalSelector);
-              } else if (selectorSold1.length == 1)
+             } 
+             else if (selectorSold1.length == 1)
              {
                  selectorSold1.append(response.view);
              }
@@ -2479,6 +2830,9 @@
      // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
      function trustBadges(trustBadgesResponse)
      {
+
+        console.log(trustBadgesResponse);
+
          if (trustBadgesResponse.product_page_show_hide == 1)
          {
              /* var selectorTrustBadges = $jq321("form[action='/cart/add']:first");
@@ -2489,11 +2843,18 @@
             var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
 
-            if (masterSelector.length == 1) {
-                $jq321(".buy-btn-space").append(trustBadgesResponse.view);
-            }  
-            else 
-            if (selectorTrustBadges1.length == 1)
+            if (masterSelector.length == 1) 
+            {
+                if (Shopify.shop == "lux-tab.myshopify.com")
+                {
+                    $jq321(trustBadgesResponse.view).insertAfter(finalSelector);
+                }
+                else
+                {
+                    $jq321(".buy-btn-space").append(trustBadgesResponse.view);
+                }       
+            }   
+            else if (selectorTrustBadges1.length == 1)
             {
                 selectorTrustBadges1.append(trustBadgesResponse.view);
             }
@@ -2704,6 +3065,76 @@
     }
 // ---------------------------------- </TIMER FOR COLLECTION PAGE> --------------------------------
  
+   // ---------------------------------- <ANNOUNCEMENT BAR MODULE> --------------------------------
+   function announcementBar(announcementBarResponse)
+   {
+       var selectorAnnouncementBar = $jq321("body");
+       var placement = announcementBarResponse.placement;
+       
+       if (placement == 'top')
+       {
+           selectorAnnouncementBar.prepend(announcementBarResponse.view);
+       }
+       else if(placement == 'bottom')
+       {
+           selectorAnnouncementBar.append(announcementBarResponse.view);
+       }
+
+       //Free shipping bar starts from here
+       if (announcementBarResponse.free_ship_settings !== null) {
+           doCalculationForShipping(announcementBarResponse.free_ship_settings);
+           addCartInterval(announcementBarResponse.free_ship_settings);
+       }	
+   }
+   
+   $jq321("body").on('click', '#ccannouncement-close', function (e) {
+       e.preventDefault();
+
+       $jq321('#ccannouncement-main').fadeOut();
+       setCookie("sp-hide-announcement", 1, 15);  // 15 minutes (UTC)
+   });
+
+   function isHideAnnouncementCookieSet() 
+   {
+       var cookie = getCookie("sp-hide-announcement");
+       return (typeof cookie == "null" || typeof cookie == "undefined" || cookie === "") ? false : true;
+   }
+
+   function addCartInterval(settings) { 
+       setInterval(function () {
+       doCalculationForShipping(settings);
+       }, 2000);
+   }
+
+   function doCalculationForShipping(settings)
+   {
+       var cartContents = fetch('/cart.json', {method: 'GET'})
+           .then(response => response.json())
+           .then(data => {
+               let cartValue = data.items;
+               if (cartValue.length == 0) {
+                   console.log("SP: Cart is empty");
+                   let initialMessage = settings.initial_message;
+                   initialMessage = initialMessage.replace("{{amount}}", settings.goal_value);
+                   initialMessage = initialMessage.replace("{{button}}", settings.button);
+                   initialMessage = initialMessage.replace("{{coupon}}", settings.coupon);
+                   $jq321(".getDiscoundText").html(initialMessage);
+               } else {
+                   let cartPrice = data.total_price;
+                   cartPrice = Math.floor(cartPrice / 1e2);
+                   let actualGoal = parseInt(settings.goal_value);
+                   if (cartPrice >= actualGoal) {
+                   $jq321(".getDiscoundText").html(settings.goal_message);
+                   } else if (cartPrice < actualGoal) {
+                       let remainingAmount = actualGoal - cartPrice;
+                       let progressMessage = settings.progress_message;
+                       progressMessage = progressMessage.replace("{{remaining_amount}}", remainingAmount);
+                       $jq321(".getDiscoundText").html(progressMessage);
+                   }
+               }
+           });
+   }
+   // ---------------------------------- </ANNOUNCEMENT BAR MODULE> --------------------------------
      
      
    });

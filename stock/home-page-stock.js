@@ -133,6 +133,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         productID = 7204279386268;
     }
 
+    if (Shopify.shop == "vandomi-collective.myshopify.com")
+    {
+        productID = 7251270860970;
+    }
+
     
 
     $jq321.ajax({

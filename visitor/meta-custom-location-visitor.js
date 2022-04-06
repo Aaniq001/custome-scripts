@@ -90,6 +90,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             {
                 visitorCounter(apiResponse.visitor);
             }
+
+            console.log(apiResponse.visitor);
         }
     };
 
@@ -204,8 +206,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
    
     if(Shopify.shop == "tsm-aquatics.myshopify.com")
     {
-        customSelctor = $jq321(".dichead");
+    	customSelctor = $jq321(".multivariants_add_to_cart_button_h");
     	finalSelector = customSelctor[0];
+        console.log(customSelctor);
     }
     if(Shopify.shop == "awareness-avenue.myshopify.com")
     {
@@ -254,7 +257,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	finalSelector = customSelctor[0];
     }
 
-    //console.log(customSelctor);
+    console.log(finalSelector);
 
     function visitorCounter(responseVisitor) {
 
@@ -322,10 +325,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 finalSelector = customSelctor[0];
                 $jq321(responseVisitor.view).insertBefore(finalSelector);
             }
-        }
-
-        if (Shopify.shop == "mysweetsmileco.myshopify.com") {
-            $jq321("body").append('<style style="text/css">.visitor-counter-content-box-carecartbysalespop-2020 {margin-top: -24px !important}</style>');
         }
     
         $jq321('n').html(function(i, v){
