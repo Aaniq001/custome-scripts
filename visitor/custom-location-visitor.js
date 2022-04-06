@@ -262,7 +262,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
     if (Shopify.shop == "mysweetsmileco.myshopify.com")
     {
-    	customSelctor = $jq321(".product-block product-block--price");
+    	customSelctor = $jq321(".clearpay-paragraph");
     	finalSelector = customSelctor[0];
     }
 
