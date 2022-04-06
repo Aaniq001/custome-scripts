@@ -8,7 +8,8 @@
  * Any unauthorized use and distribution of this and related files, is strictly forbidden.
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
- 
+
+
  //Create the element using the createElement method.
  var myDiv = document.createElement("ji");
 
@@ -1390,7 +1391,7 @@
  
          // VISITOR COUNTER CALL
          if (apiResponse && apiResponse.visitor && apiResponse.visitor !== null) {
- 
+            
              $jq321("head").append($jq321("<link/>", {
                  rel: "stylesheet",
                  href: serverUrl.cssVisitor + "?v" + version
@@ -2112,10 +2113,17 @@
         masterSelector = $jq321("#button-cart");
         finalSelector = masterSelector[0];
     }
-
+    if (Shopify.shop == "turboscrubx.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+                '.visitor-counter-content-box-carecartbysalespop-2020{margin-top: -11px !important;}' +
+            '</style>'
+            );
+    }
     if (Shopify.shop == "turboscrubx.myshopify.com") {
         $jq321("head").append(
-            '<style type="text/css"> .visitor-counter-content-box-carecartbysalespop-2020{margin-top: 0px !important;}</style>'
+            '<style type="text/css"> .content-div-visitor-detail-carecartbysalespop-2020{display:flex; justify-content:center;}</style>'
             );
     }  
 
@@ -2123,6 +2131,11 @@
         $jq321("head").append(
             '<style type="text/css"> .timer-store-front{margin-top:30px;}</style>'
             );
+    }
+    if (Shopify.shop == "stuf-products.myshopify.com")
+    {
+        masterSelector = $jq321("#button-cart");
+        finalSelector = masterSelector[0];
     }
 
     //console.log(finalSelector);
@@ -2274,45 +2287,75 @@
          var selectorStock5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
  
-         if (responseStock.above_cart == 1) {
-            if (masterSelector2.length > 0) { 
+         if (responseStock.above_cart == 1) 
+         {
+            if (masterSelector2.length > 0) 
+            { 
                 $jq321(responseStock.view).insertBefore(finalSelector2);
             }
-            else if (masterSelector.length > 0) { 
+            else if (masterSelector.length > 0) 
+            { 
                 $jq321(responseStock.view).insertBefore(finalSelector);
             }
-            else if (selectorStock1.length == 1) {
+            else if (selectorStock1.length == 1) 
+            {
                  selectorStock1.prepend(responseStock.view);
-             } else if (selectorStock2.length == 1) {
+            } 
+            else if (selectorStock2.length == 1) 
+            {
                  selectorStock2.prepend(responseStock.view);
-             } else if (selectorStock3.length == 1) {
+            } 
+            else if (selectorStock3.length == 1) 
+            {
                  $jq321(responseStock.view).insertBefore(selectorStock3);
-             } else if (selectorStock4.length == 1) {
+            } 
+            else if (selectorStock4.length == 1) 
+            {
                  selectorStock4.prepend(responseStock.view);
-             } else if (selectorStock5.length == 1) {
+            } 
+            else if (selectorStock5.length == 1) 
+            {
                  $jq321(responseStock.view).insertBefore(selectorStock5);
-             } else if (selectorStock6.length == 1) {
+            } 
+            else if (selectorStock6.length == 1) 
+            {
                  selectorStock6.prepend(responseStock.view);
-             }
-             
-         } else {
-             if (masterSelector2.length > 0) { 
+            }  
+         } 
+         else 
+         {
+            if (masterSelector2.length > 0) 
+            { 
                 $jq321(responseStock.view).insertAfter(finalSelector2);  
-             }else if (masterSelector.length > 0)  {
+            }
+            else if (masterSelector.length > 0)  
+            {
                 $jq321(responseStock.view).insertAfter(finalSelector);
-              } else if (selectorStock1.length == 1) {
-                 selectorStock1.append(responseStock.view);
-             } else if (selectorStock2.length == 1) {
-                 selectorStock2.append(responseStock.view);
-             } else if (selectorStock3.length == 1) {
-                 $jq321(responseStock.view).insertAfter(selectorStock3);
-             } else if (selectorStock4.length == 1) {
-                 selectorStock4.append(responseStock.view);
-             } else if (selectorStock5.length == 1) {
-                 $jq321(responseStock.view).insertAfter(selectorStock5);
-             } else if (selectorStock6.length == 1) {
-                 selectorStock6.append(responseStock.view);
-             }
+            } 
+            else if (selectorStock1.length == 1) 
+            {
+                selectorStock1.append(responseStock.view);
+            } 
+            else if (selectorStock2.length == 1) 
+            {
+                selectorStock2.append(responseStock.view);
+            } 
+            else if (selectorStock3.length == 1) 
+            {
+                $jq321(responseStock.view).insertAfter(selectorStock3);
+            } 
+            else if (selectorStock4.length == 1) 
+            {
+                selectorStock4.append(responseStock.view);
+            } 
+            else if (selectorStock5.length == 1) 
+            {
+                $jq321(responseStock.view).insertAfter(selectorStock5);
+            } 
+            else if (selectorStock6.length == 1) 
+            {
+                selectorStock6.append(responseStock.view);
+            }
          }
      }
  
@@ -2470,11 +2513,11 @@
        
          if (response.above_cart == 1)
          {
-           
-            if (masterSelector.length > 0) {
-                console.log("hello", selectorSold2)
-                $jq321(response.view).insertBefore(finalSelector);
-            } else if (selectorSold1.length == 1)
+             if (masterSelector.length > 0) 
+             {
+                 $jq321(response.view).insertBefore(finalSelector);
+             } 
+             else if (selectorSold1.length == 1)
              {
                  selectorSold1.prepend(response.view);
              }
@@ -2493,9 +2536,11 @@
          }
          else
          {
-            if (masterSelector.length > 0) {
+             if (masterSelector.length > 0) 
+             {
                 $jq321(response.view).insertAfter(finalSelector);
-              } else if (selectorSold1.length == 1)
+             } 
+             else if (selectorSold1.length == 1)
              {
                  selectorSold1.append(response.view);
              }
@@ -2785,6 +2830,9 @@
      // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
      function trustBadges(trustBadgesResponse)
      {
+
+        console.log(trustBadgesResponse);
+
          if (trustBadgesResponse.product_page_show_hide == 1)
          {
              /* var selectorTrustBadges = $jq321("form[action='/cart/add']:first");
@@ -2795,11 +2843,18 @@
             var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
 
-            if (masterSelector.length == 1) {
-                $jq321(".buy-btn-space").append(trustBadgesResponse.view);
-            }  
-            else 
-            if (selectorTrustBadges1.length == 1)
+            if (masterSelector.length == 1) 
+            {
+                if (Shopify.shop == "lux-tab.myshopify.com")
+                {
+                    $jq321(trustBadgesResponse.view).insertAfter(finalSelector);
+                }
+                else
+                {
+                    $jq321(".buy-btn-space").append(trustBadgesResponse.view);
+                }       
+            }   
+            else if (selectorTrustBadges1.length == 1)
             {
                 selectorTrustBadges1.append(trustBadgesResponse.view);
             }
@@ -3015,20 +3070,6 @@
    {
        var selectorAnnouncementBar = $jq321("body");
        var placement = announcementBarResponse.placement;
-
-       if (Shopify.shop == "cavaegypt.myshopify.com")
-       {
-           selectorAnnouncementBar.append(
-               '<style type="text/css"> .header-transparent-background{top:58px !important;}</style>'
-               );
-       }
-       
-       if (Shopify.shop == "modernepocket.myshopify.com")
-       {
-           selectorAnnouncementBar.append(
-               '<style type="text/css"> body{overflow-x:visible !important;}</style>'
-               );
-       }
        
        if (placement == 'top')
        {
