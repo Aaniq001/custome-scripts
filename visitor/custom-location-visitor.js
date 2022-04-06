@@ -90,8 +90,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             {
                 visitorCounter(apiResponse.visitor);
             }
-
-            console.log(apiResponse.visitor);
         }
     };
 
@@ -206,13 +204,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
    
     if(Shopify.shop == "tsm-aquatics.myshopify.com")
     {
-        setTimeout(2000);
-        customSelctor = $jq321(".multivariants_add_to_cart_button_h");
-    	    finalSelector = customSelctor[0]; 
-     
-        
-            
-    	
+        customSelctor = $jq321(".dichead");
+    	finalSelector = customSelctor[0];
     }
     if(Shopify.shop == "awareness-avenue.myshopify.com")
     {
@@ -261,7 +254,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	finalSelector = customSelctor[0];
     }
 
-    console.log(customSelctor);
+    //console.log(customSelctor);
 
     function visitorCounter(responseVisitor) {
 
