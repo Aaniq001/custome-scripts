@@ -144,11 +144,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
 
-<<<<<<< HEAD
     if (Shopify.shop == "tsm-aquatics.myshopify.com") 
-=======
-    if (Shopify.shop == "mysweetsmileco.myshopify.com") 
->>>>>>> 9a73fb65cc0fe181db5b71e8c097e84da4e4f6d3
     {
         var meta = {"product":{"id":__st.rid}};
 
@@ -265,12 +261,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	finalSelector = customSelctor[0];
     }
 
-<<<<<<< HEAD
     console.log(customSelctor);
-=======
-
-    console.log(finalSelector);
->>>>>>> 9a73fb65cc0fe181db5b71e8c097e84da4e4f6d3
 
     function visitorCounter(responseVisitor) {
 
