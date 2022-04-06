@@ -253,8 +253,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	customSelctor = $jq321("#ta-quoter-wrapper");
     	finalSelector = customSelctor[0];
     }
+    if (Shopify.shop == "mysweetsmileco.myshopify.com")
+    {
+    	customSelctor = $jq321(".product-block product-block--price");
+    	finalSelector = customSelctor[0];
+    }
 
-    //console.log(customSelctor);
+    console.log(customSelctor);
 
     function visitorCounter(responseVisitor) {
 
