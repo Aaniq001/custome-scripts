@@ -143,6 +143,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+
+    if (Shopify.shop == "mysweetsmileco.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 	
     $jq321.ajax({
         type: "GET",
@@ -244,6 +251,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	finalSelector = customSelctor[0];
     }
 
+
     console.log(finalSelector);
 
     function visitorCounter(responseVisitor) {
@@ -312,6 +320,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 finalSelector = customSelctor[0];
                 $jq321(responseVisitor.view).insertBefore(finalSelector);
             }
+        }
+
+        if (Shopify.shop == "mysweetsmileco.myshopify.com") {
+            $jq321("body").append('<style style="text/css">.visitor-counter-content-box-carecartbysalespop-2020 {margin-top: -24px !important}</style>');
         }
     
         $jq321('n').html(function(i, v){
