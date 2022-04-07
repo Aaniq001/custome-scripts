@@ -2118,6 +2118,14 @@
         masterSelector = $jq321("#button-cart");
         finalSelector = masterSelector[0];
     }
+    if (Shopify.shop == "trusted-trout.myshopify.com")
+    {
+        masterSelector = $jq321(".purchase-details__buttons");
+        finalSelector = masterSelector[0];
+        $jq321("head").append(
+            '<style type="text/css"> .stock-top{margin-top: 15px;}</style>'
+            );
+    }
 
     //console.log(finalSelector);
 
