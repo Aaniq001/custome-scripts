@@ -703,6 +703,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             "cssSold": "https://" + tempAnchorTag.hostname + "/lib/sold-box.css?v" + version,
             "cssQuick": "https://" + tempAnchorTag.hostname + "/lib/quick-box.css?v" + version,
             "cssTrustBadges": "https://" + tempAnchorTag.hostname + "/lib/badges-box.css?v" + version,
+            "cssAnnouncement": "https://" + tempAnchorTag.hostname + "/lib/announcement.css?v" + version,
             "legacyCss": "https://" + tempAnchorTag.hostname + "/lib/salesnotifier.css"
         };
     }
@@ -1178,13 +1179,33 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         // STOCK COUNTDOWN CALL
         if (apiResponse && apiResponse.stock && apiResponse.stock !== null) {
-            if (apiResponse.stock.on_off == 1) {
-                $jq321("head").append($jq321("<link/>", {
-                    rel: "stylesheet",
-                    href: serverUrl.cssStock + "?v" + version
-                }));
-                stockCountdown(apiResponse.stock);
-            }
+            if (apiResponse.stock.on_off == 1)
+            {
+                if(apiResponse.stock.stock_restriction_settings !== null){
+                    let stock_restriction_setting = JSON.parse(apiResponse.stock.stock_restriction_settings);
+                    if(stock_restriction_setting.stock_restriction_check == "on" && parseInt(stock_restriction_setting.stock_restriction_value) !== parseInt(apiResponse.stock.left_stock) && parseInt(apiResponse.stock.left_stock) > parseInt(stock_restriction_setting.stock_restriction_value)){
+                        console.log("SP: Stock restricted to display");
+                    } else {
+                        $jq321("head").append($jq321("<link/>", {
+                            rel: "stylesheet",
+                            href: serverUrl.cssStock + "?v" + version
+                        }));
+                        stockCountdown(apiResponse.stock);
+                        if (apiResponse.stock.variantCheck && apiResponse.stock.variantCheck == 1 && apiResponse.stock.variantsData !== null && apiResponse.stock.variantsData.length > 1) {
+                            enableStockForVariants(apiResponse.stock.variantsData, apiResponse.stock.variantHeading);
+                        }
+                    }
+                } else {
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssStock + "?v" + version
+                    }));
+                    stockCountdown(apiResponse.stock);
+                    if (apiResponse.stock.variantCheck && apiResponse.stock.variantCheck == 1 && apiResponse.stock.variantsData !== null && apiResponse.stock.variantsData.length > 1) {
+                        enableStockForVariants(apiResponse.stock.variantsData, apiResponse.stock.variantHeading);
+                    }
+                }
+             }
         }
 
         // Time COUNTDOWN CALL
@@ -1254,6 +1275,59 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             }));
 
             trustBadges(apiResponse.trustBadges);
+        }
+
+        // ANNOUNCEMENT BAR CALL
+        if (apiResponse && apiResponse.announcementBar && apiResponse.announcementBar != false) 
+        {
+            if ( ! isHideAnnouncementCookieSet())
+            {
+                var $allowed = 0;
+                var currentPageHandle = window.location.pathname.split("/");
+
+                if (apiResponse.announcementBar.pages_type == 2)
+                {
+                    if (($jq321.inArray("products", currentPageHandle) != -1) && (apiResponse.announcementBar.product_page == 1)) 
+                    {
+                        console.log('product page');
+                        $allowed = 1;
+                    }
+                    else if (($jq321.inArray("collections", currentPageHandle) != -1) && (apiResponse.announcementBar.collection_page == 1)) 
+                    {
+                        console.log('collection page');
+                        $allowed = 1;
+                    }
+                    else if (($jq321.inArray("cart", currentPageHandle) != -1) && (apiResponse.announcementBar.cart_page == 1)) 
+                    {
+                        console.log('cart page');
+                        $allowed = 1;
+                    }
+                    else if((currentPageHandle[1].length == 0) && (apiResponse.announcementBar.home_page == 1)) 
+                    {
+                        console.log("home page");
+                        $allowed = 1;
+                    }
+                    else
+                    {
+                        console.log('undefine page');
+                        $allowed = 0;
+                    }
+                }
+                else if(apiResponse.announcementBar.pages_type == 1)
+                {
+                    $allowed = 1;
+                }
+
+                if ($allowed == 1)
+                {
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssAnnouncement + "?v" + version
+                    }));
+        
+                    setTimeout(function () { announcementBar(apiResponse.announcementBar); }, 2000);
+                }
+            }
         }
 
         if (shouldStatsBeShown()) {
@@ -1685,39 +1759,139 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
       );
     }
 
-    // ---------------------------------- <ANNOUNCEMENT BAR MODULE> --------------------------------
-	function announcementBar(announcementBarResponse)
-	{
-        var selectorAnnouncementBar = $jq321("body");
-        var placement = announcementBarResponse.placement;
+   
+     /** Stock for variants **/
+     function makeSelectors(variantHeading) {
         
-        if (placement == 'top')
-        {
-            selectorAnnouncementBar.prepend(announcementBarResponse.view);
-        }
-        else if(placement == 'bottom')
-        {
-            selectorAnnouncementBar.append(announcementBarResponse.view);
-        }
-        	
-	}
-    
-    $jq321("body").on('click', '#ccannouncement-close', function (e) {
-        e.preventDefault();
+        let formSelector;
+        let allForms = $jq321("form[action]");
+        $jq321.each(allForms, function (key, value) {
+            var formUrls = value.action;
+            if (formUrls.indexOf('/cart/add') > -1) {
+                formSelector = $jq321(value);
+            }
+        });
 
-        $jq321('#ccannouncement-main').fadeOut();
-        setCookie("sp-hide-announcement", 1, 15);  // 15 minutes (UTC)
-    });
+        if (formSelector.length > 0) {
+            let variantSelector1 = $jq321(formSelector).find("select");
+            let variantSelector2 = $jq321(':contains("' + variantHeading + '")').find("input[type='radio']");
+            let variantSelector3 = $jq321(':contains("' + variantHeading + '")').find("select");
 
-    function isHideAnnouncementCookieSet() 
-    {
-        var cookie = getCookie("sp-hide-announcement");
-        return (typeof cookie == "null" || typeof cookie == "undefined" || cookie === "") ? false : true;
+            /** Make the final selectors **/
+            if (variantSelector2.length > 0) {
+                return { "selector_number": 2, "selector_value": variantSelector2 };
+            } else if (variantSelector1.length > 0) {
+                return { "selector_number": 1, "selector_value": variantSelector1 };
+            } else if (variantSelector3.length > 0) {
+                return { "selector_number": 3, "selector_value": variantSelector3 };
+            }
+            return false;
+        }
     }
 
-    // ---------------------------------- </ANNOUNCEMENT BAR MODULE> --------------------------------
+    function stockForSelectedVariant(string, data) {
+        if (string !== "") {
+            $jq321.each(data, function (key, value) {
+                if (value.title == string) {
+                    let stockCountSpan = $jq321("#carecart-salespop-sc-number");
+                    if (stockCountSpan.length > 0) {
+                        $jq321(stockCountSpan).html(value.inventory_quantity);
+                        let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
+                        stockPercentage = stockPercentage + "%";
+                        $jq321(".stock-progress-foreground").width(stockPercentage);
+                        console.log("SP: Stock for selected variant");
+                }
+            }
+       });
+    }
+    }
 
-   
+    function enableStockForVariants(variantsData, variantHeading) {
+
+        $jq321(document).ready(function () { 
+
+            let getSelectors = makeSelectors(variantHeading);
+            if (getSelectors != false) {
+
+                /** Let's define options here **/
+                let availableOptions = 0;
+                if (variantsData[0]["option1"] !== null && variantsData[0]["option2"] !== null && variantsData[0]["option3"] === null) {
+                    availableOptions = 1;
+                } else if (variantsData[0]["option1"] !== null && variantsData[0]["option2"] !== null && variantsData[0]["option3"] !== null) {
+                    availableOptions = 2;
+                }
+                /** Let's define options here **/
+                
+                /** Make the final selectors **/
+                if (getSelectors.selector_number == 2) {
+                    let selectedVariantsValuesString = '';
+                    $jq321.each(getSelectors.selector_value, function (key, value) {
+                        
+                        attachEventOnOptions(value, variantsData);
+                        var val = this.checked ? true : false;
+                        if (val) {
+                            selectedVariantsValuesString = selectedVariantsValuesString+ $jq321(value).val() + " / ";
+                        }
+                    });
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                } else if (getSelectors.selector_number == 1) {
+
+                    let selectedVariantsValuesString = '';
+                    for (let i = 0; i <= availableOptions; i++) {
+                        attachEventOnOptions(getSelectors.selector_value[i], variantsData);
+                        selectedVariantsValuesString = selectedVariantsValuesString + $jq321(getSelectors.selector_value[i]).find(":selected").val() + " / ";
+                    }
+
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                } else if (getSelectors.selector_number == 3) {
+                    let selectedVariantsValuesString = '';
+                    for (let i = 0; i <= availableOptions; i++) {
+                        attachEventOnOptions(getSelectors.selector_value[i], variantsData);
+                        selectedVariantsValuesString = selectedVariantsValuesString + $jq321(getSelectors.selector_value[i]).find(":selected").val() + " / ";
+                    }
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                }
+            }
+            /** Make the final selectors **/
+        });
+    }
+
+    function attachEventOnOptions(variantSelector, variantsData)
+    {
+        console.log("SP: variant selector found");
+        $jq321(variantSelector).on("change", function () { 
+            setTimeout(function () {
+
+                let urlParams = new URLSearchParams(window.location.search);
+                let variantID = urlParams.get('variant');
+                if (variantsData !== null && variantID !== null) {
+                    $jq321.each(variantsData, function (key, value) {
+                        if (value.id == variantID) {
+                            let stockCountSpan = $jq321("#carecart-salespop-sc-number");
+                            if (stockCountSpan.length > 0) {
+                                $jq321(stockCountSpan).html(value.inventory_quantity);
+                                let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
+                                stockPercentage = stockPercentage + "%";
+                                $jq321(".stock-progress-foreground").width(stockPercentage);
+                        }
+                    }
+               });
+            }
+            }, 1000);
+            }); 
+    }
+    /** Stock for variants ends **/
+
+
     function stockCountdown(responseStock) {
 
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -2141,60 +2315,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
     }
 
-   
-        // ANNOUNCEMENT BAR CALL
-        if (apiResponse && apiResponse.announcementBar && apiResponse.announcementBar != false) 
-        {
-            if ( ! isHideAnnouncementCookieSet())
-            {
-                var $allowed = 0;
-                var currentPageHandle = window.location.pathname.split("/");
-
-                if (apiResponse.announcementBar.pages_type == 2)
-                {
-                    if (($jq321.inArray("products", currentPageHandle) != -1) && (apiResponse.announcementBar.product_page == 1)) 
-                    {
-                        console.log('product page');
-                        $allowed = 1;
-                    }
-                    else if (($jq321.inArray("collections", currentPageHandle) != -1) && (apiResponse.announcementBar.collection_page == 1)) 
-                    {
-                        console.log('collection page');
-                        $allowed = 1;
-                    }
-                    else if (($jq321.inArray("cart", currentPageHandle) != -1) && (apiResponse.announcementBar.cart_page == 1)) 
-                    {
-                        console.log('cart page');
-                        $allowed = 1;
-                    }
-                    else if((currentPageHandle[1].length == 0) && (apiResponse.announcementBar.home_page == 1)) 
-                    {
-                        console.log("home page");
-                        $allowed = 1;
-                    }
-                    else
-                    {
-                        console.log('undefine page');
-                        $allowed = 0;
-                    }
-                }
-                else if(apiResponse.announcementBar.pages_type == 1)
-                {
-                    $allowed = 1;
-                }
-
-                if ($allowed == 1)
-                {
-                    $jq321("head").append($jq321("<link/>", {
-                        rel: "stylesheet",
-                        href: serverUrl.cssAnnouncement + "?v" + version
-                    }));
-        
-                    announcementBar(apiResponse.announcementBar);
-                }
-            }
-        }
-
     // PRODUCT QUICK VIEW COLLECTION CALL
     $jq321("body").on('click', '.collection-quick-view', function (e) {
         e.preventDefault();
@@ -2314,7 +2434,76 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     };
     // ---------------------------------- </PAYMENT PLAN> --------------------------------
 
+      // ---------------------------------- <ANNOUNCEMENT BAR MODULE> --------------------------------
+	function announcementBar(announcementBarResponse)
+	{
+        var selectorAnnouncementBar = $jq321("body");
+        var placement = announcementBarResponse.placement;
+        
+        if (placement == 'top')
+        {
+            selectorAnnouncementBar.prepend(announcementBarResponse.view);
+        }
+        else if(placement == 'bottom')
+        {
+            selectorAnnouncementBar.append(announcementBarResponse.view);
+        }
 
+        //Free shipping bar starts from here
+        if (announcementBarResponse.free_ship_settings !== null) {
+            doCalculationForShipping(announcementBarResponse.free_ship_settings);
+            addCartInterval(announcementBarResponse.free_ship_settings);
+        }	
+	}
+    
+    $jq321("body").on('click', '#ccannouncement-close', function (e) {
+        e.preventDefault();
+
+        $jq321('#ccannouncement-main').fadeOut();
+        setCookie("sp-hide-announcement", 1, 15);  // 15 minutes (UTC)
+    });
+
+    function isHideAnnouncementCookieSet() 
+    {
+        var cookie = getCookie("sp-hide-announcement");
+        return (typeof cookie == "null" || typeof cookie == "undefined" || cookie === "") ? false : true;
+    }
+
+    function addCartInterval(settings) { 
+        setInterval(function () {
+        doCalculationForShipping(settings);
+        }, 2000);
+    }
+
+    function doCalculationForShipping(settings)
+    {
+        var cartContents = fetch('/cart.json', {method: 'GET'})
+            .then(response => response.json())
+            .then(data => {
+                let cartValue = data.items;
+                if (cartValue.length == 0) {
+                    console.log("SP: Cart is empty");
+                    let initialMessage = settings.initial_message;
+                    initialMessage = initialMessage.replace("{{amount}}", settings.goal_value);
+                    initialMessage = initialMessage.replace("{{button}}", settings.button);
+                    initialMessage = initialMessage.replace("{{coupon}}", settings.coupon);
+                    $jq321(".getDiscoundText").html(initialMessage);
+                } else {
+                    let cartPrice = data.total_price;
+                    cartPrice = Math.floor(cartPrice / 1e2);
+                    let actualGoal = parseInt(settings.goal_value);
+                    if (cartPrice >= actualGoal) {
+                    $jq321(".getDiscoundText").html(settings.goal_message);
+                    } else if (cartPrice < actualGoal) {
+                        let remainingAmount = actualGoal - cartPrice;
+                        let progressMessage = settings.progress_message;
+                        progressMessage = progressMessage.replace("{{remaining_amount}}", remainingAmount);
+                        $jq321(".getDiscoundText").html(progressMessage);
+                    }
+                }
+            });
+    }
+    // ---------------------------------- </ANNOUNCEMENT BAR MODULE> --------------------------------
 
 });
 
