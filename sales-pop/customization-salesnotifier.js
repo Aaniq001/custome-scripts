@@ -1324,25 +1324,6 @@
  //////////////////////////////// .end local storage check
          
       // STOCK COUNTDOWN CALL
-         /* if(apiResponse && apiResponse.stock && apiResponse.stock!==null){
-             if (apiResponse.stock.on_off == 1)
-             {
-                 $jq321("head").append($jq321("<link/>", {
-                     rel: "stylesheet",
-                     href: serverUrl.cssStock + "?v" + version
-                 }));
-
-                 if (Shopify.shop == "alex-alarie.myshopify.com") 
-                 {
-                    setTimeout(function(){ stockCountdown(apiResponse.stock); }, 2000);
-                 }
-                 else
-                 {
-                    stockCountdown(apiResponse.stock);
-                 }
-                 
-             }
-         } */
          if (apiResponse && apiResponse.stock && apiResponse.stock !== null) {
             if (apiResponse.stock.on_off == 1)
             {
