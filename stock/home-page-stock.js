@@ -9,6 +9,22 @@
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
 
+//Create the element using the createElement method.
+var myDiv = document.createElement("ji");
+
+//Set its class.
+myDiv.className = 'doubleCheck';
+
+//Finally, append the element to the HTML body
+document.body.appendChild(myDiv);
+
+var doubleCheck = document.getElementsByClassName("doubleCheck");
+var ndoubleCheck = doubleCheck.length;
+if (ndoubleCheck == 2) {
+    //window.stop();
+    throw new Error("DOUBLE APP JS");
+}
+
  function scriptInjection(src, callback) {
     var script = document.createElement('script');
     script.type = "text/javascript";
@@ -103,42 +119,36 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if(Shopify.shop == "next-level-paramount-deals.myshopify.com"){
         productID = 7067725594823;
     }
-
     if(Shopify.shop == "blissin-skin.myshopify.com"){
         productID = 6939770716332;
     }
-
     if(Shopify.shop == "shapely-former.myshopify.com"){
         productID = 7430447038714;
     }
-
     if(Shopify.shop == "cian-o-regan-photography.myshopify.com"){
         productID = 6640241737859;
     }
-
     if(Shopify.shop == "fancybeauty-com.myshopify.com"){
         productID = 7197491462300;
     }
-
     if(Shopify.shop == "samraatthreads.myshopify.com"){
         productID = 7377156440233;
     }
-
     if(Shopify.shop == "nomorewetwet.myshopify.com"){
         productID = 5649273028760;
     }
-
     if (Shopify.shop == "fancybeauty-com.myshopify.com")
     {
         productID = 7204279386268;
     }
-
     if (Shopify.shop == "vandomi-collective.myshopify.com")
     {
         productID = 7251270860970;
     }
-
-    
+    if (Shopify.shop == "lavergnehugo74-3615.myshopify.com")
+    {
+        productID = 7198671470764;
+    }
 
     $jq321.ajax({
         type: "GET",
