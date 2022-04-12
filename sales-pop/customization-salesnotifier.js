@@ -2428,7 +2428,13 @@
          var selectorTimer4 = $jq321("form[action='/cart/add']:first");
          var selectorTimer5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorTimer6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
- 
+         
+         if (Shopify.shop == "the-senset.myshopify.com")
+         {
+             masterSelector = $jq321(".ProductForm__AddToCart");
+             finalSelector = masterSelector[0];
+         }
+         
          if (responseTimer.above_cart == 1) {
             if (masterSelector.length > 0) {
                 $jq321(responseTimer.view).insertBefore(finalSelector);
