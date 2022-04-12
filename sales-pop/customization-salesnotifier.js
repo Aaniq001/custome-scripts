@@ -1240,6 +1240,15 @@
 
         }
 
+        if (Shopify.shop == "vitaeglass.myshopify.com") 
+        {
+            if (window.location.href == 'https://www.vitaeglass.com/pages/wholesale-registration')
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on this page') 
+            }
+        }
+
         return b_url;
 
      };
@@ -2134,6 +2143,7 @@
         masterSelector = $jq321(".product-form__controls-group");
         finalSelector = masterSelector[0];
     }
+        
 
     //console.log(finalSelector);
 
