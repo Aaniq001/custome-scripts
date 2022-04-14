@@ -162,6 +162,15 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "de-fb.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
+
+
+
 	
     $jq321.ajax({
         type: "GET",
@@ -276,6 +285,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "robinsonssingapore.myshopify.com")
     {
     	customSelctor = $jq321(".custom_add_to_cart");
+    	finalSelector = customSelctor[0];
+    }
+    if (Shopify.shop == "de-fb.myshopify.com")
+    {
+    	customSelctor = $jq321(".product-single__add-to-cart");
     	finalSelector = customSelctor[0];
     }
     console.log(customSelctor);

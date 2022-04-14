@@ -2144,7 +2144,12 @@
         finalSelector = masterSelector[0];
     }
         
-
+    if (Shopify.shop == "home-supplies0.myshopify.com") {
+        $jq321("head").append(
+        '<style type="text/css"> .card-title {font-size:14px !important; letter-spacing:0em !important;}</style>'
+        );
+   
+    }  
     //console.log(finalSelector);
 
      /** Stock for variants **/
