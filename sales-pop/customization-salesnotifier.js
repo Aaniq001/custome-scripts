@@ -2127,6 +2127,13 @@
         masterSelector = $jq321("#button-cart");
         finalSelector = masterSelector[0];
     }
+
+    if (Shopify.shop == "tikttrends.myshopify.com")
+    {
+        masterSelector = $jq321(".sc-hiCibw");
+        finalSelector = masterSelector[8];
+    }
+
     if (Shopify.shop == "trusted-trout.myshopify.com")
     {
         masterSelector = $jq321(".purchase-details__buttons");
@@ -2144,12 +2151,7 @@
         finalSelector = masterSelector[0];
     }
         
-    if (Shopify.shop == "home-supplies0.myshopify.com") {
-        $jq321("head").append(
-        '<style type="text/css"> .card-title {font-size:14px !important; letter-spacing:0em !important;}</style>'
-        );
-   
-    }  
+
     //console.log(finalSelector);
 
      /** Stock for variants **/
@@ -2299,6 +2301,13 @@
          var selectorStock5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
  
+
+         if (Shopify.shop == "sweetlyblends.myshopify.com") {
+            masterSelector = $jq321(".apb_product_detail_options_container");
+            finalSelector = masterSelector[0];
+        }   
+
+
          if (responseStock.above_cart == 1) 
          {
             if (masterSelector2.length > 0) 
@@ -2490,6 +2499,11 @@
          var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
          var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
  
+         if (Shopify.shop == "sweetlyblends.myshopify.com") {
+            masterSelector = $jq321(".apb_product_detail_promotion_text");
+            finalSelector = masterSelector[1];
+        }   
+
          if (response.above_cart == 1) {
             if (masterSelector.length > 0) {
                 $jq321(response.view).insertBefore(finalSelector);
