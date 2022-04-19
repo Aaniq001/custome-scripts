@@ -1358,7 +1358,7 @@
                                         } else if (settingsData.button_position === 'middle_left') {
                                             tBtn.css({
                                                 left: '-48px',
-                                                bottom: '48vh',
+                                                bottom: '30vh',
                                                 transform: 'rotate(270deg)'
                                             });
                                         }
