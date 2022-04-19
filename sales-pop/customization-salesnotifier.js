@@ -1366,17 +1366,22 @@
           // Time COUNTDOWN CALL
          if(apiResponse && apiResponse.timer && apiResponse.timer!==null)
          {
-             /*$jq321("head").append($jq321("<link/>", {
+            if (Shopify.shop == "love-naelis.myshopify.com")
+            {
+                $jq321("head").append($jq321("<link/>", {
                      rel: "stylesheet",
                      href: serverUrl.cssTimer + "?v" + version
-                 }));*/
-             //timeCountdown(apiResponse.timer);
- 
-             setTimeout(function(){ $jq321("head").append($jq321("<link/>", {
-                     rel: "stylesheet",
-                     href: serverUrl.cssTimer + "?v" + version
-                 })); }, 1000);
-             setTimeout(function(){ timeCountdown(apiResponse.timer); }, 2000);
+                 }));
+                timeCountdown(apiResponse.timer);
+            }
+            else
+            {
+                setTimeout(function(){ $jq321("head").append($jq321("<link/>", {
+                    rel: "stylesheet",
+                    href: serverUrl.cssTimer + "?v" + version
+                })); }, 1000);
+                setTimeout(function(){ timeCountdown(apiResponse.timer); }, 2000);
+            }  
          }
  
          // VISITOR COUNTER CALL
@@ -1691,16 +1696,6 @@
          $jq321.notify.addStyle('salesPopStyle', {
              html: dataNotification
          });
- 
-         /*$jq321.notify("hello world", {
-             globalPosition: apiResponse.desktop_position,
-             style: 'salesPopStyle',
-             autoHideDelay: parseInt(apiResponse.display_time) * 1000,
-             showDuration: 600,
-             hideAnimation: 'slideUp',
-             hideDuration: 600,
-             clickToHide: false
-         });*/
  
          if (salespoplib_vars_obj.checkDevice == 'mobile')
          {
@@ -2151,15 +2146,6 @@
         masterSelector = $jq321(".product-form__controls-group");
         finalSelector = masterSelector[0];
     }
-
-    if (Shopify.shop == "love-naelis.myshopify.com")
-    {
-        masterSelector = $jq321(".product-form__cart-submit");
-        finalSelector = masterSelector[0];
-    }
-        
-
-    //console.log(finalSelector);
 
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
@@ -2892,7 +2878,7 @@
                 else
                 {
                     $jq321(".buy-btn-space").append(trustBadgesResponse.view);
-                }       
+                }
             }   
             else if (selectorTrustBadges1.length == 1)
             {
