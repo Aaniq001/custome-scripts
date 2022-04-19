@@ -2142,12 +2142,19 @@
             '<style type="text/css"> .stock-top{margin-top: 15px;}</style>'
             );
     }
+
     if (Shopify.shop == "compact-studios.myshopify.com") {
         $jq321("head").append(
           '<style type="text/css"> .sale-sticker{background-color: #7A8BC1 !important; color: #fff !important;} .quick-shop-title a{color: #7A8BC1 !important;} .quick-shop-current-price{color: #000 !important;} .quick-shop-was-price{color: #9DA5B3 !important;} .view-full-details a{color: #000 !important}  .quick-product-size-opt span{color: #000 !important} .quick-product-size-opt .radio-toolbar label{margin: 3px !important} .quickshop-quantity input{ border: 1px solid #7A8BC1 !important} .quantity-button.quantity-up{border-color: #7A8BC1 !important;} .quantity-button.quantity-down{border-color: #7A8BC1 !important;} .quick-shop-addtocart button{background-color: #7A8BC1 !important; color: #fff !important;} </style>'
         );
 
         masterSelector = $jq321(".product-form__controls-group");
+        finalSelector = masterSelector[0];
+    }
+
+    if (Shopify.shop == "love-naelis.myshopify.com")
+    {
+        masterSelector = $jq321(".product-form__cart-submit");
         finalSelector = masterSelector[0];
     }
         
@@ -2869,14 +2876,8 @@
      // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
      function trustBadges(trustBadgesResponse)
      {
-
-        console.log(trustBadgesResponse);
-
          if (trustBadgesResponse.product_page_show_hide == 1)
          {
-             /* var selectorTrustBadges = $jq321("form[action='/cart/add']:first");
-             selectorTrustBadges.append(trustBadgesResponse.view); */
-
             var selectorTrustBadges1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges2 = $jq321("form[action='/cart/add']");
             var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
