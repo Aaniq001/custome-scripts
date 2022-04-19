@@ -1338,125 +1338,125 @@
                                         const settingsData = response.records.store_settings.settings_data;
                                         var tBtn = carecartSpinnerJquery('body').find('#wheelify-spin-trigger-cc');
                                     
-                                        // if (settingsData.button_position === 'middle_right') {  
-                                        //     tBtn.css({
-                                        //         bottom: '48vh',
-                                        //         right: '-45px',
-                                        //         transform: 'rotate(270deg)'
-                                        //     });
-                                        // }
-                                        // else if (settingsData.button_position === 'bottom_right') {
-                                        //     tBtn.css({
-                                        //         bottom: '8vh',
-                                        //         right: '20px'
-                                        //     });
-                                        // }//new added
-                                        // else if (settingsData.button_position === 'bottom_left') {
-                                        //     tBtn.css({
-                                        //         left: '20px'
-                                        //     });
-                                        // } else if (settingsData.button_position === 'middle_left') {
-                                        //     tBtn.css({
-                                        //         left: '-48px',
-                                        //         bottom: '48vh',
-                                        //         transform: 'rotate(270deg)'
-                                        //     });
-                                        // }
+                                        if (settingsData.button_position === 'middle_right') {  
+                                            tBtn.css({
+                                                bottom: '48vh',
+                                                right: '-45px',
+                                                transform: 'rotate(270deg)'
+                                            });
+                                        }
+                                        else if (settingsData.button_position === 'bottom_right') {
+                                            tBtn.css({
+                                                bottom: '8vh',
+                                                right: '20px'
+                                            });
+                                        }//new added
+                                        else if (settingsData.button_position === 'bottom_left') {
+                                            tBtn.css({
+                                                left: '20px'
+                                            });
+                                        } else if (settingsData.button_position === 'middle_left') {
+                                            tBtn.css({
+                                                left: '-48px',
+                                                bottom: '48vh',
+                                                transform: 'rotate(270deg)'
+                                            });
+                                        }
 
                                         // Trigger Button Margin
                                         
-                                        if(settingsData.button_position === 'middle_right' ) {
-                                            let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
-                                            tBtn.css({
-                                                right: '-45px', 
-                                                bottom: triggerBottom+'vh',
-                                                transform: 'rotate(270deg)'
-                                            });
-                                            if(carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')){
-                                                carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
-                                                setInterval(function(){
-                                                    shakeVertical('#wheelify-spin-trigger-cc', 50, triggerBottom, 10);
-                                                }, 3000);
-                                            }
-                                        }
+                                        // if(settingsData.button_position === 'middle_right' ) {
+                                        //     let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
+                                        //     triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+                                        //     tBtn.css({
+                                        //         right: '-45px', 
+                                        //         bottom: triggerBottom+'vh',
+                                        //         transform: 'rotate(270deg)'
+                                        //     });
+                                        //     if(carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')){
+                                        //         carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
+                                        //         setInterval(function(){
+                                        //             shakeVertical('#wheelify-spin-trigger-cc', 50, triggerBottom, 10);
+                                        //         }, 3000);
+                                        //     }
+                                        // }
 
-                                        else if(settingsData.button_position === 'middle_left' ) {
-                                            let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
-                                            tBtn.css({
-                                                left: '-45px',
-                                                bottom: triggerBottom+'vh',
-                                                transform: 'rotate(270deg)'
-                                            });
-                                            if(carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')){
-                                                carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
-                                                setInterval(function(){
-                                                    shakeVertical('#wheelify-spin-trigger-cc', 50, triggerBottom, 10);
-                                                }, 3000);
-                                            }
-                                        }
+                                        // else if(settingsData.button_position === 'middle_left' ) {
+                                        //     let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
+                                        //     triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+                                        //     tBtn.css({
+                                        //         left: '-45px',
+                                        //         bottom: triggerBottom+'vh',
+                                        //         transform: 'rotate(270deg)'
+                                        //     });
+                                        //     if(carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')){
+                                        //         carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
+                                        //         setInterval(function(){
+                                        //             shakeVertical('#wheelify-spin-trigger-cc', 50, triggerBottom, 10);
+                                        //         }, 3000);
+                                        //     }
+                                        // }
                                         
-                                        else if(settingsData.button_position === 'bottom_right' ) {
-                                            let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
-                                            tBtn.css({
-                                                bottom: triggerBottom+'vh',
-                                                right: '20px'
-                                            });
-                                        }
+                                        // else if(settingsData.button_position === 'bottom_right' ) {
+                                        //     let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
+                                        //     triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+                                        //     tBtn.css({
+                                        //         bottom: triggerBottom+'vh',
+                                        //         right: '20px'
+                                        //     });
+                                        // }
                                         
-                                        else if(settingsData.button_position === 'bottom_left' ) {
-                                            let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
-                                            tBtn.css({
-                                                bottom: triggerBottom+'vh',
-                                                left: '20px'
-                                            });
-                                        }
+                                        // else if(settingsData.button_position === 'bottom_left' ) {
+                                        //     let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
+                                        //     triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+                                        //     tBtn.css({
+                                        //         bottom: triggerBottom+'vh',
+                                        //         left: '20px'
+                                        //     });
+                                        // }
 
-                                        var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
+                                        // var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
 
-                                        if (windowWidth < 575) {
-                                            if(settingsData.button_position === 'middle_right' ) {
-                                                let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
-                                                triggerBottom === 0 ? triggerBottom =  15 : triggerBottom += 15;
-                                                tBtn.css({
-                                                    right: '-45px', 
-                                                    bottom: triggerBottom+'vh',
-                                                    transform: 'rotate(270deg)'
-                                                });
-                                            }
+                                        // if (windowWidth < 575) {
+                                        //     if(settingsData.button_position === 'middle_right' ) {
+                                        //         let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
+                                        //         triggerBottom === 0 ? triggerBottom =  15 : triggerBottom += 15;
+                                        //         tBtn.css({
+                                        //             right: '-45px', 
+                                        //             bottom: triggerBottom+'vh',
+                                        //             transform: 'rotate(270deg)'
+                                        //         });
+                                        //     }
                                             
-                                            else if(settingsData.button_position === 'middle_left' ) {
-                                                let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
-                                                triggerBottom === 0 ? triggerBottom =  15 : triggerBottom += 15;
-                                                tBtn.css({
-                                                    left: '-48px',
-                                                    bottom: triggerBottom+'vh',
-                                                    transform: 'rotate(270deg)'
-                                                });
-                                            }
+                                        //     else if(settingsData.button_position === 'middle_left' ) {
+                                        //         let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
+                                        //         triggerBottom === 0 ? triggerBottom =  15 : triggerBottom += 15;
+                                        //         tBtn.css({
+                                        //             left: '-48px',
+                                        //             bottom: triggerBottom+'vh',
+                                        //             transform: 'rotate(270deg)'
+                                        //         });
+                                        //     }
                                             
-                                            else if(settingsData.button_position === 'bottom_right' ) {
-                                                let triggerBottom = settingsData.trigger_btn_margin_mobile / 4;
-                                                triggerBottom === 0 ? triggerBottom =  10 : triggerBottom += 10;
-                                                console.log(triggerBottom)
-                                                tBtn.css({
-                                                    bottom: triggerBottom+'vh',
-                                                    right: '20px'
-                                                });
-                                            }
+                                        //     else if(settingsData.button_position === 'bottom_right' ) {
+                                        //         let triggerBottom = settingsData.trigger_btn_margin_mobile / 4;
+                                        //         triggerBottom === 0 ? triggerBottom =  10 : triggerBottom += 10;
+                                        //         console.log(triggerBottom)
+                                        //         tBtn.css({
+                                        //             bottom: triggerBottom+'vh',
+                                        //             right: '20px'
+                                        //         });
+                                        //     }
                                             
-                                            else if(settingsData.button_position === 'bottom_left' ) {
-                                                let triggerBottom = settingsData.trigger_btn_margin_mobile / 4;
-                                                triggerBottom === 0 ? triggerBottom =  10 : triggerBottom += 10;
-                                                tBtn.css({
-                                                    bottom: triggerBottom+'vh',
-                                                    left: '20px'
-                                                });
-                                            }
-                                        }
+                                        //     else if(settingsData.button_position === 'bottom_left' ) {
+                                        //         let triggerBottom = settingsData.trigger_btn_margin_mobile / 4;
+                                        //         triggerBottom === 0 ? triggerBottom =  10 : triggerBottom += 10;
+                                        //         tBtn.css({
+                                        //             bottom: triggerBottom+'vh',
+                                        //             left: '20px'
+                                        //         });
+                                        //     }
+                                        // }
                                     }
                                 
                                 else {
