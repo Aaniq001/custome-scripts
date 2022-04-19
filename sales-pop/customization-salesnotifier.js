@@ -2428,6 +2428,13 @@
              if (t.days == 0 && t.hours == 0 && t.minutes == 0 && t.seconds == 0) {
                  clearInterval(timeinterval);
              }
+
+             if (t.days < 0 || t.hours < 0 || t.minutes < 0 || t.seconds < 0) {
+                $jq321(".days").html('00');
+                $jq321(".hours").html('00');
+                $jq321(".minutes").html('00');
+                $jq321(".seconds").html('00');
+            }
          }
  
          updateClock();
