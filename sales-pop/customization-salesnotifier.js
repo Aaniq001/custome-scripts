@@ -2153,6 +2153,12 @@
         );
     }
 
+    if (Shopify.shop == "hobo-lax.myshopify.com")
+    {
+        masterSelector = $jq321(".product-price");
+        finalSelector = masterSelector[0];
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
