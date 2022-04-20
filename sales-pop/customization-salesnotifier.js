@@ -2147,6 +2147,12 @@
         finalSelector = masterSelector[0];
     }
 
+    if (Shopify.shop == "lady-lash.myshopify.com") {
+        $jq321("head").append(
+          '<style type="text/css">.quick-shop-modal{padding-top: 120px !important;} .quick-shop-addtocart button{margin-top: 10px !important; background-color: #Efe7da !important; color: #000 !important;} .sale-sticker{background-color: #Efe7da !important} .view-full-details a{color: #000 !important} .quickshop-quantity input{min-height: 30px  !important; border: 1px solid #Efe7da !important} .quantity-button.quantity-up{border-color: #Efe7da !important;} .quantity-button.quantity-down{border-color: #Efe7da !important;}  </style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
