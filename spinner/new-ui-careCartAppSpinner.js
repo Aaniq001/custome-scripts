@@ -1325,43 +1325,48 @@
                                 );
                                 if(Shopify.shop === 'ultima-active.myshopify.com'){
                                     carecartSpinnerJquery("head").append(
-                                        '<style type="text/css"> @media only screen and (max-width: 768px){#cc-spin-a-sale-consent-checkbox{width:auto !important;min-width:auto!important;}} </style>'
+                                        '<style type="text/css"> {#cc-spin-a-sale-consent-checkbox{width:auto !important;min-width:auto!important;}} </style>'
                                     );
                                     
                                 }
                                 /* Append triggered button */
                                     if (response.records.store_settings.settings_data.is_triggered_enable && parseInt(response.records.store_settings.settings_data.is_triggered_enable) == 1) {
-                                        carecartSpinnerJquery("body").append(response.records.store_front_trigger_button);
+                                        carecartSpinnerJquery(".sc-jtXEFf.kGfXVs.pf-316_").append(response.records.store_front_trigger_button);
+                                        if (Shopify.shop == "qinao.myshopify.com") {
+                                            carecartSpinnerJquery("head").append(
+                                              '<style type="text/css"> #wheelify-spin-trigger-cc {position: absolute !important; top: 160px !important; right: 270px !important;} </style>'
+                                            );
+                                            }
                                         if ("our-little-hero.myshopify.com" == Shopify.shop) {
                                             carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "none");
                                         }
                                         const settingsData = response.records.store_settings.settings_data;
                                         var tBtn = carecartSpinnerJquery('body').find('#wheelify-spin-trigger-cc');
                                     
-                                        if (settingsData.button_position === 'middle_right') {  
-                                            tBtn.css({
-                                                bottom: '48vh',
-                                                right: '-45px',
-                                                transform: 'rotate(270deg)'
-                                            });
-                                        }
-                                        else if (settingsData.button_position === 'bottom_right') {
-                                            tBtn.css({
-                                                bottom: '8vh',
-                                                right: '20px'
-                                            });
-                                        }//new added
-                                        else if (settingsData.button_position === 'bottom_left') {
-                                            tBtn.css({
-                                                left: '20px'
-                                            });
-                                        } else if (settingsData.button_position === 'middle_left') {
-                                            tBtn.css({
-                                                left: '-48px',
-                                                bottom: '30vh',
-                                                transform: 'rotate(270deg)'
-                                            });
-                                        }
+                                        // if (settingsData.button_position === 'middle_right') {  
+                                        //     tBtn.css({
+                                        //         bottom: '48vh',
+                                        //         right: '-45px',
+                                        //         transform: 'rotate(270deg)'
+                                        //     });
+                                        // }
+                                        // else if (settingsData.button_position === 'bottom_right') {
+                                        //     tBtn.css({
+                                        //         bottom: '8vh',
+                                        //         right: '20px'
+                                        //     });
+                                        // }//new added
+                                        // else if (settingsData.button_position === 'bottom_left') {
+                                        //     tBtn.css({
+                                        //         left: '20px'
+                                        //     });
+                                        // } else if (settingsData.button_position === 'middle_left') {
+                                        //     tBtn.css({
+                                        //         left: '-48px',
+                                        //         bottom: '30vh',
+                                        //         transform: 'rotate(270deg)'
+                                        //     });
+                                        // }
 
                                         // Trigger Button Margin
                                         
