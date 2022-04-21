@@ -1423,6 +1423,16 @@
                  }, 3000);
              }
          }
+         else
+         {
+            if (Shopify.shop == "moriofficial.myshopify.com") 
+            {
+                $jq321("head").append($jq321("<link/>", {
+                    rel: "stylesheet",
+                    href: serverUrl.cssQuick + "?v" + version
+                }));
+            }    
+         }
          
          // TRUST BADGES CALL
          if (apiResponse && apiResponse.trustBadges && apiResponse.trustBadges != false) 
@@ -2163,6 +2173,19 @@
         $jq321("head").append(
           '<style type="text/css">.notifyjs-corner{margin-top: 0px !important;}   </style>'
         );
+    }
+
+    if (Shopify.shop == "moriofficial.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+                '.shopify-section .swiper-slide {height:100%;}' +
+                '@media only screen and (max-width:768px){.shopify-section .swiper-slide{width:100%!important;}.shopify-section .swiper-button-prev, .shopify-section .swiper-button-next{display:none !important;}}' +
+                '.shopify-section .swiper-container {max-height: 100%;height:100%;}' +
+                '.shopify-section .swiper-button-prev, .shopify-section  .swiper-button-next{position: absolute;top: 50%;width:44px;height:44px;z-index: 10;cursor: pointer;display: flex;align-items: center;background-color: #fff;color: #757575;}' +
+                '.shopify-section .swiper-button-next:after, .shopify-section .swiper-container-rtl .swiper-button-prev:after, .shopify-section .swiper-button-prev:after{display:none;}' +
+            '</style>'
+            );
     }
 
      /** Stock for variants **/
