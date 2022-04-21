@@ -2889,7 +2889,7 @@
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
 
                 if(Shopify.shop == "giovanco.myshopify.com") {
-                    carecartSpinnerJquery('head').append('<style type="text/css">.triggerButton_shake{animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite !important; transform: translate3d(0,0,0) !important; backface-visibility: hidden !important; perspective: 1000px !important;}</style>');
+                    carecartSpinnerJquery('head').append('<style type="text/css">.triggerButton_shake{animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both infinite !important; transform: translate3d(0,0,0) !important; backface-visibility: hidden !important; perspective: 1000px !important;}</style>');
                 }
 
                 if (Shopify.shop == 'the-party-champions.myshopify.com') {
