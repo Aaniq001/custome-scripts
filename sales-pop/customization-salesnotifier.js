@@ -2159,6 +2159,12 @@
         finalSelector = masterSelector[0];
     }
 
+    if (Shopify.shop == "onlydoveacollection.myshopify.com") {
+        $jq321("head").append(
+          '<style type="text/css">.notifyjs-corner{margin-top: 0px !important;}   </style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
