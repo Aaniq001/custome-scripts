@@ -1,5 +1,5 @@
 //******* @author: CareCart App-Wheelify - Rehan Azaz *******************************************
-//****** Store Frontend JS - carecartSpinnerApp.js GH v.6.0.0 - Build ver 2.0.26 *******************
+//****** Store Frontend JS - carecartSpinnerApp.js GH v.6.0.0 - Build ver 2.0.29 *******************
 //****** Updated at: 18-Feb-2022, 11:52 AM  ********************************************************
 
 (function () {
@@ -8,7 +8,7 @@
 
     var API_URL = 'https://app-spinner.carecart.io/';
 
-    var CDN_WHEELIFY_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-wheelify@2.0.26/';
+    var CDN_WHEELIFY_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-wheelify@2.0.29/';
 
     var dataSpin = false;
 
@@ -1323,147 +1323,135 @@
                                     carecartSpinnerJquery("head").append(
                                     '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight{ min-height: 560px;}} </style>'
                                 );
-                                if(Shopify.shop === 'ultima-active.myshopify.com'){
-                                    carecartSpinnerJquery("head").append(
-                                        '<style type="text/css"> @media only screen and (max-width: 768px){#cc-spin-a-sale-consent-checkbox{width:auto !important;min-width:auto!important;}} </style>'
-                                    );
-                                    
-                                }
+
                                 /* Append triggered button */
                                     if (response.records.store_settings.settings_data.is_triggered_enable && parseInt(response.records.store_settings.settings_data.is_triggered_enable) == 1) {
-                                        // carecartSpinnerJquery("body").append(response.records.store_front_trigger_button);
-                                        if (Shopify.shop == "qinao.myshopify.com") {
-                                            console.log("heloo",carecartSpinnerJquery(".sc-hAcGzb.bAQARH.pf-50_"))
-                                            carecartSpinnerJquery(".sc-hAcGzb.bAQARH.pf-50_").append(response.records.store_front_trigger_button);
-                                            carecartSpinnerJquery("head").append(
-                                              '<style type="text/css"> #wheelify-spin-trigger-cc {position: absolute !important; top: 160px !important; right: 270px !important;} </style>'
-                                            );
-                                            }
+                                        carecartSpinnerJquery("body").append(response.records.store_front_trigger_button);
                                         if ("our-little-hero.myshopify.com" == Shopify.shop) {
                                             carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "none");
                                         }
                                         const settingsData = response.records.store_settings.settings_data;
                                         var tBtn = carecartSpinnerJquery('body').find('#wheelify-spin-trigger-cc');
                                     
-                                        if (settingsData.button_position === 'middle_right') {  
-                                            tBtn.css({
-                                                bottom: '48vh',
-                                                right: '-45px',
-                                                transform: 'rotate(270deg)'
-                                            });
-                                        }
-                                        else if (settingsData.button_position === 'bottom_right') {
-                                            tBtn.css({
-                                                bottom: '8vh',
-                                                right: '20px'
-                                            });
-                                        }//new added
-                                        else if (settingsData.button_position === 'bottom_left') {
-                                            tBtn.css({
-                                                left: '20px'
-                                            });
-                                        } else if (settingsData.button_position === 'middle_left') {
-                                            tBtn.css({
-                                                left: '-48px',
-                                                bottom: '30vh',
-                                                transform: 'rotate(270deg)'
-                                            });
-                                        }
+                                        // if (settingsData.button_position === 'middle_right') {  
+                                        //     tBtn.css({
+                                        //         bottom: '48vh',
+                                        //         right: '-45px',
+                                        //         transform: 'rotate(270deg)'
+                                        //     });
+                                        // }
+                                        // else if (settingsData.button_position === 'bottom_right') {
+                                        //     tBtn.css({
+                                        //         bottom: '8vh',
+                                        //         right: '20px'
+                                        //     });
+                                        // }//new added
+                                        // else if (settingsData.button_position === 'bottom_left') {
+                                        //     tBtn.css({
+                                        //         left: '20px'
+                                        //     });
+                                        // } else if (settingsData.button_position === 'middle_left') {
+                                        //     tBtn.css({
+                                        //         left: '-48px',
+                                        //         bottom: '48vh',
+                                        //         transform: 'rotate(270deg)'
+                                        //     });
+                                        // }
 
                                         // Trigger Button Margin
                                         
-                                        // if(settingsData.button_position === 'middle_right' ) {
-                                        //     let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                        //     triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
-                                        //     tBtn.css({
-                                        //         right: '-45px', 
-                                        //         bottom: triggerBottom+'vh',
-                                        //         transform: 'rotate(270deg)'
-                                        //     });
-                                        //     if(carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')){
-                                        //         carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
-                                        //         setInterval(function(){
-                                        //             shakeVertical('#wheelify-spin-trigger-cc', 50, triggerBottom, 10);
-                                        //         }, 3000);
-                                        //     }
-                                        // }
+                                        if(settingsData.button_position === 'middle_right' ) {
+                                            let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
+                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+                                            tBtn.css({
+                                                right: '-45px', 
+                                                bottom: triggerBottom+'vh',
+                                                transform: 'rotate(270deg)'
+                                            });
+                                            if(carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')){
+                                                carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
+                                                setInterval(function(){
+                                                    shakeVertical('#wheelify-spin-trigger-cc', 50, triggerBottom, 10);
+                                                }, 3000);
+                                            }
+                                        }
 
-                                        // else if(settingsData.button_position === 'middle_left' ) {
-                                        //     let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                        //     triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
-                                        //     tBtn.css({
-                                        //         left: '-45px',
-                                        //         bottom: triggerBottom+'vh',
-                                        //         transform: 'rotate(270deg)'
-                                        //     });
-                                        //     if(carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')){
-                                        //         carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
-                                        //         setInterval(function(){
-                                        //             shakeVertical('#wheelify-spin-trigger-cc', 50, triggerBottom, 10);
-                                        //         }, 3000);
-                                        //     }
-                                        // }
+                                        else if(settingsData.button_position === 'middle_left' ) {
+                                            let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
+                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+                                            tBtn.css({
+                                                left: '-45px',
+                                                bottom: triggerBottom+'vh',
+                                                transform: 'rotate(270deg)'
+                                            });
+                                            if(carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')){
+                                                carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
+                                                setInterval(function(){
+                                                    shakeVertical('#wheelify-spin-trigger-cc', 50, triggerBottom, 10);
+                                                }, 3000);
+                                            }
+                                        }
                                         
-                                        // else if(settingsData.button_position === 'bottom_right' ) {
-                                        //     let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                        //     triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
-                                        //     tBtn.css({
-                                        //         bottom: triggerBottom+'vh',
-                                        //         right: '20px'
-                                        //     });
-                                        // }
+                                        else if(settingsData.button_position === 'bottom_right' ) {
+                                            let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
+                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+                                            tBtn.css({
+                                                bottom: triggerBottom+'vh',
+                                                right: '20px'
+                                            });
+                                        }
                                         
-                                        // else if(settingsData.button_position === 'bottom_left' ) {
-                                        //     let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                        //     triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
-                                        //     tBtn.css({
-                                        //         bottom: triggerBottom+'vh',
-                                        //         left: '20px'
-                                        //     });
-                                        // }
+                                        else if(settingsData.button_position === 'bottom_left' ) {
+                                            let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
+                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+                                            tBtn.css({
+                                                bottom: triggerBottom+'vh',
+                                                left: '20px'
+                                            });
+                                        }
 
-                                        // var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
+                                        var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
 
-                                        // if (windowWidth < 575) {
-                                        //     if(settingsData.button_position === 'middle_right' ) {
-                                        //         let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
-                                        //         triggerBottom === 0 ? triggerBottom =  15 : triggerBottom += 15;
-                                        //         tBtn.css({
-                                        //             right: '-45px', 
-                                        //             bottom: triggerBottom+'vh',
-                                        //             transform: 'rotate(270deg)'
-                                        //         });
-                                        //     }
+                                        if (windowWidth < 575) {
+                                            if(settingsData.button_position === 'middle_right' ) {
+                                                let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
+                                                triggerBottom === 0 ? triggerBottom =  15 : triggerBottom += 15;
+                                                tBtn.css({
+                                                    right: '-45px', 
+                                                    bottom: triggerBottom+'vh',
+                                                    transform: 'rotate(270deg)'
+                                                });
+                                            }
                                             
-                                        //     else if(settingsData.button_position === 'middle_left' ) {
-                                        //         let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
-                                        //         triggerBottom === 0 ? triggerBottom =  15 : triggerBottom += 15;
-                                        //         tBtn.css({
-                                        //             left: '-48px',
-                                        //             bottom: triggerBottom+'vh',
-                                        //             transform: 'rotate(270deg)'
-                                        //         });
-                                        //     }
+                                            else if(settingsData.button_position === 'middle_left' ) {
+                                                let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
+                                                triggerBottom === 0 ? triggerBottom =  15 : triggerBottom += 15;
+                                                tBtn.css({
+                                                    left: '-48px',
+                                                    bottom: triggerBottom+'vh',
+                                                    transform: 'rotate(270deg)'
+                                                });
+                                            }
                                             
-                                        //     else if(settingsData.button_position === 'bottom_right' ) {
-                                        //         let triggerBottom = settingsData.trigger_btn_margin_mobile / 4;
-                                        //         triggerBottom === 0 ? triggerBottom =  10 : triggerBottom += 10;
-                                        //         console.log(triggerBottom)
-                                        //         tBtn.css({
-                                        //             bottom: triggerBottom+'vh',
-                                        //             right: '20px'
-                                        //         });
-                                        //     }
+                                            else if(settingsData.button_position === 'bottom_right' ) {
+                                                let triggerBottom = settingsData.trigger_btn_margin_mobile / 4;
+                                                triggerBottom === 0 ? triggerBottom =  10 : triggerBottom += 10;
+                                                console.log(triggerBottom)
+                                                tBtn.css({
+                                                    bottom: triggerBottom+'vh',
+                                                    right: '20px'
+                                                });
+                                            }
                                             
-                                        //     else if(settingsData.button_position === 'bottom_left' ) {
-                                        //         let triggerBottom = settingsData.trigger_btn_margin_mobile / 4;
-                                        //         triggerBottom === 0 ? triggerBottom =  10 : triggerBottom += 10;
-                                        //         tBtn.css({
-                                        //             bottom: triggerBottom+'vh',
-                                        //             left: '20px'
-                                        //         });
-                                        //     }
-                                        // }
+                                            else if(settingsData.button_position === 'bottom_left' ) {
+                                                let triggerBottom = settingsData.trigger_btn_margin_mobile / 4;
+                                                triggerBottom === 0 ? triggerBottom =  10 : triggerBottom += 10;
+                                                tBtn.css({
+                                                    bottom: triggerBottom+'vh',
+                                                    left: '20px'
+                                                });
+                                            }
+                                        }
                                     }
                                 
                                 else {
@@ -2181,6 +2169,7 @@
                         dataType: "json",
                         success: function (response) {
                             if (response.records !== null) {
+                                campaignId = response.records.campaign_id; // Campaign Module
                                 if (response.records.parent_campaign_id && response.records.parent_campaign_id !== "" && response.records.parent_campaign_id !== "undefined") {
                                     campaignId = response.records.parent_campaign_id; // Ab Test Module
                                 }
@@ -2898,6 +2887,11 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+
+                if(Shopify.shop == "giovanco.myshopify.com") {
+                    carecartSpinnerJquery('head').append('<style type="text/css">.triggerButton_shake{animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite !important; transform: translate3d(0,0,0) !important; backface-visibility: hidden !important; perspective: 1000px !important;}</style>');
+                }
+
                 if (Shopify.shop == 'the-party-champions.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">.wheelify-signupContainer ::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: #aaaaaa;}</style>');
                     //console.log("SAS https://partychampions.com/");
