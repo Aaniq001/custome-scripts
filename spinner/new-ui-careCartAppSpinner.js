@@ -2888,9 +2888,7 @@
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
 
-                if(Shopify.shop == "giovanco.myshopify.com") {
-                    carecartSpinnerJquery('head').append('<style type="text/css">.triggerButton_shake{animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both infinite !important; transform: translate3d(0,0,0) !important; backface-visibility: hidden !important; perspective: 1000px !important;}</style>');
-                }
+               
 
                 if (Shopify.shop == 'the-party-champions.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">.wheelify-signupContainer ::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: #aaaaaa;}</style>');
@@ -2924,6 +2922,11 @@
                 if (Shopify.shop == 'gammalife.myshopify.com') {
                     if (carecartSpinnerJquery.browser.mobile) {
                         carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {bottom: 2vh !important;}</style>');
+                    }
+                }
+                if(Shopify.shop == "giovanco.myshopify.com") {
+                    if(navigator.userAgent.match(/chrome|chromium|crios/i)){
+                        carecartSpinnerJquery('head').append('<style type="text/css">.triggerButton_shake{animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both infinite !important; transform: translate3d(0,0,0) !important; backface-visibility: hidden !important; perspective: 1000px !important;}</style>');
                     }
                 }
             });
