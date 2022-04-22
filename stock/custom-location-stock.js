@@ -106,9 +106,16 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "fabricatextiles.myshopify.com") 
     {
         var meta = {"product":{"id":__st.rid}};
-    } else if (Shopify.shop == "rossocoffee.myshopify.com") {
+    } 
+    else if (Shopify.shop == "rossocoffee.myshopify.com") 
+    {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "happy-nocnoc.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+    }
+
 
     $jq321.ajax({
         type: "GET",
@@ -206,6 +213,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         finalSelector = customSelector[0];
         console.log(customSelector);
     }
+
+    if (Shopify.shop == "happy-nocnoc.myshopify.com") {
+        customSelector = $jq321(".product-block--price");
+        finalSelector = customSelector[0];
+        console.log(customSelector);
+    }
+
+    
     
     function stockCountdown(response) {
          
