@@ -2188,6 +2188,16 @@
             );
     }
 
+    if (Shopify.shop == "poopoo-llc.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+                '.visitor-counter-content-box-carecartbysalespop-2020 {height: auto !important; margin-bottom: 20px !important;}' +
+                '.counter-text-carecartbysalespop-2020 {min-height: auto !important;}' +
+            '</style>'
+            );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
