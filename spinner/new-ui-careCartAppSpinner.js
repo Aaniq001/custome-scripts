@@ -2926,7 +2926,10 @@
                 }
                 if(Shopify.shop == "giovanco.myshopify.com") {
                     if(navigator.userAgent.match(/chrome|chromium|crios/i)){
-                        carecartSpinnerJquery('head').append('<style type="text/css">.triggerButton_shake{animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both infinite !important; transform: translate3d(0,0,0) !important; backface-visibility: hidden !important; perspective: 1000px !important;}</style>');
+                        carecartSpinnerJquery('head').append('<style type="text/css">.triggerButton_shake{animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite !important; transform: translate3d(0,0,0) !important; backface-visibility: hidden !important; perspective: 700px !important;}</style>');
+                    }
+                    else{
+                        carecartSpinnerJquery("#wheelify-spin-trigger-cc").removeClass("triggerButton_shake");
                     }
                 }
             });
