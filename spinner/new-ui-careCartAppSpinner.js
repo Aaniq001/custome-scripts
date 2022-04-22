@@ -1324,6 +1324,15 @@
                                     '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight{ min-height: 560px;}} </style>'
                                 );
 
+                                if(Shopify.shop == 'happilo-international-private-limited.myshopify.com') {
+                                    carecartSpinnerJquery("head").append(
+                                        '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {height: 500px !important;}} </style>'
+                                    );
+                                    carecartSpinnerJquery("head").append(
+                                        '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview{height: 650px !important;}} </style>'
+                                    );  
+                                }
+                                
                                 /* Append triggered button */
                                     if (response.records.store_settings.settings_data.is_triggered_enable && parseInt(response.records.store_settings.settings_data.is_triggered_enable) == 1) {
                                         carecartSpinnerJquery("body").append(response.records.store_front_trigger_button);
@@ -2281,9 +2290,18 @@
                                 carecartSpinnerJquery("head").append(
                                     '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {min-height: 468px;}} </style>'
                                 );  
-                                    carecartSpinnerJquery("head").append(
+                                carecartSpinnerJquery("head").append(
                                     '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight{ min-height: 560px;}} </style>'
                                 );
+
+                                if(Shopify.shop == 'happilo-international-private-limited.myshopify.com') {
+                                    carecartSpinnerJquery("head").append(
+                                        '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {height: 500px !important;}} </style>'
+                                    );
+                                    carecartSpinnerJquery("head").append(
+                                        '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview{height: 650px !important;}} </style>'
+                                    );  
+                                }
 
                                    /*********** Phone Number Collection ************/
 
