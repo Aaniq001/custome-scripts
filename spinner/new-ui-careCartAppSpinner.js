@@ -1332,10 +1332,11 @@
                                         '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview{height: 650px !important;}} </style>'
                                     );  
                                 }
-                                
+
                                 /* Append triggered button */
                                     if (response.records.store_settings.settings_data.is_triggered_enable && parseInt(response.records.store_settings.settings_data.is_triggered_enable) == 1) {
-                                        carecartSpinnerJquery("body").append(response.records.store_front_trigger_button);
+                                        carecartSpinnerJquery("body").append(response.records.store_front_trigger_button); 
+                                        if(Shopify.shop == "")
                                         if ("our-little-hero.myshopify.com" == Shopify.shop) {
                                             carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "none");
                                         }
@@ -2944,14 +2945,14 @@
                 }
                 if(Shopify.shop == "giovanco.myshopify.com") {
                     carecartSpinnerJquery("#wheelify-spin-trigger-cc").removeClass("triggerButton_shake");
-                    $( "#wheelify-spin-trigger-cc" ).effect( "shake" );
-                    // if(navigator.userAgent.match(/chrome|chromium|crios/i)){
-                    //     carecartSpinnerJquery('head').append('<style type="text/css">.triggerButton_shake{animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite !important; transform: translate3d(0,0,0) !important; backface-visibility: hidden !important; perspective: 700px !important;}</style>');
-                    // }
-                    // else{
-                    //     carecartSpinnerJquery("#wheelify-spin-trigger-cc").removeClass("triggerButton_shake");
-                    //     $( "#wheelify-spin-trigger-cc" ).effect( "shake" );
-                    // }
+                    carecartSpinnerJquery( "#wheelify-spin-trigger-cc" ).effect( "shake" );
+                    if(navigator.userAgent.match(/chrome|chromium|crios/i)){
+                        carecartSpinnerJquery('head').append('<style type="text/css">.triggerButton_shake{animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite !important; transform: translate3d(0,0,0) !important; backface-visibility: hidden !important; perspective: 700px !important;}</style>');
+                    }
+                    else{
+                        carecartSpinnerJquery("#wheelify-spin-trigger-cc").removeClass("triggerButton_shake");
+                        carecartSpinnerJquery( "#wheelify-spin-trigger-cc" ).effect( "shake" );
+                    }
                 }
             });
 
