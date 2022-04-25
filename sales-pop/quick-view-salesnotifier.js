@@ -1796,6 +1796,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                               '</style>');
     }
 
+    if (Shopify.shop == "lush-coco-skin.myshopify.com") 
+    {
+        $jq321("head").append('<style type="text/css">' +
+                                '.card-wrapper .card .card__inner .card__media{z-index:0 !important;}' +  
+                              '</style>');
+    }
+
     /** Stock for variants **/
     function makeSelectors(variantHeading) {
         
