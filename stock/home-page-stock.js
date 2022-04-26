@@ -149,6 +149,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 7198671470764;
     }
+    if (Shopify.shop == "lodiamo.myshopify.com")
+    {
+        productID = 7360159088834;        
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -199,6 +203,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
     if(Shopify.shop == "cian-o-regan-photography.myshopify.com"){
     	customSelector = $jq321(".grid-view-item__title");
+    	finalSelector = customSelector[0];
+    }
+
+    if(Shopify.shop == "lodiamo.myshopify.com")
+    {
+        customSelector = $jq321(".product-form__item--no-variants");
     	finalSelector = customSelector[0];
     }
     
