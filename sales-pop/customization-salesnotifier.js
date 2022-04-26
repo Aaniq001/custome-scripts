@@ -1366,22 +1366,17 @@
           // Time COUNTDOWN CALL
          if(apiResponse && apiResponse.timer && apiResponse.timer!==null)
          {
-            if (Shopify.shop == "love-naelis.myshopify.com")
-            {
-                $jq321("head").append($jq321("<link/>", {
+             /*$jq321("head").append($jq321("<link/>", {
                      rel: "stylesheet",
                      href: serverUrl.cssTimer + "?v" + version
-                 }));
-                timeCountdown(apiResponse.timer);
-            }
-            else
-            {
-                setTimeout(function(){ $jq321("head").append($jq321("<link/>", {
-                    rel: "stylesheet",
-                    href: serverUrl.cssTimer + "?v" + version
-                })); }, 1000);
-                setTimeout(function(){ timeCountdown(apiResponse.timer); }, 2000);
-            }  
+                 }));*/
+             //timeCountdown(apiResponse.timer);
+ 
+             setTimeout(function(){ $jq321("head").append($jq321("<link/>", {
+                     rel: "stylesheet",
+                     href: serverUrl.cssTimer + "?v" + version
+                 })); }, 1000);
+             setTimeout(function(){ timeCountdown(apiResponse.timer); }, 2000);
          }
  
          // VISITOR COUNTER CALL
@@ -1422,16 +1417,6 @@
                      collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
                  }, 3000);
              }
-         }
-         else
-         {
-            if (Shopify.shop == "moriofficial.myshopify.com") 
-            {
-                $jq321("head").append($jq321("<link/>", {
-                    rel: "stylesheet",
-                    href: serverUrl.cssQuick + "?v" + version
-                }));
-            }    
          }
          
          // TRUST BADGES CALL
@@ -1706,6 +1691,16 @@
          $jq321.notify.addStyle('salesPopStyle', {
              html: dataNotification
          });
+ 
+         /*$jq321.notify("hello world", {
+             globalPosition: apiResponse.desktop_position,
+             style: 'salesPopStyle',
+             autoHideDelay: parseInt(apiResponse.display_time) * 1000,
+             showDuration: 600,
+             hideAnimation: 'slideUp',
+             hideDuration: 600,
+             clickToHide: false
+         });*/
  
          if (salespoplib_vars_obj.checkDevice == 'mobile')
          {
@@ -2111,7 +2106,7 @@
     if (Shopify.shop == "turboscrubx.myshopify.com") 
     {
         $jq321("head").append(
-            '<style type="text/css">' + 
+            '<style type="text/css">' +
                 '.visitor-counter-content-box-carecartbysalespop-2020{margin-top: -11px !important;}' +
             '</style>'
             );
@@ -2120,7 +2115,9 @@
         $jq321("head").append(
             '<style type="text/css"> .content-div-visitor-detail-carecartbysalespop-2020{display:flex; justify-content:center;}</style>'
             );
-    }  
+    }
+
+
 
     if (Shopify.shop == "customizedtattoodesign.myshopify.com") {
         $jq321("head").append(
@@ -2132,13 +2129,6 @@
         masterSelector = $jq321("#button-cart");
         finalSelector = masterSelector[0];
     }
-
-    if (Shopify.shop == "tikttrends.myshopify.com")
-    {
-        masterSelector = $jq321(".sc-hiCibw");
-        finalSelector = masterSelector[8];
-    }
-
     if (Shopify.shop == "trusted-trout.myshopify.com")
     {
         masterSelector = $jq321(".purchase-details__buttons");
@@ -2147,7 +2137,6 @@
             '<style type="text/css"> .stock-top{margin-top: 15px;}</style>'
             );
     }
-
     if (Shopify.shop == "compact-studios.myshopify.com") {
         $jq321("head").append(
           '<style type="text/css"> .sale-sticker{background-color: #7A8BC1 !important; color: #fff !important;} .quick-shop-title a{color: #7A8BC1 !important;} .quick-shop-current-price{color: #000 !important;} .quick-shop-was-price{color: #9DA5B3 !important;} .view-full-details a{color: #000 !important}  .quick-product-size-opt span{color: #000 !important} .quick-product-size-opt .radio-toolbar label{margin: 3px !important} .quickshop-quantity input{ border: 1px solid #7A8BC1 !important} .quantity-button.quantity-up{border-color: #7A8BC1 !important;} .quantity-button.quantity-down{border-color: #7A8BC1 !important;} .quick-shop-addtocart button{background-color: #7A8BC1 !important; color: #fff !important;} </style>'
@@ -2156,68 +2145,9 @@
         masterSelector = $jq321(".product-form__controls-group");
         finalSelector = masterSelector[0];
     }
+        
 
-    if (Shopify.shop == "lady-lash.myshopify.com") {
-        $jq321("head").append(
-          '<style type="text/css">.quick-shop-modal{padding-top: 120px !important;} .quick-shop-addtocart button{margin-top: 10px !important; background-color: #Efe7da !important; color: #000 !important;} .sale-sticker{background-color: #Efe7da !important} .view-full-details a{color: #000 !important} .quickshop-quantity input{min-height: 30px  !important; border: 1px solid #Efe7da !important} .quantity-button.quantity-up{border-color: #Efe7da !important;} .quantity-button.quantity-down{border-color: #Efe7da !important;}  </style>'
-        );
-    }
-
-    if (Shopify.shop == "hobo-lax.myshopify.com")
-    {
-        masterSelector = $jq321(".product-price");
-        finalSelector = masterSelector[0];
-    }
-
-    if (Shopify.shop == "onlydoveacollection.myshopify.com") {
-        $jq321("head").append(
-          '<style type="text/css">.notifyjs-corner{margin-top: 0px !important;}   </style>'
-        );
-    }
-
-    if (Shopify.shop == "moriofficial.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">' + 
-                '.shopify-section .swiper-slide {height:100%;}' +
-                '@media only screen and (max-width:768px){.shopify-section .swiper-button-prev, .shopify-section .swiper-button-next{display:none !important;}}' +
-                '.shopify-section .swiper-container {max-height: 100%;height:100%;}' +
-                '.shopify-section .swiper-button-prev, .shopify-section  .swiper-button-next{position: absolute;top: 50%;width:44px;height:44px;z-index: 10;cursor: pointer;display: flex;align-items: center;background-color: #fff;color: #757575;}' +
-                '.shopify-section .swiper-button-next:after, .shopify-section .swiper-container-rtl .swiper-button-prev:after, .shopify-section .swiper-button-prev:after{display:none;}' +
-            '</style>'
-            );
-            var slider =  $jq321(".swiper-slide")
-            var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
-            if(windowWidth < 575 && windowWidth > 320){
-                slider.each(function(s) {
-                    
-                    var width = $jq321(this).width()
-                    
-                    if(width < 250) {
-                        var diff = 300-width;
-                        width += diff;
-                        
-                        $jq321("head").append(`<style type="text/css">.swiper-slide {width: ${width}px !important;}</style>`)
-                        console.log($jq321(this))
-                    }
-                    
-                    
-                });
-            }
-            // console.log(slider)
-           
-    }
-    
-
-    if (Shopify.shop == "poopoo-llc.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">' + 
-                '.visitor-counter-content-box-carecartbysalespop-2020 {height: auto !important; margin-bottom: 20px !important;}' +
-                '.counter-text-carecartbysalespop-2020 {min-height: auto !important;}' +
-            '</style>'
-            );
-    }
+    //console.log(finalSelector);
 
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
@@ -2366,13 +2296,6 @@
          var selectorStock5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
  
-
-         if (Shopify.shop == "sweetlyblends.myshopify.com") {
-            masterSelector = $jq321(".apb_product_detail_options_container");
-            finalSelector = masterSelector[0];
-        }   
-
-
          if (responseStock.above_cart == 1) 
          {
             if (masterSelector2.length > 0) 
@@ -2493,13 +2416,6 @@
              if (t.days == 0 && t.hours == 0 && t.minutes == 0 && t.seconds == 0) {
                  clearInterval(timeinterval);
              }
-
-             if (t.days < 0 || t.hours < 0 || t.minutes < 0 || t.seconds < 0) {
-                $jq321(".days").html('00');
-                $jq321(".hours").html('00');
-                $jq321(".minutes").html('00');
-                $jq321(".seconds").html('00');
-            }
          }
  
          updateClock();
@@ -2571,11 +2487,6 @@
          var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
          var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
  
-         if (Shopify.shop == "sweetlyblends.myshopify.com") {
-            masterSelector = $jq321(".apb_product_detail_promotion_text");
-            finalSelector = masterSelector[1];
-        }   
-
          if (response.above_cart == 1) {
             if (masterSelector.length > 0) {
                 $jq321(response.view).insertBefore(finalSelector);
@@ -2934,12 +2845,34 @@
      // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
      function trustBadges(trustBadgesResponse)
      {
+
+        if (Shopify.shop == "cap-point.myshopify.com")
+        {
+            let text = window.location.pathname;
+            let result = text.indexOf("products");
+
+            if(result == -1){
+                return;
+            }    
+        }
+
          if (trustBadgesResponse.product_page_show_hide == 1)
          {
+             /* var selectorTrustBadges = $jq321("form[action='/cart/add']:first");
+             selectorTrustBadges.append(trustBadgesResponse.view); */
+
             var selectorTrustBadges1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges2 = $jq321("form[action='/cart/add']");
             var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
+            var masterSelector = $jq321(".groups-btn");
+            console.log(masterSelector);
+            finalSelector= masterSelector[0]
+
+            if (Shopify.shop == "cap-point.myshopify.com")
+            {
+                $jq321(trustBadgesResponse.view).insertAfter(finalSelector);
+            }
 
             if (masterSelector.length == 1) 
             {
@@ -2950,7 +2883,7 @@
                 else
                 {
                     $jq321(".buy-btn-space").append(trustBadgesResponse.view);
-                }
+                }   
             }   
             else if (selectorTrustBadges1.length == 1)
             {
