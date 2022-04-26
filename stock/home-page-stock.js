@@ -153,6 +153,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 7360159088834;        
     }
+    if (Shopify.shop == "windaroma.myshopify.com")
+    {
+        productID = 7350529163425;        
+    }
 
     $jq321.ajax({
         type: "GET",
