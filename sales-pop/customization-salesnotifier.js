@@ -2180,13 +2180,34 @@
         $jq321("head").append(
             '<style type="text/css">' + 
                 '.shopify-section .swiper-slide {height:100%;}' +
-                '@media only screen and (max-width:768px){.shopify-section .swiper-slide{width:100%!important;}.shopify-section .swiper-button-prev, .shopify-section .swiper-button-next{display:none !important;}}' +
+                '@media only screen and (max-width:768px){.shopify-section .swiper-button-prev, .shopify-section .swiper-button-next{display:none !important;}}' +
                 '.shopify-section .swiper-container {max-height: 100%;height:100%;}' +
                 '.shopify-section .swiper-button-prev, .shopify-section  .swiper-button-next{position: absolute;top: 50%;width:44px;height:44px;z-index: 10;cursor: pointer;display: flex;align-items: center;background-color: #fff;color: #757575;}' +
                 '.shopify-section .swiper-button-next:after, .shopify-section .swiper-container-rtl .swiper-button-prev:after, .shopify-section .swiper-button-prev:after{display:none;}' +
             '</style>'
             );
+            var slider =  $jq321(".swiper-slide")
+            var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
+            if(windowWidth < 575 && windowWidth > 320){
+                slider.each(function(s) {
+                    
+                    var width = $jq321(this).width()
+                    
+                    if(width < 250) {
+                        var diff = 300-width;
+                        width += diff;
+                        
+                        $jq321("head").append(`<style type="text/css">.swiper-slide {width: ${width}px !important;}</style>`)
+                        console.log($jq321(this))
+                    }
+                    
+                    
+                });
+            }
+            // console.log(slider)
+           
     }
+    
 
     if (Shopify.shop == "poopoo-llc.myshopify.com") 
     {

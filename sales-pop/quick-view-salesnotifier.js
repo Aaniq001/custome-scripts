@@ -1803,6 +1803,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                               '</style>');
     }
 
+
     /** Stock for variants **/
     function makeSelectors(variantHeading) {
         
