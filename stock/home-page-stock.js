@@ -161,6 +161,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 6988879265826;
     }
+    if(Shopify.shop == "skintagremover11.myshopify.com")
+    {
+        productID = 7544466800852;
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -213,13 +217,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	customSelector = $jq321(".grid-view-item__title");
     	finalSelector = customSelector[0];
     }
-
-    if(Shopify.shop == "lodiamo.myshopify.com")
+    if(Shopify.shop == "skintagremover11.myshopify.com")
     {
-        customSelector = $jq321(".product-form__item--no-variants");
+        customSelector = $jq321("#new-form-atc");
     	finalSelector = customSelector[0];
     }
-    
 
      function stockCountdown(response) {
          
