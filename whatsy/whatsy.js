@@ -201,4 +201,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 			return true;
 		}
 	}
+	/**
+	 * Custom fixes starts from here
+	 */
+	if (Shopify.shop == "iamfenrir.myshopify.com") {
+		carecartWhatsApp("body").append("<style type='text/css'>.wa-custom-chat-btn div:empty{display:block !important;}</style>");
+	}
 });
