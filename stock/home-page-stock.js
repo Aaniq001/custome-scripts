@@ -157,6 +157,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 7350529163425;        
     }
+    if(Shopify.shop == "harvest-blending.myshopify.com")
+    {
+        productID = 6988879265826;
+    }
 
     $jq321.ajax({
         type: "GET",
