@@ -2145,8 +2145,20 @@
         masterSelector = $jq321(".product-form__controls-group");
         finalSelector = masterSelector[0];
     }
+    if (Shopify.shop == "seakisses.myshopify.com") {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.close-quickshop{padding:0;}'+
+                '.sale-sticker{background-color: #779DB9 !important; color: #fff !important;}'+
+                '.view-full-details a{color: #779DB9 !important}'+  
+                '.quickshop-quantity input{ border: 1px solid #779DB9 !important}'+ 
+                '.quantity-button.quantity-up{border-color: #779DB9 !important;}'+ 
+                '.quantity-button.quantity-down{border-color: #779DB9 !important;}'+ 
+                '.quick-shop-addtocart button{background-color: #779DB9 !important; color: #fff !important;}'+ 
+            '</style>'
+        );
+    }
         
-
     //console.log(finalSelector);
 
      /** Stock for variants **/
