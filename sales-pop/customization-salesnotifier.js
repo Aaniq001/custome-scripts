@@ -2158,6 +2158,13 @@
             '</style>'
         );
     }
+    if (Shopify.shop == "mausipe.myshopify.com") {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.card-wrapper .card .card__inner .card__media{z-index:0 !important;}'+ 
+            '</style>'
+        );
+    }
         
     //console.log(finalSelector);
 
