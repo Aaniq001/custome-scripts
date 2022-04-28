@@ -2954,6 +2954,11 @@
                         carecartSpinnerJquery( "#wheelify-spin-trigger-cc" ).effect( "shake" );
                     }
                 }
+
+                if(Shopify.shop == "celovis.myshopify.com"){
+                    carecartSpinnerJquery('head').append('<style type="text/css">@media only screen and (max-width: 768px){ input { width: auto !important; min-width: auto !important;} #wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight {min-height: 415px !important;}}</style>');
+                }
+                    
             });
 
         }, 1000);
