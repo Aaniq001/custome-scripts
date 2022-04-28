@@ -2179,6 +2179,11 @@
             '</style>'
         );
     }
+    if (Shopify.shop == "onlydoveacollection.myshopify.com") {
+        $jq321("head").append(
+          '<style type="text/css">.notifyjs-corner{margin-top: 0px !important;}   </style>'
+        );
+    }
 
     //console.log(finalSelector);
 
@@ -2880,6 +2885,15 @@
      {
 
         if (Shopify.shop == "cap-point.myshopify.com")
+        {
+            let text = window.location.pathname;
+            let result = text.indexOf("products");
+
+            if(result == -1){
+                return;
+            }    
+        }
+        if (Shopify.shop == "onlydoveacollection.myshopify.com")
         {
             let text = window.location.pathname;
             let result = text.indexOf("products");
