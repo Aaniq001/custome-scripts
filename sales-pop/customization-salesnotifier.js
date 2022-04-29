@@ -2184,6 +2184,11 @@
           '<style type="text/css">.notifyjs-corner{margin-top: 0px !important;}   </style>'
         );
     }
+    if (Shopify.shop == "inspiranzadesigns.myshopify.com")
+    {
+        masterSelector = $jq321(".my-product-block");
+        finalSelector = masterSelector[0];
+    }
 
     //console.log(finalSelector);
 
