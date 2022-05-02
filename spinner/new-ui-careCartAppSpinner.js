@@ -2961,6 +2961,7 @@
                 
                 if(Shopify.shop == "queens-growth.myshopify.com"){
                     carecartSpinnerJquery('head').append('<style type="text/css"> #cc-spin-a-sale-consent-checkbox {position: inherit !important; width: auto !important; min-width: auto !important;} </style>');
+                    carecartSpinnerJquery('head').append('<style type="text/css">#cc-spin-a-sale-consent-checkbox{ width:20px !important; height:20px !important; } .checkbox label:after{ display:none !important; } .checkbox input[type=checkbox]{ z-index: 1 !important; opacity: 1 !important; } </style>');
                 }
                     
             });
