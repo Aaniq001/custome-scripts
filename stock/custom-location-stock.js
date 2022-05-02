@@ -115,6 +115,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "smartcooks-de.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     $jq321.ajax({
@@ -220,6 +224,19 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         console.log(customSelector);
     }
 
+    if (Shopify.shop == "smartcooks-de.myshopify.com") {
+        customSelector = $jq321(".sc-ehIJor.bCFyQS.pf-19_");
+        finalSelector = customSelector[0];
+        if(customSelector.length <= 0){
+            customSelector = $jq321(".sc-ehIJor.bCFyQS.pf-18_");
+            finalSelector = customSelector[0];
+        }
+        if(customSelector.length <= 0) {
+            customSelector = $jq321(".price__sale");
+            finalSelector = customSelector[0];
+        }
+        console.log(customSelector);
+    }
     
     
     function stockCountdown(response) {
