@@ -1378,7 +1378,16 @@
                  })); }, 1000);
              setTimeout(function(){ timeCountdown(apiResponse.timer); }, 2000);
          }
- 
+  // TRUST BADGES CALL
+  if (apiResponse && apiResponse.trustBadges && apiResponse.trustBadges != false) 
+  {
+      $jq321("head").append($jq321("<link/>", {
+          rel: "stylesheet",
+          href: serverUrl.cssTrustBadges + "?v" + version
+      }));
+
+      trustBadges(apiResponse.trustBadges);
+  }
          // VISITOR COUNTER CALL
          if (apiResponse && apiResponse.visitor && apiResponse.visitor !== null) {
             
@@ -1419,16 +1428,7 @@
              }
          }
          
-         // TRUST BADGES CALL
-         if (apiResponse && apiResponse.trustBadges && apiResponse.trustBadges != false) 
-         {
-             $jq321("head").append($jq321("<link/>", {
-                 rel: "stylesheet",
-                 href: serverUrl.cssTrustBadges + "?v" + version
-             }));
- 
-             trustBadges(apiResponse.trustBadges);
-         }
+        
       
          //Timer on collections
         if (apiResponse && apiResponse.timerCollection && apiResponse.timerCollectionPagesStatus == 1) {
@@ -2184,6 +2184,7 @@
           '<style type="text/css">.notifyjs-corner{margin-top: 0px !important;}   </style>'
         );
     }
+
     if (Shopify.shop == "inspiranzadesigns.myshopify.com")
     {
         masterSelector = $jq321(".my-product-block");
@@ -2529,7 +2530,12 @@
          var selectorVisitor2 = $jq321("form[action='/cart/add']");
          var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
          var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
- 
+         if(Shopify.shop == "onlydoveacollection.myshopify.com"){
+             masterSelector = $jq321(".product-form")
+             masterSelector = masterSelector[0]
+         }
+         console.log(masterSelector)
+         
          if (response.above_cart == 1) {
             if (masterSelector.length > 0) {
                 $jq321(response.view).insertBefore(finalSelector);
