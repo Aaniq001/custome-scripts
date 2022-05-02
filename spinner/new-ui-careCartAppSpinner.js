@@ -2960,7 +2960,7 @@
                 }
                 
                 if(Shopify.shop == "queens-growth.myshopify.com"){
-                    carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin_a_sale_cc_store_front_module.checkbox {padding: 0px !important;} </style>');
+                    carecartSpinnerJquery('head').append('<style type="text/css"> #cc-spin-a-sale-consent-checkbox {position: inherit !important; width: auto !important; min-width: auto !important;} </style>');
                 }
                     
             });
