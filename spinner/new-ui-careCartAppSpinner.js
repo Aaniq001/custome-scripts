@@ -2958,6 +2958,10 @@
                 if(Shopify.shop == "celovis.myshopify.com"){
                     carecartSpinnerJquery('head').append('<style type="text/css">@media only screen and (max-width: 768px){ #cc-spin-a-sale-consent-checkbox { width: auto !important; min-width: auto !important;} #wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight {min-height: 415px !important;}}</style>');
                 }
+                
+                if(Shopify.shop == "queens-growth.myshopify.com"){
+                    carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin_a_sale_cc_store_front_module.checkbox {padding: 0px !important;} </style>');
+                }
                     
             });
 
