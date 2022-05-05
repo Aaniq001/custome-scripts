@@ -2193,7 +2193,6 @@
 
     if (Shopify.shop == "single-online-194.myshopify.com")
     {
-        
         $jq321("head").append(
             '<style type="text/css"> .ProductForm {margin-top: 0px !important;}  .visitor-counter-content-box-carecartbysalespop-2020 {margin-top: 0px !important; height: 50px !important; }</style> </style>'
           );

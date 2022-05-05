@@ -119,6 +119,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "jembaly.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     $jq321.ajax({
@@ -236,9 +239,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             finalSelector = customSelector[0];
         }
         console.log(customSelector);
-    }
+    }    
     
-    
+
     function stockCountdown(response) {
          
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -322,6 +325,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var selectorTimer4 = $jq321("form[action='/cart/add']:first");
         var selectorTimer5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
         var selectorTimer6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
+
+        if (Shopify.shop == "jembaly.myshopify.com") {
+            customSelector = $jq321(".ProductMeta__Text");
+            finalSelector = customSelector[0];
+            console.log(customSelector);
+        }
 
         if (t.above_cart == 1)
         {
