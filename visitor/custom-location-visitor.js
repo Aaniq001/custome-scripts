@@ -168,6 +168,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "newnorway.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 
 
 
@@ -292,6 +298,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	customSelctor = $jq321(".product-single__add-to-cart");
     	finalSelector = customSelctor[0];
     }
+    if (Shopify.shop == "newnorway.myshopify.com")
+    {
+    	customSelctor = $jq321(".product-title-container");
+    	finalSelector = customSelctor[0];
+    }
+    
     console.log(customSelctor);
 
     function visitorCounter(responseVisitor) {
