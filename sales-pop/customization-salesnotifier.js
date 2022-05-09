@@ -2552,7 +2552,6 @@
              masterSelector = $jq321(".product-form")
              masterSelector = masterSelector[0]
          }
-         console.log(masterSelector)
          
          if (response.above_cart == 1) {
             if (masterSelector.length > 0) {
@@ -2611,7 +2610,7 @@
              {
                  selectorSold3.prepend(response.view);
              }
-             else if (selectorSold2.length == 1)
+             else if (selectorSold4.length == 1)
              {
                  selectorSold4.prepend(response.view);
              }
