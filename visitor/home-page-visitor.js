@@ -9,7 +9,7 @@
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
 
-function scriptInjection(src, callback) {
+ function scriptInjection(src, callback) {
     var script = document.createElement('script');
     script.type = "text/javascript";
 
@@ -99,6 +99,12 @@ if (Shopify.shop == "security-coque.myshopify.com")
     var meta = {"product":{"id":__st.rid}};
 
     productID = 6681807159347
+}
+if (Shopify.shop == "simplifryco.myshopify.com") 
+{
+    var meta = {"product":{"id":__st.rid}};
+
+    productID = 7646184538365
 }
 
 
