@@ -2209,6 +2209,16 @@
           );
     }
 
+    if (Shopify.shop == "plentyshoppe.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.product-form__item input[type="number"]{-moz-appearance: auto !important;}' +
+            'input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: auto !important;}' +
+            '</style>'
+           );
+    }
+
     //console.log(finalSelector);
 
      /** Stock for variants **/
