@@ -308,6 +308,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
     	customSelctor = $jq321(".product-title-container");
     	finalSelector = customSelctor[0];
+
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.visitor-counter-content-box-carecartbysalespop-2020 {height: 49px !important;margin-top: -10px !important;}' +
+            '</style>'
+           );
     }
     if (Shopify.shop == "roy-groote.myshopify.com")
     {
