@@ -2225,6 +2225,15 @@
         finalSelector = masterSelector[0];
     }
 
+    if (Shopify.shop == "arennagold.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.paymentButtonsWrapper{display: contents !important;}' +
+            '</style>'
+           );
+    }
+
     //console.log(finalSelector);
 
      /** Stock for variants **/
