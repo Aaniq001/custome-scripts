@@ -2219,6 +2219,12 @@
            );
     }
 
+    if (Shopify.shop == "kepacoi.myshopify.com")
+    {
+        masterSelector = $jq321(".product-form__buttons");
+        finalSelector = masterSelector[0];
+    }
+
     //console.log(finalSelector);
 
      /** Stock for variants **/
