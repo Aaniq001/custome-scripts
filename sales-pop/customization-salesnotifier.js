@@ -2230,6 +2230,7 @@
         $jq321("head").append(
             '<style type="text/css">' + 
             '.paymentButtonsWrapper{display: contents !important;}' +
+            '.swiper-container.slideshow--full-screen{height:auto !important; max-height:inherit !important;}' +
             '</style>'
            );
     }
