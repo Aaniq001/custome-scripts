@@ -1899,6 +1899,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         finalSelector = masterSelector[0];
     }
 
+    if (Shopify.shop == "poopoo-llc.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">.sub-plan-group-box{margin-bottom: 0px !important;} .sold-counter-content-box{padding: 0px !important; } </style>'
+        );
+    }
     console.log(masterSelector);
     /** Stock for variants ends **/
 
