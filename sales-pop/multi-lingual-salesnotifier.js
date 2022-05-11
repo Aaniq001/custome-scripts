@@ -1690,16 +1690,25 @@
               {masterSelector= $jq321(value).find("button[type='submit'],input[type='submit']").parent();}
          });
          //Selectors wil goes from here
-         if(Shopify.shop == "3armystore4.myshopify.com"){
+         if(Shopify.shop == "3armystore4.myshopify.com")
+         {
              finalSelector = masterSelector[0];
          }
-         if(Shopify.shop == "fivve-2.myshopify.com"){
+         if(Shopify.shop == "fivve-2.myshopify.com")
+         {
              masterSelector = $jq321(".product-form__buttons");
              finalSelector = masterSelector[0];
          }
-         if(Shopify.shop == "youth-united-apparel.myshopify.com"){
+         if(Shopify.shop == "youth-united-apparel.myshopify.com")
+         {
             finalSelector = masterSelector[0];
-        }
+         }
+         if(Shopify.shop == "woodpixl.myshopify.com")
+         {
+            masterSelector = $jq321(".ProductForm__AddToCart");
+            finalSelector = masterSelector[0];
+         }
+        
 
     
       function stockCountdown(responseStock) {
