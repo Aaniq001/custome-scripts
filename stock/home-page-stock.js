@@ -155,7 +155,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
     if (Shopify.shop == "windaroma.myshopify.com")
     {
-        productID = 7350529163425;        
+        //productID = 7350529163425;
+        productID = 7364534304929;        
     }
     if(Shopify.shop == "harvest-blending.myshopify.com")
     {
