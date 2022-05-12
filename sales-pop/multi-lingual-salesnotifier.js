@@ -1705,7 +1705,7 @@
          }
          if(Shopify.shop == "woodpixl.myshopify.com")
          {
-            masterSelector = $jq321(".ProductForm__AddToCart");
+            masterSelector = $jq321(".ProductForm");
             finalSelector = masterSelector[0];
          }
         
