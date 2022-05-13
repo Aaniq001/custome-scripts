@@ -2240,7 +2240,7 @@
                $jq321(".hours").addClass("notranslate");
                $jq321(".minutes").addClass("notranslate");
                $jq321(".seconds").addClass("notranslate"); 
-            }, 10000);
+            }, 5000);
     }
 
     
