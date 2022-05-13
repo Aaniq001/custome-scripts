@@ -2234,7 +2234,13 @@
             '.product-medias__main .swiper-container{max-height: inherit !important; height: auto !important;}' +
             '</style>'
            );
+
+           setTimeout(function(){ $jq321(".seconds").addClass("notranslate"); }, 3000);
     }
+
+    
+        
+    
 
     //console.log(finalSelector);
 
@@ -2488,6 +2494,7 @@
      }
  
      function initializeClock(id, endtime) {
+
          var clock = document.getElementById(id);
          var daysSpan = clock.querySelector('.days');
          var hoursSpan = clock.querySelector('.hours');
