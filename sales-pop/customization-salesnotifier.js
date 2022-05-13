@@ -2235,7 +2235,7 @@
             '</style>'
            );
 
-           setTimeout(function(){ $jq321(".seconds").addClass("notranslate"); }, 3000);
+           setTimeout(function(){ $jq321(".seconds").addClass("notranslate"); }, 10000);
     }
 
     
