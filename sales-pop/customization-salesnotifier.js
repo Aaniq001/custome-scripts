@@ -2235,7 +2235,12 @@
             '</style>'
            );
 
-           setTimeout(function(){ $jq321(".seconds").addClass("notranslate"); }, 10000);
+           setTimeout(function(){ 
+               $jq321(".days").addClass("notranslate");
+               $jq321(".hours").addClass("notranslate");
+               $jq321(".minutes").addClass("notranslate");
+               $jq321(".seconds").addClass("notranslate"); 
+            }, 10000);
     }
 
     
