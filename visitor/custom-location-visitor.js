@@ -180,6 +180,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "swe-1.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 
 
 
@@ -318,6 +324,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "roy-groote.myshopify.com")
     {
     	customSelctor = $jq321(".pf-36_");
+    	finalSelector = customSelctor[0];
+    }
+    if (Shopify.shop == "swe-1.myshopify.com")
+    {
+    	customSelctor = $jq321(".centering");
     	finalSelector = customSelctor[0];
     }
     
