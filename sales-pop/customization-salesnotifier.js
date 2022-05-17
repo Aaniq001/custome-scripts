@@ -2969,6 +2969,15 @@
                 return;
             }    
         }
+        if (Shopify.shop == "linetoluna.myshopify.com")
+        {
+            let text = window.location.pathname;
+            let result = text.indexOf("products");
+
+            if(result == -1){
+                return;
+            }    
+        }
 
          if (trustBadgesResponse.product_page_show_hide == 1)
          {
