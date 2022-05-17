@@ -328,6 +328,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
     if (Shopify.shop == "swe-1.myshopify.com")
     {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.visitor-counter-content-box-carecartbysalespop-2020 {margin-top: -21px !important;}' +
+            '</style>'
+           );
+
     	customSelctor = $jq321(".centering");
     	finalSelector = customSelctor[0];
     }
