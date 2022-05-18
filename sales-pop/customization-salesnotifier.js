@@ -2244,9 +2244,22 @@
     {
         masterSelector2 = $jq321(".pf-23_");
         finalSelector2 = masterSelector2[0];
-
-        console.log(finalSelector2);
     } 
+
+    if (Shopify.shop == "zafinnagold.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.paymentButtonsWrapper{display: contents !important;}' +
+            '.swiper-container.slideshow--full-screen{height:auto !important; max-height:inherit !important;}' +
+            '.product-medias__main .swiper-container{max-height: inherit !important; height: auto !important;}' +
+            '.product-slider .swiper-container { max-height: 100%; height: 100%;}' +
+            '.swiper-wrapper .swiper-slide{height: 100%;}' +
+            '.product-list .swiper-button-next:after, .product-list .swiper-button-prev:after{display:none;}' +
+            '.product-list  .swiper-button-prev, .product-list .swiper-button-next {width:44px !important; height:44px !important;}' +
+            '</style>'
+           );
+    }
 
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
