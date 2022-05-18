@@ -344,8 +344,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	finalSelector = customSelctor[0];
     }
 
-     
-    
+    if (Shopify.shop == "nomardic-de.myshopify.com")
+    {
+    	customSelctor = $jq321(".ProductForm__AddToCart");
+    	finalSelector = customSelctor[0];
+    }
+
     console.log(customSelctor);
 
     function visitorCounter(responseVisitor) {
