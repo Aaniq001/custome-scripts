@@ -337,6 +337,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	customSelctor = $jq321(".centering");
     	finalSelector = customSelctor[0];
     }
+
+    if (Shopify.shop == "nomardic-nl.myshopify.com")
+    {
+    	customSelctor = $jq321(".ProductForm__AddToCart");
+    	finalSelector = customSelctor[0];
+    }
+
+     
     
     console.log(customSelctor);
 
