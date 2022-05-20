@@ -131,6 +131,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "lloyds-liquid-sunshines.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "waterlily-products.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     $jq321.ajax({
@@ -263,6 +266,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         finalSelector = customSelector[0];
         console.log(customSelector);
     }
+
+    if (Shopify.shop == "waterlily-products.myshopify.com") {
+        customSelector = $jq321(".product-single__add-to-cart");
+        finalSelector = customSelector[0];
+        console.log(customSelector);
+    }
+
+    
 
     function stockCountdown(response) {
          
