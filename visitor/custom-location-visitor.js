@@ -192,10 +192,19 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "colombiahit.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
 
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
+    if (Shopify.shop == "ommerce-6653.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
 
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 
-	
     $jq321.ajax({
         type: "GET",
         url: salespoplib_vars_obj.backend_url + 'checkStore/',
@@ -362,7 +371,27 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	finalSelector = customSelctor[0];
     }
 
-    console.log(customSelctor);
+    if (Shopify.shop == "colombiahit.myshopify.com")
+    {
+    	customSelctor = $jq321("#AddToCartForm-product-template");
+    	finalSelector = customSelctor[0];
+
+        /* $jq321("head").append(
+            '<style type="text/css">' + 
+            'div.content-div-visitor-detail-carecartbysalespop-2020.visitor-left{margin-top:auto !important;}' +
+            '</style>'
+           ); */
+
+        console.log(finalSelector);
+    }
+
+    if (Shopify.shop == "ommerce-6653.myshopify.com")
+    {
+    	customSelctor = $jq321(".social-sharing");
+    	finalSelector = customSelctor[0];
+    }
+
+    
 
     function visitorCounter(responseVisitor) {
 
