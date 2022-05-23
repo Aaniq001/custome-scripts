@@ -231,7 +231,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         if (t.above_cart == 1)
         {
-            if (selectorTimer1.length == 1)
+            if (Shopify.shop == "ivmt.myshopify.com")
+            {
+                $jq321(t.view).insertBefore('#AddToCart');
+            }
+            else if (selectorTimer1.length == 1)
             {
                 selectorTimer1.prepend(t.view);
             }
