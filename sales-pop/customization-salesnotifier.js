@@ -2116,9 +2116,6 @@
             '<style type="text/css"> .content-div-visitor-detail-carecartbysalespop-2020{display:flex; justify-content:center;}</style>'
             );
     }
-
-
-
     if (Shopify.shop == "customizedtattoodesign.myshopify.com") {
         $jq321("head").append(
             '<style type="text/css"> .timer-store-front{margin-top:30px;}</style>'
@@ -2234,9 +2231,35 @@
             '.product-medias__main .swiper-container{max-height: inherit !important; height: auto !important;}' +
             '</style>'
            );
+
+           setTimeout(function(){ 
+               $jq321(".days").addClass("notranslate");
+               $jq321(".hours").addClass("notranslate");
+               $jq321(".minutes").addClass("notranslate");
+               $jq321(".seconds").addClass("notranslate"); 
+            }, 5000);
     }
 
-    //console.log(finalSelector);
+    if (Shopify.shop == "buddyleejumpropes.myshopify.com")
+    {
+        masterSelector2 = $jq321(".pf-23_");
+        finalSelector2 = masterSelector2[0];
+    } 
+
+    if (Shopify.shop == "zafinnagold.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.paymentButtonsWrapper{display: contents !important;}' +
+            '.swiper-container.slideshow--full-screen{height:auto !important; max-height:inherit !important;}' +
+            '.product-medias__main .swiper-container{max-height: inherit !important; height: auto !important;}' +
+            '.product-slider .swiper-container { max-height: 100%; height: 100%;}' +
+            '.swiper-wrapper .swiper-slide{height: 100%;}' +
+            '.product-list .swiper-button-next:after, .product-list .swiper-button-prev:after{display:none;}' +
+            '.product-list  .swiper-button-prev, .product-list .swiper-button-next {width:44px !important; height:44px !important;}' +
+            '</style>'
+           );
+    }
 
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
@@ -2488,6 +2511,7 @@
      }
  
      function initializeClock(id, endtime) {
+
          var clock = document.getElementById(id);
          var daysSpan = clock.querySelector('.days');
          var hoursSpan = clock.querySelector('.hours');
@@ -2561,7 +2585,6 @@
          }
  
          var deadline = responseTimer.time;
-         //initializeClock('clockdivpreview', deadline);
          initializeClock('clockdivpreviewSales', deadline);
      }
  
@@ -2957,18 +2980,33 @@
                 return;
             }    
         }
+        if (Shopify.shop == "linetoluna.myshopify.com")
+        {
+            let text = window.location.pathname;
+            let result = text.indexOf("products");
+
+            if(result == -1){
+                return;
+            }    
+        }
+        if (Shopify.shop == "naoadesign.myshopify.com")
+        {
+            let text = window.location.pathname;
+            let result = text.indexOf("products");
+
+            if(result == -1){
+                return;
+            }    
+        }
 
          if (trustBadgesResponse.product_page_show_hide == 1)
          {
-             /* var selectorTrustBadges = $jq321("form[action='/cart/add']:first");
-             selectorTrustBadges.append(trustBadgesResponse.view); */
-
             var selectorTrustBadges1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges2 = $jq321("form[action='/cart/add']");
             var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
+            
             var masterSelector = $jq321(".groups-btn");
-            console.log(masterSelector);
             finalSelector= masterSelector[0]
 
             if (Shopify.shop == "cap-point.myshopify.com")
@@ -2986,6 +3024,10 @@
                 {
                     $jq321(".buy-btn-space").append(trustBadgesResponse.view);
                 }   
+            }
+            else if (masterSelector2.length == 1) 
+            {
+                $jq321(trustBadgesResponse.view).insertAfter(finalSelector2);
             }   
             else if (selectorTrustBadges1.length == 1)
             {

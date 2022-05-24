@@ -9,7 +9,7 @@
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
 
-function scriptInjection(src, callback) {
+ function scriptInjection(src, callback) {
     var script = document.createElement('script');
     script.type = "text/javascript";
 
@@ -138,9 +138,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         finalSelector = masterSelector[0];
     }
+    
+    
+
+
 
      function stockCountdown(response) 
-     {    
+     {   
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
         var selectorStock2 = $jq321("form[action='/cart/add']"); 
         var selectorStock3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
@@ -150,7 +154,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         if (response.above_cart == 1)
         {
-            if (masterSelector.length > 0) 
+            if (Shopify.shop == "ivmt.myshopify.com")
+            {
+                $jq321(response.view).insertBefore('#AddToCart');
+            }
+            else if (masterSelector.length > 0) 
             {
                 $jq321(response.view).insertBefore(finalSelector);
             }
@@ -223,7 +231,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         if (t.above_cart == 1)
         {
-            if (selectorTimer1.length == 1)
+            if (Shopify.shop == "ivmt.myshopify.com")
+            {
+                $jq321(t.view).insertBefore('#AddToCart');
+            }
+            else if (selectorTimer1.length == 1)
             {
                 selectorTimer1.prepend(t.view);
             }

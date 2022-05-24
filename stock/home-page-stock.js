@@ -156,7 +156,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "windaroma.myshopify.com")
     {
         //productID = 7350529163425;
-        productID = 7364534304929;        
+        productID = 7364534304929;       
     }
     if(Shopify.shop == "harvest-blending.myshopify.com")
     {
@@ -165,6 +165,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if(Shopify.shop == "skintagremover11.myshopify.com")
     {
         productID = 7544466800852;
+    }
+    if(Shopify.shop == "teethy12.myshopify.com")
+    {
+        productID = 7035477131309;
     }
 
     $jq321.ajax({
@@ -219,6 +223,16 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	finalSelector = customSelector[0];
     }
     if(Shopify.shop == "skintagremover11.myshopify.com")
+    {
+        customSelector = $jq321("#new-form-atc");
+    	finalSelector = customSelector[0];
+    }
+    if(Shopify.shop == "windaroma.myshopify.com")
+    {
+        customSelector = $jq321("#new-form-atc");
+    	finalSelector = customSelector[0];
+    }
+    if(Shopify.shop == "teethy12.myshopify.com")
     {
         customSelector = $jq321("#new-form-atc");
     	finalSelector = customSelector[0];
