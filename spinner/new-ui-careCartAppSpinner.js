@@ -2972,9 +2972,6 @@
                     carecartSpinnerJquery('head').append('<style type="text/css">#cc-spin-a-sale-consent-checkbox{ width:20px !important; height:20px !important; } .checkbox label:after{ display:none !important; } .checkbox input[type=checkbox]{ z-index: 1 !important; opacity: 1 !important; } </style>');
                 }
 
-                // if(Shopify.shop == "chimp-store.myshopify.com"){
-                //     carecartSpinnerJquery('head').append('<style type="text/css"> .sb-select { font-size: inherit !important; } </style>');
-                // }
                     
             });
 
