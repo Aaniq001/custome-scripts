@@ -77,6 +77,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         // VISITOR COUNTER CALL
         if(apiResponse && apiResponse.visitor && apiResponse.visitor!==null){
 
+            $(".visitor-counter-content-box-carecartbysalespop-2020").remove();
+
             $jq321("head").append($jq321("<link/>", {
                 rel: "stylesheet",
                 href: serverUrl.cssVisitor + "?v" + version
@@ -381,7 +383,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             'div.content-div-visitor-detail-carecartbysalespop-2020.visitor-left{margin-top:auto !important;padding: 15px;}' +
             '</style>'
            );
-
+        
+        console.log('selector: ');
         console.log(finalSelector);
     }
 
