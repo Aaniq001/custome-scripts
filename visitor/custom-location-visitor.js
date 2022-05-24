@@ -376,11 +376,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     	customSelctor = $jq321("#AddToCartForm-product-template");
     	finalSelector = customSelctor[0];
 
-        /* $jq321("head").append(
+        $jq321("head").append(
             '<style type="text/css">' + 
-            'div.content-div-visitor-detail-carecartbysalespop-2020.visitor-left{margin-top:auto !important;}' +
+            'div.content-div-visitor-detail-carecartbysalespop-2020.visitor-left{margin-top:auto !important;padding: 15px;}' +
             '</style>'
-           ); */
+           );
 
         console.log(finalSelector);
     }
