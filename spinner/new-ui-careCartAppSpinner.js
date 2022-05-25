@@ -55,7 +55,7 @@
     cssFileInjection(API_URL + "public/phone/css/phoneStyle.css?v=" + new Date().toLocaleTimeString());                 // Dev and UAT URL
     //cssFileInjection(API_URL +"public/phone/js/intlTelInput.js?v=" + new Date().toLocaleTimeString());                 // Dev and UAT URL
 
-    cssFileInjection(API_URL + "public/app/css/front-store-spinner-min.css?v=" + new Date().toLocaleTimeString());      // Dev and UAT URL
+    cssFileInjection("https://rude-eel-16.telebit.io/spinner/front-spinner.css?v=" + new Date().toLocaleTimeString());      // Dev and UAT URL
     //cssFileInjection(CDN_WHEELIFY_URL +"front-store-spinner-min.css");                                               // Production URL
     //cssFileInjection(API_URL +"public/app/css/front-store-spinner.css?v=time()");
 
@@ -1100,9 +1100,9 @@
                                                             }
                                                         }
                             */
-                            if(Shopify.shop == "chimp-store.myshopify.com"){
-                                carecartSpinnerJquery('head').append('<style type="text/css"> .sb-select { font-size: inherit !important; } </style>');
-                            }
+                            // if(Shopify.shop == "chimp-store.myshopify.com"){
+                            //     carecartSpinnerJquery('head').append('<style type="text/css"> .sb-select { font-size: inherit !important; } </style>');
+                            // }
                             if (Shopify.shop == 'geniani-products.myshopify.com') {
                                 var thisStatus = checkStoreSpecificUrlCcSpinASale("https://geniani.com/pages/geniani-rewards-club");
                                 //console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);

@@ -1,0 +1,659 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+     #wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview {
+    width: 40%!important;
+    min-width: 724px!important;
+    height: 479px!important;
+    box-shadow: 5px 0 100px 0 #251217;
+    color: #fff;
+    z-index: 999999999999999999999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+}
+@media only screen and (max-width:576px) {
+    #wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview {
+    width: 40%!important;
+    min-width: 294px!important;
+    height: 479px!important;
+    box-shadow: 5px 0 100px 0 #251217;
+    color: #fff;
+    z-index: 999999999999999999999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-content-spinner {
+    padding: 0 15px;
+}
+#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-text-heading {
+    margin-top: 0;
+}
+#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-closeButton {
+    padding: 5px;
+}
+#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-signupContainer .wheelify-text-heading {
+    font-size: 18px;
+}
+#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-signupContainer .wheelify-text-description {
+    font-size: 12px;
+}
+#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview input, select, textarea {
+    font-size: 12px;
+}
+#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .form-group input {
+    font-size: 12px;
+    height: 33px;
+}
+#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview span#cc-spin-a-sale-consent-text {
+    font-size: 11px;
+}
+#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .btn-submit-form, #wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .btn-submit-form-ok, #wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .copy-button {
+    height: 33px;
+    font-size: 12px;
+}
+#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {
+    min-height: 427px;
+}
+#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-content-spinner {
+    overflow: hidden;
+}
+#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-wheelContainer {
+    width: 100%}
+} .animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+.animated.infinite {
+    animation-iteration-count: infinite;
+}
+.animated.hinge {
+    animation-duration: 2s;
+}
+@keyframes zoomIn {
+    from {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+}
+50% {
+    opacity: 1;
+}
+}.zoomIn {
+    animation-name: zoomIn;
+}
+@keyframes shake {
+    from, to {
+    transform: translate3d(0, 0, 0);
+}
+10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-10px, 0, 0);
+}
+20%, 40%, 60%, 80% {
+    transform: translate3d(10px, 0, 0);
+}
+}.shake {
+    animation-name: shake;
+}
+#wheelify-spin_a_sale_cc_store_front_module a:active, #wheelify-spin_a_sale_cc_store_front_module a:hover, #wheelify-spin_a_sale_cc_store_front_module a:link, #wheelify-spin_a_sale_cc_store_front_module a:visited {
+    color: #f1dc16;
+}
+#wheelify-spin_a_sale_cc_store_front_module .centerCircle, #wheelify-spin_a_sale_cc_store_front_module .valueContainer, #wheelify-spin_a_sale_cc_store_front_module .wheelOutline, #wheelify-spin_a_sale_cc_store_front_module .wheelText {
+    pointer-events: none;
+}
+#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form-ok, #wheelify-spin_a_sale_cc_store_front_module .form-group input {
+    background: #fff;
+    color: #384f66;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelText {
+    text-anchor: middle;
+    -webkit-user-select: none;
+    user-select: none;
+}
+#wheelify-spin_a_sale_cc_store_front_module .toast {
+    display: none;
+}
+div#wheelify-cc-spin-a-sale-powered-by-carecart {
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-signupContainer p {
+    margin-bottom: 10px;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: left;
+    color: #fff;
+}
+#wheelify-spin_a_sale_cc_store_front_module .singup-logo {
+    max-width: 200px;
+    max-height: 50px;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-text-heading {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0!important;
+}
+#wheelify-spin_a_sale_cc_store_front_module p.wheelify-text-description {
+    color: #fff;
+    margin-top: 0;
+    padding-top: 0;
+}
+#wheelify-spin_a_sale_cc_store_front_module .form-group {
+    margin: 0 auto 15px;
+}
+#wheelify-spin_a_sale_cc_store_front_module .form-group input {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 15px;
+    border-radius: 2px;
+    border: 0;
+    height: 40px;
+    font-weight: 700;
+    outline: 0;
+}
+#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form, #wheelify-spin_a_sale_cc_store_front_module .btn-submit-form-ok, #wheelify-spin_a_sale_cc_store_front_module .copy-button {
+    border: 0;
+    background: #fff;
+    border-radius: 2px;
+    width: 100%;
+    height: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #384f66;
+    cursor: pointer;
+    outline: 0;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-textInfo {
+    font-size: 11px;
+    font-weight: 400;
+    color: #fff;
+}
+#wheelify-spin_a_sale_cc_store_front_module #overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    background: #384f66;
+    z-index: 1000;
+}
+#wheelify-spin_a_sale_cc_store_front_module #overlay p {
+    padding-top: 30%;
+    font-size: 30px;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-wheelContainer {
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    position: absolute;
+    width: 65%;
+    left: 0;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight {
+    flex: 0 0 55%;
+    margin-left: auto;
+    margin-right: 40px;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-wheelSVG {
+    overflow: visible;
+    transform: rotate(55deg);
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelLogo {
+    transform: rotate(-55deg);
+    transform-origin: 512px 383px;
+}
+#wheelify-spin_a_sale_cc_store_front_module .coupon, #wheelify-spin_a_sale_cc_store_front_module .win_text {
+    font-style: italic;
+    text-decoration: underline;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-signupContainer {
+    padding-top: 0!important;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-loseContainer, #wheelify-spin_a_sale_cc_store_front_module .wheelify-winContainer {
+    padding-top: 0!important;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-loseContainer {
+    padding-top: 0!important;
+}
+#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner {
+    width: 40%;
+    min-width: 768px;
+    height: 100%;
+    box-shadow: 5px 0 100px 0 #251217;
+    color: #fff;
+    z-index: 999999999999999999999;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-content-spinner {
+    background-color: #2699fb;
+    display: flex;
+    align-items: safe center;
+    height: 100%}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 999999999999999999999;
+    padding: 8px 12px;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-closeButton i {
+    font-size: 20px;
+    color: #fff;
+}
+#wheelify-spin_a_sale_cc_store_front_module .checkbox {
+    padding: 5px 0 15px 1px;
+    text-align: left;
+    text-indent: 5px;
+    line-height: 1.2;
+}
+#wheelify-spin-trigger-cc, #wheelify-spin-trigger-cc:active, #wheelify-spin-trigger-cc:focus, #wheelify-spin-trigger-cc:hover, #wheelify-spin-trigger-cc:visited {
+    bottom: 30px;
+    position: fixed;
+    text-decoration: none;
+    opacity: 1;
+    outline: 0;
+    display: none;
+    z-index: 99999999;
+}
+#wheelify-spin-trigger-cc span {
+    border-radius: 2px;
+    margin-top: 0;
+    margin-right: -20px;
+    /*text-transform: uppercase;*/
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 40px;
+    padding-right: 30px;
+    padding-left: 15px;
+    background: #2699fb;
+    color: #fff;
+}
+#wheelify-spin-trigger-cc img {
+    width: 40px;
+    background: #2699fb;
+    border-radius: 100%;
+    padding: 0;
+}
+#wheelify-spin-trigger-cc img, #wheelify-spin-trigger-cc span {
+    height: 40px;
+    float: left;
+    box-shadow: 1px 1px 6px #251217;
+}
+span#cc-spin-a-sale-consent-text {
+    color: #fff!important;
+    text-transform: initial;
+    font-size: 16px;
+    font-weight: 500;
+}
+.wheelify-content-spinner input {
+    margin-bottom: 0;
+}
+.wheelify-signupContainer .checkbox label {
+    display: flex;
+}
+.wheelify-signupContainer .checkbox input {
+    margin-right: 4px;
+}
+input[type=checkbox], input[type=radio] {
+    margin-top: 1px;
+}
+img.wheelify-content-spinner {
+    background-size: contain!important;
+}
+.LoaderOnClick {
+    position: relative;
+}
+.loaderBox {
+    background-color: rgba(0, 0, 0, .85);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+@-webkit-keyframes spinner-border {
+    to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+}@keyframes spinner-border {
+    to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+}.spinner-border {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: text-bottom;
+    border: .25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: spinner-border .75s linear infinite;
+    animation: spinner-border .75s linear infinite;
+}
+#wheelify-couponwheel_notice_content {
+    background-color: #ffd400;
+    color: #000;
+}
+#wheelify-couponwheel_notice_content {
+    position: fixed;
+    left: 0;
+    right: 0;
+    padding: .8em;
+    font-size: 1.1em;
+    line-height: 1.2em;
+    text-align: center;
+    z-index: 100000;
+    box-sizing: border-box;
+}
+#wheelify-couponwheel_notice_content>span {
+    margin-right: .5em;
+}
+#couponwheel_notice_close_btn {
+    user-select: none;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: underline;
+}
+.wheelify-bar-bottom {
+    bottom: 0;
+}
+.bar-top {
+    top: 0!important;
+    bottom: auto;
+}
+a#couponwheel_notice_close_btn:hover {
+    color: #000;
+}
+.cc-spin-a-sale-clock-div {
+    width: 100%}
+.cc-spin-a-sale-clock-div>div {
+    padding: 0 5px;
+    display: inline-block;
+    position: relative;
+}
+.cc-spin-a-sale-clock-div>div:after {
+    content: ":";
+    position: absolute;
+    right: -3px;
+    top: 0;
+    color: #2f2700;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+.cc-spin-a-sale-clock-div>div:last-child:after {
+    display: none;
+}
+.cc-spin-a-sale-clock-div div>span {
+    color: #2f2700;
+    font-size: 18px;
+    display: inline-block;
+}
+.wheelify-cc-spin-a-sale-spinner-progress-bar {
+    color: #fff;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    float: right;
+    text-align: center;
+}
+.wheelify-cc-spin-a-sale-couponwheel_offers_progressbar {
+    background-color: #e6e6e6;
+    margin-top: 1em;
+    padding: 1px;
+    border-radius: 2px;
+    width: 100%}
+.wheelify-cc-spin-a-sale-spinner-progress-bar-inner {
+    width: 70%;
+    background-color: #9acd32;
+    height: .66em;
+    border-radius: 2px;
+}
+.wheelify-cc-spin-a-sale-couponwheel_offers_text {
+    text-align: left;
+    margin-top: 2px;
+}
+#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form, #wheelify-spin_a_sale_cc_store_front_module .btn-submit-form-ok, #wheelify-spin_a_sale_cc_store_front_module .copy-button {
+    width: 100%}
+.wheelify-signupContainer .checkbox input {
+    margin-right: 4px;
+    align-self: baseline;
+}
+#wheelify-spin_a_sale_cc_store_front_module .form-group input::-webkit-input-placeholder {
+    color: #000;
+}
+#wheelify-spin_a_sale_cc_store_front_module .form-group input:-ms-input-placeholder {
+    color: #000;
+}
+#wheelify-spin_a_sale_cc_store_front_module .form-group input::placeholder {
+    color: #000;
+}
+@media only screen and (max-width:991px) {
+    #wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner {
+    width: 100%;
+    min-width: 100%}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-content-spinner {
+    padding: 35px 15px;
+    width: 100%;
+    min-width: 100%;
+    overflow: auto;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-wheelContainer {
+    position: absolute!important;
+    transform: translate(-50%, -50%)!important;
+    width: 45%!important;
+    bottom: inherit!important;
+    right: inherit!important;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-wheelSVG {
+    transform: translate(-50%) matrix(.57358, .81915, -.81915, .57358, 0, 0)!important;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight {
+    flex: 0 0 65%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-closeButton {
+    margin-right: 10px;
+    margin-top: 5px;
+}
+}@media only screen and (max-width:575px) {
+    #wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight {
+    margin-right: auto;
+    order: 1;
+    max-width: 400px;
+    min-height: 530px;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-wheelContainer {
+    position: static!important;
+    order: 2;
+    transform: none!important;
+    width: 85%!important;
+    max-width: 400px;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-content-spinner {
+    flex-direction: column;
+    overflow: auto;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-wheelSVG {
+    position: static!important;
+    transform: translateY(-50px)!important;
+}
+#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form, #wheelify-spin_a_sale_cc_store_front_module .btn-submit-form-ok, #wheelify-spin_a_sale_cc_store_front_module .copy-button {
+    width: 100%}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-closeButton {
+    padding: 15px 15px;
+}
+.wheelify-cc-spin-a-sale-couponwheel_offers_progressbar {
+    margin-top: 0!important;
+}
+#wheelify-spin_a_sale_cc_store_front_module .wheelify-signupContainer p {
+    padding-right: 0;
+}
+#wheelify-spin_a_sale_cc_store_front_module .checkbox {
+    padding: 5px 0 15px 1px;
+}
+}@media only screen and (max-width:320px) {
+    #wheelify-spin_a_sale_cc_store_front_module .checkbox {
+    padding: 0 0 5px 1px;
+}
+}@media screen and (device-aspect-ratio:2/3) {
+    input[type=date], input[type=date]:focus, input[type=datetime-local], input[type=datetime-local]:focus, input[type=datetime], input[type=datetime]:focus, input[type=email], input[type=email]:focus, input[type=month], input[type=month]:focus, input[type=number], input[type=number]:focus, input[type=password], input[type=password]:focus, input[type=tel], input[type=tel]:focus, input[type=text], input[type=text]:focus, input[type=time], input[type=time]:focus, input[type=url], input[type=url]:focus, input[type=week], input[type=week]:focus, select, select:focus, textarea, textarea:focus {
+    font-size: inherit;
+}
+}@media screen and (device-aspect-ratio:40/71) {
+    .form-control, .form-control:focus, input[type=date], input[type=date]:focus, input[type=datetime-local], input[type=datetime-local]:focus, input[type=datetime], input[type=datetime]:focus, input[type=email], input[type=email]:focus, input[type=month], input[type=month]:focus, input[type=number], input[type=number]:focus, input[type=password], input[type=password]:focus, input[type=tel], input[type=tel]:focus, input[type=text], input[type=text]:focus, input[type=time], input[type=time]:focus, input[type=url], input[type=url]:focus, input[type=week], input[type=week]:focus, select, select:focus, textarea, textarea:focus {
+    font-size: inherit;
+}
+}@media screen and (device-aspect-ratio:375/667) {
+    .form-control, .form-control:focus, input[type=date], input[type=date]:focus, input[type=datetime-local], input[type=datetime-local]:focus, input[type=datetime], input[type=datetime]:focus, input[type=email], input[type=email]:focus, input[type=month], input[type=month]:focus, input[type=number], input[type=number]:focus, input[type=password], input[type=password]:focus, input[type=tel], input[type=tel]:focus, input[type=text], input[type=text]:focus, input[type=time], input[type=time]:focus, input[type=url], input[type=url]:focus, input[type=week], input[type=week]:focus, select, select:focus, textarea, textarea:focus {
+    font-size: inherit;
+}
+}@media screen and (device-aspect-ratio:9/16) {
+    .form-control, .form-control:focus, input[type=date], input[type=date]:focus, input[type=datetime-local], input[type=datetime-local]:focus, input[type=datetime], input[type=datetime]:focus, input[type=email], input[type=email]:focus, input[type=month], input[type=month]:focus, input[type=number], input[type=number]:focus, input[type=password], input[type=password]:focus, input[type=tel], input[type=tel]:focus, input[type=text], input[type=text]:focus, input[type=time], input[type=time]:focus, input[type=url], input[type=url]:focus, input[type=week], input[type=week]:focus, select, select:focus, textarea, textarea:focus {
+    font-size: inherit;
+}
+}@media only screen and (device-width:414px) and (device-height:896px) and (-webkit-device-pixel-ratio:3) {
+    .form-control, .form-control:focus, input[type=date], input[type=date]:focus, input[type=datetime-local], input[type=datetime-local]:focus, input[type=datetime], input[type=datetime]:focus, input[type=email], input[type=email]:focus, input[type=month], input[type=month]:focus, input[type=number], input[type=number]:focus, input[type=password], input[type=password]:focus, input[type=tel], input[type=tel]:focus, input[type=text], input[type=text]:focus, input[type=time], input[type=time]:focus, input[type=url], input[type=url]:focus, input[type=week], input[type=week]:focus, select, select:focus, textarea, textarea:focus {
+    font-size: inherit;
+}
+}@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input:focus, select:focus, textarea:focus {
+    font-size: inherit;
+    background: #eee;
+}
+input, select, textarea {
+    font-size: inherit;
+}
+} .d-none {
+     display:  none;
+ }
+ .triggerButton_shake  {
+    animation:  shake 1s cubic-bezier(.36,  .07,  .19,  .97) both infinite;
+    transform:  translate3d(0,  0,  0);
+    backface-visibility:  hidden;
+    perspective:  1000px;
+}
+  @keyframes myfirst {
+     0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+ 100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+}
+ }
+  .triggerButtonRotate  {
+    animation:  myfirst 4s infinite linear;
+    position:  relative;
+    left:  20px;
+    bottom:  -20px;
+}
+ @media only screen and (max-width: 575px) {
+     #wheelify-spin_a_sale_cc_store_front_module:not(.popupview) .wheelify-ContentRight  {
+    min-height:  624px !important;
+}
+}
+.hideText{
+    display: none;
+}
+
+.triggerButton_shake {
+     animation: shake .3s cubic-bezier(.36, .07, .19, .97) both infinite;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+      10%,
+      90% {
+        transform: translate3d(-1px, 0, 0);
+        
+        
+      }
+      20%,
+      80% {
+        transform: translate3d(2px, 0, 0);
+      }
+      30%,
+      50%,
+      70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+      40%,
+      60% {
+        transform: translate3d(4px, 0, 0);
+      }
+    }
+
+.vtriggerButton_shake{
+        animation: vshake .2s cubic-bezier(.36, .07, .19, .97) both infinite;
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+    @keyframes vshake {
+      10%,
+      90% {
+        transform: translate3d(-1px, 0, 0);
+        
+        
+      }
+      20%,
+      80% {
+        transform: translate3d(2px, 0, 0);
+      }
+      30%,
+      50%,
+      70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+      40%,
+      60% {
+        transform: translate3d(4px, 0, 0);
+      }
+    }
+
+    @keyframes vshake {
+      0%, 100% {
+        bottom: 50%;
+      }
+      50% {
+        bottom: 51%;
+      }
+    }
+.triggerButtonRotate  {
+    animation:  myfirst 4s infinite linear;
+    position:  relative;
+    left:  20px;
+    bottom:  -20px;
+}
+@keyframes myfirst {
+     0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+    }
+     100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+ }
