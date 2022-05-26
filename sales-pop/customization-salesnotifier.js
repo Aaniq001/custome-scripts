@@ -2263,6 +2263,15 @@
            );
     }
 
+    if (Shopify.shop == "macro-weld.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.notificationPreview-box .card-body p.card-text{font-size:12px !important;}' +
+            '</style>'
+           );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
