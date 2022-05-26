@@ -55,7 +55,7 @@
     cssFileInjection(API_URL + "public/phone/css/phoneStyle.css?v=" + new Date().toLocaleTimeString());                 // Dev and UAT URL
     //cssFileInjection(API_URL +"public/phone/js/intlTelInput.js?v=" + new Date().toLocaleTimeString());                 // Dev and UAT URL
 
-    cssFileInjection("https://rude-eel-16.telebit.io/spinner/front-spinner.css?v=" + new Date().toLocaleTimeString());      // Dev and UAT URL
+    cssFileInjection("https://cdn.jsdelivr.net/gh/carecartapp/custome-scripts@1.3.61/spinner/front-spinner.css?v=" + new Date().toLocaleTimeString());      // Dev and UAT URL
     //cssFileInjection(CDN_WHEELIFY_URL +"front-store-spinner-min.css");                                               // Production URL
     //cssFileInjection(API_URL +"public/app/css/front-store-spinner.css?v=time()");
 
