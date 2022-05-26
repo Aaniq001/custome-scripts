@@ -2242,7 +2242,7 @@
 
     if (Shopify.shop == "buddyleejumpropes.myshopify.com")
     {
-        masterSelector = $jq321(".pf-23_");
+        masterSelector = $jq321(".juvTbr");
         finalSelector = masterSelector[0];
 
         console.log(finalSelector);
