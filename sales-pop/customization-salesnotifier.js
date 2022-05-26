@@ -2242,8 +2242,10 @@
 
     if (Shopify.shop == "buddyleejumpropes.myshopify.com")
     {
-        masterSelector2 = $jq321(".pf-23_");
-        finalSelector2 = masterSelector2[0];
+        masterSelector = $jq321(".pf-23_");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
     } 
 
     if (Shopify.shop == "zafinnagold.myshopify.com")
@@ -2257,6 +2259,15 @@
             '.swiper-wrapper .swiper-slide{height: 100%;}' +
             '.product-list .swiper-button-next:after, .product-list .swiper-button-prev:after{display:none;}' +
             '.product-list  .swiper-button-prev, .product-list .swiper-button-next {width:44px !important; height:44px !important;}' +
+            '</style>'
+           );
+    }
+
+    if (Shopify.shop == "macro-weld.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.notificationPreview-box .card-body p.card-text{font-size:12px !important;}' +
             '</style>'
            );
     }
@@ -3159,21 +3170,45 @@
     }
 
     function collectionTimer(responseTimer, responseTimerCollection) {
+
         var allLinks = [];
         var product_id = (meta.product && meta.product.id) ? meta.product.id : '';
 
         if (product_id == '') {
-            $jq321("a").each(function () {
-                var href = $jq321(this).attr('href');
-                var url = href.split("/");
-                    if (($jq321.inArray("products", url) != -1)) {
-                    if ($jq321.inArray(href, allLinks) == -1) {
-                        allLinks.push(href);
+
+            console.log('collection page');
+            
+            if (Shopify.shop == "buddyleejumpropes.myshopify.com")
+            {
+                $jq321(".ProductItem__ImageWrapper").each(function () {                 
+                    var href = $jq321(this).attr('href');
+                    var url = href.split("/");
+                        if (($jq321.inArray("products", url) != -1)) {
+                        if ($jq321.inArray(href, allLinks) == -1) {
+                            allLinks.push(href);
+                        }
                     }
-                }
-            });
+                });    
+            }
+            else
+            {
+                console.log('collection page 2');
+
+                $jq321("a").each(function () {                 
+                    var href = $jq321(this).attr('href');
+                    var url = href.split("/");
+                        if (($jq321.inArray("products", url) != -1)) {
+                        if ($jq321.inArray(href, allLinks) == -1) {
+                            allLinks.push(href);
+                        }
+                    }
+                });
+            }
         }
         else {
+
+            console.log('product page');
+
             $jq321("a").each(function () {
                 var href = $jq321(this).attr('href');
 
