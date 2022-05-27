@@ -134,6 +134,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "waterlily-products.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "cengiz-akturk-shop.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     $jq321.ajax({
@@ -279,8 +282,17 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         console.log(customSelector);
     }
 
+    if (Shopify.shop == "cengiz-akturk-shop.myshopify.com")
+    {
+        masterSelector = $jq321(".sharing");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+
     function stockCountdown(response) {
-         
+        
+        var selectorStock0 = $jq321("form[action='/cart/add']").find(".product__submit__buttons").parent();
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
         var selectorStock2 = $jq321("form[action='/cart/add']"); 
         var selectorStock3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
@@ -290,7 +302,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         if (response.above_cart == 1)
         {
-            if(customSelector.length > 0){
+            if (selectorStock0.length == 1)
+            {
+                selectorStock0.prepend(response.view);
+            }
+            else if(customSelector.length > 0)
+            {
             	$jq321(response.view).insertBefore(finalSelector);
             }
             else if (selectorStock1.length == 1)
@@ -320,7 +337,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if(customSelector.length > 0){
+            if (selectorStock0.length == 1)
+            {
+                selectorStock0.append(response.view);
+            }
+            else if(customSelector.length > 0)
+            {
             	$jq321(response.view).insertAfter(finalSelector);
             }
             else if (selectorStock1.length == 1)
