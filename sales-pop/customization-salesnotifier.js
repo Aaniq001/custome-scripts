@@ -2272,6 +2272,18 @@
            );
     }
 
+    if (Shopify.shop == "naoadesign.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.BorderBox .LogoImg{width:28px !important;}' +
+            '.clone-box{flex-wrap:nowrap !important;}' +
+            '#CloneBox .BorderBox {height: auto;}' +
+            '@media only screen and (max-width: 575px) {.clone-box{flex-wrap: wrap !important;} .BorderBox .LogoImg{width:50px !important;}}' +
+            '</style>'
+           );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
