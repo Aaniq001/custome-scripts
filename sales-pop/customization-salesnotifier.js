@@ -2284,6 +2284,14 @@
            );
     }
 
+    if (Shopify.shop == "preciousbubsstore.myshopify.com") {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.notifyjs-corner{display:block !important;}'+ 
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
