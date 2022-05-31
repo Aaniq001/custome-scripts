@@ -1199,7 +1199,7 @@
             if ((block_url[4] == 'thank_you') || (block_url[2] == 'orders'))
             {
                 b_url = false;
-                console.log('SP Sales Notification Block on "Thank You" page') 
+                console.log('SP Sales Notification Block on "Thank You" page'); 
             }
         }
 
@@ -1208,7 +1208,7 @@
             if (block_url[1] == 'blogs')
             {
                 b_url = false;
-                console.log('SP Sales Notification Block on "Blog" pages') 
+                console.log('SP Sales Notification Block on "Blog" pages'); 
             }
         }
 
@@ -1217,7 +1217,7 @@
             if (block_url[1] == 'products')
             {
                 b_url = false;
-                console.log('SP Sales Notification Block on "Product" pages') 
+                console.log('SP Sales Notification Block on "Product" pages'); 
             }
         }
 
@@ -1226,7 +1226,7 @@
             if (window.location.href == 'https://high-street.pk/')
             {
                 b_url = false;
-                console.log('SP Sales Notification Block on "Home" page') 
+                console.log('SP Sales Notification Block on "Home" page'); 
             }
         }
 
@@ -1235,7 +1235,7 @@
             if (block_url[4] == 'shedtracksmembership')
             {
                 b_url = false;
-                console.log('SP Sales Notification Block on "Shedtracksmembership" pages') 
+                console.log('SP Sales Notification Block on "Shedtracksmembership" pages'); 
             }
 
         }
@@ -1246,6 +1246,15 @@
             {
                 b_url = false;
                 console.log('SP Sales Notification Block on this page') 
+            }
+        }
+
+        if (Shopify.shop == "smellmythongs.myshopify.com"); 
+        {
+            if (block_url_store.slice(0, -1) == 'https://smellmythongs.com/pages/links')
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on this page');
             }
         }
 
