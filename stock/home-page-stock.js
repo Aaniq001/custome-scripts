@@ -170,6 +170,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 7035477131309;
     }
+    if(Shopify.shop == "swoomstore.myshopify.com")
+    {
+        productID = 7432323268757;
+    }
 
     $jq321.ajax({
         type: "GET",
