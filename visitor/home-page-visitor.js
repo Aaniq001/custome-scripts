@@ -98,15 +98,20 @@ if (Shopify.shop == "security-coque.myshopify.com")
 {
     var meta = {"product":{"id":__st.rid}};
 
-    productID = 6681807159347
+    productID = 6681807159347;
 }
 if (Shopify.shop == "simplifryco.myshopify.com") 
 {
     var meta = {"product":{"id":__st.rid}};
 
-    productID = 7646184538365
+    productID = 7646184538365;
 }
+if (Shopify.shop == "e-cbdfrance.myshopify.com") 
+{
+    var meta = {"product":{"id":__st.rid}};
 
+    productID = 6895186772153;
+}
 
     $jq321.ajax({
         type: "GET",
@@ -140,7 +145,11 @@ if (Shopify.shop == "simplifryco.myshopify.com")
     	customSelctor = $jq321(".one-whole");
     	finalSelector = customSelctor[1];
     }
-    console.log(customSelctor);
+    if(Shopify.shop == "e-cbdfrance.myshopify.com")
+    {
+    	customSelctor = $jq321(".circle-divider");
+    	finalSelector = customSelctor[0];
+    }
 
     function visitorCounter(response) {
 
