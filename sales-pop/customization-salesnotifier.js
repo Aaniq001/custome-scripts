@@ -2301,6 +2301,18 @@
         );
     }
 
+    if (Shopify.shop == "agent11mporex.myshopify.com")
+    {
+        masterSelector = $jq321(".product-form__info-item");
+        finalSelector = masterSelector[0];
+
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.content-div-visitor-detail-carecartbysalespop-2020{font-size:14px !important;}'+ 
+            '</style>'
+        );
+    } 
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
@@ -2656,9 +2668,11 @@
                  selectorVisitor4.prepend(response.view);
              }
          } else {
-            if (masterSelector.length > 0) {
-                $jq321(response.view).insertAfter(finalSelector);
-            } else  if (selectorVisitor1.length == 1) {
+            if (masterSelector.length > 0) 
+            {
+                $jq321(response.view).insertAfter(finalSelector);       
+            } 
+            else  if (selectorVisitor1.length == 1) {
                  selectorVisitor1.append(response.view);
              } else if (selectorVisitor2.length == 1) {
                  selectorVisitor2.append(response.view);
