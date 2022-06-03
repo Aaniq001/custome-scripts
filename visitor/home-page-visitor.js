@@ -112,6 +112,12 @@ if (Shopify.shop == "e-cbdfrance.myshopify.com")
 
     productID = 6895186772153;
 }
+if (Shopify.shop == "custorus.myshopify.com") 
+{
+    var meta = {"product":{"id":__st.rid}};
+
+    productID = 7717997183209;
+}
 
     $jq321.ajax({
         type: "GET",
