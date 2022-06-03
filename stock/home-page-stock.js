@@ -174,6 +174,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 7432323268757;
     }
+    if(Shopify.shop == "cauddle.myshopify.com")
+    {
+        productID = 7691278418174;
+    }
 
     $jq321.ajax({
         type: "GET",
