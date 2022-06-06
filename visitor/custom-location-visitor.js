@@ -455,7 +455,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     if (Shopify.shop == "watchis01.myshopify.com")
     {
-    	customSelctor = $jq321(".w-32");
+    	customSelctor = $jq321(".main-product__block-price");
     	finalSelector = customSelctor[0];
         console.log(finalSelector);
     }
