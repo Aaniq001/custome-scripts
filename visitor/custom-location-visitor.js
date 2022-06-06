@@ -93,7 +93,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         // VISITOR COUNTER CALL
         if(apiResponse && apiResponse.visitor && apiResponse.visitor!==null){
 
-            $(".visitor-counter-content-box-carecartbysalespop-2020").remove();
+            $jq321(".visitor-counter-content-box-carecartbysalespop-2020").remove();
 
             $jq321("head").append($jq321("<link/>", {
                 rel: "stylesheet",
@@ -235,6 +235,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
     if (Shopify.shop == "bybaanoo.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
+    if (Shopify.shop == "watchis01.myshopify.com") 
     {
         var meta = {"product":{"id":__st.rid}};
 
@@ -443,6 +449,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "bybaanoo.myshopify.com")
     {
     	customSelctor = $jq321("#m-1616496444433");
+    	finalSelector = customSelctor[0];
+        console.log(finalSelector);
+    }
+
+    if (Shopify.shop == "watchis01.myshopify.com")
+    {
+    	customSelctor = $jq321(".w-32");
     	finalSelector = customSelctor[0];
         console.log(finalSelector);
     }
