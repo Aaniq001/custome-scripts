@@ -55,7 +55,7 @@
     cssFileInjection(API_URL + "public/phone/css/phoneStyle.css?v=" + new Date().toLocaleTimeString());                 // Dev and UAT URL
     //cssFileInjection(API_URL +"public/phone/js/intlTelInput.js?v=" + new Date().toLocaleTimeString());                 // Dev and UAT URL
 
-    cssFileInjection("https://cdn.jsdelivr.net/gh/carecartapp/custome-scripts@1.3.73/spinner/front-spinner.css?v=" + new Date().toLocaleTimeString());      // Dev and UAT URL
+    cssFileInjection(API_URL + "public/app/css/front-store-spinner-min.css?v=" + new Date().toLocaleTimeString());      // Dev and UAT URL
     //cssFileInjection(CDN_WHEELIFY_URL +"front-store-spinner-min.css");                                               // Production URL
     //cssFileInjection(API_URL +"public/app/css/front-store-spinner.css?v=time()");
 
@@ -1100,17 +1100,6 @@
                                                             }
                                                         }
                             */
-                            if(Shopify.shop == "chimp-store.myshopify.com"){
-                                var thisStatus = checkStoreSpecificUrlCcSpinASale("https://www.thechimpstore.com/pages/the-chimp-store-jubilee-raffle");
-                                //console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
-                                if (thisStatus) {
-                                    console.log('SAS Custom Page Matched for store: ' + Shopify.shop);
-                                }
-                                else {
-                                    console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
-                                    return;
-                                }
-                            }
                             if (Shopify.shop == 'geniani-products.myshopify.com') {
                                 var thisStatus = checkStoreSpecificUrlCcSpinASale("https://geniani.com/pages/geniani-rewards-club");
                                 //console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
@@ -1335,19 +1324,9 @@
                                     '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight{ min-height: 560px;}} </style>'
                                 );
 
-                                if(Shopify.shop == 'happilo-international-private-limited.myshopify.com') {
-                                    carecartSpinnerJquery("head").append(
-                                        '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {height: 500px !important;}} </style>'
-                                    );
-                                    carecartSpinnerJquery("head").append(
-                                        '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview{height: 650px !important;}} </style>'
-                                    );  
-                                }
-
                                 /* Append triggered button */
                                     if (response.records.store_settings.settings_data.is_triggered_enable && parseInt(response.records.store_settings.settings_data.is_triggered_enable) == 1) {
-                                        carecartSpinnerJquery("body").append(response.records.store_front_trigger_button); 
-                                        if(Shopify.shop == "")
+                                        carecartSpinnerJquery("body").append(response.records.store_front_trigger_button);
                                         if ("our-little-hero.myshopify.com" == Shopify.shop) {
                                             carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "none");
                                         }
@@ -1448,7 +1427,7 @@
                                                 let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
                                                 triggerBottom === 0 ? triggerBottom =  15 : triggerBottom += 15;
                                                 tBtn.css({
-                                                    left: '-48px',
+                                                    left: '60px',
                                                     bottom: triggerBottom+'vh',
                                                     transform: 'rotate(270deg)'
                                                 });
@@ -1876,6 +1855,16 @@
                         couponUsed: couponUsed,
                         winResult: winResult
                     }
+
+                    var clientIpAddress = null;
+                    if (window.localStorage.getItem('cc-sas-spinner-user-ip-address') === null) {
+                        carecartSpinnerJquery.getJSON("https://api.ipify.org/?format=json", function (e) {
+                            clientIpAddress = e.ip;
+                        });
+                    } else {
+                        clientIpAddress = window.localStorage.getItem('cc-sas-spinner-user-ip-address');
+                    }
+
                     carecartSpinnerJquery('#wheelify-cc-spin-a-sale-loader-on-click').hide();
                     console.log('SAS customerInformation: ' + customerInformation.name + ' ' + customerInformation.email);
                     setSpinCouponLoadTime();
@@ -1887,7 +1876,8 @@
                             customerInformation: customerInformation,
                             campaignId: campaignId, // Ab Test Module
                             abTestId: abTestId,     // Ab Test Module
-                            abTestVariationId: abTestVariationId  // Ab Test Module
+                            abTestVariationId: abTestVariationId,  // Ab Test Module
+                            ipAddress: clientIpAddress
                         },
                         crossDomain: true,
                         dataType: "json",
@@ -2302,18 +2292,9 @@
                                 carecartSpinnerJquery("head").append(
                                     '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {min-height: 468px;}} </style>'
                                 );  
-                                carecartSpinnerJquery("head").append(
+                                    carecartSpinnerJquery("head").append(
                                     '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight{ min-height: 560px;}} </style>'
                                 );
-
-                                if(Shopify.shop == 'happilo-international-private-limited.myshopify.com') {
-                                    carecartSpinnerJquery("head").append(
-                                        '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {height: 500px !important;}} </style>'
-                                    );
-                                    carecartSpinnerJquery("head").append(
-                                        '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview{height: 650px !important;}} </style>'
-                                    );  
-                                }
 
                                    /*********** Phone Number Collection ************/
 
@@ -2917,9 +2898,6 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
-
-               
-
                 if (Shopify.shop == 'the-party-champions.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">.wheelify-signupContainer ::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: #aaaaaa;}</style>');
                     //console.log("SAS https://partychampions.com/");
@@ -2954,36 +2932,9 @@
                         carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {bottom: 2vh !important;}</style>');
                     }
                 }
-                if(Shopify.shop == "giovanco.myshopify.com") {
-                    carecartSpinnerJquery("#wheelify-spin-trigger-cc").removeClass("triggerButton_shake");
-                    carecartSpinnerJquery( "#wheelify-spin-trigger-cc" ).effect( "shake" );
-                    if(navigator.userAgent.match(/chrome|chromium|crios/i)){
-                        carecartSpinnerJquery('head').append('<style type="text/css">.triggerButton_shake{animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite !important; transform: translate3d(0,0,0) !important; backface-visibility: hidden !important; perspective: 700px !important;}</style>');
-                    }
-                    else{
-                        carecartSpinnerJquery("#wheelify-spin-trigger-cc").removeClass("triggerButton_shake");
-                        carecartSpinnerJquery( "#wheelify-spin-trigger-cc" ).effect( "shake" );
-                    }
-                }
-
-                if(Shopify.shop == "celovis.myshopify.com"){
-                    carecartSpinnerJquery('head').append('<style type="text/css">@media only screen and (max-width: 768px){ #cc-spin-a-sale-consent-checkbox { width: auto !important; min-width: auto !important;} #wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight {min-height: 415px !important;}}</style>');
-                }
-                
-                if(Shopify.shop == "playstoo-store.myshopify.com"){
-                    carecartSpinnerJquery('head').append('<style type="text/css"> #cc-spin-a-sale-consent-checkbox {position: inherit !important; width: auto !important; min-width: auto !important;} </style>');
-                    carecartSpinnerJquery('head').append('<style type="text/css">#cc-spin-a-sale-consent-checkbox{ width:20px !important; height:20px !important; } .checkbox label:after{ display:none !important; } .checkbox input[type=checkbox]{ z-index: 1 !important; opacity: 1 !important; } </style>');
-                }
-                
-                if(Shopify.shop == "queens-growth.myshopify.com"){
-                    carecartSpinnerJquery('head').append('<style type="text/css"> #cc-spin-a-sale-consent-checkbox {position: inherit !important; width: auto !important; min-width: auto !important;} </style>');
-                    carecartSpinnerJquery('head').append('<style type="text/css">#cc-spin-a-sale-consent-checkbox{ width:20px !important; height:20px !important; } .checkbox label:after{ display:none !important; } .checkbox input[type=checkbox]{ z-index: 1 !important; opacity: 1 !important; } </style>');
-                }
-
-                    
             });
 
-        });
+        }, 1000);
     });
 
 })();
