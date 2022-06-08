@@ -246,6 +246,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "shoesaaa.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -456,6 +462,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "watchis01.myshopify.com")
     {
     	customSelctor = $jq321(".main-product__block-price");
+    	finalSelector = customSelctor[0];
+        console.log(finalSelector);
+    }
+
+    if (Shopify.shop == "shoesaaa.myshopify.com")
+    {
+    	customSelctor = $jq321(".product-form__buttons");
     	finalSelector = customSelctor[0];
         console.log(finalSelector);
     }
