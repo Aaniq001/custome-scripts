@@ -2650,8 +2650,10 @@
          var selectorVisitor2 = $jq321("form[action='/cart/add']");
          var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
          var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
-         if(Shopify.shop == "onlydoveacollection.myshopify.com"){
-             masterSelector = $jq321(".product-form")
+         
+         if(Shopify.shop == "onlydoveacollection.myshopify.com")
+         {
+             masterSelector = $jq321(".payment-buttons")
              masterSelector = masterSelector[0]
          }
          
