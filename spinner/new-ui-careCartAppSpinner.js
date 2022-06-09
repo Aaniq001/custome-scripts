@@ -2933,7 +2933,13 @@
                     }
                 }
                 if (Shopify.shop == 'aleromano-7840.myshopify.com') {
+                var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
+
+                if (windowWidth < 575) {
                     carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {bottom: 0px !important;}</style>');
+                } else{
+                    carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {bottom: 4vh !important;}</style>');
+                }
                 }
             });
 
