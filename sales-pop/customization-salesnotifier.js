@@ -2653,8 +2653,12 @@
          
          if(Shopify.shop == "onlydoveacollection.myshopify.com")
          {
-             masterSelector = $jq321(".payment-buttons")
-             masterSelector = masterSelector[0]
+             masterSelector = $jq321(".payment-buttons");
+             masterSelector = masterSelector[0];
+
+             $jq321("head").append(
+                '<style type="text/css">.visitor-counter-content-box-carecartbysalespop-2020 {margin-top: -24px !important;}</style>'
+              );
          }
          
          if (response.above_cart == 1) {
