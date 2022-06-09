@@ -2932,6 +2932,9 @@
                         carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {bottom: 2vh !important;}</style>');
                     }
                 }
+                if (Shopify.shop == 'aleromano-7840.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {bottom: 0px !important;}</style>');
+                }
             });
 
         }, 1000);
