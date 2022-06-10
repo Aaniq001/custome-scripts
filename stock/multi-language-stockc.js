@@ -134,7 +134,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     });
 
     //Selectors wil goes from here
-    if(Shopify.shop == "collectorbrothers.myshopify.com")
+    if (Shopify.shop == "collectorbrothers.myshopify.com")
+    {
+        finalSelector = masterSelector[0];
+    }
+
+    if (Shopify.shop == "juksberlin11.myshopify.com")
     {
         finalSelector = masterSelector[0];
     }
@@ -189,7 +194,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if (selectorStock1.length == 1)
+            if (masterSelector.length > 0) 
+            {
+                $jq321(response.view).insertAfter(finalSelector);
+            }
+            else if (selectorStock1.length == 1)
             {
                 selectorStock1.append(response.view);
             }
@@ -235,6 +244,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             {
                 $jq321(t.view).insertBefore('#AddToCart');
             }
+            else if (masterSelector.length > 0) 
+            {
+                $jq321(t.view).insertBefore(finalSelector);
+            }
             else if (selectorTimer1.length == 1)
             {
                 selectorTimer1.prepend(t.view);
@@ -262,7 +275,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if (selectorTimer1.length == 1)
+            if (masterSelector.length > 0) 
+            {
+                $jq321(t.view).insertAfter(finalSelector);
+            }
+            else if (selectorTimer1.length == 1)
             {
                 selectorTimer1.append(t.view);
             }
