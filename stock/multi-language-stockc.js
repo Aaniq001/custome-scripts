@@ -142,6 +142,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "juksberlin11.myshopify.com")
     {
         finalSelector = masterSelector[0];
+
+        $jq321("head").append(
+            '<style type="text/css">'+
+            '.timer-store-front {margin-top: 17px !important;}'+
+            '.stock-top {margin-top: 17px !important;}'+
+            '</style>'
+          );
     }
 
     if (Shopify.shop == "poopybuttholeman.myshopify.com")
