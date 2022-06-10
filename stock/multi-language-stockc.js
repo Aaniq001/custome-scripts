@@ -143,11 +143,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         finalSelector = masterSelector[0];
     }
+
+    if (Shopify.shop == "poopybuttholeman.myshopify.com")
+    {
+        finalSelector = masterSelector[0];
+    }
     
-    
-
-
-
      function stockCountdown(response) 
      {   
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
