@@ -293,6 +293,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         masterSelector = $jq321("h6");
         finalSelector = masterSelector[0];
+
+        $jq321("head").append('<style type="text/css">.stock-top{margin-top: 18px; !important}</style>');
     }
 
     function stockCountdown(response) {
