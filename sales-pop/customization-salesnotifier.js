@@ -2313,6 +2313,20 @@
         );
     } 
 
+    if (Shopify.shop == "pinkrevolver-shop.myshopify.com") {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.close-quickshop{padding:0;}'+
+                '.sale-sticker{background-color: #E7749D !important; color: #fff !important;}'+
+                '.view-full-details a{color: #E7749D !important}'+  
+                '.quickshop-quantity input{ border: 1px solid #E7749D !important}'+ 
+                '.quantity-button.quantity-up{border-color: #E7749D !important;}'+ 
+                '.quantity-button.quantity-down{border-color: #E7749D !important;}'+ 
+                '.quick-shop-addtocart button{background-color: #E7749D !important; color: #fff !important;}'+ 
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
