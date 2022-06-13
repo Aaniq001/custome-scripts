@@ -129,7 +129,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
 
         if (response.above_cart == 1) {
-            if (masterSelector.length > 0) {
+            if (Shopify.shop == "officialsmootsy.myshopify.com")
+            {
+                $jq321(response.view).insertBefore('.product-form__buttons');
+            }
+            else if (masterSelector.length > 0) {
 				$jq321(response.view).insertBefore(masterSelector);
 			}
             else if (selectorVisitor1.length == 1) {
@@ -146,7 +150,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             }
         }
         else {
-            if (masterSelector.length > 0) {
+            if (Shopify.shop == "officialsmootsy.myshopify.com")
+            {
+                $jq321(response.view).insertAfter('.product-form__buttons');
+            }
+            else if (masterSelector.length > 0) {
 				$jq321(response.view).insertAfter(masterSelector);
 			}
             else if (selectorVisitor1.length == 1) {
