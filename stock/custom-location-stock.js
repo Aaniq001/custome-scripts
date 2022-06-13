@@ -140,6 +140,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "idealzoneofficiel.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "yipth.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     $jq321.ajax({
@@ -286,6 +289,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         finalSelector = masterSelector[0];
     }
 
+    if (Shopify.shop == "yipth.myshopify.com")
+    {
+        masterSelector = $jq321("h6");
+        finalSelector = masterSelector[0];
+    }
+
     function stockCountdown(response) {
         
         var selectorStock0 = $jq321("form[action='/cart/add']").find(".product__submit__buttons").parent();
@@ -397,7 +406,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         if (t.above_cart == 1)
         {
-            if(customSelector.length > 0){
+            if (masterSelector.length > 0) 
+            {
+                $jq321(t.view).insertBefore(finalSelector);
+            }
+            else if(customSelector.length > 0){
             	$jq321(t.view).insertBefore(finalSelector);
             }
             else if (selectorTimer1.length == 1)
@@ -427,7 +440,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if(customSelector.length > 0){
+            if (masterSelector.length > 0) 
+            {
+                $jq321(t.view).insertAfter(finalSelector);       
+            }
+            else if(customSelector.length > 0){
             	$jq321(t.view).insertAfter(finalSelector);
             }
             else if (selectorTimer1.length == 1)
@@ -440,6 +457,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             }
             else if (selectorTimer3.length == 1)
             {
+                console.log(3);
                 $jq321(t.view).insertAfter(selectorTimer3);
             }
             else if (selectorTimer4.length == 1)
