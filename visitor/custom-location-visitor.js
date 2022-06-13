@@ -258,6 +258,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "street-strider.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -482,6 +488,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "bruzix.myshopify.com")
     {
     	customSelctor = $jq321(".main-product__block-tax");
+    	finalSelector = customSelctor[0];
+        console.log(finalSelector);
+    }
+
+    if (Shopify.shop == "street-strider.myshopify.com")
+    {
+    	customSelctor = $jq321(".tab-1-product__actions");
     	finalSelector = customSelctor[0];
         console.log(finalSelector);
     }
