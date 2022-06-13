@@ -129,8 +129,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var formUrls = value.action;
         
         if(formUrls.indexOf('/cart/add') > -1)
-        
-        {masterSelector= $jq321(value).find("button[type='submit'],input[type='submit']").parent();}
+        {
+            masterSelector = $jq321(value).find("button[type='submit'],input[type='submit']").parent();
+            
+            console.log(masterSelector);
+        }
     });
 
     //Selectors wil goes from here
@@ -155,6 +158,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         finalSelector = masterSelector[0];
     }
+
+    /* if (Shopify.shop == "officialsmootsy.myshopify.com")
+    {
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    } */
     
      function stockCountdown(response) 
      {   
@@ -167,7 +177,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         if (response.above_cart == 1)
         {
-            if (Shopify.shop == "ivmt.myshopify.com")
+            if (Shopify.shop == "officialsmootsy.myshopify.com")
+            {
+                $jq321(response.view).insertBefore('.product-form__buttons');
+            }
+            else if (Shopify.shop == "ivmt.myshopify.com")
             {
                 $jq321(response.view).insertBefore('#AddToCart');
             }
@@ -202,7 +216,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if (masterSelector.length > 0) 
+            if (Shopify.shop == "officialsmootsy.myshopify.com")
+            {
+                $jq321(response.view).insertAfter('.product-form__buttons');
+            }
+            else if (masterSelector.length > 0) 
             {
                 $jq321(response.view).insertAfter(finalSelector);
             }
