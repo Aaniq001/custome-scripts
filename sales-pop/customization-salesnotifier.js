@@ -2327,6 +2327,12 @@
         );
     }
 
+    if (Shopify.shop == "theralief-shop.myshopify.com")
+    {
+        masterSelector = $jq321("#new-form-atc");
+        finalSelector = masterSelector[0];
+    } 
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
@@ -2674,6 +2680,11 @@
                 '<style type="text/css">.visitor-counter-content-box-carecartbysalespop-2020 {margin-top: -24px !important;}</style>'
               );
          }
+         else if (Shopify.shop == "theralief-shop.myshopify.com")
+         {
+            masterSelector = $jq321("#new-form-atc");
+            finalSelector = masterSelector[0];
+         }
          
          if (response.above_cart == 1) {
             if (masterSelector.length > 0) {
@@ -2715,29 +2726,35 @@
          var selectorSold2 = $jq321("form[action='/cart/add']");
          var selectorSold3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
          var selectorSold4 = $jq321("form[action='/cart/add']:first");
-       
+        
+         if (Shopify.shop == "theralief-shop.myshopify.com")
+         {
+            masterSelector = $jq321("#new-form-atc");
+            finalSelector = masterSelector[0];
+         } 
+            
          if (response.above_cart == 1)
          {
-             if (masterSelector.length > 0) 
-             {
-                 $jq321(response.view).insertBefore(finalSelector);
-             } 
-             else if (selectorSold1.length == 1)
-             {
-                 selectorSold1.prepend(response.view);
-             }
-             else if (selectorSold2.length == 1)
-             { 
-                 selectorSold2.prepend(response.view);
-             }
-             else if (selectorSold3.length == 1)
-             {
-                 selectorSold3.prepend(response.view);
-             }
-             else if (selectorSold4.length == 1)
-             {
-                 selectorSold4.prepend(response.view);
-             }
+            if (masterSelector.length > 0) 
+            {  
+                $jq321(response.view).insertBefore(finalSelector);
+            } 
+            else if (selectorSold1.length == 1)
+            {
+                selectorSold1.prepend(response.view);
+            }
+            else if (selectorSold2.length == 1)
+            { 
+                selectorSold2.prepend(response.view);
+            }
+            else if (selectorSold3.length == 1)
+            {
+                selectorSold3.prepend(response.view);
+            }
+            else if (selectorSold4.length == 1)
+            {
+                selectorSold4.prepend(response.view);
+            }
          }
          else
          {
@@ -3035,7 +3052,6 @@
      // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
      function trustBadges(trustBadgesResponse)
      {
-
         if (Shopify.shop == "cap-point.myshopify.com")
         {
             let text = window.location.pathname;
@@ -3079,9 +3095,14 @@
             var selectorTrustBadges2 = $jq321("form[action='/cart/add']");
             var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
+
+            if (Shopify.shop == "theralief-shop.myshopify.com")
+            {
+                $jq321(trustBadgesResponse.view).insertAfter(finalSelector);
+            }
             
             var masterSelector = $jq321(".groups-btn");
-            finalSelector= masterSelector[0]
+            finalSelector= masterSelector[0];
 
             if (Shopify.shop == "cap-point.myshopify.com")
             {
