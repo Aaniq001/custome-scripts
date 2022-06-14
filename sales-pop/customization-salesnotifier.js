@@ -1374,38 +1374,35 @@
      
           // Time COUNTDOWN CALL
          if(apiResponse && apiResponse.timer && apiResponse.timer!==null)
-         {
-             /*$jq321("head").append($jq321("<link/>", {
-                     rel: "stylesheet",
-                     href: serverUrl.cssTimer + "?v" + version
-                 }));*/
-             //timeCountdown(apiResponse.timer);
- 
+         { 
              setTimeout(function(){ $jq321("head").append($jq321("<link/>", {
                      rel: "stylesheet",
                      href: serverUrl.cssTimer + "?v" + version
                  })); }, 1000);
              setTimeout(function(){ timeCountdown(apiResponse.timer); }, 2000);
          }
-  // TRUST BADGES CALL
-  if (apiResponse && apiResponse.trustBadges && apiResponse.trustBadges != false) 
-  {
-      $jq321("head").append($jq321("<link/>", {
-          rel: "stylesheet",
-          href: serverUrl.cssTrustBadges + "?v" + version
-      }));
 
-      trustBadges(apiResponse.trustBadges);
-  }
          // VISITOR COUNTER CALL
          if (apiResponse && apiResponse.visitor && apiResponse.visitor !== null) {
             
-             $jq321("head").append($jq321("<link/>", {
-                 rel: "stylesheet",
-                 href: serverUrl.cssVisitor + "?v" + version
-             }));
- 
-             visitorCounter(apiResponse.visitor);
+            if (Shopify.shop == "agent11mporex.myshopify.com")
+            {
+                setTimeout(function(){
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssVisitor + "?v" + version
+                    }));
+                    visitorCounter(apiResponse.visitor);
+                }, 5000);
+            }
+            else
+            {
+                $jq321("head").append($jq321("<link/>", {
+                    rel: "stylesheet",
+                    href: serverUrl.cssVisitor + "?v" + version
+                }));
+                visitorCounter(apiResponse.visitor);
+            }             
          }
  
          // SOLD COUNTER CALL
@@ -1437,8 +1434,6 @@
              }
          }
          
-        
-      
          //Timer on collections
         if (apiResponse && apiResponse.timerCollection && apiResponse.timerCollectionPagesStatus == 1) {
             setTimeout(function () {
@@ -1503,6 +1498,17 @@
                     setTimeout(function () { announcementBar(apiResponse.announcementBar); }, 2000);
                 }
             }
+        }
+
+        // TRUST BADGES CALL
+        if (apiResponse && apiResponse.trustBadges && apiResponse.trustBadges != false) 
+        {
+            $jq321("head").append($jq321("<link/>", {
+                rel: "stylesheet",
+                href: serverUrl.cssTrustBadges + "?v" + version
+            }));
+
+            trustBadges(apiResponse.trustBadges);
         }
 
         var notAllowedBlockSpecificPage = blockSpecificPage();
@@ -1701,16 +1707,6 @@
              html: dataNotification
          });
  
-         /*$jq321.notify("hello world", {
-             globalPosition: apiResponse.desktop_position,
-             style: 'salesPopStyle',
-             autoHideDelay: parseInt(apiResponse.display_time) * 1000,
-             showDuration: 600,
-             hideAnimation: 'slideUp',
-             hideDuration: 600,
-             clickToHide: false
-         });*/
- 
          if (salespoplib_vars_obj.checkDevice == 'mobile')
          {
              if (apiResponse.mobile_display_option == 'undefined')
@@ -1755,8 +1751,6 @@
          {
              $jq321(".pur-time").html(timeDifference);
          }
-         
-         //saveImpression(1);
      };
  
  
@@ -1770,7 +1764,6 @@
      {
         cc_product_id = null;
      }
- //console.log(cc_product_id);
  
      /////////////////////// Set flag to get notifications data //////////////////////////
      var fetchNotifications = 1;
