@@ -1375,11 +1375,11 @@
           // Time COUNTDOWN CALL
          if(apiResponse && apiResponse.timer && apiResponse.timer!==null)
          { 
-             setTimeout(function(){ $jq321("head").append($jq321("<link/>", {
+            setTimeout(function(){ $jq321("head").append($jq321("<link/>", {
                      rel: "stylesheet",
                      href: serverUrl.cssTimer + "?v" + version
                  })); }, 1000);
-             setTimeout(function(){ timeCountdown(apiResponse.timer); }, 2000);
+            setTimeout(function(){ timeCountdown(apiResponse.timer); }, 2000);
          }
 
          // VISITOR COUNTER CALL
@@ -1436,15 +1436,33 @@
          
          //Timer on collections
         if (apiResponse && apiResponse.timerCollection && apiResponse.timerCollectionPagesStatus == 1) {
+
+            var block_url_TC = window.location.pathname.split("/");
+            var block_url_store_TC = window.location.origin + '/' + block_url_TC[1] + '/' + block_url_TC[2];
+
+            if (Shopify.shop == "swap-up.myshopify.com") 
+            {
+                if (block_url_store_TC != 'https://swapup.com.au/collections/sale')
+                {
+                    return false;
+                }
+            }
+            
             setTimeout(function () {
                 $jq321("head").append($jq321("<link/>", {
                     rel: "stylesheet",
                     href: serverUrl.cssTimer + "?v" + version
                 }));
             }, 1000);
+            
             setTimeout(function () {
                 collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
             }, 2000);
+
+            $jq321(window).scroll(function () {
+                $jq321(".timer-store-front").remove();
+                collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
+            }); 
         }
 
         // ANNOUNCEMENT BAR CALL
@@ -1576,8 +1594,6 @@
 
          if (parseInt(apiResponse.show_relevant) === 1) {
              relevantNotifications = getRelevantNotifications();
-
-             console.log(relevantNotifications);
          }
  
          spDebuger.storeLog("Total Relevant Notifications: " + relevantNotifications.length);
@@ -3246,69 +3262,95 @@
         var timeinterval = setInterval(updateClock, 1000);
     }
 
-    function collectionTimer(responseTimer, responseTimerCollection) {
-
+    function collectionTimer(responseTimer, responseTimerCollection) 
+    {
         var allLinks = [];
         var product_id = (meta.product && meta.product.id) ? meta.product.id : '';
 
-        if (product_id == '') {
-
-            console.log('collection page');
-            
+        if (product_id == '') 
+        {    
             if (Shopify.shop == "buddyleejumpropes.myshopify.com")
             {
-                $jq321(".ProductItem__ImageWrapper").each(function () {                 
+                $jq321(".ProductItem__ImageWrapper").each(function () 
+                {                 
                     var href = $jq321(this).attr('href');
                     var url = href.split("/");
-                        if (($jq321.inArray("products", url) != -1)) {
-                        if ($jq321.inArray(href, allLinks) == -1) {
+                    
+                    if (($jq321.inArray("products", url) != -1)) 
+                    {
+                        if ($jq321.inArray(href, allLinks) == -1) 
+                        {
                             allLinks.push(href);
                         }
                     }
                 });    
             }
+            else if (Shopify.shop == "swap-up.myshopify.com")
+            {
+                $jq321(".product-thumb-href").each(function () {
+
+                    var href = $jq321(this).attr('href');                    
+                    var url = href.split("/");
+
+                    if (($jq321.inArray("products", url) != -1)) 
+                    {
+                        if ($jq321.inArray(href, allLinks) == -1) 
+                        {
+                            allLinks.push(href);
+                        }
+                    }
+
+                });  
+            }
             else
             {
-                console.log('collection page 2');
-
-                $jq321("a").each(function () {                 
+                $jq321("a").each(function () 
+                {                 
                     var href = $jq321(this).attr('href');
                     var url = href.split("/");
-                        if (($jq321.inArray("products", url) != -1)) {
-                        if ($jq321.inArray(href, allLinks) == -1) {
+
+                    if (($jq321.inArray("products", url) != -1)) 
+                    {
+                        if ($jq321.inArray(href, allLinks) == -1) 
+                        {
                             allLinks.push(href);
                         }
                     }
                 });
             }
         }
-        else {
-
-            console.log('product page');
-
-            $jq321("a").each(function () {
+        else 
+        {
+            $jq321("a").each(function () 
+            {
                 var href = $jq321(this).attr('href');
-
                 var url = href.split("/");
 
-                if ($jq321.inArray("products", url) != -1) {
+                if ($jq321.inArray("products", url) != -1) 
+                {
                     var otherurl = href.split("=");
-
                     var res = otherurl[0].split("?");
 
-                    if (res[1] == 'pr_prod_strat') {
+                    if (res[1] == 'pr_prod_strat') 
+                    {
                         allLinks.push(href);
                     }
                 }
             });
         }
 
-        function checkValue(value, arr) {
+        function checkValue(value, arr) 
+        {
             var status = 'Not exist';
-            if(arr === null) return status;
-            for (var i = 0; i < arr.length; i++) {
+            
+            if(arr === null) 
+            return status;
+            
+            for (var i = 0; i < arr.length; i++) 
+            {
                 var name = arr[i];
-                if (name == value) {
+                if (name == value) 
+                {
                     status = 'Exist';
                     break;
                 }
@@ -3316,22 +3358,27 @@
             return status;
         }
 
-        if (product_id == '') {
-            if (allLinks.length != 0) {
-                for (var u = 0; u < allLinks.length; u++) {
-                    if (checkValue(allLinks[u], responseTimerCollection) == 'Not exist') {
+        if (product_id == '') 
+        {
+            if (allLinks.length != 0) 
+            {
+                for (var u = 0; u < allLinks.length; u++) 
+                {
+                    if (checkValue(allLinks[u], responseTimerCollection) == 'Not exist') 
+                    {
                         var selectorTimeView = $jq321("[href='" + allLinks[u] + "']");
                         selectorTimeView = selectorTimeView[0];
-                        console.log(selectorTimeView);
                         $jq321(responseTimer.view).insertBefore(selectorTimeView);
                     }
                 }
             }
         }
-        else {
+        else 
+        {
             var allLinksC = [];
             var product = null;
-            for (var q = 0; q < allLinks.length; q++) {
+            for (var q = 0; q < allLinks.length; q++) 
+            {
                 product = allLinks[q].substring(0, allLinks[q].indexOf('?') + 1);
                 product = product.replace(/\?/g, '');
                 product = '/collections/all' + product;
@@ -3339,8 +3386,10 @@
                 allLinksC.push(product);
             }
 
-            for (var u = 0; u < allLinks.length; u++) {
-                if (checkValue(allLinksC[u], responseTimerCollection) == 'Not exist') {
+            for (var u = 0; u < allLinks.length; u++) 
+            {
+                if (checkValue(allLinksC[u], responseTimerCollection) == 'Not exist') 
+                {
                     var selectorTimeView = $jq321("[href='" + allLinks[u] + "']");
                     $jq321(responseTimer.view).insertBefore(selectorTimeView);
                 }
