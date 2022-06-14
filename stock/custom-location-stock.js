@@ -294,7 +294,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         masterSelector = $jq321("h6");
         finalSelector = masterSelector[0];
 
-        $jq321("head").append('<style type="text/css">.stock-top{margin-top: 18px; !important}</style>');
+        $jq321("head").append('<style type="text/css">'+
+                              '.stock-top{margin-top: 18px; !important}'+
+                              '@media screen and (max-width: 575px) { .product-form-inline-atc > .product-form-inline-atc-button + .shopify-payment-button {margin-bottom: 25px;}}'+
+                              '</style>');
     }
 
     function stockCountdown(response) {
