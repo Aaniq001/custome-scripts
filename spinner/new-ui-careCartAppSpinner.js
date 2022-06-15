@@ -2932,6 +2932,10 @@
                         carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {bottom: 2vh !important;}</style>');
                     }
                 }
+                if (Shopify.shop == 'iinyouths.myshopify.com') {
+                        carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .checkbox{width:auto !important; height:auto !important; border:none !important; background-color:transparent !important;}</style>');
+                        carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form{text-align:center !important;}</style>');
+                }
                 if (Shopify.shop == 'aleromano-7840.myshopify.com') {
                 var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
 
