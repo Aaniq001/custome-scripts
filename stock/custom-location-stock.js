@@ -137,6 +137,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "cengiz-akturk-shop.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "idealzoneofficiel.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "yipth.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     $jq321.ajax({
@@ -195,7 +201,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "facciobusiness222.myshopify.com") {
         customSelector = $jq321(".purchase-details");
         finalSelector = customSelector[0];
-        console.log(customSelector);
     }    
     if (Shopify.shop == "the-bella-cottage-inc.myshopify.com") 
     {
@@ -214,31 +219,26 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "internet-retail-connection.myshopify.com") {
         customSelector = $jq321(".add-to-cart-wrapper");
         finalSelector = customSelector[0];
-        console.log(customSelector);
     }    
 
     if (Shopify.shop == "mamano-chocolate.myshopify.com") {
         customSelector = $jq321(".js-qty");
         finalSelector = customSelector[0];
-        console.log(customSelector);
     }
 
     if (Shopify.shop == "fabricatextiles.myshopify.com") {
         customSelector = $jq321(".add-to-cart");
         finalSelector = customSelector[0];
-        console.log(customSelector);
     }
 
     if (Shopify.shop == "rossocoffee.myshopify.com") {
         customSelector = $jq321(".product__cart-actions-holder");
         finalSelector = customSelector[0];
-        console.log(customSelector);
     }
 
     if (Shopify.shop == "happy-nocnoc.myshopify.com") {
         customSelector = $jq321(".product-block--price");
         finalSelector = customSelector[0];
-        console.log(customSelector);
     }
 
     if (Shopify.shop == "smartcooks-de.myshopify.com") {
@@ -252,13 +252,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             customSelector = $jq321(".price__sale");
             finalSelector = customSelector[0];
         }
-        console.log(customSelector);
     } 
     
     if (Shopify.shop == "asia-tea-company-store.myshopify.com") {
         customSelector = $jq321(".ProductForm__BuyButtons");
         finalSelector = customSelector[0];
-        console.log(customSelector);
     }
     if(Shopify.shop == "confozen-fr.myshopify.com"){
     	$jq321("head").append('<style type="text/css">.stock-top{margin-top: 18px; !important}</style>');
@@ -267,27 +265,39 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "lloyds-liquid-sunshines.myshopify.com") {
         customSelector = $jq321(".paymentButtonsWrapper");
         finalSelector = customSelector[0];
-        console.log(customSelector);
     }
 
     if (Shopify.shop == "waterlily-products.myshopify.com") {
         customSelector = $jq321(".product-single__add-to-cart");
         finalSelector = customSelector[0];
-        console.log(customSelector);
     }
 
     if (Shopify.shop == "confozen-fr.myshopify.com") {
         customSelector = $jq321(".groups-btn");
         finalSelector = customSelector[0];
-        console.log(customSelector);
     }
 
     if (Shopify.shop == "cengiz-akturk-shop.myshopify.com")
     {
         masterSelector = $jq321(".sharing");
         finalSelector = masterSelector[0];
+    }
 
-        console.log(finalSelector);
+    if (Shopify.shop == "idealzoneofficiel.myshopify.com")
+    {
+        masterSelector = $jq321(".product-single__add-to-cart");
+        finalSelector = masterSelector[0];
+    }
+
+    if (Shopify.shop == "yipth.myshopify.com")
+    {
+        masterSelector = $jq321("h6");
+        finalSelector = masterSelector[0];
+
+        $jq321("head").append('<style type="text/css">'+
+                              '.stock-top{margin-top: 18px; !important}'+
+                              '@media screen and (max-width: 575px) { .product-form-inline-atc > .product-form-inline-atc-button + .shopify-payment-button {margin-bottom: 25px;}}'+
+                              '</style>');
     }
 
     function stockCountdown(response) {
@@ -302,13 +312,17 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         if (response.above_cart == 1)
         {
-            if (selectorStock0.length == 1)
+            if (masterSelector.length > 0) 
+            {
+                $jq321(response.view).insertBefore(finalSelector);
+            } 
+            else if (selectorStock0.length == 1)
             {
                 selectorStock0.prepend(response.view);
             }
             else if(customSelector.length > 0)
             {
-            	$jq321(response.view).insertBefore(finalSelector);
+                $jq321(response.view).insertBefore(finalSelector);
             }
             else if (selectorStock1.length == 1)
             {
@@ -337,7 +351,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if (selectorStock0.length == 1)
+            if (masterSelector.length > 0) 
+            {
+                $jq321(response.view).insertAfter(finalSelector);       
+            } 
+            else if (selectorStock0.length == 1)
             {
                 selectorStock0.append(response.view);
             }
@@ -393,7 +411,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         if (t.above_cart == 1)
         {
-            if(customSelector.length > 0){
+            if (masterSelector.length > 0) 
+            {
+                $jq321(t.view).insertBefore(finalSelector);
+            }
+            else if(customSelector.length > 0){
             	$jq321(t.view).insertBefore(finalSelector);
             }
             else if (selectorTimer1.length == 1)
@@ -423,7 +445,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if(customSelector.length > 0){
+            if (masterSelector.length > 0) 
+            {
+                $jq321(t.view).insertAfter(finalSelector);       
+            }
+            else if(customSelector.length > 0){
             	$jq321(t.view).insertAfter(finalSelector);
             }
             else if (selectorTimer1.length == 1)
@@ -436,6 +462,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             }
             else if (selectorTimer3.length == 1)
             {
+                console.log(3);
                 $jq321(t.view).insertAfter(selectorTimer3);
             }
             else if (selectorTimer4.length == 1)

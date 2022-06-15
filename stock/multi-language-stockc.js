@@ -129,20 +129,43 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var formUrls = value.action;
         
         if(formUrls.indexOf('/cart/add') > -1)
-        
-        {masterSelector= $jq321(value).find("button[type='submit'],input[type='submit']").parent();}
+        {
+            masterSelector = $jq321(value).find("button[type='submit'],input[type='submit']").parent();
+            
+            console.log(masterSelector);
+        }
     });
 
     //Selectors wil goes from here
-    if(Shopify.shop == "collectorbrothers.myshopify.com")
+    if (Shopify.shop == "collectorbrothers.myshopify.com")
     {
         finalSelector = masterSelector[0];
     }
+
+    if (Shopify.shop == "juksberlin11.myshopify.com")
+    {
+        finalSelector = masterSelector[0];
+
+        $jq321("head").append(
+            '<style type="text/css">'+
+            '.timer-store-front {margin-top: 17px !important;}'+
+            '.stock-top {margin-top: 17px !important;}'+
+            '</style>'
+          );
+    }
+
+    if (Shopify.shop == "poopybuttholeman.myshopify.com")
+    {
+        finalSelector = masterSelector[0];
+    }
+
+    /* if (Shopify.shop == "officialsmootsy.myshopify.com")
+    {
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    } */
     
-    
-
-
-
      function stockCountdown(response) 
      {   
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -154,7 +177,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         if (response.above_cart == 1)
         {
-            if (Shopify.shop == "ivmt.myshopify.com")
+            if (Shopify.shop == "officialsmootsy.myshopify.com")
+            {
+                $jq321(response.view).insertBefore('.product-form__buttons');
+            }
+            else if (Shopify.shop == "ivmt.myshopify.com")
             {
                 $jq321(response.view).insertBefore('#AddToCart');
             }
@@ -189,7 +216,15 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if (selectorStock1.length == 1)
+            if (Shopify.shop == "officialsmootsy.myshopify.com")
+            {
+                $jq321(response.view).insertAfter('.product-form__buttons');
+            }
+            else if (masterSelector.length > 0) 
+            {
+                $jq321(response.view).insertAfter(finalSelector);
+            }
+            else if (selectorStock1.length == 1)
             {
                 selectorStock1.append(response.view);
             }
@@ -235,6 +270,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             {
                 $jq321(t.view).insertBefore('#AddToCart');
             }
+            else if (masterSelector.length > 0) 
+            {
+                $jq321(t.view).insertBefore(finalSelector);
+            }
             else if (selectorTimer1.length == 1)
             {
                 selectorTimer1.prepend(t.view);
@@ -262,7 +301,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if (selectorTimer1.length == 1)
+            if (masterSelector.length > 0) 
+            {
+                $jq321(t.view).insertAfter(finalSelector);
+            }
+            else if (selectorTimer1.length == 1)
             {
                 selectorTimer1.append(t.view);
             }
