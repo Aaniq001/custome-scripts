@@ -3,7 +3,7 @@
  * @author CareCart
  * @link https://apps.shopify.com/partners/care-cart
  * @link https://carecart.io/
- * @version 1.2.24
+ * @version 3.0.0
  *
  * Any unauthorized use and distribution of this and related files, is strictly forbidden.
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
@@ -41,7 +41,9 @@
  scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
      window.$jq321 = jQuery.noConflict(true);
  
-     var version = "1.2.24";
+     scriptInjection("https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.min.js");
+
+    var version = "3.0.0";
  
      function notifyPopup($) {
          //IE8 indexOf polyfill
@@ -95,8 +97,8 @@
  
          var coreStyle = {
              name: "core",
-             html: "<div class=\"" + pluginClassName + "-wrapper\">\n	<div class=\"" + pluginClassName + "-arrow\"></div>\n	<div class=\"" + pluginClassName + "-container\"></div>\n</div>",
-             css: "." + pluginClassName + "-corner {\n	position: fixed;\n	margin: 30px;\n	z-index: 999999999999;\n}\n\n." + pluginClassName + "-corner ." + pluginClassName + "-wrapper,\n." + pluginClassName + "-corner ." + pluginClassName + "-container {\n	position: relative;\n	display: block;\n	height: inherit;\n	width: inherit;\n	margin: 3px;\n}\n\n." + pluginClassName + "-wrapper {\n	z-index: 1;\n	position: absolute;\n	display: inline-block;\n	height: 0;\n	width: 0;\n}\n\n." + pluginClassName + "-container {\n	display: none;\n	z-index: 1;\n	position: absolute;\n}\n\n." + pluginClassName + "-hidable {\n	cursor: pointer;\n}\n\n[data-notify-text],[data-notify-html] {\n	position: relative;\n}\n\n." + pluginClassName + "-arrow {\n	position: absolute;\n	z-index: 2;\n	width: 0;\n	height: 0;\n}"
+             html: "<div class=\"" + pluginClassName + "-wrapper\">\n   <div class=\"" + pluginClassName + "-arrow\"></div>\n   <div class=\"" + pluginClassName + "-container\"></div>\n</div>",
+             css: "." + pluginClassName + "-corner {\n  position: fixed;\n  margin: 30px;\n z-index: 999999999999;\n}\n\n." + pluginClassName + "-corner ." + pluginClassName + "-wrapper,\n." + pluginClassName + "-corner ." + pluginClassName + "-container {\n  position: relative;\n   display: block;\n   height: inherit;\n  width: inherit;\n   margin: 3px;\n}\n\n." + pluginClassName + "-wrapper {\n z-index: 1;\n   position: absolute;\n   display: inline-block;\n    height: 0;\n    width: 0;\n}\n\n." + pluginClassName + "-container {\n  display: none;\n    z-index: 1;\n   position: absolute;\n}\n\n." + pluginClassName + "-hidable {\n  cursor: pointer;\n}\n\n[data-notify-text],[data-notify-html] {\n    position: relative;\n}\n\n." + pluginClassName + "-arrow {\n    position: absolute;\n   z-index: 2;\n   width: 0;\n height: 0;\n}"
          };
  
          var stylePrefixes = {
@@ -143,10 +145,10 @@
                      $.each(props, function (name, val) {
                          if (stylePrefixes[name]) {
                              $.each(stylePrefixes[name], function (i, prefix) {
-                                 return cssText += "	" + prefix + name + ": " + val + ";\n";
+                                 return cssText += "    " + prefix + name + ": " + val + ";\n";
                              });
                          }
-                         return cssText += "	" + name + ": " + val + ";\n";
+                         return cssText += "    " + name + ": " + val + ";\n";
                      });
                      return cssText += "}\n";
                  });
@@ -668,19 +670,14 @@
              return {
                  "backend": "https://tracking-sales-pop.carecart.io/index.php/FrontController/",
                  "css": "https://sales-pop.carecart.io/public/front_assets/new-ui/css/notif-box.css",
-         "cssStock": "https://sales-pop.carecart.io/lib/stock-box.css",
-         "cssTimer": "https://sales-pop.carecart.io/lib/timer-box.css",
-         "cssVisitor": "https://sales-pop.carecart.io/lib/visitor-box.css",
-         "cssSold": "https://sales-pop.carecart.io/lib/sold-box.css",
+                 "cssStock": "https://sales-pop.carecart.io/lib/stock-box.css",
+                 "cssTimer": "https://sales-pop.carecart.io/lib/timer-box.css",
+                 "cssVisitor": "https://sales-pop.carecart.io/lib/visitor-box.css",
+                 "cssSold": "https://sales-pop.carecart.io/lib/sold-box.css",
+                 "cssQuick": "https://sales-pop.carecart.io/lib/quick-box.css",
+                 "cssTrustBadges": "https://sales-pop.carecart.io/lib/badges-box.css",
+                 "cssAnnouncement": "https://sales-pop.carecart.io/lib/announcement.css",
                  "legacyCss": "https://sales-pop.carecart.io/lib/salesnotifier.css"
- 
-                 /*"backend": "https://uat-tracking-sales-pop.carecart.io/index.php/FrontController/",
-                 "css": "https://dev3.carecart.io/public/front_assets/new-ui/css/notif-box.css",
-         "cssStock": "https://dev3.carecart.io/lib/stock-box.css",
-         "cssTimer": "https://dev3.carecart.io/lib/timer-box.css",
-         "cssVisitor": "https://dev3.carecart.io/lib/visitor-box.css",
-         "cssSold": "https://dev3.carecart.io/lib/sold-box.css",
-                 "legacyCss": "https://dev3.carecart.io/lib/salesnotifier.css"*/
              };
          }
  
@@ -692,14 +689,30 @@
          if ("sales-pop.carecart.io" === tempAnchorTag.hostname) {
              backend = "https://tracking-" + tempAnchorTag.hostname + "/index.php/FrontController/";
          }
+         else if ("lazy-cow-13.telebit.io" === tempAnchorTag.hostname) {
+            backend = "http://localhost:8501/index.php/FrontController/";
+        }
+        else if ("uat-salespop.carecart.io" === tempAnchorTag.hostname) {
+            backend = "https://uat-tracking-sales-pop.carecart.io/index.php/FrontController/";
+        }
+        else if ("dev-sales-pop.carecart.io" === tempAnchorTag.hostname) {
+            backend = "https://dev-tracking-sales-pop.carecart.io/index.php/FrontController/";
+        }
+        else if("odd-earwig-64.telebit.io" === tempAnchorTag.hostname)
+        {
+            backend = "http://localhost:8500/index.php/FrontController/";
+        }
  
          return {
              "backend": backend,
              "css": "https://" + tempAnchorTag.hostname + "/public/front_assets/new-ui/css/notif-box.css?v" + version,
-         "cssStock": "https://" + tempAnchorTag.hostname + "/lib/stock-box.css?v" + version,
-         "cssTimer": "https://" + tempAnchorTag.hostname + "/lib/timer-box.css?v" + version,
-         "cssVisitor": "https://" + tempAnchorTag.hostname + "/lib/visitor-box.css?v" + version,
-         "cssSold": "https://" + tempAnchorTag.hostname + "/lib/sold-box.css?v" + version,
+             "cssStock": "https://" + tempAnchorTag.hostname + "/lib/stock-box.css?v" + version,
+             "cssTimer": "https://" + tempAnchorTag.hostname + "/lib/timer-box.css?v" + version,
+             "cssVisitor": "https://" + tempAnchorTag.hostname + "/lib/visitor-box.css?v" + version,
+             "cssSold": "https://" + tempAnchorTag.hostname + "/lib/sold-box.css?v" + version,
+             "cssQuick": "https://" + tempAnchorTag.hostname + "/lib/quick-box.css?v" + version,
+             "cssTrustBadges": "https://" + tempAnchorTag.hostname + "/lib/badges-box.css?v" + version,
+             "cssAnnouncement": "https://" + tempAnchorTag.hostname + "/lib/announcement.css?v" + version,
              "legacyCss": "https://" + tempAnchorTag.hostname + "/lib/salesnotifier.css"
          };
      }
@@ -1207,16 +1220,35 @@
  //////////////////////////////// .end local storage check
          
       // STOCK COUNTDOWN CALL
-         if(apiResponse && apiResponse.stock && apiResponse.stock!==null){
-             if (apiResponse.stock.on_off == 1)
-             {
-                 $jq321("head").append($jq321("<link/>", {
-                     rel: "stylesheet",
-                     href: serverUrl.cssStock + "?v" + version
-                 }));
-                 stockCountdown(apiResponse.stock);
+        if (apiResponse && apiResponse.stock && apiResponse.stock !== null) {
+            if (apiResponse.stock.on_off == 1)
+            {
+                if(apiResponse.stock.stock_restriction_settings !== null){
+                    let stock_restriction_setting = JSON.parse(apiResponse.stock.stock_restriction_settings);
+                    if(stock_restriction_setting.stock_restriction_check == "on" && parseInt(stock_restriction_setting.stock_restriction_value) !== parseInt(apiResponse.stock.left_stock) && parseInt(apiResponse.stock.left_stock) > parseInt(stock_restriction_setting.stock_restriction_value)){
+                        console.log("SP: Stock restricted to display");
+                    } else {
+                        $jq321("head").append($jq321("<link/>", {
+                            rel: "stylesheet",
+                            href: serverUrl.cssStock + "?v" + version
+                        }));
+                        stockCountdown(apiResponse.stock);
+                        if (apiResponse.stock.variantCheck && apiResponse.stock.variantCheck == 1 && apiResponse.stock.variantsData !== null && apiResponse.stock.variantsData.length > 1) {
+                            enableStockForVariants(apiResponse.stock.variantsData, apiResponse.stock.variantHeading);
+                        }
+                    }
+                } else {
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssStock + "?v" + version
+                    }));
+                    stockCountdown(apiResponse.stock);
+                    if (apiResponse.stock.variantCheck && apiResponse.stock.variantCheck == 1 && apiResponse.stock.variantsData !== null && apiResponse.stock.variantsData.length > 1) {
+                        enableStockForVariants(apiResponse.stock.variantsData, apiResponse.stock.variantHeading);
+                    }
+                }
              }
-         }
+        }
      
           // Time COUNTDOWN CALL
          if(apiResponse && apiResponse.timer && apiResponse.timer!==null)
@@ -1255,6 +1287,99 @@
  
              soldCounter(apiResponse.sold);
          }
+
+         // PRODUCT QUICK VIEW FOR NOTIFICATION
+        if (apiResponse && apiResponse.quickView && apiResponse.quickView !== null) {
+            $jq321("head").append($jq321("<link/>", {
+                rel: "stylesheet",
+                href: serverUrl.cssQuick + "?v" + version
+            }));
+
+            productQuickView(apiResponse.quickView);
+
+            if (apiResponse && apiResponse.quickViewCollection && apiResponse.quickViewCollection == 1) {
+                setTimeout(function () {
+                    // PRODUCT QUICK VIEW FOR COLLECTION PAGES
+                    collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
+                }, 3000);
+            }
+        }
+
+        // TRUST BADGES CALL
+        if (apiResponse && apiResponse.trustBadges && apiResponse.trustBadges != false) {
+            $jq321("head").append($jq321("<link/>", {
+                rel: "stylesheet",
+                href: serverUrl.cssTrustBadges + "?v" + version
+            }));
+
+            trustBadges(apiResponse.trustBadges);
+        }
+
+        //Timer on collections
+        if (apiResponse && apiResponse.timerCollection && apiResponse.timerCollectionPagesStatus == 1) {
+            setTimeout(function () {
+                $jq321("head").append($jq321("<link/>", {
+                    rel: "stylesheet",
+                    href: serverUrl.cssTimer + "?v" + version
+                }));
+            }, 1000);
+            setTimeout(function () {
+                collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
+            }, 2000);
+        }
+
+        // ANNOUNCEMENT BAR CALL
+        if (apiResponse && apiResponse.announcementBar && apiResponse.announcementBar != false) 
+        {
+            if ( ! isHideAnnouncementCookieSet())
+            {
+                var $allowed = 0;
+                var currentPageHandle = window.location.pathname.split("/");
+
+                if (apiResponse.announcementBar.pages_type == 2)
+                {
+                    if (($jq321.inArray("products", currentPageHandle) != -1) && (apiResponse.announcementBar.product_page == 1)) 
+                    {
+                        console.log('product page');
+                        $allowed = 1;
+                    }
+                    else if (($jq321.inArray("collections", currentPageHandle) != -1) && (apiResponse.announcementBar.collection_page == 1)) 
+                    {
+                        console.log('collection page');
+                        $allowed = 1;
+                    }
+                    else if (($jq321.inArray("cart", currentPageHandle) != -1) && (apiResponse.announcementBar.cart_page == 1)) 
+                    {
+                        console.log('cart page');
+                        $allowed = 1;
+                    }
+                    else if((currentPageHandle[1].length == 0) && (apiResponse.announcementBar.home_page == 1)) 
+                    {
+                        console.log("home page");
+                        $allowed = 1;
+                    }
+                    else
+                    {
+                        console.log('undefine page');
+                        $allowed = 0;
+                    }
+                }
+                else if(apiResponse.announcementBar.pages_type == 1)
+                {
+                    $allowed = 1;
+                }
+
+                if ($allowed == 1)
+                {
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssAnnouncement + "?v" + version
+                    }));
+        
+                    setTimeout(function () { announcementBar(apiResponse.announcementBar); }, 2000);
+                }
+            }
+        }
          
          if (shouldStatsBeShown()) {
              printConfigForNerds();
@@ -1501,7 +1626,7 @@
  
  
      var aurl = salespoplib_active_url.split('/');
-     var cc_product_id = null;	
+     var cc_product_id = null;  
      if (aurl[1] == 'products')
      {
          cc_product_id = meta.product.id;
@@ -1708,6 +1833,144 @@
             masterSelector = $jq321(".ProductForm");
             finalSelector = masterSelector[0];
          }
+         if(Shopify.shop == "heyhappiness.myshopify.com")
+         {
+            masterSelector = $jq321(".add-to-cart ");
+            finalSelector = masterSelector[0];
+            //console.log(finalSelector);
+         }
+
+
+             /** Stock for variants **/
+    function makeSelectors(variantHeading) {
+        
+        let formSelector;
+        let allForms = $jq321("form[action]");
+        $jq321.each(allForms, function (key, value) {
+            var formUrls = value.action;
+            if (formUrls.indexOf('/cart/add') > -1) {
+                formSelector = $jq321(value);
+            }
+        });
+
+        if (formSelector.length > 0) {
+            let variantSelector1 = $jq321(formSelector).find("select");
+            let variantSelector2 = $jq321(':contains("' + variantHeading + '")').find("input[type='radio']");
+            let variantSelector3 = $jq321(':contains("' + variantHeading + '")').find("select");
+
+            /** Make the final selectors **/
+            if (variantSelector2.length > 0) {
+                return { "selector_number": 2, "selector_value": variantSelector2 };
+            } else if (variantSelector1.length > 0) {
+                return { "selector_number": 1, "selector_value": variantSelector1 };
+            } else if (variantSelector3.length > 0) {
+                return { "selector_number": 3, "selector_value": variantSelector3 };
+            }
+            return false;
+        }
+    }
+
+    function stockForSelectedVariant(string, data) {
+        if (string !== "") {
+            $jq321.each(data, function (key, value) {
+                if (value.title == string) {
+                    let stockCountSpan = $jq321("#carecart-salespop-sc-number");
+                    if (stockCountSpan.length > 0) {
+                        $jq321(stockCountSpan).html(value.inventory_quantity);
+                        let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
+                        stockPercentage = stockPercentage + "%";
+                        $jq321(".stock-progress-foreground").width(stockPercentage);
+                        console.log("SP: Stock for selected variant");
+                }
+            }
+       });
+    }
+    }
+
+    function enableStockForVariants(variantsData, variantHeading) {
+
+        $jq321(document).ready(function () { 
+
+            let getSelectors = makeSelectors(variantHeading);
+            if (getSelectors != false) {
+
+                /** Let's define options here **/
+                let availableOptions = 0;
+                if (variantsData[0]["option1"] !== null && variantsData[0]["option2"] !== null && variantsData[0]["option3"] === null) {
+                    availableOptions = 1;
+                } else if (variantsData[0]["option1"] !== null && variantsData[0]["option2"] !== null && variantsData[0]["option3"] !== null) {
+                    availableOptions = 2;
+                }
+                /** Let's define options here **/
+                
+                /** Make the final selectors **/
+                if (getSelectors.selector_number == 2) {
+                    let selectedVariantsValuesString = '';
+                    $jq321.each(getSelectors.selector_value, function (key, value) {
+                        
+                        attachEventOnOptions(value, variantsData);
+                        var val = this.checked ? true : false;
+                        if (val) {
+                            selectedVariantsValuesString = selectedVariantsValuesString+ $jq321(value).val() + " / ";
+                        }
+                    });
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                } else if (getSelectors.selector_number == 1) {
+
+                    let selectedVariantsValuesString = '';
+                    for (let i = 0; i <= availableOptions; i++) {
+                        attachEventOnOptions(getSelectors.selector_value[i], variantsData);
+                        selectedVariantsValuesString = selectedVariantsValuesString + $jq321(getSelectors.selector_value[i]).find(":selected").val() + " / ";
+                    }
+
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                } else if (getSelectors.selector_number == 3) {
+                    let selectedVariantsValuesString = '';
+                    for (let i = 0; i <= availableOptions; i++) {
+                        attachEventOnOptions(getSelectors.selector_value[i], variantsData);
+                        selectedVariantsValuesString = selectedVariantsValuesString + $jq321(getSelectors.selector_value[i]).find(":selected").val() + " / ";
+                    }
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
+                    selectedVariantsValuesString = selectedVariantsValuesString.trim();
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                }
+            }
+            /** Make the final selectors **/
+        });
+    }
+
+    function attachEventOnOptions(variantSelector, variantsData)
+    {
+        console.log("SP: variant selector found");
+        $jq321(variantSelector).on("change", function () { 
+            setTimeout(function () {
+
+                let urlParams = new URLSearchParams(window.location.search);
+                let variantID = urlParams.get('variant');
+                if (variantsData !== null && variantID !== null) {
+                    $jq321.each(variantsData, function (key, value) {
+                        if (value.id == variantID) {
+                            let stockCountSpan = $jq321("#carecart-salespop-sc-number");
+                            if (stockCountSpan.length > 0) {
+                                $jq321(stockCountSpan).html(value.inventory_quantity);
+                                let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
+                                stockPercentage = stockPercentage + "%";
+                                $jq321(".stock-progress-foreground").width(stockPercentage);
+                        }
+                    }
+               });
+            }
+            }, 1000);
+            }); 
+    }
+    /** Stock for variants ends **/
         
 
     
@@ -1963,6 +2226,569 @@
          });
      }
  // ---------------------------------- </SOLD COUNTER MODULE> --------------------------------
+
+ // ******************************************************************************************
+    // ---------------------------------- <PRODUCT QUICK VIEW FOR NOTIFICATION> -----------------
+    // ******************************************************************************************
+    // QUICK PRODUCT VIEW CLOSE
+    $jq321('body').on('click', '.close-quickshop', function () {
+        $jq321(".quick-shop-modal").hide();
+    });
+
+    function productQuickView(response) {
+        var selector = $jq321("body");
+        selector.append(response);
+    }
+
+    $jq321("body").on('click', '#sp-notification', function (e) {
+        e.preventDefault();
+
+        var url = $jq321(this).attr('data-product-link');
+        var product_id = $jq321(this).attr('data-product-id');
+        var store_id = $jq321(this).attr('data-store-id');
+        var quick_view = $jq321(this).attr('data-quick-view');
+
+        $jq321('#clockdivpreviewSales').attr('id', 'clockdivpreviewSalesQuick');
+
+        if (quick_view == 1) {
+            var selectorqpv = $jq321(".quick-shop-gallery");
+            if (selectorqpv.length == 1) {
+                $jq321(".quick-shop-gallery").remove();
+                $jq321(".quick-shop-text-wrap").remove();
+                $jq321(".close-quickshop").remove();
+                $jq321(".quick-shop-modal").show();
+                $jq321(".quick-shop-popup-container").addClass("loader-container");
+                $jq321("#loader").show();
+            }
+            else {
+                $jq321(".quick-shop-modal").show();
+                $jq321(".quick-shop-popup-container").addClass("loader-container");
+            }
+
+            $jq321.ajax({
+                type: "GET",
+                url: serverUrl.backend + 'quickView',
+                dataType: "jsonp",
+                jsonpCallback: "callProductView",
+                crossDomain: true,
+                data: {
+                    "url": url,
+                    "product_id": product_id,
+                    "store_id": store_id
+                },
+                success: function () {
+
+                }
+            });
+        }
+    });
+
+    window.callProductView = function (response) {
+        $jq321(".quick-shop-popup-container").removeClass("loader-container");
+        $jq321("#loader").hide();
+        var selector = $jq321(".quick-shop-popup-container");
+        selector.append(response.quick);
+
+        // STOCK COUNTDOWN CALL
+        stockCountdownView(response.stock);
+        if (response.timer != false) {
+            // COUNTDOWN TIMER CALL
+            timeCountdownView(response.timer);
+        }
+
+    };
+
+    // GET QUICK PRODUCT VIEW STOCK COUNTDOWN
+    function stockCountdownView(responseStock) {
+
+        $jq321("head").append($jq321("<link/>", {
+            rel: "stylesheet",
+            href: serverUrl.cssStock
+        }));
+
+        var selectorStockView = $jq321(".quickshop-footer");
+
+        if (responseStock.above_cart == 1) {
+            if (selectorStockView.length == 1) {
+                $jq321(responseStock.view).insertBefore(selectorStockView);
+                $jq321(".stock-top").addClass("stock-top-quick-view");
+            }
+        }
+        else {
+            if (selectorStockView.length == 1) {
+                $jq321(responseStock.view).insertAfter(selectorStockView);
+                $jq321(".stock-top").addClass("stock-bottom-quick-view");
+            }
+        }
+    }
+
+    // QUICK PRODUCT VIEW COUNTDOWN TIMER
+    function timeCountdownView(responseTime) {
+
+        $jq321("head").append($jq321("<link/>", {
+            rel: "stylesheet",
+            href: serverUrl.cssTimer
+        }));
+
+        var selectorTimeView = $jq321(".quickshop-footer");
+
+        if (responseTime.above_cart == 1) {
+            if (selectorTimeView.length == 1) {
+                $jq321(responseTime.view).insertBefore(selectorTimeView);
+                $jq321(".timer-store-front").addClass("timer-top-quick-view");
+            }
+        }
+        else {
+            if (selectorTimeView.length == 1) {
+                $jq321(responseTime.view).insertAfter(selectorTimeView);
+                $jq321(".timer-store-front").addClass("timer-bottom-quick-view");
+            }
+        }
+
+        var deadline = responseTime.time;
+        initializeClock('clockdivpreviewSales', deadline);
+    }
+    // ---------------------------------- </PRODUCT QUICK VIEW FOR NOTIFICATION> --------------------------------
+
+    // ******************************************************************************************
+    // ---------------------------------- <PRODUCT QUICK VIEW FOR COLLECTION PAGE> -----------------
+    // ******************************************************************************************
+
+    function collectionQuickView(quickViewCollectionText, quickViewCollectionLayout, quickViewCollectionPosition) {
+        var allLinks = [];
+        var product_id = (meta.product && meta.product.id) ? meta.product.id : '';
+
+        if (product_id == '') {
+            $jq321("a").each(function () {
+                var href = $jq321(this).attr('href');
+                var url = href.split("/");
+
+                if ($jq321.inArray("products", url) != -1) {
+                    allLinks.push(href);
+                }
+            });
+        }
+        else {
+            $jq321("a").each(function () {
+                var href = $jq321(this).attr('href');
+                var url = href.split("/");
+                if ($jq321.inArray("products", url) != -1) {
+                    var otherurl = href.split("=");
+                    var res = otherurl[0].split("?");
+                    if (res[1] == 'pr_prod_strat') {
+                        allLinks.push(href);
+                    }
+                }
+            });
+        }
+
+        // PRODUCT QUICK VIEW COLLECTION CREATE BUTTON
+        var divCount = 0;
+        var linkCount = 0;
+
+        $jq321("img").each(function () {
+
+            // GET IMAGE URL
+            var href = $jq321(this).attr('data-srcset');
+            var data_image = $jq321(this).attr('data-image');
+            var srcset = $jq321(this).attr('srcset');
+
+            if (((href !== undefined) && (data_image !== undefined)) || ((srcset !== undefined) && (product_id == ''))) {
+                if (quickViewCollectionLayout == 2) {
+                    // FOR QUICK VIEW BUTTON
+                    var newButton = '<input type="button" class="quick-view collection-quick-view" value="' + quickViewCollectionText + '" data-product-url="' + allLinks[linkCount] + '" data-quick-view="1">';
+                }
+                else if (quickViewCollectionLayout == 1) {
+                    // FOR QUICK VIEW EYE
+                    var newButton = '<a id="positon-right" class="EyeViewBtn collection-quick-view ' + quickViewCollectionPosition + '" data-product-url="' + allLinks[linkCount] + '" data-quick-view="1" href="#"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="577.029px" height="577.029px" viewBox="0 0 577.029 577.029" style="enable-background:new 0 0 577.029 577.029;" xml:space="preserve"><path d="M288.514,148.629c73.746,0,136.162,33.616,175.539,61.821c46.652,33.415,70.66,65.737,76.885,78.065   c-6.232,12.327-30.232,44.649-76.885,78.065c-39.377,28.204-101.793,61.82-175.539,61.82c-73.746,0-136.161-33.616-175.539-61.82   c-46.661-33.416-70.66-65.738-76.894-78.065c6.234-12.328,30.233-44.65,76.885-78.065   C152.353,182.245,214.768,148.629,288.514,148.629 M288.514,113.657C129.176,113.657,0,253.543,0,288.515   s129.176,174.857,288.514,174.857c159.339,0,288.515-139.886,288.515-174.857S447.854,113.657,288.514,113.657L288.514,113.657z    M288.514,183.601c-57.939,0-104.914,46.975-104.914,104.914c0,57.938,46.975,104.914,104.914,104.914   s104.914-46.976,104.914-104.914C393.428,230.576,346.453,183.601,288.514,183.601z M260.266,288.515   c-24.515,0-44.388-19.873-44.388-44.388c0-24.515,19.873-44.387,44.388-44.387c24.515,0,44.388,19.873,44.388,44.387   C304.654,268.642,284.781,288.515,260.266,288.515z"/></svg></a>';
+
+                }
+
+                var check = $jq321(this).parent();
+
+                // CREATE DIV
+                var newDiv = '<div id="image-with-button' + divCount + '" class="button-on-hover"></div>';
+
+                // INSERT DIV
+                $jq321(newDiv).insertBefore(check);
+
+                // APPEND IMAGE IN DIV
+                $jq321(check).appendTo($jq321('#image-with-button' + divCount));
+
+                // INSERT BUTTON/EYE IN DIV
+                $jq321(newButton).insertBefore(this);
+                divCount++;
+                linkCount++;
+            }
+        });
+    }
+
+    // PRODUCT QUICK VIEW COLLECTION CALL
+    $jq321("body").on('click', '.collection-quick-view', function (e) {
+        e.preventDefault();
+
+        var quick_view = $jq321(this).attr('data-quick-view');
+        var data_product_url = $jq321(this).attr('data-product-url');
+
+        $jq321('#clockdivpreviewSales').attr('id', 'clockdivpreviewSalesQuick');
+
+        if (quick_view == 1) {
+            var selectorqpv = $jq321(".quick-shop-gallery");
+            if (selectorqpv.length == 1) {
+                $jq321(".quick-shop-gallery").remove();
+                $jq321(".quick-shop-text-wrap").remove();
+                $jq321(".close-quickshop").remove();
+                $jq321(".quick-shop-modal").show();
+                $jq321(".quick-shop-popup-container").addClass("loader-container");
+                $jq321("#loader").show();
+            }
+            else {
+                $jq321(".quick-shop-modal").show();
+                $jq321(".quick-shop-popup-container").addClass("loader-container");
+            }
+
+            $jq321.ajax({
+                type: "GET",
+                url: serverUrl.backend + 'quickViewCollection',
+                dataType: "jsonp",
+                jsonpCallback: "callProductView",
+                crossDomain: true,
+                data: {
+                    "data_product_url": data_product_url,
+                    "domain_url": Shopify.shop
+                },
+                success: function () {
+
+                }
+            });
+        }
+    });
+    // ---------------------------------- </PRODUCT QUICK VIEW FOR COLLECTION PAGE> --------------------------------
+
+    // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
+    function trustBadges(trustBadgesResponse) {
+        if (trustBadgesResponse.product_page_show_hide == 1) {
+            /* var selectorTrustBadges = $jq321("form[action='/cart/add']:first");
+            selectorTrustBadges.append(trustBadgesResponse.view); */
+
+            var selectorTrustBadges1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
+            var selectorTrustBadges2 = $jq321("form[action='/cart/add']");
+            var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
+            var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
+
+            if (selectorTrustBadges1.length == 1) {
+                selectorTrustBadges1.append(trustBadgesResponse.view);
+            }
+            else if (selectorTrustBadges2.length == 1) {
+                selectorTrustBadges2.append(trustBadgesResponse.view);
+            }
+            else if (selectorTrustBadges3.length == 1) {
+                selectorTrustBadges3.append(trustBadgesResponse.view);
+            }
+            else if (selectorTrustBadges4.length == 1) {
+                selectorTrustBadges4.append(trustBadgesResponse.view);
+            }
+        }
+
+        $jq321('.trust-badges').replaceWith(trustBadgesResponse.view);
+
+        var bgsize = 'width:' + trustBadgesResponse.badges_size + 'px';
+        var selector = $jq321("#CloneBox").find(".LogoImg");
+        selector.attr("style", bgsize);
+
+        if ((trustBadgesResponse.badges_style == 1) || (trustBadgesResponse.badges_style == 3)) {
+            $jq321("#CloneBox svg").find('path.ChangeColor-preview').css('fill', trustBadgesResponse.badges_color);
+        }
+
+        if ((trustBadgesResponse.badges_style == 1) || (trustBadgesResponse.badges_style == 2)) {
+            $jq321("#CloneBox").find('div.BorderBox').addClass("badges-style-original");
+        }
+
+        if ((trustBadgesResponse.badges_style == 3) || (trustBadgesResponse.badges_style == 4)) {
+            $jq321("#CloneBox").find('div.BorderBox').addClass("background-store-front");
+        }
+    }
+    // ---------------------------------- </TRUST BADGES MODULE> --------------------------------
+
+    // ---------------------------------- <PAYMENT PLAN> ----------------------------------------
+    // ******************************************************************************************
+    function saveImpression(type) {
+        $jq321.ajax({
+            type: "GET",
+            url: salespoplib_vars_obj.backend_url + 'saveImpression',
+            dataType: "jsonp",
+            jsonpCallback: "impressionSaved",
+            crossDomain: true,
+            async: false,
+            data: {
+                "domain_url": Shopify.shop,
+                "type": type
+            },
+            success: function () {
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
+                console.log("status: " + textStatus);
+                console.log("err: " + errorThrown);
+            },
+            complete: function () {
+            }
+        });
+    }
+
+    //Click CallBack
+    window.impressionSaved = function (result) {
+        // console.log(result);
+    };
+    // ---------------------------------- </PAYMENT PLAN> --------------------------------
+
+      // ---------------------------------- <TIMER FOR COLLECTION PAGE> --------------------------
+// ******************************************************************************************
+    function getTimeRemainingForCollection(endtime) {
+        var now = new Date;
+        var utc_timestamp = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
+            now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());
+
+        /* New Hack for Safari */
+        var s = endtime;
+        var a = s.split(/[^0-9]/);
+        var endtime = new Date(a[0], a[1] - 1, a[2], a[3], a[4], a[5]);
+
+        var t = endtime - utc_timestamp;
+        /* END  New Hack for Safari */
+
+        var seconds = Math.floor((t / 1000) % 60);
+        var minutes = Math.floor((t / 1000 / 60) % 60);
+        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+        return {
+            'total': t,
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+    }
+
+    function initializeClockCollection(id, endtime) {
+        var daysSpan = document.getElementsByClassName('daysc');
+        var hoursSpan = document.getElementsByClassName('hoursc');
+        var minutesSpan = document.getElementsByClassName('minutesc');
+        var secondsSpan = document.getElementsByClassName('secondsc');
+
+        function updateClock() {
+            var t = getTimeRemainingForCollection(endtime);
+
+            daysSpan.innerHTML = t.days;
+            hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+            $jq321(".daysc").html(t.days);
+            $jq321(".hoursc").html(t.hours);
+            $jq321(".minutesc").html(t.minutes);
+            $jq321(".secondsc").html(t.seconds);
+
+            if (t.days == 0 && t.hours == 0 && t.minutes == 0 && t.seconds == 0) {
+                clearInterval(timeinterval);
+            }
+        }
+
+        updateClock();
+        var timeinterval = setInterval(updateClock, 1000);
+    }
+
+    function collectionTimer(responseTimer, responseTimerCollection) {
+        var allLinks = [];
+        var product_id = (meta.product && meta.product.id) ? meta.product.id : '';
+        if (product_id == '') {
+            $jq321("a").each(function () {
+                var href = $jq321(this).attr('href');
+                var url = href.split("/");
+                    if (($jq321.inArray("products", url) != -1)) {
+                    if ($jq321.inArray(href, allLinks) == -1) {
+                        allLinks.push(href);
+                    }
+                }
+            });
+        }
+        else {
+            $jq321("a").each(function () {
+                var href = $jq321(this).attr('href');
+
+                var url = href.split("/");
+
+                if ($jq321.inArray("products", url) != -1) {
+                    var otherurl = href.split("=");
+
+                    var res = otherurl[0].split("?");
+
+                    if (res[1] == 'pr_prod_strat') {
+                        allLinks.push(href);
+                    }
+                }
+            });
+        }
+
+        function checkValue(value, arr) {
+            var status = 'Not exist';
+            if(arr === null) return status;
+            for (var i = 0; i < arr.length; i++) {
+                var name = arr[i];
+                if (name == value) {
+                    status = 'Exist';
+                    break;
+                }
+            }
+            return status;
+        }
+
+        if (product_id == '') {
+            if (allLinks.length != 0) {
+                for (var u = 0; u < allLinks.length; u++) {
+                    console.log(u);
+                    if (checkValue(allLinks[u], responseTimerCollection) == 'Not exist') {
+                        var selectorTimeView = $jq321("[href='" + allLinks[u] + "']");
+                        selectorTimeView = selectorTimeView[0];
+                        console.log(selectorTimeView);
+                        $jq321(responseTimer.view).insertBefore(selectorTimeView);
+                    }
+                }
+            }
+        }
+        else {
+            var allLinksC = [];
+            var product = null;
+            for (var q = 0; q < allLinks.length; q++) {
+                product = allLinks[q].substring(0, allLinks[q].indexOf('?') + 1);
+                product = product.replace(/\?/g, '');
+                product = '/collections/all' + product;
+
+                allLinksC.push(product);
+            }
+
+            for (var u = 0; u < allLinks.length; u++) {
+                if (checkValue(allLinksC[u], responseTimerCollection) == 'Not exist') {
+                    var selectorTimeView = $jq321("[href='" + allLinks[u] + "']");
+                    $jq321(responseTimer.view).insertBefore(selectorTimeView);
+                }
+            }
+        }
+
+        var deadline = responseTimer.time;
+        initializeClockCollection('clockdivpreviewSalesCollection', deadline);
+    }
+    // ---------------------------------- </TIMER FOR COLLECTION PAGE> --------------------------------
+
+    // ---------------------------------- <ANNOUNCEMENT BAR MODULE> --------------------------------
+    function announcementBar(announcementBarResponse)
+    {
+        var selectorAnnouncementBar = $jq321("body");
+        var placement = announcementBarResponse.placement;
+        
+        if (placement == 'top')
+        {
+            selectorAnnouncementBar.prepend(announcementBarResponse.view);
+        }
+        else if(placement == 'bottom')
+        {
+            selectorAnnouncementBar.append(announcementBarResponse.view);
+        }
+
+        //Free shipping bar starts from here
+        if (announcementBarResponse.free_ship_settings !== null) {
+            doCalculationForShipping(announcementBarResponse.free_ship_settings);
+            addCartInterval(announcementBarResponse.free_ship_settings);
+        }   
+    }
+    
+    $jq321("body").on('click', '#ccannouncement-close', function (e) {
+        e.preventDefault();
+
+        $jq321('#ccannouncement-main').fadeOut();
+        setCookie("sp-hide-announcement", 1, 15);  // 15 minutes (UTC)
+    });
+
+    function isHideAnnouncementCookieSet() 
+    {
+        var cookie = getCookie("sp-hide-announcement");
+        return (typeof cookie == "null" || typeof cookie == "undefined" || cookie === "") ? false : true;
+    }
+
+    function addCartInterval(settings) { 
+        setInterval(function () {
+        doCalculationForShipping(settings);
+        }, 2000);
+    }
+
+    function doCalculationForShipping(settings)
+    {
+        var cartContents = fetch('/cart.json', {method: 'GET'})
+            .then(response => response.json())
+            .then(data => {
+                let cartValue = data.items;
+                if (cartValue.length == 0) {
+                    console.log("SP: Cart is empty");
+                    let initialMessage = settings.initial_message;
+                    initialMessage = initialMessage.replace("{{amount}}", settings.goal_value);
+                    initialMessage = initialMessage.replace("{{button}}", settings.button);
+                    initialMessage = initialMessage.replace("{{coupon}}", settings.coupon);
+                    $jq321(".getDiscoundText").html(initialMessage);
+                } else {
+                    let cartPrice = data.total_price;
+                    cartPrice = Math.floor(cartPrice / 1e2);
+                    let actualGoal = parseInt(settings.goal_value);
+                    if (cartPrice >= actualGoal) {
+                    $jq321(".getDiscoundText").html(settings.goal_message);
+                    } else if (cartPrice < actualGoal) {
+                        let remainingAmount = actualGoal - cartPrice;
+                        let progressMessage = settings.progress_message;
+                        progressMessage = progressMessage.replace("{{remaining_amount}}", remainingAmount);
+                        $jq321(".getDiscoundText").html(progressMessage);
+                    }
+                }
+            });
+    }
+    // ---------------------------------- </ANNOUNCEMENT BAR MODULE> --------------------------------
      
      
    });
+
+// QUICK PRODUCT VIEW ADD TO CART CALL
+function addToCart() {
+    var variant = $jq321("#variant").val();
+
+    var quantity = $jq321("#quantity").val();
+
+    let formData = {
+        'items': [{
+            'id': variant,
+            'quantity': quantity
+        }]
+    };
+
+    fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+        .then(response => {
+            console.log(response);
+            return response.json();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+    $jq321(".quick-shop-modal").hide();
+
+    // SUCCESS MESSAGE SHOW
+    $jq321(".info-custom-alert").fadeIn();
+
+    setTimeout(function () {
+        $jq321(".info-custom-alert").fadeOut();
+        location.reload();
+    }, 3000);
+}
