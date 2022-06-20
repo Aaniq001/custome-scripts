@@ -61,7 +61,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         if (thisLibUrl === "") {
             return {
                 "backend": "https://app-visitor-counter.carecart.io/FrontController/",
-		        "cssVisitor": "https://app-visitor-counter.carecart.io/lib/visitor-box.css"
+                "cssVisitor": "https://app-visitor-counter.carecart.io/lib/visitor-box.css"
             };
         }
 
@@ -270,6 +270,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "usesthetics.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
+
 
     $jq321.ajax({
         type: "GET",
@@ -278,7 +285,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         jsonpCallback: "checkmodule_visitor",
         crossDomain: true,
         data: {
-			"domain_url": Shopify.shop,
+            "domain_url": Shopify.shop,
             "product_id": (meta.product && meta.product.id)?meta.product.id:''
         },
         beforeSend: function () {
@@ -300,39 +307,39 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     let finalSelector = "";
     if(Shopify.shop == "walea-shop.myshopify.com")
     {
-    	customSelctor = $jq321(".one-whole");
-    	finalSelector = customSelctor[1];
+        customSelctor = $jq321(".one-whole");
+        finalSelector = customSelctor[1];
     }
     if(Shopify.shop == "gadgy-market.myshopify.com")
     {
-    	customSelctor = $jq321(".product-form__payment-container");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".product-form__payment-container");
+        finalSelector = customSelctor[0];
     }
     if(Shopify.shop == "cura-health-limited.myshopify.com")
     {
-    	customSelctor = $jq321(".product-cart_button");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".product-cart_button");
+        finalSelector = customSelctor[0];
     }  
     if(Shopify.shop == "hey-ofertas.myshopify.com")
     {
-    	customSelctor = $jq321(".product-form__payment-container");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".product-form__payment-container");
+        finalSelector = customSelctor[0];
     }
     if(Shopify.shop == "nulifebeauty.myshopify.com")
     {
-    	customSelctor = $jq321(".modal_price");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".modal_price");
+        finalSelector = customSelctor[0];
     }
    
     if(Shopify.shop == "tsm-aquatics.myshopify.com")
     {
         customSelctor = $jq321(".dichead");
-    	finalSelector = customSelctor[0];
+        finalSelector = customSelctor[0];
     }
     if(Shopify.shop == "awareness-avenue.myshopify.com")
     {
-    	customSelctor = $jq321(".ProductForm__AddToCart");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".ProductForm__AddToCart");
+        finalSelector = customSelctor[0];
         var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
         if (windowWidth < 575) {
             $jq321("head").append(
@@ -342,59 +349,59 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     if (Shopify.shop == "nomardic-de.myshopify.com")
     {
-    	customSelctor = $jq321(".ProductForm__Variants");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".ProductForm__Variants");
+        finalSelector = customSelctor[0];
     }
 
     if (Shopify.shop == "nomardic-nl.myshopify.com")
     {
-    	customSelctor = $jq321(".ProductForm__Variants");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".ProductForm__Variants");
+        finalSelector = customSelctor[0];
     }
 
     if (Shopify.shop == "nelsondesign.myshopify.com")
     {
-    	customSelctor = $jq321(".ProductForm__Variants");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".ProductForm__Variants");
+        finalSelector = customSelctor[0];
     }
 
     if (Shopify.shop == "mullerdesign.myshopify.com")
     {
-    	customSelctor = $jq321(".ProductForm__Variants");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".ProductForm__Variants");
+        finalSelector = customSelctor[0];
     }
 
     if (Shopify.shop == "stuf-products.myshopify.com")
     {
-    	customSelctor = $jq321("#button-cart");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321("#button-cart");
+        finalSelector = customSelctor[0];
     }
 
     if (Shopify.shop == "juliteste.myshopify.com")
     {
-    	customSelctor = $jq321("#ta-quoter-wrapper");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321("#ta-quoter-wrapper");
+        finalSelector = customSelctor[0];
     }
     if (Shopify.shop == "mysweetsmileco.myshopify.com")
     {
-    	customSelctor = $jq321(".clearpay-paragraph");
-    	finalSelector = customSelctor[1];
+        customSelctor = $jq321(".clearpay-paragraph");
+        finalSelector = customSelctor[1];
     }
 
     if (Shopify.shop == "robinsonssingapore.myshopify.com")
     {
-    	customSelctor = $jq321(".custom_add_to_cart");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".custom_add_to_cart");
+        finalSelector = customSelctor[0];
     }
     if (Shopify.shop == "de-fb.myshopify.com")
     {
-    	customSelctor = $jq321(".product-single__add-to-cart");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".product-single__add-to-cart");
+        finalSelector = customSelctor[0];
     }
     if (Shopify.shop == "newnorway.myshopify.com")
     {
-    	customSelctor = $jq321(".product-title-container");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".product-title-container");
+        finalSelector = customSelctor[0];
 
         $jq321("head").append(
             '<style type="text/css">' + 
@@ -404,8 +411,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
     if (Shopify.shop == "roy-groote.myshopify.com")
     {
-    	customSelctor = $jq321(".pf-36_");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".pf-36_");
+        finalSelector = customSelctor[0];
     }
     if (Shopify.shop == "swe-1.myshopify.com")
     {
@@ -415,32 +422,32 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             '</style>'
            );
 
-    	customSelctor = $jq321(".centering");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".centering");
+        finalSelector = customSelctor[0];
     }
 
     if (Shopify.shop == "nomardic-nl.myshopify.com")
     {
-    	customSelctor = $jq321(".ProductForm__AddToCart");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".ProductForm__AddToCart");
+        finalSelector = customSelctor[0];
     }
 
     if (Shopify.shop == "nomardic-de.myshopify.com")
     {
-    	customSelctor = $jq321(".ProductForm__AddToCart");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".ProductForm__AddToCart");
+        finalSelector = customSelctor[0];
     }
 
     if (Shopify.shop == "megawheels-com.myshopify.com")
     {
-    	customSelctor = $jq321(".product__price");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".product__price");
+        finalSelector = customSelctor[0];
     }
 
     if (Shopify.shop == "colombiahit.myshopify.com")
     {
-    	customSelctor = $jq321("#AddToCartForm-product-template");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321("#AddToCartForm-product-template");
+        finalSelector = customSelctor[0];
 
         $jq321("head").append(
             '<style type="text/css">' + 
@@ -454,54 +461,54 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     if (Shopify.shop == "ommerce-6653.myshopify.com")
     {
-    	customSelctor = $jq321(".social-sharing");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".social-sharing");
+        finalSelector = customSelctor[0];
     }
 
     if (Shopify.shop == "anycar-seatcovers.myshopify.com")
     {
-    	customSelctor = $jq321("#button-cart").parent();
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321("#button-cart").parent();
+        finalSelector = customSelctor[0];
     }
 
     if (Shopify.shop == "awatchstrap.myshopify.com")
     {
-    	customSelctor = $jq321(".product-single__add-to-cart");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".product-single__add-to-cart");
+        finalSelector = customSelctor[0];
     }
 
     if (Shopify.shop == "bybaanoo.myshopify.com")
     {
-    	customSelctor = $jq321("#m-1616496444433");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321("#m-1616496444433");
+        finalSelector = customSelctor[0];
         console.log(finalSelector);
     }
 
     if (Shopify.shop == "watchis01.myshopify.com")
     {
-    	customSelctor = $jq321(".main-product__block-price");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".main-product__block-price");
+        finalSelector = customSelctor[0];
         console.log(finalSelector);
     }
 
     if (Shopify.shop == "shoesaaa.myshopify.com")
     {
-    	customSelctor = $jq321(".product-form__buttons");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".product-form__buttons");
+        finalSelector = customSelctor[0];
         console.log(finalSelector);
     }
 
     if (Shopify.shop == "bruzix.myshopify.com")
     {
-    	customSelctor = $jq321(".main-product__block-tax");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".main-product__block-tax");
+        finalSelector = customSelctor[0];
         console.log(finalSelector);
     }
 
     if (Shopify.shop == "street-strider.myshopify.com")
     {
-    	customSelctor = $jq321(".tab-1-product__actions");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".tab-1-product__actions");
+        finalSelector = customSelctor[0];
         console.log(finalSelector);
     }
 
@@ -514,6 +521,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
            );
     }
 
+    if (Shopify.shop == "usesthetics.myshopify.com")
+    {
+        customSelctor = $jq321(".product-form__buttons");
+        finalSelector = customSelctor[0];
+        console.log(finalSelector);
+    }
+
     function visitorCounter(responseVisitor) {
 
         var selectorVisitor1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -524,7 +538,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         if (responseVisitor.above_cart == 1)
         {
             if(customSelctor.length > 0){
-            	$jq321(responseVisitor.view).insertBefore(finalSelector);
+                $jq321(responseVisitor.view).insertBefore(finalSelector);
             }
             else if (selectorVisitor1.length == 1)
             {
@@ -546,7 +560,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         else
         {
             if(customSelctor.length > 0){
-            	$jq321(responseVisitor.view).insertAfter(finalSelector);
+                $jq321(responseVisitor.view).insertAfter(finalSelector);
             }
             else if (selectorVisitor1.length == 1)
             {
@@ -565,7 +579,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 selectorVisitor4.append(responseVisitor.view);
             }
         }
-        if(Shopify.shop == "usesthetics.myshopify.com")
+        /*if(Shopify.shop == "usesthetics.myshopify.com")
         {
             if($jq321('.visitor-counter-content-box-carecartbysalespop-2020').length > 0){
                 $jq321('.visitor-counter-content-box-carecartbysalespop-2020').css("display", "none");
@@ -580,7 +594,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 finalSelector = customSelctor[0];
                 $jq321(responseVisitor.view).insertBefore(finalSelector);
             }
-        }
+        }*/
 
         if (Shopify.shop == "mysweetsmileco.myshopify.com") {
             $jq321("body").append('<style style="text/css">.visitor-counter-content-box-carecartbysalespop-2020 {margin-top: -24px !important}</style>');
