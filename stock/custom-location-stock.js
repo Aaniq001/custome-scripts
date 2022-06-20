@@ -146,6 +146,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "athenawear-f7b8.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "aspiresportsfiji.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     $jq321.ajax({
@@ -309,6 +312,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         masterSelector = $jq321(".pf-47_");
         finalSelector = masterSelector[0];
     }
+
+    if (Shopify.shop == "aspiresportsfiji.myshopify.com")
+    {
+        masterSelector = $jq321(".form-group");
+        finalSelector = masterSelector[1];
+    }
+
 
     function stockCountdown(response) {
         
