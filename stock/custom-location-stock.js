@@ -45,7 +45,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         if (thisLibUrl === "") {
             return {
                 "backend": "https://app-countdown-pro.carecart.io/FrontController/",
-		        "cssStock": "https://app-countdown-pro.carecart.io/lib/stock-box.css",
+                "cssStock": "https://app-countdown-pro.carecart.io/lib/stock-box.css",
                 "cssTimer": "https://app-countdown-pro.carecart.io/lib/timer-box.css"
             };
         }
@@ -78,7 +78,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         apiResponse = response;
 
-	   // STOCK COUNTDOWN CALL
+       // STOCK COUNTDOWN CALL
         if(apiResponse && apiResponse.stock && apiResponse.stock!==null)
         {
             $jq321("head").append($jq321("<link/>", {
@@ -143,6 +143,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "yipth.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "athenawear-f7b8.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     $jq321.ajax({
@@ -152,7 +155,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         jsonpCallback: "checkmodule_countdown",
         crossDomain: true,
         data: {
-			"domain_url": Shopify.shop,
+            "domain_url": Shopify.shop,
             "product_id": (meta.product && meta.product.id) ? meta.product.id:''
         },
         beforeSend: function () {
@@ -170,31 +173,32 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     
     let customSelector = '';
     let finalSelector = '';
+    let masterSelector = '';
     if(Shopify.shop == "grandcruvinhos-teste.myshopify.com"){
-    	customSelector = $jq321(".new-buy");
-    	finalSelector = customSelector[6];
+        customSelector = $jq321(".new-buy");
+        finalSelector = customSelector[6];
     }
     if(Shopify.shop == "updateshop24.myshopify.com"){
-    	$jq321(".add-to-cart-loader").remove();
+        $jq321(".add-to-cart-loader").remove();
     }
     if(Shopify.shop == "opar-off-road.myshopify.com"){
-    	$jq321("head").append('<style type="text/css">.stock-message{font-size:14px !important}</style>');
+        $jq321("head").append('<style type="text/css">.stock-message{font-size:14px !important}</style>');
     }
     if(Shopify.shop == "sweatbuffy.myshopify.com"){
-    	customSelector = $jq321(".addCart");
-    	finalSelector = customSelector[0];
+        customSelector = $jq321(".addCart");
+        finalSelector = customSelector[0];
     }
     if(Shopify.shop == "wynd-technologies-inc.myshopify.com"){
-    	customSelector = $jq321(".form__column");
-    	finalSelector = customSelector[1];
+        customSelector = $jq321(".form__column");
+        finalSelector = customSelector[1];
     }
     if(Shopify.shop == "sheopal-s.myshopify.com"){
-    	customSelector = $jq321(".paymentButtonsWrapper");
-    	finalSelector = customSelector[0];
+        customSelector = $jq321(".paymentButtonsWrapper");
+        finalSelector = customSelector[0];
     }
     if(Shopify.shop == "rowse-beauty.myshopify.com"){
-    	customSelector = $jq321(".btn-mar-top");
-    	finalSelector = customSelector[0];
+        customSelector = $jq321(".btn-mar-top");
+        finalSelector = customSelector[0];
 
         $jq321("head").append('<style type="text/css">.timer-store-front{margin-top: 14px; !important}</style>');
     }
@@ -259,7 +263,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         finalSelector = customSelector[0];
     }
     if(Shopify.shop == "confozen-fr.myshopify.com"){
-    	$jq321("head").append('<style type="text/css">.stock-top{margin-top: 18px; !important}</style>');
+        $jq321("head").append('<style type="text/css">.stock-top{margin-top: 18px; !important}</style>');
     }
 
     if (Shopify.shop == "lloyds-liquid-sunshines.myshopify.com") {
@@ -298,6 +302,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                               '.stock-top{margin-top: 18px; !important}'+
                               '@media screen and (max-width: 575px) { .product-form-inline-atc > .product-form-inline-atc-button + .shopify-payment-button {margin-bottom: 25px;}}'+
                               '</style>');
+    }
+
+    if (Shopify.shop == "athenawear-f7b8.myshopify.com")
+    {
+        masterSelector = $jq321(".pf-47_");
+        finalSelector = masterSelector[0];
     }
 
     function stockCountdown(response) {
@@ -361,7 +371,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             }
             else if(customSelector.length > 0)
             {
-            	$jq321(response.view).insertAfter(finalSelector);
+                $jq321(response.view).insertAfter(finalSelector);
             }
             else if (selectorStock1.length == 1)
             {
@@ -416,7 +426,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 $jq321(t.view).insertBefore(finalSelector);
             }
             else if(customSelector.length > 0){
-            	$jq321(t.view).insertBefore(finalSelector);
+                $jq321(t.view).insertBefore(finalSelector);
             }
             else if (selectorTimer1.length == 1)
             {
@@ -450,7 +460,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 $jq321(t.view).insertAfter(finalSelector);       
             }
             else if(customSelector.length > 0){
-            	$jq321(t.view).insertAfter(finalSelector);
+                $jq321(t.view).insertAfter(finalSelector);
             }
             else if (selectorTimer1.length == 1)
             {
