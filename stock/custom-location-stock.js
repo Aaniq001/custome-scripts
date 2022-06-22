@@ -315,8 +315,22 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     if (Shopify.shop == "aspiresportsfiji.myshopify.com")
     {
-        masterSelector = $jq321(".form-group");
-        finalSelector = masterSelector[1];
+        $jq321("head").append('<style type="text/css">'+
+                              '#time-custom-center{display: flex; flex-direction:column; width:28%;}'+
+                              '.product-info-main .form-group{display:flex !important;}'+
+                              '#button-cart{height:49px;}'+
+                              '</style>');
+
+        $jq321(".wishlist-btn").remove();
+
+        var customdiv = '<div id="time-custom-center">'+
+                        '<button class="btn-wishlist button wishlist-btn" data-product-handle="tonga-vest" type="button" data-toggle="tooltip" title="" data-original-title="Add to Wish List">'+
+                        '<span>Add to Wish List</span>'+
+                        '</button>'+
+                        '</div>';
+
+        $jq321(customdiv).insertAfter("#button-cart");  
+
     }
 
 
@@ -415,7 +429,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     // ---------------------------------- <TIME MODULE> -----------------------------------------
 
     // CREATE LIVE TIME COUNTDOWN
-    function timeCountdown(t) {
+    function timeCountdown(t) 
+    {
         var selectorTimer1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
         var selectorTimer2 = $jq321("form[action='/cart/add']");
         var selectorTimer3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
@@ -423,10 +438,16 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var selectorTimer5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
         var selectorTimer6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
 
-        if (Shopify.shop == "jembaly.myshopify.com") {
+        if (Shopify.shop == "jembaly.myshopify.com") 
+        {
             customSelector = $jq321(".ProductMeta__Text");
             finalSelector = customSelector[0];
             console.log(customSelector);
+        }
+
+        if (Shopify.shop == "aspiresportsfiji.myshopify.com") 
+        {
+            $jq321("#time-custom-center").append(t.view);
         }
 
         if (t.above_cart == 1)
