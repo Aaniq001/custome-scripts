@@ -282,6 +282,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "vintagetrainers.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 
 
     $jq321.ajax({
@@ -539,6 +545,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         customSelctor = $jq321(".product-single__add-to-cart");
         finalSelector = customSelctor[0];
     }
+
+    if (Shopify.shop == "vintagetrainers.myshopify.com")
+    {
+        customSelctor = $jq321(".sales-point");
+        finalSelector = customSelctor[2];
+    }
+
+    
 
     
     function visitorCounter(responseVisitor) {
