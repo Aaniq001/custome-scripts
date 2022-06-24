@@ -548,13 +548,26 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     if (Shopify.shop == "vintagetrainers.myshopify.com")
     {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.product-block{margin-bottom: 0px !important;}' +
+            '.sales-points{margin-bottom:0px !important;}' +
+            '.visitor-counter-content-box-carecartbysalespop-2020{height:auto !important;}'+
+            '</style>'
+           );
+
         customSelctor = $jq321(".sales-point");
         finalSelector = customSelctor[2];
     }
 
-    
+    if (Shopify.shop == "socratetraining.myshopify.com")
+    {
+        customSelctor = $jq321("#AddToCart");
+        finalSelector = customSelctor[0];
 
-    
+        console.log(customSelctor);
+    }
+
     function visitorCounter(responseVisitor) {
 
         var selectorVisitor1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
