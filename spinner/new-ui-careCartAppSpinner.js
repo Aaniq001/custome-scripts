@@ -2936,6 +2936,16 @@
                         carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .checkbox{width:auto !important; height:auto !important; border:none !important; background-color:transparent !important;}</style>');
                         carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form{text-align:center !important;}</style>');
                         carecartSpinnerJquery('head').append('<style type="text/css">@media only screen and (max-width: 575px){#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight {min-height: 600px !important;}}</style>');
+
+                }
+                if (Shopify.shop == 'lokithorshop.myshopify.com') {
+                        carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .checkbox{width:auto !important; height:auto !important; border:none !important; background-color:transparent !important;}</style>');
+                        carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form{text-align:center !important;}</style>');
+                    
+                        var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
+                        if (windowWidth < 575) {
+                            carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {left: -45px !important;}</style>');
+                        }
                 }
                 if (Shopify.shop == 'aleromano-7840.myshopify.com') {
                 var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
