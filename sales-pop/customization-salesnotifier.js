@@ -98,8 +98,8 @@
  
          var coreStyle = {
              name: "core",
-             html: "<div class=\"" + pluginClassName + "-wrapper\">\n	<div class=\"" + pluginClassName + "-arrow\"></div>\n	<div class=\"" + pluginClassName + "-container\"></div>\n</div>",
-             css: "." + pluginClassName + "-corner {\n	position: fixed;\n	margin: 30px;\n	z-index: 999999999999;\n}\n\n." + pluginClassName + "-corner ." + pluginClassName + "-wrapper,\n." + pluginClassName + "-corner ." + pluginClassName + "-container {\n	position: relative;\n	display: block;\n	height: inherit;\n	width: inherit;\n	margin: 3px;\n}\n\n." + pluginClassName + "-wrapper {\n	z-index: 1;\n	position: absolute;\n	display: inline-block;\n	height: 0;\n	width: 0;\n}\n\n." + pluginClassName + "-container {\n	display: none;\n	z-index: 1;\n	position: absolute;\n}\n\n." + pluginClassName + "-hidable {\n	cursor: pointer;\n}\n\n[data-notify-text],[data-notify-html] {\n	position: relative;\n}\n\n." + pluginClassName + "-arrow {\n	position: absolute;\n	z-index: 2;\n	width: 0;\n	height: 0;\n}"
+             html: "<div class=\"" + pluginClassName + "-wrapper\">\n   <div class=\"" + pluginClassName + "-arrow\"></div>\n   <div class=\"" + pluginClassName + "-container\"></div>\n</div>",
+             css: "." + pluginClassName + "-corner {\n  position: fixed;\n  margin: 30px;\n z-index: 999999999999;\n}\n\n." + pluginClassName + "-corner ." + pluginClassName + "-wrapper,\n." + pluginClassName + "-corner ." + pluginClassName + "-container {\n  position: relative;\n   display: block;\n   height: inherit;\n  width: inherit;\n   margin: 3px;\n}\n\n." + pluginClassName + "-wrapper {\n z-index: 1;\n   position: absolute;\n   display: inline-block;\n    height: 0;\n    width: 0;\n}\n\n." + pluginClassName + "-container {\n  display: none;\n    z-index: 1;\n   position: absolute;\n}\n\n." + pluginClassName + "-hidable {\n  cursor: pointer;\n}\n\n[data-notify-text],[data-notify-html] {\n    position: relative;\n}\n\n." + pluginClassName + "-arrow {\n    position: absolute;\n   z-index: 2;\n   width: 0;\n height: 0;\n}"
          };
  
          var stylePrefixes = {
@@ -146,10 +146,10 @@
                      $.each(props, function (name, val) {
                          if (stylePrefixes[name]) {
                              $.each(stylePrefixes[name], function (i, prefix) {
-                                 return cssText += "	" + prefix + name + ": " + val + ";\n";
+                                 return cssText += "    " + prefix + name + ": " + val + ";\n";
                              });
                          }
-                         return cssText += "	" + name + ": " + val + ";\n";
+                         return cssText += "    " + name + ": " + val + ";\n";
                      });
                      return cssText += "}\n";
                  });
@@ -1007,10 +1007,7 @@
          var collectionHandles = "";
          Array.prototype.forEach.call(apiResponse.allProductsWithCollections, function (obj) {
 
-            console.log('hello');
             currentProductHandle = decodeURIComponent(currentProductHandle);
-            console.log(currentProductHandle);
-            console.log(obj.product);
 
              if (obj.product === currentProductHandle) {
                  collectionHandles = obj.collections;
@@ -1119,7 +1116,7 @@
              {
                  if ((page.product_id != null && page.collection_id == null) && !entryFound)
                  {
-                     if (page.handle === currentPageHandle)
+                     if (encodeURI(page.handle) === currentPageHandle)
                      {
                          is_notification_allowed = entryFound = true;
                      }
@@ -1771,7 +1768,7 @@
  
  
      var aurl = salespoplib_active_url.split('/');
-     var cc_product_id = null;	
+     var cc_product_id = null;  
      if (aurl[1] == 'products')
      {
          cc_product_id = meta.product.id;
@@ -3420,7 +3417,7 @@
        if (announcementBarResponse.free_ship_settings !== null) {
            doCalculationForShipping(announcementBarResponse.free_ship_settings);
            addCartInterval(announcementBarResponse.free_ship_settings);
-       }	
+       }    
    }
    
    $jq321("body").on('click', '#ccannouncement-close', function (e) {
