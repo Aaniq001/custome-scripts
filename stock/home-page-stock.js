@@ -249,6 +249,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         customSelector = $jq321("#new-form-atc");
         finalSelector = customSelector[0];
     }
+    if(Shopify.shop == "tuocanefelice.myshopify.com")
+    {
+        customSelector = $jq321(".product-form__buttons");
+        finalSelector = customSelector[0];
+    }
 
      function stockCountdown(response) {
          
