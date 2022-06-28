@@ -2341,6 +2341,15 @@
     {
         masterSelector = $jq321("#new-form-atc");
         finalSelector = masterSelector[0];
+    }
+
+    if (Shopify.shop == "naturally-you-me.myshopify.com") {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.button-on-hover input[type=button] {width: auto !important; bottom: auto !important; position: absolute !important; left: 50%; top: 50%;}'+
+                '.quick-shop-modal{z-index: 1000000000 !important;}'+ 
+            '</style>'
+        );
     } 
 
      /** Stock for variants **/
