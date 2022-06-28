@@ -1428,6 +1428,10 @@
  // PRODUCT QUICK VIEW FOR COLLECTION PAGES
                      collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
                  }, 3000);
+
+                 $jq321(window).scroll(function () {
+                    collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
+                 }); 
              }
          }
          
@@ -2939,15 +2943,30 @@
  
              if (product_id == '')
              {
-                 $jq321("a").each(function() {
-                     var href = $jq321(this).attr('href');
-                     var url = href.split("/");
- 
-                     if ($jq321.inArray("products", url) != -1)
-                     {
-                         allLinks.push(href);
-                     }
-                 });
+                if (Shopify.shop == "naturally-you-me.myshopify.com") 
+                {
+                     $jq321(".lazy-image").each(function() {
+                         var href = $jq321(this).attr('href');
+                         var url = href.split("/");
+     
+                         if ($jq321.inArray("products", url) != -1)
+                         {
+                             allLinks.push(href);
+                         }
+                     });
+                }
+                else
+                {
+                    $jq321("a").each(function() {
+                         var href = $jq321(this).attr('href');
+                         var url = href.split("/");
+     
+                         if ($jq321.inArray("products", url) != -1)
+                         {
+                             allLinks.push(href);
+                         }
+                     });   
+                }
              }
              else
              {
@@ -2969,8 +2988,8 @@
          // PRODUCT QUICK VIEW COLLECTION CREATE BUTTON
              var divCount = 0;
              var linkCount = 0;
- 
-             $jq321("img").each(function() {
+             
+             $jq321("main").find('img').each(function () {
  
          // GET IMAGE URL
                  var href = $jq321(this).attr('data-srcset');
@@ -2995,15 +3014,20 @@
                      
          // CREATE DIV
                      var newDiv = '<div id="image-with-button'+divCount+'" class="button-on-hover"></div>';
- 
-         // INSERT DIV
-                     $jq321(newDiv).insertBefore(check);
- 
-         // APPEND IMAGE IN DIV
-                     $jq321(check).appendTo($jq321('#image-with-button'+divCount));
- 
-         // INSERT BUTTON/EYE IN DIV
-                         $jq321(newButton).insertBefore(this);
+
+                     var checkButton=check.find('.collection-quick-view');
+                     if (checkButton.length < 1)
+                     {
+                        // INSERT DIV
+                        $jq321(newDiv).insertBefore(check);
+
+                        // APPEND IMAGE IN DIV
+                        $jq321(check).appendTo($jq321('#image-with-button' + divCount));
+
+                        // INSERT BUTTON/EYE IN DIV
+                        $jq321(newButton).insertBefore(this);
+                     }
+
                      divCount++;
                      linkCount++;
                  }
@@ -3401,6 +3425,17 @@
    // ---------------------------------- <ANNOUNCEMENT BAR MODULE> --------------------------------
    function announcementBar(announcementBarResponse)
    {
+        if (Shopify.shop == "naturally-you-me.myshopify.com") 
+        {
+            $jq321("head").append(
+                '<style type="text/css">'+ 
+                    '.annFullsection .getDiscoundText{margin-bottom:0px}'+
+                    '.header--sticky .site-header {top: 90px !important;}'+
+                    '.ccAnnouncmntBanner-bpop{z-index:10000000;}'+ 
+                '</style>'
+            );
+        }
+
        var selectorAnnouncementBar = $jq321("body");
        var placement = announcementBarResponse.placement;
        
