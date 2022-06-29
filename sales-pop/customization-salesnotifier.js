@@ -2353,14 +2353,6 @@
         );
     }
 
-    if (Shopify.shop == "acogeneralstore.myshopify.com")
-    {
-        masterSelector = $jq321(".price-container-desktop");
-        finalSelector = masterSelector[0];
-
-        console.log(finalSelector);
-    }
-
     if (Shopify.shop == "arch-ford.myshopify.com") 
     {
         $jq321("head").append(
@@ -2650,9 +2642,6 @@
      // CREATE LIVE TIME COUNTDOWN
      function timeCountdown(responseTimer) 
      {
-
-        console.log(responseTimer);
-
          var selectorTimer1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorTimer2 = $jq321("form[action='/cart/add']");
          var selectorTimer3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
@@ -2671,18 +2660,20 @@
 
             masterSelector = $jq321(".product-detail_cart");
             finalSelector = masterSelector[0];
+         }
+
+         if (Shopify.shop == "acogeneralstore.myshopify.com")
+         {
+            masterSelector = $jq321(".price-container-desktop");
+            finalSelector = masterSelector[0];
+
+            console.log(finalSelector);
          } 
          
          if (responseTimer.above_cart == 1) 
          {
             if (masterSelector.length > 0) 
             {
-                console.log(123);
-
-                console.log(responseTimer.view);
-
-                console.log(finalSelector);
-
                 $jq321(responseTimer.view).insertBefore(finalSelector);
             } 
             else if (selectorTimer1.length == 1) {
@@ -2744,6 +2735,13 @@
          {
             masterSelector = $jq321("#new-form-atc");
             finalSelector = masterSelector[0];
+         }
+         else if (Shopify.shop == "acogeneralstore.myshopify.com")
+         {
+            masterSelector = $jq321(".product-single__add-to-cart");
+            finalSelector = masterSelector[0];
+
+            console.log(finalSelector);
          }
          
          if (response.above_cart == 1) {
