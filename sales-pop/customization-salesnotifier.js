@@ -2343,7 +2343,8 @@
         finalSelector = masterSelector[0];
     }
 
-    if (Shopify.shop == "naturally-you-me.myshopify.com") {
+    if (Shopify.shop == "naturally-you-me.myshopify.com") 
+    {
         $jq321("head").append(
             '<style type="text/css">'+ 
                 '.button-on-hover input[type=button] {width: auto !important; bottom: auto !important; position: absolute !important; left: 50%; top: 50%;}'+
@@ -2358,6 +2359,18 @@
         finalSelector = masterSelector[0];
 
         console.log(finalSelector);
+    }
+
+    if (Shopify.shop == "arch-ford.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.notifyjs-corner{width:auto !important;}'+ 
+            '</style>'
+        );
+
+        masterSelector = $jq321(".product-detail_cart");
+        finalSelector = masterSelector[0];
     } 
 
      /** Stock for variants **/
@@ -2635,7 +2648,11 @@
      }
  
      // CREATE LIVE TIME COUNTDOWN
-     function timeCountdown(responseTimer) {
+     function timeCountdown(responseTimer) 
+     {
+
+        console.log(responseTimer);
+
          var selectorTimer1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorTimer2 = $jq321("form[action='/cart/add']");
          var selectorTimer3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
@@ -2648,11 +2665,27 @@
              masterSelector = $jq321(".ProductForm__AddToCart");
              finalSelector = masterSelector[0];
          }
+
+         if (Shopify.shop == "arch-ford.myshopify.com") 
+         {
+
+            masterSelector = $jq321(".product-detail_cart");
+            finalSelector = masterSelector[0];
+         } 
          
-         if (responseTimer.above_cart == 1) {
-            if (masterSelector.length > 0) {
+         if (responseTimer.above_cart == 1) 
+         {
+            if (masterSelector.length > 0) 
+            {
+                console.log(123);
+
+                console.log(responseTimer.view);
+
+                console.log(finalSelector);
+
                 $jq321(responseTimer.view).insertBefore(finalSelector);
-              } else if (selectorTimer1.length == 1) {
+            } 
+            else if (selectorTimer1.length == 1) {
                  selectorTimer1.prepend(responseTimer.view);
              } else if (selectorTimer2.length == 1) {
                  selectorTimer2.prepend(responseTimer.view);
