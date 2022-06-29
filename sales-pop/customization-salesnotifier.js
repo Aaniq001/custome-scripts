@@ -2350,6 +2350,14 @@
                 '.quick-shop-modal{z-index: 1000000000 !important;}'+ 
             '</style>'
         );
+    }
+
+    if (Shopify.shop == "acogeneralstore.myshopify.com")
+    {
+        masterSelector = $jq321(".price-container-desktop");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
     } 
 
      /** Stock for variants **/
