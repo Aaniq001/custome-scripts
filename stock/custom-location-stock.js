@@ -152,6 +152,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "the-beardstory.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "medici-supply-co.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     $jq321.ajax({
@@ -342,8 +345,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         finalSelector = masterSelector[0];
     }
 
-    
-
+    if (Shopify.shop == "medici-supply-co.myshopify.com")
+    {
+        masterSelector = $jq321("#AddToCart-7209334571170");
+        finalSelector = masterSelector[0];
+    }
 
     function stockCountdown(response) {
         
