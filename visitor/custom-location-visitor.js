@@ -300,6 +300,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "medici-supply-co.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 
 
     $jq321.ajax({
@@ -593,6 +599,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "vintageheavensgate1.myshopify.com")
     {
         customSelctor = $jq321("#AddToCart");
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
+    }
+
+    if (Shopify.shop == "medici-supply-co.myshopify.com")
+    {
+        customSelctor = $jq321("#AddToCart-7209334571170");
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
