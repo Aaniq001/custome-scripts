@@ -2363,7 +2363,13 @@
 
         masterSelector = $jq321(".product-detail_cart");
         finalSelector = masterSelector[0];
-    } 
+    }
+
+    if (Shopify.shop == "divan-bed-factory.myshopify.com") 
+    {
+        masterSelector = $jq321(".payment-and-quantity");
+        finalSelector = masterSelector[0];
+    }
 
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
