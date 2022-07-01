@@ -1100,6 +1100,32 @@
                                                             }
                                                         }
                             */
+                            
+                            if(Shopify.shop == 'homesteadsupplier.myshopify.com')
+                            {
+                                var thisStatus = checkStoreSpecificUrlCcSpinASale("https://homesteadsupplier.com/collections/ez-fit-chicken-coops-sheds-kennels/products/ez-fit-riverside-shed-outdoor-garden-tool-shed-storage-solution");
+                                
+                                console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
+                                
+                                var thisStatus1 = checkStoreSpecificUrlCcSpinASale("https://homesteadsupplier.com/collections/ez-fit-chicken-coops-sheds-kennels/products/ez-fit-sheds-homestead-outdoor-garden-shed-storage-solution");
+                                
+                                console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus1);
+
+                                var thisStatus2 = checkStoreSpecificUrlCcSpinASale("https://homesteadsupplier.com/collections/ez-fit-chicken-coops-sheds-kennels/products/ez-fit-sheds-heritage-outdoor-garden-shed-storage-solution");
+                                
+                                console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus2);
+                                
+                                if(thisStatus || thisStatus1 || thisStatus2)
+                                {
+                                    console.log('SAS Custom Page Matched for store: ' + Shopify.shop);
+                                }
+                                else
+                                {
+                                    console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
+                                    return;
+                                }
+                            }
+
                             if (Shopify.shop == 'geniani-products.myshopify.com') {
                                 var thisStatus = checkStoreSpecificUrlCcSpinASale("https://geniani.com/pages/geniani-rewards-club");
                                 //console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
