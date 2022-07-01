@@ -347,7 +347,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     if (Shopify.shop == "medici-supply-co.myshopify.com")
     {
-        masterSelector = $jq321("#AddToCart-7209334571170");
+        masterSelector = $jq321(".add-to-cart");
         finalSelector = masterSelector[0];
     }
 
@@ -520,7 +520,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             }
             else if (selectorTimer3.length == 1)
             {
-                console.log(3);
                 $jq321(t.view).insertAfter(selectorTimer3);
             }
             else if (selectorTimer4.length == 1)
