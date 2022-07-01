@@ -606,7 +606,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     if (Shopify.shop == "medici-supply-co.myshopify.com")
     {
-        customSelctor = $jq321("#AddToCart-7209334571170");
+        customSelctor = $jq321(".add-to-cart");
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
