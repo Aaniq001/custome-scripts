@@ -2371,6 +2371,12 @@
         finalSelector = masterSelector[0];
     }
 
+    if (Shopify.shop == "anotherlevelwigs.myshopify.com") 
+    {
+        masterSelector = $jq321(".price-review");
+        finalSelector = masterSelector[0];
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
@@ -2674,7 +2680,13 @@
             finalSelector = masterSelector[0];
 
             console.log(finalSelector);
-         } 
+         }
+
+         /*if (Shopify.shop == "anotherlevelwigs.myshopify.com") 
+         {
+            masterSelector = $jq321(".price-review");
+            finalSelector = masterSelector[0];
+         }*/ 
          
          if (responseTimer.above_cart == 1) 
          {
@@ -3185,24 +3197,31 @@
                 $jq321(trustBadgesResponse.view).insertAfter(finalSelector);
             }
             
-            var masterSelector = $jq321(".groups-btn");
-            finalSelector= masterSelector[0];
+            //masterSelector = $jq321(".groups-btn");
+            //finalSelector= masterSelector[0];
 
             if (Shopify.shop == "cap-point.myshopify.com")
             {
                 $jq321(trustBadgesResponse.view).insertAfter(finalSelector);
             }
 
+            /*if (Shopify.shop == "anotherlevelwigs.myshopify.com") 
+            {
+                masterSelector = $jq321(".price-review");
+                finalSelector = masterSelector[0];
+            }*/
+
             if (masterSelector.length == 1) 
             {
-                if (Shopify.shop == "lux-tab.myshopify.com")
+                /*if (Shopify.shop == "lux-tab.myshopify.com")
                 {
                     $jq321(trustBadgesResponse.view).insertAfter(finalSelector);
                 }
                 else
                 {
                     $jq321(".buy-btn-space").append(trustBadgesResponse.view);
-                }   
+                }*/
+                $jq321(trustBadgesResponse.view).insertAfter(finalSelector);   
             }
             else if (masterSelector2.length == 1) 
             {
