@@ -2377,6 +2377,15 @@
         finalSelector = masterSelector[0];
     }
 
+    if (Shopify.shop == "igetplays.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.notifyjs-corner{bottom: -28px !important;}'+ 
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
