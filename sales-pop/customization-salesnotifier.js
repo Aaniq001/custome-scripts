@@ -1227,7 +1227,7 @@
             }
         }
 
-        if (Shopify.shop == "shedtracks.myshopify.com") 
+        /*if (Shopify.shop == "shedtracks.myshopify.com") 
         {
             if (block_url[4] == 'shedtracksmembership')
             {
@@ -1235,7 +1235,7 @@
                 console.log('SP Sales Notification Block on "Shedtracksmembership" pages'); 
             }
 
-        }
+        }*/
 
         if (Shopify.shop == "vitaeglass.myshopify.com") 
         {
