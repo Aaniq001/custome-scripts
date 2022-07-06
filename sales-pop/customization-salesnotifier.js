@@ -668,30 +668,18 @@
  
          // return with production URLs
          if (thisLibUrl === "") {
-             /*return {
-                 "backend": "https://tracking-sales-pop.carecart.io/index.php/FrontController/",
-                 "css": "https://sales-pop.carecart.io/public/front_assets/new-ui/css/notif-box.css",
-                 "cssStock": "https://sales-pop.carecart.io/lib/stock-box.css",
-                 "cssTimer": "https://sales-pop.carecart.io/lib/timer-box.css",
-                 "cssVisitor": "https://sales-pop.carecart.io/lib/visitor-box.css",
-                 "cssSold": "https://sales-pop.carecart.io/lib/sold-box.css",
-                 "cssQuick": "https://sales-pop.carecart.io/lib/quick-box.css",
-                 "cssTrustBadges": "https://sales-pop.carecart.io/lib/badges-box.css",
-                 "legacyCss": "https://sales-pop.carecart.io/lib/salesnotifier.css"
-             };*/
-
              return {
-                 "backend": "https://tracking-sales-pop.carecart.io/index.php/FrontController/",
-                 "css": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/notif-box.css",
-                 "cssStock": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/stock-box.css",
-                 "cssTimer": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/timer-box.css",
-                 "cssVisitor": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/visitor-box.css",
-                 "cssSold": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/sold-box.css",
-                 "cssQuick": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/quick-box.css",
-                 "cssTrustBadges": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/badges-box.css",
-                 "cssAnnouncement": "https://sales-pop.carecart.io/lib/announcement.css",
-                 "legacyCss": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/salesnotifier.css"
-             };
+                "backend": "https://tracking-sales-pop.carecart.io/index.php/FrontController/",
+                "css": "https://sales-pop.carecart.io/public/front_assets/new-ui/css/notif-box.css",
+                "cssStock": "https://sales-pop.carecart.io/lib/stock-box.css",
+                "cssTimer": "https://sales-pop.carecart.io/lib/timer-box.css",
+                "cssVisitor": "https://sales-pop.carecart.io/lib/visitor-box.css",
+                "cssSold": "https://sales-pop.carecart.io/lib/sold-box.css",
+                "cssQuick": "https://sales-pop.carecart.io/lib/quick-box.css",
+                "cssTrustBadges": "https://sales-pop.carecart.io/lib/badges-box.css",
+                "cssAnnouncement": "https://sales-pop.carecart.io/lib/announcement.css",
+                "legacyCss": "https://sales-pop.carecart.io/lib/salesnotifier.css"
+            };
          }
  
          var tempAnchorTag = document.createElement('a');
@@ -710,30 +698,18 @@
              backend = "https://uat-tracking-sales-pop.carecart.io/index.php/FrontController/";
          }
  
-         /*return {
-             "backend": backend,
-             "css": "https://" + tempAnchorTag.hostname + "/public/front_assets/new-ui/css/notif-box.css?v" + version,
-             "cssStock": "https://" + tempAnchorTag.hostname + "/lib/stock-box.css?v" + version,
-             "cssTimer": "https://" + tempAnchorTag.hostname + "/lib/timer-box.css?v" + version,
-             "cssVisitor": "https://" + tempAnchorTag.hostname + "/lib/visitor-box.css?v" + version,
-             "cssSold": "https://" + tempAnchorTag.hostname + "/lib/sold-box.css?v" + version,
-             "cssQuick": "https://" + tempAnchorTag.hostname + "/lib/quick-box.css?v" + version,
-             "cssTrustBadges": "https://" + tempAnchorTag.hostname + "/lib/badges-box.css?v" + version,
-             "legacyCss": "https://" + tempAnchorTag.hostname + "/lib/salesnotifier.css"
-         };*/
-
          return {
-             "backend": backend,
-             "css": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/notif-box.css",
-             "cssStock": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/stock-box.css",
-             "cssTimer": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/timer-box.css",
-             "cssVisitor": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/visitor-box.css",
-             "cssSold": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/sold-box.css",
-             "cssQuick": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/quick-box.css",
-             "cssTrustBadges": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/badges-box.css",
-             "cssAnnouncement": "https://" + tempAnchorTag.hostname + "/lib/announcement.css?v" + version,
-             "legacyCss": "https://cdn.jsdelivr.net/gh/carecartapp/sales-popup@master/salesnotifier.css"
-         };
+            "backend": backend,
+            "css": "https://" + tempAnchorTag.hostname + "/public/front_assets/new-ui/css/notif-box.css?v" + version,
+            "cssStock": "https://" + tempAnchorTag.hostname + "/lib/stock-box.css?v" + version,
+            "cssTimer": "https://" + tempAnchorTag.hostname + "/lib/timer-box.css?v" + version,
+            "cssVisitor": "https://" + tempAnchorTag.hostname + "/lib/visitor-box.css?v" + version,
+            "cssSold": "https://" + tempAnchorTag.hostname + "/lib/sold-box.css?v" + version,
+            "cssQuick": "https://" + tempAnchorTag.hostname + "/lib/quick-box.css?v" + version,
+            "cssTrustBadges": "https://" + tempAnchorTag.hostname + "/lib/badges-box.css?v" + version,
+            "cssAnnouncement": "https://" + tempAnchorTag.hostname + "/lib/announcement.css?v" + version,
+            "legacyCss": "https://" + tempAnchorTag.hostname + "/lib/salesnotifier.css"
+        };
      }
  
      var serverUrl = getServerUrls();
