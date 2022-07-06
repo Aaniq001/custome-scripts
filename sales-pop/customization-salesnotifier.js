@@ -2299,6 +2299,7 @@
             '.clone-box{flex-wrap:nowrap !important;}' +
             '#CloneBox .BorderBox {height: auto;}' +
             '@media only screen and (max-width: 575px) {.clone-box{flex-wrap: wrap !important;} .BorderBox .LogoImg{width:50px !important;}}' +
+            '.stock-top{display: block !important;}' +
             '</style>'
            );
     }
