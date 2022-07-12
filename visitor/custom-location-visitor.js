@@ -324,6 +324,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "combadepalo.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 
 
     $jq321.ajax({
@@ -649,6 +655,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "metaphysicalonlineshop.myshopify.com")
     {
         customSelctor = $jq321(".product-single__add-to-cart");
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
+    }
+
+    if (Shopify.shop == "combadepalo.myshopify.com")
+    {
+        customSelctor = $jq321(".product__title");
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
