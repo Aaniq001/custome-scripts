@@ -3007,6 +3007,20 @@
                          }
                      });
                 }
+                else if (Shopify.shop == "estornes-boor-boutique.myshopify.com") 
+                {
+                     $jq321(".grid-product__image-link").each(function() {
+                         var href = $jq321(this).attr('href');
+                         var url = href.split("/");
+     
+                         if ($jq321.inArray("products", url) != -1)
+                         {
+                             allLinks.push(href);
+                         }
+                     });
+
+                     //console.log(allLinks);
+                }
                 else
                 {
                     $jq321("a").each(function() {
@@ -3041,7 +3055,7 @@
              var divCount = 0;
              var linkCount = 0;
              
-             $jq321("main").find('img').each(function () {
+             $jq321(".grid-uniform").find('.product--image').each(function () {
  
          // GET IMAGE URL
                  var href = $jq321(this).attr('data-srcset');
@@ -3067,9 +3081,9 @@
          // CREATE DIV
                      var newDiv = '<div id="image-with-button'+divCount+'" class="button-on-hover"></div>';
 
-                     var checkButton=check.find('.collection-quick-view');
+                     /*var checkButton=check.find('.collection-quick-view');
                      if (checkButton.length < 1)
-                     {
+                     {*/
                         // INSERT DIV
                         $jq321(newDiv).insertBefore(check);
 
@@ -3078,7 +3092,9 @@
 
                         // INSERT BUTTON/EYE IN DIV
                         $jq321(newButton).insertBefore(this);
-                     }
+
+                        //console.log(newButton);
+                     //}
 
                      divCount++;
                      linkCount++;
