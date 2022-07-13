@@ -676,14 +676,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     if (Shopify.shop == "la-porta-dei-sapori.myshopify.com")
     {
-        customSelctor = $jq321(".cart-form");
+        customSelctor = $jq321("h1");
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
     }
 
-    function visitorCounter(responseVisitor) {
-
+    function visitorCounter(responseVisitor) 
+    {
         var selectorVisitor1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
         var selectorVisitor2 = $jq321("form[action='/cart/add']");
         var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']");
