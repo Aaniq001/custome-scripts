@@ -1640,7 +1640,7 @@
                                         couponAndMsgAreSetThenLoad();
                                     }, parseInt(response.records.store_settings.settings_data.delay_time) * 1000);
                                 }
-                                /* *********************************************** Start - Display Urgency Timer Bar **********************************	*/
+                                /* *********************************************** Start - Display Urgency Timer Bar ********************************** */
                                 if (response.records.store_settings.conversion_booster_settings != null && response.records.store_settings.conversion_booster_settings.is_urgency_timer_bar_enabled != null && parseInt(response.records.store_settings.conversion_booster_settings.is_urgency_timer_bar_enabled) == 1) {
                                     window.localStorage.setItem('urgencyTimerBarEnabled', 1);
                                     //console.log('SAS Urgency Bar is Active');
@@ -1683,8 +1683,8 @@
                                     //console.log('SAS deadlineSpinAWheel deadlineSpinAWheel: ' + deadlineSpinAWheel);
                                     //initializeClockSpinAWheel('cc-spin-a-sale-clock-div-preview', deadlineSpinAWheel);
                                 }
-                                /* *********************************************** End - Display Urgency Timer Bar **********************************	*/
-                                /* *********************************************** Start - Conversion Booster Progress Bar **********************************	*/
+                                /* *********************************************** End - Display Urgency Timer Bar **********************************   */
+                                /* *********************************************** Start - Conversion Booster Progress Bar **********************************   */
                                 if (response.records.store_settings.conversion_booster_settings != null && response.records.store_settings.conversion_booster_settings.conversion_booster_show_offers_claimed != null && parseInt(response.records.store_settings.conversion_booster_settings.conversion_booster_show_offers_claimed) == 1) {
                                     console.log('SAS Conversion Booster Progress Bar is Active');
                                     carecartSpinnerJquery('.wheelify-cc-spin-a-sale-spinner-progress-bar').css("visibility", "visible");
@@ -1692,15 +1692,15 @@
                                     carecartSpinnerJquery('.wheelify-cc-spin-a-sale-spinner-progress-bar-inner').css({ "background-color": response.records.store_settings.conversion_booster_settings.conversion_booster_progress_bar_color, "display": "block" });
                                     carecartSpinnerJquery('.wheelify-cc-spin-a-sale-couponwheel_offers_text').text(response.records.store_settings.conversion_booster_settings.conversion_booster_offers_claimed_text);
                                 }
-                                /* *********************************************** End - Conversion Booster Progress Bar **********************************	*/
-                                /* *********************************************** Start - Anti-Cheat Shield Settings **********************************	*/
+                                /* *********************************************** End - Conversion Booster Progress Bar ********************************** */
+                                /* *********************************************** Start - Anti-Cheat Shield Settings **********************************    */
                                 if (response.records.store_settings.anti_cheat_engine_settings != null && (parseInt(response.records.store_settings.anti_cheat_engine_settings.anti_cheat_engine_limit_spin_by_cookies) == 1 || parseInt(response.records.store_settings.anti_cheat_engine_settings.anti_cheat_engine_limit_spin_by_email) == 1 || parseInt(response.records.store_settings.anti_cheat_engine_settings.anti_cheat_engine_limit_spin_by_ip_address) == 1)) {
                                     window.localStorage.setItem('cc-sas-spinner-anti-cheat-shield', 1);
                                     console.log('SAS  Anti-Cheat Shield is Active');
                                     //console.log(response.records.store_settings.anti_cheat_engine_settings.anti_cheat_engine_spin_limit_quota_text);
                                     carecartSpinnerJquery('#wheelify-cc-spin-a-sale-already-used-spin-quota p').text(response.records.store_settings.anti_cheat_engine_settings.anti_cheat_engine_spin_limit_quota_text);
                                 }
-                                /* *********************************************** End - Anti-Cheat Shield Settings **********************************	*/
+                                /* *********************************************** End - Anti-Cheat Shield Settings **********************************  */
 
                             }
                             var storeBgColor = response.records.store_settings.spinner_bg_color;
@@ -2559,7 +2559,7 @@
                                        
                                     }
                                     /* ************************************** Display Background Image - End *********************************************************** */
-                                    /* *********************************************** Start - Display Urgency Timer Bar **********************************	*/
+                                    /* *********************************************** Start - Display Urgency Timer Bar ********************************** */
                                 if (response.records.store_settings.conversion_booster_settings != null && response.records.store_settings.conversion_booster_settings.is_urgency_timer_bar_enabled != null && parseInt(response.records.store_settings.conversion_booster_settings.is_urgency_timer_bar_enabled) == 1) {
                                     window.localStorage.setItem('urgencyTimerBarEnabled', 1);
                                     //console.log('SAS Urgency Bar is Active');
@@ -2602,8 +2602,8 @@
                                     //console.log('SAS deadlineSpinAWheel deadlineSpinAWheel: ' + deadlineSpinAWheel);
                                     //initializeClockSpinAWheel('cc-spin-a-sale-clock-div-preview', deadlineSpinAWheel);
                                 }
-                                /* *********************************************** End - Display Urgency Timer Bar **********************************	*/
-                                /* *********************************************** Start - Conversion Booster Progress Bar **********************************	*/
+                                /* *********************************************** End - Display Urgency Timer Bar **********************************   */
+                                /* *********************************************** Start - Conversion Booster Progress Bar **********************************   */
                                 if (response.records.store_settings.conversion_booster_settings != null && response.records.store_settings.conversion_booster_settings.conversion_booster_show_offers_claimed != null && parseInt(response.records.store_settings.conversion_booster_settings.conversion_booster_show_offers_claimed) == 1) {
                                     console.log('SAS Conversion Booster Progress Bar is Active');
                                     carecartSpinnerJquery('.wheelify-cc-spin-a-sale-spinner-progress-bar').css("visibility", "visible");
@@ -2611,7 +2611,7 @@
                                     carecartSpinnerJquery('.wheelify-cc-spin-a-sale-spinner-progress-bar-inner').css({ "background-color": response.records.store_settings.conversion_booster_settings.conversion_booster_progress_bar_color, "display": "block" });
                                     carecartSpinnerJquery('.wheelify-cc-spin-a-sale-couponwheel_offers_text').text(response.records.store_settings.conversion_booster_settings.conversion_booster_offers_claimed_text);
                                 }
-                                /* *********************************************** End - Conversion Booster Progress Bar **********************************	*/
+                                /* *********************************************** End - Conversion Booster Progress Bar ********************************** */
                                     /* ************************************** Display Spinner if percentage scroll is enabled  - START *********************************************************** */
                                     if (response.records.store_settings.settings_data.is_scroll_spinner_percentage_enabled && parseInt(response.records.store_settings.settings_data.is_scroll_spinner_percentage_enabled) == 1) {
                                         //console.log("SAS is_scroll_spinner_percentage_enabled is ENABLED");
@@ -2924,6 +2924,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'indus-valley2.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css">@media only screen and (max-width: 575px){#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight {min-height: 440px !important;}}</style>');
+                    //console.log("SAS https://partychampions.com/");
+                }
                 if (Shopify.shop == 'the-party-champions.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">.wheelify-signupContainer ::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: #aaaaaa;}</style>');
                     //console.log("SAS https://partychampions.com/");
