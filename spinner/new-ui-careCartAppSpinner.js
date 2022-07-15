@@ -2924,6 +2924,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'hipa360.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css">svg {stroke: none !important;}</style>');
+                    //console.log("SAS https://partychampions.com/");
+                }
                 if (Shopify.shop == 'indus-valley2.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">@media only screen and (max-width: 575px){#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight {min-height: 440px !important;}}</style>');
                     //console.log("SAS https://partychampions.com/");
