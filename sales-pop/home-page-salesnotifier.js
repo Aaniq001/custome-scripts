@@ -1687,6 +1687,20 @@
         finalSelector = masterSelector[0];
         console.log(finalSelector);
      }
+     if (Shopify.shop == "youreyemask.myshopify.com")
+     {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.stock-top{display:block !important;}'+ 
+            '</style>'
+        );
+
+        productID = 7394122039490;
+
+        masterSelector = $jq321(".product-form__item--submit");
+        finalSelector = masterSelector[0];
+        console.log(finalSelector);
+     }
 
      $jq321.ajax({
          type: "GET",
