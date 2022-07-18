@@ -1405,9 +1405,9 @@
                      collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
                  }, 3000);
 
-                 $jq321(window).scroll(function () {
+                 /*$jq321(window).scroll(function () {
                     collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
-                 }); 
+                 });*/ 
              }
          }
          
@@ -2363,6 +2363,15 @@
         );
     }
 
+    if (Shopify.shop == "shopmunekawear.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.swiper-slide {background-size: auto 100% !important; background-position: center !important; background-repeat: no-repeat !important;}'+ 
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
@@ -3021,6 +3030,20 @@
 
                      //console.log(allLinks);
                 }
+                else if (Shopify.shop == "shopmunekawear.myshopify.com") 
+                {
+                     $jq321(".full-unstyled-link").each(function() {
+                         var href = $jq321(this).attr('href');
+                         var url = href.split("/");
+     
+                         if ($jq321.inArray("products", url) != -1)
+                         {
+                             allLinks.push(href);
+                         }
+                     });
+
+                     console.log(allLinks);
+                }
                 else
                 {
                     $jq321("a").each(function() {
@@ -3054,8 +3077,12 @@
          // PRODUCT QUICK VIEW COLLECTION CREATE BUTTON
              var divCount = 0;
              var linkCount = 0;
+
+             //var selectorStock3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
              
-             $jq321(".grid-uniform").find('.product--image').each(function () {
+             $jq321(".card-wrapper").find("img:first").each(function () {
+
+                //console.log(1)
  
          // GET IMAGE URL
                  var href = $jq321(this).attr('data-srcset');
