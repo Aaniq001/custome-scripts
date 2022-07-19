@@ -2372,6 +2372,15 @@
         );
     }
 
+    if (Shopify.shop == "unlimited-create.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.stock-top{display: block !important;}'+ 
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
@@ -2681,7 +2690,15 @@
          {
             masterSelector = $jq321(".price-review");
             finalSelector = masterSelector[0];
-         }*/ 
+         }*/
+
+         if (Shopify.shop == "unlimited-create.myshopify.com") 
+         {
+            masterSelector = $jq321(".stock-top");
+            finalSelector = masterSelector[0];
+
+            console.log(finalSelector);
+         } 
          
          if (responseTimer.above_cart == 1) 
          {
