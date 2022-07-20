@@ -2381,6 +2381,17 @@
         );
     }
 
+    if (Shopify.shop == "linetoluna.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.stock-top{display: block !important;}'+
+                '#CloneBox .BorderBox{width:50px;}'+
+                '.clone-box{flex-wrap:norap !important;}'+ 
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
