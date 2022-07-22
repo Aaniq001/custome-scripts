@@ -2392,6 +2392,14 @@
         );
     }
 
+    if (Shopify.shop == "mulmul-jaipur.myshopify.com") 
+    {
+        masterSelector = $jq321(".ProductForm__BuyButtons");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
