@@ -3574,6 +3574,16 @@
             );
         }
 
+        if (Shopify.shop == "londonlash-us.myshopify.com") 
+        {
+            $jq321("head").append(
+                '<style type="text/css">'+ 
+                    '.annFullsection .getDiscoundText{margin-bottom:0 !important;}'+
+                    '.ccAnnouncmntBanner-bpop{z-index:100000;}' +           
+                '</style>'
+            );
+        }
+
        var selectorAnnouncementBar = $jq321("body");
        var placement = announcementBarResponse.placement;
        
