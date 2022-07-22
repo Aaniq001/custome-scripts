@@ -171,6 +171,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "smartbusiness-pe.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "thuyn.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     $jq321.ajax({
@@ -385,6 +388,15 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         masterSelector = $jq321(".qty-add-cart");
         finalSelector = masterSelector[0];
     }
+
+    if (Shopify.shop == "thuyn.myshopify.com")
+    {
+        masterSelector = $jq321(".proReviews");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+
 
     function stockCountdown(response) {
         
