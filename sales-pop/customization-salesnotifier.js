@@ -2400,6 +2400,20 @@
         console.log(finalSelector);
     }
 
+    if (Shopify.shop == "crafty-fisherman.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.stock-top{display: block !important;}'+ 
+            '</style>'
+        );
+        
+        masterSelector = $jq321(".groups-btn");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
