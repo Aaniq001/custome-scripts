@@ -1655,6 +1655,215 @@
          }
  
      };
+
+
+
+
+
+
+     window.checkmodule_popup1 = function (response) {
+         spDebuger.storeLog("BACKEND-URL: ", salespoplib_vars_obj.backend_url);
+ 
+         apiResponse = response;
+     
+      // STOCK COUNTDOWN CALL
+         if (apiResponse && apiResponse.stock && apiResponse.stock !== null) {
+            if (apiResponse.stock.on_off == 1)
+            {
+                if(apiResponse.stock.stock_restriction_settings !== null){
+                    let stock_restriction_setting = JSON.parse(apiResponse.stock.stock_restriction_settings);
+                    if(stock_restriction_setting.stock_restriction_check == "on" && parseInt(stock_restriction_setting.stock_restriction_value) !== parseInt(apiResponse.stock.left_stock) && parseInt(apiResponse.stock.left_stock) > parseInt(stock_restriction_setting.stock_restriction_value)){
+                        console.log("SP: Stock restricted to display");
+                    } else {
+                        $jq321("head").append($jq321("<link/>", {
+                            rel: "stylesheet",
+                            href: serverUrl.cssStock + "?v" + version
+                        }));
+                        stockCountdown(apiResponse.stock);
+                        if (apiResponse.stock.variantCheck && apiResponse.stock.variantCheck == 1 && apiResponse.stock.variantsData !== null && apiResponse.stock.variantsData.length > 1) {
+                            enableStockForVariants(apiResponse.stock.variantsData, apiResponse.stock.variantHeading);
+                        }
+                    }
+                } else {
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssStock + "?v" + version
+                    }));
+                    stockCountdown(apiResponse.stock);
+                    if (apiResponse.stock.variantCheck && apiResponse.stock.variantCheck == 1 && apiResponse.stock.variantsData !== null && apiResponse.stock.variantsData.length > 1) {
+                        enableStockForVariants(apiResponse.stock.variantsData, apiResponse.stock.variantHeading);
+                    }
+                }
+             }
+        }
+     
+          // Time COUNTDOWN CALL
+         if(apiResponse && apiResponse.timer && apiResponse.timer!==null)
+         { 
+            setTimeout(function(){ $jq321("head").append($jq321("<link/>", {
+                     rel: "stylesheet",
+                     href: serverUrl.cssTimer + "?v" + version
+                 })); }, 1000);
+            setTimeout(function(){ timeCountdown(apiResponse.timer); }, 2000);
+         }
+
+         // VISITOR COUNTER CALL
+         if (apiResponse && apiResponse.visitor && apiResponse.visitor !== null) {
+            
+            if (Shopify.shop == "agent11mporex.myshopify.com")
+            {
+                setTimeout(function(){
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssVisitor + "?v" + version
+                    }));
+                    visitorCounter(apiResponse.visitor);
+                }, 5000);
+            }
+            else
+            {
+                $jq321("head").append($jq321("<link/>", {
+                    rel: "stylesheet",
+                    href: serverUrl.cssVisitor + "?v" + version
+                }));
+                visitorCounter(apiResponse.visitor);
+            }             
+         }
+ 
+         // SOLD COUNTER CALL
+         if(apiResponse && apiResponse.sold && apiResponse.sold !== null && apiResponse.sold.on_off==1)
+         {
+             $jq321("head").append($jq321("<link/>", {
+                 rel: "stylesheet",
+                 href: serverUrl.cssSold + "?v" + version
+             }));
+             soldCounter(apiResponse.sold);
+         }
+         
+         // PRODUCT QUICK VIEW FOR NOTIFICATION
+         if (apiResponse && apiResponse.quickView && apiResponse.quickView !== null)
+         {
+             $jq321("head").append($jq321("<link/>", {
+                 rel: "stylesheet",
+                 href: serverUrl.cssQuick + "?v" + version
+             }));
+ 
+             productQuickView(apiResponse.quickView);
+ 
+             if (apiResponse && apiResponse.quickViewCollection && apiResponse.quickViewCollection == 1)
+             {
+                 setTimeout(function () {
+ // PRODUCT QUICK VIEW FOR COLLECTION PAGES
+                     collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
+                 }, 3000);
+
+                 /*$jq321(window).scroll(function () {
+                    collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
+                 });*/ 
+             }
+         }
+         
+         //Timer on collections
+        if (apiResponse && apiResponse.timerCollection && apiResponse.timerCollectionPagesStatus == 1) {
+
+            var block_url_TC = window.location.pathname.split("/");
+            var block_url_store_TC = window.location.origin + '/' + block_url_TC[1] + '/' + block_url_TC[2];
+
+            if (Shopify.shop == "swap-up.myshopify.com") 
+            {
+                if (block_url_store_TC != 'https://swapup.com.au/collections/sale')
+                {
+                    return false;
+                }
+            }
+            
+            setTimeout(function () {
+                $jq321("head").append($jq321("<link/>", {
+                    rel: "stylesheet",
+                    href: serverUrl.cssTimer + "?v" + version
+                }));
+            }, 1000);
+            
+            setTimeout(function () {
+                collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
+            }, 2000);
+
+            $jq321(window).scroll(function () {
+                $jq321(".timer-store-front").remove();
+                collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
+            }); 
+        }
+
+        // ANNOUNCEMENT BAR CALL
+        if (apiResponse && apiResponse.announcementBar && apiResponse.announcementBar != false) 
+        {
+            if ( ! isHideAnnouncementCookieSet())
+            {
+                var $allowed = 0;
+                var currentPageHandle = window.location.pathname.split("/");
+
+                if (apiResponse.announcementBar.pages_type == 2)
+                {
+                    if (($jq321.inArray("products", currentPageHandle) != -1) && (apiResponse.announcementBar.product_page == 1)) 
+                    {
+                        console.log('product page');
+                        $allowed = 1;
+                    }
+                    else if (($jq321.inArray("collections", currentPageHandle) != -1) && (apiResponse.announcementBar.collection_page == 1)) 
+                    {
+                        console.log('collection page');
+                        $allowed = 1;
+                    }
+                    else if (($jq321.inArray("cart", currentPageHandle) != -1) && (apiResponse.announcementBar.cart_page == 1)) 
+                    {
+                        console.log('cart page');
+                        $allowed = 1;
+                    }
+                    else if((currentPageHandle[1].length == 0) && (apiResponse.announcementBar.home_page == 1)) 
+                    {
+                        console.log("home page");
+                        $allowed = 1;
+                    }
+                    else
+                    {
+                        console.log('undefine page');
+                        $allowed = 0;
+                    }
+                }
+                else if(apiResponse.announcementBar.pages_type == 1)
+                {
+                    $allowed = 1;
+                }
+
+                if ($allowed == 1)
+                {
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssAnnouncement + "?v" + version
+                    }));
+        
+                    setTimeout(function () { announcementBar(apiResponse.announcementBar); }, 2000);
+                }
+            }
+        }
+
+        // TRUST BADGES CALL
+        if (apiResponse && apiResponse.trustBadges && apiResponse.trustBadges != false) 
+        {
+            $jq321("head").append($jq321("<link/>", {
+                rel: "stylesheet",
+                href: serverUrl.cssTrustBadges + "?v" + version
+            }));
+
+            trustBadges(apiResponse.trustBadges);
+        }
+     };
+
+
+
+
+
+
  
      window.showSalesPopup = function (popUpIndexToDisplay) {
  
@@ -1801,6 +2010,54 @@
          complete: function () {
          }
      });
+
+
+
+      
+     let lastUrl = location.href;
+
+        new MutationObserver(() => {
+            
+            const url = location.href;
+            
+            if (url !== lastUrl) 
+            {
+                lastUrl = url;
+
+                var masterSelector = $jq321(".product-wrap");
+
+                 $jq321.ajax({
+                     type: "GET",
+                     url: salespoplib_vars_obj.backend_url + 'checkStore/',
+                     dataType: "jsonp",
+                     jsonpCallback: "checkmodule_popup1",
+                     crossDomain: true,
+                     data: {
+                         "webpage": encodeURIComponent(salespoplib_active_url),
+                         "checkDevice": salespoplib_vars_obj.checkDevice,
+                         "domain_url": Shopify.shop,
+                         "product_id": (masterSelector[0] && masterSelector[0].id)?masterSelector[0].id:'',
+                         "fetchNotifications": fetchNotifications
+                     },
+                     beforeSend: function () {
+                     },
+                     success: function () {
+                     },
+                     error: function (jqXHR, textStatus, errorThrown) {
+                         console.log(jqXHR);
+                         console.log("status: " + textStatus);
+                         console.log("err: " + errorThrown);
+                     },
+                     complete: function () {
+                     }
+                 });
+            }
+        
+        }).observe(document, {subtree: true, childList: true});
+
+
+
+
  
      //Click CallBack
      window.clickSaveDataResult = function (result) {
@@ -2412,6 +2669,15 @@
         finalSelector = masterSelector[0];
 
         console.log(finalSelector);
+    }
+
+    if (Shopify.shop == "flbstudios.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.stock-top{display: block !important;}'+ 
+            '</style>'
+        );        
     }
 
      /** Stock for variants **/
@@ -3665,9 +3931,8 @@
            });
    }
    // ---------------------------------- </ANNOUNCEMENT BAR MODULE> --------------------------------
-     
-     
-   });
+
+});
    
    // QUICK PRODUCT VIEW ADD TO CART CALL
      function addToCart()
