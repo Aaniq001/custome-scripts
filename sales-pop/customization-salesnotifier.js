@@ -2014,7 +2014,7 @@
 
 
       
-     let lastUrl = location.href;
+     /*let lastUrl = location.href;
 
         new MutationObserver(() => {
             
@@ -2053,7 +2053,7 @@
                  });
             }
         
-        }).observe(document, {subtree: true, childList: true});
+        }).observe(document, {subtree: true, childList: true});*/
 
 
 
@@ -2678,6 +2678,14 @@
                 '.stock-top{display: block !important;}'+ 
             '</style>'
         );        
+    }
+
+    if (Shopify.shop == "slippers-technic.myshopify.com") 
+    {
+        masterSelector = $jq321(".pf-28_");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
     }
 
      /** Stock for variants **/
@@ -3521,6 +3529,15 @@
             }    
         }
         if (Shopify.shop == "naoadesign.myshopify.com")
+        {
+            let text = window.location.pathname;
+            let result = text.indexOf("products");
+
+            if(result == -1){
+                return;
+            }    
+        }
+        if (Shopify.shop == "slippers-technic.myshopify.com")
         {
             let text = window.location.pathname;
             let result = text.indexOf("products");
