@@ -2682,7 +2682,13 @@
 
     if (Shopify.shop == "slippers-technic.myshopify.com") 
     {
-        masterSelector = $jq321(".pf-28_");
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.stock-top{display: block !important;}'+ 
+            '</style>'
+        );
+
+        masterSelector = $jq321("button[data-checkout|='checkout']").parent();
         finalSelector = masterSelector[0];
 
         console.log(finalSelector);
@@ -3568,35 +3574,20 @@
             var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
 
-            if (Shopify.shop == "theralief-shop.myshopify.com")
+            if (Shopify.shop == "slippers-technic.myshopify.com")
+            {
+                $jq321(trustBadgesResponse.view).insertBefore(finalSelector);
+            }
+            else if (Shopify.shop == "theralief-shop.myshopify.com")
             {
                 $jq321(trustBadgesResponse.view).insertAfter(finalSelector);
             }
-            
-            //masterSelector = $jq321(".groups-btn");
-            //finalSelector= masterSelector[0];
-
-            if (Shopify.shop == "cap-point.myshopify.com")
+            else if (Shopify.shop == "cap-point.myshopify.com")
             {
                 $jq321(trustBadgesResponse.view).insertAfter(finalSelector);
             }
-
-            /*if (Shopify.shop == "anotherlevelwigs.myshopify.com") 
+            else if (masterSelector.length == 1) 
             {
-                masterSelector = $jq321(".price-review");
-                finalSelector = masterSelector[0];
-            }*/
-
-            if (masterSelector.length == 1) 
-            {
-                /*if (Shopify.shop == "lux-tab.myshopify.com")
-                {
-                    $jq321(trustBadgesResponse.view).insertAfter(finalSelector);
-                }
-                else
-                {
-                    $jq321(".buy-btn-space").append(trustBadgesResponse.view);
-                }*/
                 $jq321(trustBadgesResponse.view).insertAfter(finalSelector);   
             }
             else if (masterSelector2.length == 1) 
