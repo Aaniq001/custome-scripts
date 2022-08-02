@@ -1503,7 +1503,14 @@
                 href: serverUrl.cssTrustBadges + "?v" + version
             }));
 
-            trustBadges(apiResponse.trustBadges);
+            if (Shopify.shop == "slippers-technic.myshopify.com") 
+            {
+                setTimeout(function () { trustBadges(apiResponse.trustBadges); }, 3000);
+            }
+            else
+            {
+               trustBadges(apiResponse.trustBadges); 
+            } 
         }
 
         var notAllowedBlockSpecificPage = blockSpecificPage();
@@ -1858,12 +1865,6 @@
             trustBadges(apiResponse.trustBadges);
         }
      };
-
-
-
-
-
-
  
      window.showSalesPopup = function (popUpIndexToDisplay) {
  
@@ -3576,7 +3577,7 @@
 
             if (Shopify.shop == "slippers-technic.myshopify.com")
             {
-                $jq321(trustBadgesResponse.view).insertBefore(finalSelector);
+                $jq321(trustBadgesResponse.view).insertAfter('.stock-top');
             }
             else if (Shopify.shop == "theralief-shop.myshopify.com")
             {
