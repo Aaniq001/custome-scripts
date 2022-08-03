@@ -2709,6 +2709,15 @@
         console.log(finalSelector);
     }
 
+    if (Shopify.shop == "legend-bracelet.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.notificationPreview-box .card-body h5.card-title{text-align: left;}'+ 
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
