@@ -1100,6 +1100,27 @@
                                                             }
                                                         }
                             */
+
+                            if (Shopify.shop == 'steven-brown-art.myshopify.com') 
+                            {   
+                                var thisStatus = checkStoreSpecificUrlCcSpinASale("https://www.stevenbrownart.co.uk/collections/sale");
+
+                                console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
+
+                                var thisStatus1 = checkStoreSpecificUrlCcSpinASale("https://www.stevenbrownart.co.uk/collections/heather-mccoo-highland-cow-art");
+
+                                console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus1);
+                                
+                                if (thisStatus || thisStatus1) 
+                                {
+                                    console.log('SAS Block Page Matched for store: ' + Shopify.shop);
+                                    return;
+                                }
+                                else 
+                                {
+                                    console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);  
+                                }
+                            }
                             
                             if(Shopify.shop == 'homesteadsupplier.myshopify.com')
                             {
