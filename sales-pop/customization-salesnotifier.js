@@ -1358,7 +1358,16 @@
          // VISITOR COUNTER CALL
          if (apiResponse && apiResponse.visitor && apiResponse.visitor !== null) 
          {
-            if (Shopify.shop == "frenchiestuff.myshopify.com") 
+            if (Shopify.shop == "directdealstore.myshopify.com") 
+            {    setTimeout(function(){
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssVisitor + "?v" + version
+                    }));
+                    visitorCounter(apiResponse.visitor);
+                }, 3000);
+            }
+            else if (Shopify.shop == "frenchiestuff.myshopify.com") 
             {    setTimeout(function(){
                     $jq321("head").append($jq321("<link/>", {
                         rel: "stylesheet",
@@ -2015,9 +2024,6 @@
          complete: function () {
          }
      });
-
-
-
       
      /*let lastUrl = location.href;
 
@@ -2060,10 +2066,6 @@
         
         }).observe(document, {subtree: true, childList: true});*/
 
-
-
-
- 
      //Click CallBack
      window.clickSaveDataResult = function (result) {
      };
@@ -2723,6 +2725,15 @@
     }
 
     if (Shopify.shop == "frenchiestuff.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.stock-top{display: block !important;}'+ 
+            '</style>'
+        );
+    }
+
+    if (Shopify.shop == "directdealstore.myshopify.com") 
     {
         $jq321("head").append(
             '<style type="text/css">'+ 
