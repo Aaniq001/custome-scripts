@@ -1356,9 +1356,18 @@
          }
 
          // VISITOR COUNTER CALL
-         if (apiResponse && apiResponse.visitor && apiResponse.visitor !== null) {
-            
-            if (Shopify.shop == "agent11mporex.myshopify.com")
+         if (apiResponse && apiResponse.visitor && apiResponse.visitor !== null) 
+         {
+            if (Shopify.shop == "frenchiestuff.myshopify.com") 
+            {    setTimeout(function(){
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssVisitor + "?v" + version
+                    }));
+                    visitorCounter(apiResponse.visitor);
+                }, 3000);
+            }
+            else if (Shopify.shop == "agent11mporex.myshopify.com")
             {
                 setTimeout(function(){
                     $jq321("head").append($jq321("<link/>", {
@@ -1662,11 +1671,6 @@
          }
  
      };
-
-
-
-
-
 
      window.checkmodule_popup1 = function (response) {
          spDebuger.storeLog("BACKEND-URL: ", salespoplib_vars_obj.backend_url);
@@ -2714,6 +2718,15 @@
         $jq321("head").append(
             '<style type="text/css">'+ 
                 '.notificationPreview-box .card-body h5.card-title{text-align: left;}'+ 
+            '</style>'
+        );
+    }
+
+    if (Shopify.shop == "frenchiestuff.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.stock-top{display: block !important;}'+ 
             '</style>'
         );
     }
