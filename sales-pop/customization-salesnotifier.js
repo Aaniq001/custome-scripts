@@ -2728,7 +2728,12 @@
     {
         $jq321("head").append(
             '<style type="text/css">'+ 
-                '.stock-top{display: block !important;}'+ 
+                '.stock-top{display: block !important;}'+
+                '.sold-counter-content-box{height:22px !important; margin-bottom:0px !important;margin-top:0px !important;}'+ 
+                '.stock-top{margin-bottom:0 !important;}' +
+                'sold-text{min-height:28px !important;}'+
+                'div.giraffly-right-Bar-Preview-Example{padding-top:4px !important }' +
+                '.visitor-counter-content-box-carecartbysalespop-2020{height:33px !important; min-height:28px !important;}'+ 
             '</style>'
         );
     }
