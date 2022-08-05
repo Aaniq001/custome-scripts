@@ -300,6 +300,48 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "medici-supply-co.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
+    if (Shopify.shop == "wrywryshop.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
+    if (Shopify.shop == "amamibijoux.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
+    if (Shopify.shop == "metaphysicalonlineshop.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
+    if (Shopify.shop == "combadepalo.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
+    if (Shopify.shop == "la-porta-dei-sapori.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
+    if (Shopify.shop == "nlmilamaya.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 
 
     $jq321.ajax({
@@ -598,8 +640,64 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         console.log(customSelctor);
     }
 
-    function visitorCounter(responseVisitor) {
+    if (Shopify.shop == "medici-supply-co.myshopify.com")
+    {
+        customSelctor = $jq321(".add-to-cart");
+        finalSelector = customSelctor[0];
 
+        console.log(customSelctor);
+    }
+
+    if (Shopify.shop == "wrywryshop.myshopify.com")
+    {
+        customSelctor = $jq321(".ProductForm__Variants");
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
+    }
+
+    if (Shopify.shop == "amamibijoux.myshopify.com")
+    {
+        customSelctor = $jq321(".product__title");
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
+    }
+
+    if (Shopify.shop == "metaphysicalonlineshop.myshopify.com")
+    {
+        customSelctor = $jq321(".product-single__add-to-cart");
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
+    }
+
+    if (Shopify.shop == "combadepalo.myshopify.com")
+    {
+        customSelctor = $jq321(".product__title");
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
+    }
+
+    if (Shopify.shop == "la-porta-dei-sapori.myshopify.com")
+    {
+        customSelctor = $jq321("h1");
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
+    }
+
+    if (Shopify.shop == "nlmilamaya.myshopify.com")
+    {
+        customSelctor = $jq321(".add-to-cart");
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
+    }
+
+    function visitorCounter(responseVisitor) 
+    {
         var selectorVisitor1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
         var selectorVisitor2 = $jq321("form[action='/cart/add']");
         var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']");

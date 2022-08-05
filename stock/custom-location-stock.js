@@ -46,7 +46,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             return {
                 "backend": "https://app-countdown-pro.carecart.io/FrontController/",
                 "cssStock": "https://app-countdown-pro.carecart.io/lib/stock-box.css",
-                "cssTimer": "https://app-countdown-pro.carecart.io/lib/timer-box.css"
+                "cssTimer": "https://app-countdown-pro.carecart.io/lib/timer-box.css",
+                "cssCartTimer": "https://app-countdown-pro.carecart.io/lib/cart-countdown.css"
             };
         }
 
@@ -61,7 +62,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         return {
             "backend": backend,
             "cssStock": "https://" + tempAnchorTag.hostname + "/lib/stock-box.css?v" + version,
-            "cssTimer": "https://" + tempAnchorTag.hostname + "/lib/timer-box.css?v" + version
+            "cssTimer": "https://" + tempAnchorTag.hostname + "/lib/timer-box.css?v" + version,
+            "cssCartTimer": "https://" + tempAnchorTag.hostname + "/lib/cart-countdown.css?v" + version
         };
     }
 
@@ -70,8 +72,21 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     // @todo cleanup unused extra properties
     var salespoplib_vars_obj = {
+        checkDevice: '',
         backend_url: serverUrl.backend
     };
+
+        // Check For desktop/Mobile
+    (function (a) {
+        ($jq321.browser = $jq321.browser || {}).mobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))
+    })(navigator.userAgent || navigator.vendor || window.opera);
+
+     /* Check if Mobile */
+    if ($jq321.browser.mobile) {
+        salespoplib_vars_obj.checkDevice = 'mobile';
+    } else {
+        salespoplib_vars_obj.checkDevice = 'desktop';
+    }
 
     window.checkmodule_countdown = function (response) {
         console.log("Response received");
@@ -96,6 +111,22 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 href: serverUrl.cssTimer + "?v" + version
             }));
             timeCountdown(apiResponse.timer);
+        }
+
+        // Cart Countdown timer
+        if (apiResponse && apiResponse.cartTimer && apiResponse.cartTimer !== null)
+        {
+            console.clear();
+
+            console.log('local storage: ');
+            console.log(localStorage);
+
+            console.log('Main call');
+            console.log(apiResponse.cartTimer);
+
+            $jq321("head").append($jq321("<link/>", { rel: "stylesheet", href: serverUrl.cssCartTimer + "?v" + version }));
+
+            cartCountdownTimer(apiResponse.cartTimer);
         }
     };
 
@@ -149,6 +180,39 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "aspiresportsfiji.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "the-beardstory.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "medici-supply-co.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "smartbusiness-pe.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "thuyn.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "fligflag.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "eminenter.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+
+
+    /**
+     * check the status of cart page
+     */
+    let currentPage = !(!window.location.pathname.match("(.*)/cart/(.*)") && !window.location.pathname.match("(.*)/cart"));
+    
+
+    /**
+      * Check if browser or desktop
+    */
+    (function (a) {
+         ($jq321.browser = $jq321.browser || {}).mobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))
+    })(navigator.userAgent || navigator.vendor || window.opera);
+    let deviceName = ($jq321.browser.mobile) ? "mobile" : "desktop";
 
 
     $jq321.ajax({
@@ -159,7 +223,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         crossDomain: true,
         data: {
             "domain_url": Shopify.shop,
-            "product_id": (meta.product && meta.product.id) ? meta.product.id:''
+            "product_id": (meta.product && meta.product.id) ? meta.product.id:'',
+             "pageStatus": currentPage,
+            "device": ($jq321.browser.mobile) ? "mobile" : "desktop"
         },
         beforeSend: function () {
         },
@@ -315,24 +381,70 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     if (Shopify.shop == "aspiresportsfiji.myshopify.com")
     {
-        $jq321("head").append('<style type="text/css">'+
+        console.log('Device');
+        console.log(salespoplib_vars_obj.checkDevice);
+
+
+        if (salespoplib_vars_obj.checkDevice == 'desktop')
+        {
+           $jq321("head").append('<style type="text/css">'+
                               '#time-custom-center{display: flex; flex-direction:column; width:28%;}'+
                               '.product-info-main .form-group{display:flex !important;}'+
                               '#button-cart{height:49px;}'+
                               '</style>');
 
-        $jq321(".wishlist-btn").remove();
+            $jq321(".wishlist-btn").remove();
 
-        var customdiv = '<div id="time-custom-center">'+
-                        '<button class="btn-wishlist button wishlist-btn" data-product-handle="tonga-vest" type="button" data-toggle="tooltip" title="" data-original-title="Add to Wish List">'+
-                        '<span>Add to Wish List</span>'+
-                        '</button>'+
-                        '</div>';
+            var customdiv = '<div id="time-custom-center">'+
+                            '<button class="btn-wishlist button wishlist-btn" data-product-handle="tonga-vest" type="button" data-toggle="tooltip" title="" data-original-title="Add to Wish List">'+
+                            '<span>Add to Wish List</span>'+
+                            '</button>'+
+                            '</div>';
 
-        $jq321(customdiv).insertAfter("#button-cart");  
+            $jq321(customdiv).insertAfter("#button-cart");  
+        }
+        else if (salespoplib_vars_obj.checkDevice == 'mobile')
+        {
+            masterSelector = $jq321(".form-group");
+            finalSelector = masterSelector[1];
 
+            console.log(masterSelector);
+        }
     }
 
+    if (Shopify.shop == "the-beardstory.myshopify.com")
+    {
+        masterSelector = $jq321(".offerssection");
+        finalSelector = masterSelector[0];
+    }
+
+    if (Shopify.shop == "medici-supply-co.myshopify.com")
+    {
+        masterSelector = $jq321(".add-to-cart");
+        finalSelector = masterSelector[0];
+    }
+
+    if (Shopify.shop == "smartbusiness-pe.myshopify.com")
+    {
+        masterSelector = $jq321(".qty-add-cart");
+        finalSelector = masterSelector[0];
+    }
+
+    if (Shopify.shop == "thuyn.myshopify.com")
+    {
+        masterSelector = $jq321(".proReviews");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+
+    if (Shopify.shop == "fligflag.myshopify.com")
+    {
+        masterSelector = $jq321(".ProductForm__AddToCart");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
 
     function stockCountdown(response) {
         
@@ -503,7 +615,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             }
             else if (selectorTimer3.length == 1)
             {
-                console.log(3);
                 $jq321(t.view).insertAfter(selectorTimer3);
             }
             else if (selectorTimer4.length == 1)
@@ -580,5 +691,378 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var timeinterval = setInterval(updateClock, 1000);
     }
     // ---------------------------------- </TIME MODULE> -----------------------------------------
+
+    /**
+     * Cart Countdown timer
+     */
+    /*function cartCountdownTimer(response)
+    {
+        setInterval(function () {
+            var cartContents = fetch('/cart.json', {method: 'GET'})
+            .then(response => response.json())
+            .then(data => {
+                
+                let cartValue = data.items;
+
+                if (cartValue.length == 0) 
+                {
+                    console.log("Cart is empty");
+                    
+                    $jq321("#cc-sc-cart-timer-countdown-bar").remove();
+                    
+                    window.localStorage.removeItem("carecart-scp-cart-timer-end-time");
+                    window.localStorage.removeItem("carecart-scp-cart-timer-repeat");
+                    window.localStorage.setItem("carecart-scp-cart-status", "empty");
+                } 
+                else 
+                {
+                    console.log("there is something in the cart ing");
+                    
+                    window.localStorage.removeItem("carecart-scp-cart-status");
+                    
+                    appendCartTimerBar(response);
+
+                    console.log(response);
+                }
+            });
+        }, 3000);
+    }*/
+
+    /*function getTimeRemainingCartCountdown(endtime) {
+        let currentTime = Date.parse(new Date());
+        let t = endtime - currentTime;
+        let minutes = Math.floor((t / 1000 / 60) % 60);
+        let seconds = Math.floor((t / 1000) % 60);
+
+        window.localStorage.setItem("craecart-scp-cart-timer-minutes", minutes);
+        window.localStorage.setItem("craecart-scp-cart-timer-seconds", seconds);
+
+        return {
+            'total': t,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+    }*/
+
+    /**
+     * Cart Countdown timer
+     */
+     function cartCountdownTimer(response)
+     {
+         setInterval(function () 
+         {
+             var cartContents = fetch('/cart.json', {method: 'GET'})
+             .then(response => response.json())
+             .then(data => {
+
+                 let cartValue = data.items;
+
+                 if (cartValue.length == 0) 
+                 {
+                     console.log("Cart is empty");
+
+                     $jq321("#cc-sc-cart-timer-countdown-bar").remove();
+                     
+                     window.localStorage.removeItem("carecart-scp-cart-timer-end-time");
+                     window.localStorage.removeItem("carecart-scp-cart-timer-repeat");
+                     window.localStorage.setItem("carecart-scp-cart-status", "empty");
+                 } 
+                 else 
+                 {
+                     console.log("there is something in the cart");
+                     
+                     window.localStorage.removeItem("carecart-scp-cart-status");
+                     
+                     appendCartTimerBar(response);
+                 }
+             });
+         }, 3000);
+     }
+    
+     function getTimeRemainingCartCountdown(endtime) 
+     {
+        //console.log('in get Time Remaining Cart Countdown: ');
+
+        let currentTime = Date.parse(new Date());
+        let t = endtime - currentTime;
+        let minutes = Math.floor((t / 1000 / 60) % 60);
+        let seconds = Math.floor((t / 1000) % 60);
+
+        window.localStorage.setItem("craecart-scp-cart-timer-minutes", minutes);
+        window.localStorage.setItem("craecart-scp-cart-timer-seconds", seconds);
+
+        return {
+            'total': t,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+     }
+    
+     function initializeClockCartCountdown(endtime = 15, settings) 
+     {
+        //console.log('in initialize Clock Cart Countdown: ');
+
+        let ccCartCountdownTimerDiv = document.getElementById("cc-stock-cart-timer-section");
+
+        //console.log('cc Cart Countdown Timer Div: ');
+        //console.log(ccCartCountdownTimerDiv);
+        
+        function updateClock() 
+        {
+            //console.log('in update Clock: ');
+
+            let cartCountdownTimeRemaining = getTimeRemainingCartCountdown(endtime);
+
+            //console.log('cart Countdown Time Remaining: ');
+            //console.log(cartCountdownTimeRemaining);
+            
+            let timerHTML = '<span>' + ('0' + cartCountdownTimeRemaining.minutes).slice(-2) + ' : ' + ('0' + cartCountdownTimeRemaining.seconds).slice(-2) + '</span>';
+
+            //console.log('timer HTML: ');
+            //console.log(timerHTML);
+            
+            $jq321(ccCartCountdownTimerDiv).html(timerHTML);
+
+            // console.log('minutes: ');
+            // console.log(cartCountdownTimeRemaining.minutes);
+
+            // console.log('seconds: ');
+            // console.log(cartCountdownTimeRemaining.seconds);
+
+            if (cartCountdownTimeRemaining.total <= 0) 
+            {
+                // console.log('in update Clock cartCountdownTimeRemaining.total: ');
+
+                // console.log('cartCountdownTimeRemaining.total: ');
+                // console.log(cartCountdownTimeRemaining.total);
+
+                if (settings.barAction == "empty") 
+                {
+                    // console.log('in update Clock settings.barAction:empty ');
+
+                    // console.log('settings.barAction: ');
+                    // console.log(settings.barAction);
+
+                    fetch('/cart/clear.json', {method: 'GET'})
+                    .then(response => response.json())
+                    .then(data => {window.location.reload();});
+
+                    // console.log('time interval Cart Timer: ');
+                    // console.log(timeintervalCartTimer);
+                    
+                    clearInterval(timeintervalCartTimer);
+                } 
+                else if (settings.barAction == "nothing") 
+                {
+                    //console.log('in update Clock settings.barAction:nothing ');
+
+                    $jq321("#cc-sc-cart-timer-countdown-bar").remove();
+                    
+                    window.localStorage.setItem("craecart-scp-cart-timer-bar-status", "nothing");
+
+                    //console.log('time interval Cart Timer: ');
+                    //console.log(timeintervalCartTimer);
+                    
+                    clearInterval(timeintervalCartTimer);
+                }
+                else if (settings.barAction == "repeat") 
+                { 
+                    //console.log('in update Clock settings.barAction:repeat ');
+
+                    $jq321("#cc-sc-cart-timer-countdown-bar").remove();
+                    
+                    window.localStorage.setItem("craecart-scp-cart-timer-minutes", parseInt(settings.totalMinutes));
+                    window.localStorage.setItem("craecart-scp-cart-timer-seconds", parseInt(settings.totalSeconds));
+                    window.localStorage.setItem("carecart-scp-cart-timer-repeat", "yes");
+
+                    // console.log('settings.totalMinutes: ');
+                    // console.log(settings.totalMinutes);
+
+                    // console.log('settings.totalSeconds: ');
+                    // console.log(settings.totalSeconds);
+                    
+                    clearInterval(timeintervalCartTimer);
+
+                    // console.log('time interval Cart Timer: ');
+                    // console.log(timeintervalCartTimer);
+                    
+                    appendCartTimerBar(settings, true);
+
+                    // console.log('settings: ');
+                    // console.log(settings);
+                }
+            }
+        }
+
+        updateClock();
+        
+        var timeintervalCartTimer = setInterval(updateClock, 1000);
+     }
+    
+     function calculateCartCountDownTime(totalMinutes, totalSeconds)
+     {
+         //console.log('in calculate Cart CountDown Time: ');
+         
+         let totalTimeToBeAdd = parseInt(totalMinutes) * 60 * 1000 + parseInt(totalSeconds) * 1000;
+         return endtime = new Date(Date.parse(new Date()) + totalTimeToBeAdd).getTime();
+     }
+    
+     function appendCartTimerBar(response, status = false)
+     {
+        //console.log('in append cart timer bar: ');
+
+         let cartCountdownTimeStampRepeat = window.localStorage.getItem("carecart-scp-cart-timer-repeat");
+
+         // console.log('cart Countdown Time Stamp Repeat: ');
+         // console.log(cartCountdownTimeStampRepeat);
+
+         // console.log('status: ');
+         // console.log(status);
+
+         if (cartCountdownTimeStampRepeat === "yes" && status) 
+         {
+             // console.log('in first if of append cart timer bar: ');
+
+             // console.log('total Minutes: ');
+             // console.log(response.totalMinutes);
+
+             // console.log('total Seconds: ');
+             // console.log(response.totalSeconds);
+
+             cartCountdownTimeStampRepeat = calculateCartCountDownTime(response.totalMinutes, response.totalSeconds);
+             
+             window.localStorage.setItem("carecart-scp-cart-timer-end-time", cartCountdownTimeStampRepeat);
+
+             // console.log('cart Countdown Time Stamp Repeat: ');
+             // console.log(cartCountdownTimeStampRepeat);
+         }
+ 
+         let cartCountdownEndTimeStamp = window.localStorage.getItem("carecart-scp-cart-timer-end-time");
+
+         //console.log('cart Countdown End Time Stamp: ');
+         //console.log(cartCountdownEndTimeStamp);
+         
+         if (cartCountdownEndTimeStamp === null) 
+         {
+             // console.log('in second if of append cart timer bar: ');
+
+             // console.log('total Minutes: ');
+             // console.log(response.totalMinutes);
+
+             // console.log('total Seconds: ');
+             // console.log(response.totalSeconds);
+
+             cartCountdownEndTimeStamp = calculateCartCountDownTime(response.totalMinutes, response.totalSeconds);
+             
+             window.localStorage.setItem("carecart-scp-cart-timer-end-time", cartCountdownEndTimeStamp);
+
+             // console.log('cart Countdown End Time Stamp: ');
+             // console.log(cartCountdownEndTimeStamp);
+         }
+         
+         /**
+          * Check first if bar already there
+          */
+         let cartStatus = window.localStorage.getItem("carecart-scp-cart-status");
+
+         // console.log('cartStatus: ');
+         // console.log(cartStatus);
+         
+         let barID = $jq321("#cc-sc-cart-timer-countdown-bar");
+
+         // console.log('barID: ');
+         // console.log(barID);
+         
+         if (barID.length == 0)
+         {
+             //console.log('in third if of append cart timer bar: ');
+
+             let barStatus = window.localStorage.getItem("craecart-scp-cart-timer-bar-status");
+
+             // console.log('barStatus: ');
+             // console.log(barStatus);
+             
+             if (barStatus !== "nothing") 
+             {
+                //console.log('in fourth if of append cart timer bar: ');
+
+                 /**
+                 * Let make selector
+                 */
+                 let firstSelector = $jq321("form[action='/cart']").parent();
+
+                 // console.log('firstSelector: ');
+                 // console.log(firstSelector);
+             
+                 
+                 if (response.barPosition == "top" && cartStatus === null) 
+                 {
+                    // console.log('in fivth if of append cart timer bar: ');
+
+                    // console.log('barPosition: ');
+                    // console.log(response.barPosition);
+
+                    // console.log('cartStatus: ');
+                    // console.log(cartStatus);
+                     
+                     if (firstSelector.length > 0) 
+                     {
+                         // console.log('in sixth if of append cart timer bar: ');
+
+                         // console.log('length: ');
+                         // console.log(firstSelector.length);
+
+                         // console.log('firstSelector');
+                         // console.log(firstSelector);
+
+                         //$jq321(firstSelector[1]).prepend(response.view);
+                         $jq321(".cart-header").prepend(response.view);
+                         
+
+                         // console.log('firstSelector[1]: ');
+                         // console.log(firstSelector[1]);
+
+                         // console.log('view: ');
+                         // console.log(response.view);
+                     }
+                 } 
+                 else 
+                 { 
+                     //console.log('in else of append cart timer bar: ');
+
+                     if (firstSelector.length > 0 && cartStatus === null) 
+                     {
+                         // console.log('in seventh if of append cart timer bar: ');
+
+                         // console.log('length: ');
+                         // console.log(firstSelector.length);
+
+                         // console.log('cartStatus: ');
+                         // console.log(cartStatus);
+                         
+                         //$jq321(firstSelector[1]).append(response.view);
+                         $jq321(".cart-header").append(response.view);
+
+                         // console.log('firstSelector[1]: ');
+                         // console.log(firstSelector[1]);
+
+                         // console.log('view: ');
+                         // console.log(response.view);
+                     }
+                 }
+
+                 // console.log('cart Countdown End Time Stamp: ');
+                 // console.log(cartCountdownEndTimeStamp);
+
+                 // console.log('response: ');
+                 // console.log(response);
+
+                 initializeClockCartCountdown(cartCountdownEndTimeStamp, response);
+             }
+         }
+     }
+    /**
+    * Cart countdown timer ends here
+    */
 
   });

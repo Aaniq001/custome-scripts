@@ -1100,6 +1100,53 @@
                                                             }
                                                         }
                             */
+
+                            if (Shopify.shop == 'steven-brown-art.myshopify.com') 
+                            {   
+                                var thisStatus = checkStoreSpecificUrlCcSpinASale("https://www.stevenbrownart.co.uk/collections/sale");
+
+                                console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
+
+                                var thisStatus1 = checkStoreSpecificUrlCcSpinASale("https://www.stevenbrownart.co.uk/collections/heather-mccoo-highland-cow-art");
+
+                                console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus1);
+                                
+                                if (thisStatus || thisStatus1) 
+                                {
+                                    console.log('SAS Block Page Matched for store: ' + Shopify.shop);
+                                    return;
+                                }
+                                else 
+                                {
+                                    console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);  
+                                }
+                            }
+                            
+                            if(Shopify.shop == 'homesteadsupplier.myshopify.com')
+                            {
+                                var thisStatus = checkStoreSpecificUrlCcSpinASale("https://homesteadsupplier.com/collections/ez-fit-chicken-coops-sheds-kennels/products/ez-fit-riverside-shed-outdoor-garden-tool-shed-storage-solution");
+                                
+                                console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
+                                
+                                var thisStatus1 = checkStoreSpecificUrlCcSpinASale("https://homesteadsupplier.com/collections/ez-fit-chicken-coops-sheds-kennels/products/ez-fit-sheds-homestead-outdoor-garden-shed-storage-solution");
+                                
+                                console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus1);
+
+                                var thisStatus2 = checkStoreSpecificUrlCcSpinASale("https://homesteadsupplier.com/collections/ez-fit-chicken-coops-sheds-kennels/products/ez-fit-sheds-heritage-outdoor-garden-shed-storage-solution");
+                                
+                                console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus2);
+                                
+                                if(thisStatus || thisStatus1 || thisStatus2)
+                                {
+                                    console.log('SAS Custom Page Matched for store: ' + Shopify.shop);
+                                }
+                                else
+                                {
+                                    console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
+                                    return;
+                                }
+                            }
+
                             if (Shopify.shop == 'geniani-products.myshopify.com') {
                                 var thisStatus = checkStoreSpecificUrlCcSpinASale("https://geniani.com/pages/geniani-rewards-club");
                                 //console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
@@ -1614,7 +1661,7 @@
                                         couponAndMsgAreSetThenLoad();
                                     }, parseInt(response.records.store_settings.settings_data.delay_time) * 1000);
                                 }
-                                /* *********************************************** Start - Display Urgency Timer Bar **********************************	*/
+                                /* *********************************************** Start - Display Urgency Timer Bar ********************************** */
                                 if (response.records.store_settings.conversion_booster_settings != null && response.records.store_settings.conversion_booster_settings.is_urgency_timer_bar_enabled != null && parseInt(response.records.store_settings.conversion_booster_settings.is_urgency_timer_bar_enabled) == 1) {
                                     window.localStorage.setItem('urgencyTimerBarEnabled', 1);
                                     //console.log('SAS Urgency Bar is Active');
@@ -1657,8 +1704,8 @@
                                     //console.log('SAS deadlineSpinAWheel deadlineSpinAWheel: ' + deadlineSpinAWheel);
                                     //initializeClockSpinAWheel('cc-spin-a-sale-clock-div-preview', deadlineSpinAWheel);
                                 }
-                                /* *********************************************** End - Display Urgency Timer Bar **********************************	*/
-                                /* *********************************************** Start - Conversion Booster Progress Bar **********************************	*/
+                                /* *********************************************** End - Display Urgency Timer Bar **********************************   */
+                                /* *********************************************** Start - Conversion Booster Progress Bar **********************************   */
                                 if (response.records.store_settings.conversion_booster_settings != null && response.records.store_settings.conversion_booster_settings.conversion_booster_show_offers_claimed != null && parseInt(response.records.store_settings.conversion_booster_settings.conversion_booster_show_offers_claimed) == 1) {
                                     console.log('SAS Conversion Booster Progress Bar is Active');
                                     carecartSpinnerJquery('.wheelify-cc-spin-a-sale-spinner-progress-bar').css("visibility", "visible");
@@ -1666,15 +1713,15 @@
                                     carecartSpinnerJquery('.wheelify-cc-spin-a-sale-spinner-progress-bar-inner').css({ "background-color": response.records.store_settings.conversion_booster_settings.conversion_booster_progress_bar_color, "display": "block" });
                                     carecartSpinnerJquery('.wheelify-cc-spin-a-sale-couponwheel_offers_text').text(response.records.store_settings.conversion_booster_settings.conversion_booster_offers_claimed_text);
                                 }
-                                /* *********************************************** End - Conversion Booster Progress Bar **********************************	*/
-                                /* *********************************************** Start - Anti-Cheat Shield Settings **********************************	*/
+                                /* *********************************************** End - Conversion Booster Progress Bar ********************************** */
+                                /* *********************************************** Start - Anti-Cheat Shield Settings **********************************    */
                                 if (response.records.store_settings.anti_cheat_engine_settings != null && (parseInt(response.records.store_settings.anti_cheat_engine_settings.anti_cheat_engine_limit_spin_by_cookies) == 1 || parseInt(response.records.store_settings.anti_cheat_engine_settings.anti_cheat_engine_limit_spin_by_email) == 1 || parseInt(response.records.store_settings.anti_cheat_engine_settings.anti_cheat_engine_limit_spin_by_ip_address) == 1)) {
                                     window.localStorage.setItem('cc-sas-spinner-anti-cheat-shield', 1);
                                     console.log('SAS  Anti-Cheat Shield is Active');
                                     //console.log(response.records.store_settings.anti_cheat_engine_settings.anti_cheat_engine_spin_limit_quota_text);
                                     carecartSpinnerJquery('#wheelify-cc-spin-a-sale-already-used-spin-quota p').text(response.records.store_settings.anti_cheat_engine_settings.anti_cheat_engine_spin_limit_quota_text);
                                 }
-                                /* *********************************************** End - Anti-Cheat Shield Settings **********************************	*/
+                                /* *********************************************** End - Anti-Cheat Shield Settings **********************************  */
 
                             }
                             var storeBgColor = response.records.store_settings.spinner_bg_color;
@@ -2533,7 +2580,7 @@
                                        
                                     }
                                     /* ************************************** Display Background Image - End *********************************************************** */
-                                    /* *********************************************** Start - Display Urgency Timer Bar **********************************	*/
+                                    /* *********************************************** Start - Display Urgency Timer Bar ********************************** */
                                 if (response.records.store_settings.conversion_booster_settings != null && response.records.store_settings.conversion_booster_settings.is_urgency_timer_bar_enabled != null && parseInt(response.records.store_settings.conversion_booster_settings.is_urgency_timer_bar_enabled) == 1) {
                                     window.localStorage.setItem('urgencyTimerBarEnabled', 1);
                                     //console.log('SAS Urgency Bar is Active');
@@ -2576,8 +2623,8 @@
                                     //console.log('SAS deadlineSpinAWheel deadlineSpinAWheel: ' + deadlineSpinAWheel);
                                     //initializeClockSpinAWheel('cc-spin-a-sale-clock-div-preview', deadlineSpinAWheel);
                                 }
-                                /* *********************************************** End - Display Urgency Timer Bar **********************************	*/
-                                /* *********************************************** Start - Conversion Booster Progress Bar **********************************	*/
+                                /* *********************************************** End - Display Urgency Timer Bar **********************************   */
+                                /* *********************************************** Start - Conversion Booster Progress Bar **********************************   */
                                 if (response.records.store_settings.conversion_booster_settings != null && response.records.store_settings.conversion_booster_settings.conversion_booster_show_offers_claimed != null && parseInt(response.records.store_settings.conversion_booster_settings.conversion_booster_show_offers_claimed) == 1) {
                                     console.log('SAS Conversion Booster Progress Bar is Active');
                                     carecartSpinnerJquery('.wheelify-cc-spin-a-sale-spinner-progress-bar').css("visibility", "visible");
@@ -2585,7 +2632,7 @@
                                     carecartSpinnerJquery('.wheelify-cc-spin-a-sale-spinner-progress-bar-inner').css({ "background-color": response.records.store_settings.conversion_booster_settings.conversion_booster_progress_bar_color, "display": "block" });
                                     carecartSpinnerJquery('.wheelify-cc-spin-a-sale-couponwheel_offers_text').text(response.records.store_settings.conversion_booster_settings.conversion_booster_offers_claimed_text);
                                 }
-                                /* *********************************************** End - Conversion Booster Progress Bar **********************************	*/
+                                /* *********************************************** End - Conversion Booster Progress Bar ********************************** */
                                     /* ************************************** Display Spinner if percentage scroll is enabled  - START *********************************************************** */
                                     if (response.records.store_settings.settings_data.is_scroll_spinner_percentage_enabled && parseInt(response.records.store_settings.settings_data.is_scroll_spinner_percentage_enabled) == 1) {
                                         //console.log("SAS is_scroll_spinner_percentage_enabled is ENABLED");
@@ -2898,6 +2945,18 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'steven-brown-art.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form{box-sizing:border-box !important;}</style>');
+                    //console.log("SAS https://partychampions.com/");
+                }
+                if (Shopify.shop == 'hipa360.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css">svg {stroke: none !important;} @media only screen and (max-width: 575px){ .wheelify-ContentRight{padding-top: 13px;} #wheelify-spin_a_sale_cc_store_front_module .wheelify-wheelContainer { width: 115%!important;} .wheelText{font-size:32px!important;} #wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {min-height: 442px !important;}}</style>');
+                    //console.log("SAS https://partychampions.com/");
+                }
+                if (Shopify.shop == 'indus-valley2.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css">@media only screen and (max-width: 575px){#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight {min-height: 440px !important;}}</style>');
+                    //console.log("SAS https://partychampions.com/");
+                }
                 if (Shopify.shop == 'the-party-champions.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">.wheelify-signupContainer ::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: #aaaaaa;}</style>');
                     //console.log("SAS https://partychampions.com/");

@@ -45,7 +45,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         if (thisLibUrl === "") {
             return {
                 "backend": "https://app-visitor-counter.carecart.io/FrontController/",
-		        "cssVisitor": "https://app-visitor-counter.carecart.io/lib/visitor-box.css"
+                "cssVisitor": "https://app-visitor-counter.carecart.io/lib/visitor-box.css"
             };
         }
 
@@ -85,39 +85,46 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             visitorCounter(apiResponse.visitor);
         }
     };
-	/* Hard coded product id's for homa page */
-let productID = 0;
-if(Shopify.shop == "behappyfr.myshopify.com"){
-    productID = 6887512703140;
-}
+    
+    /* Hard coded product id's for homa page */
+    let productID = 0;
+    if(Shopify.shop == "behappyfr.myshopify.com"){
+        productID = 6887512703140;
+    }
 
-if(Shopify.shop == "blissin-skin.myshopify.com"){
-    productID = 6939770716332;
-}
-if (Shopify.shop == "security-coque.myshopify.com") 
-{
-    var meta = {"product":{"id":__st.rid}};
+    if(Shopify.shop == "blissin-skin.myshopify.com"){
+        productID = 6939770716332;
+    }
+    if (Shopify.shop == "security-coque.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
 
-    productID = 6681807159347;
-}
-if (Shopify.shop == "simplifryco.myshopify.com") 
-{
-    var meta = {"product":{"id":__st.rid}};
+        productID = 6681807159347;
+    }
+    if (Shopify.shop == "simplifryco.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
 
-    productID = 7646184538365;
-}
-if (Shopify.shop == "e-cbdfrance.myshopify.com") 
-{
-    var meta = {"product":{"id":__st.rid}};
+        productID = 7646184538365;
+    }
+    if (Shopify.shop == "e-cbdfrance.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
 
-    productID = 6895186772153;
-}
-if (Shopify.shop == "custorus.myshopify.com") 
-{
-    var meta = {"product":{"id":__st.rid}};
+        productID = 6895186772153;
+    }
+    if (Shopify.shop == "custorus.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
 
-    productID = 7717997183209;
-}
+        productID = 7717997183209;
+    }
+    if (Shopify.shop == "bon-juice-shop.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        productID = 7465197404317;
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -126,7 +133,7 @@ if (Shopify.shop == "custorus.myshopify.com")
         jsonpCallback: "checkmodule_visitor",
         crossDomain: true,
         data: {
-			"domain_url": Shopify.shop,
+            "domain_url": Shopify.shop,
             "product_id": (meta.product && meta.product.id)?meta.product.id:productID
         },
         beforeSend: function () {
@@ -148,13 +155,20 @@ if (Shopify.shop == "custorus.myshopify.com")
     let finalSelector = "";
     if(Shopify.shop == "walea-shop.myshopify.com")
     {
-    	customSelctor = $jq321(".one-whole");
-    	finalSelector = customSelctor[1];
+        customSelctor = $jq321(".one-whole");
+        finalSelector = customSelctor[1];
     }
     if(Shopify.shop == "e-cbdfrance.myshopify.com")
     {
-    	customSelctor = $jq321(".circle-divider");
-    	finalSelector = customSelctor[0];
+        customSelctor = $jq321(".circle-divider");
+        finalSelector = customSelctor[0];
+    }
+    if(Shopify.shop == "bon-juice-shop.myshopify.com")
+    {
+        customSelctor = $jq321("#c-1606899647318").parent();
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
     }
 
     function visitorCounter(response) {
@@ -167,7 +181,7 @@ if (Shopify.shop == "custorus.myshopify.com")
         if (response.above_cart == 1)
         {
             if(customSelctor.length > 0){
-            	$jq321(response.view).insertBefore(finalSelector);
+                $jq321(response.view).insertBefore(finalSelector);
             }
             else if (selectorVisitor1.length == 1)
             {
@@ -189,7 +203,7 @@ if (Shopify.shop == "custorus.myshopify.com")
         else
         {
             if(customSelctor.length > 0){
-            	$jq321(response.view).insertAfter(finalSelector);
+                $jq321(response.view).insertAfter(finalSelector);
             }
             else if (selectorVisitor1.length == 1)
             {
