@@ -2752,6 +2752,15 @@
         );
     }
 
+    if (Shopify.shop == "shopzygo.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.getDiscoundText{text-align:center !important; margin-top:14px !important;}'+  
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
