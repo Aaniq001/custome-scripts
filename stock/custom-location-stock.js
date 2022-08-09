@@ -198,6 +198,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "eminenter.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "trap-shoppp.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     /**
@@ -444,6 +447,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         finalSelector = masterSelector[0];
 
         console.log(finalSelector);
+    }
+
+    if (Shopify.shop == "trap-shoppp.myshopify.com")
+    {
+        $jq321("head").append('<style type="text/css">'+
+                              '.cart-countdown-desktop-top-center {display: flex !important;}'+
+                              '</style>');
     }
 
     function stockCountdown(response) {
@@ -1016,7 +1026,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                          // console.log(firstSelector);
 
                          //$jq321(firstSelector[1]).prepend(response.view);
-                         $jq321(".cart-header").prepend(response.view);
+                         $jq321("#cart_form").prepend(response.view);
                          
 
                          // console.log('firstSelector[1]: ');
@@ -1041,7 +1051,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                          // console.log(cartStatus);
                          
                          //$jq321(firstSelector[1]).append(response.view);
-                         $jq321(".cart-header").append(response.view);
+                         $jq321("#cart_form").append(response.view);
 
                          // console.log('firstSelector[1]: ');
                          // console.log(firstSelector[1]);
