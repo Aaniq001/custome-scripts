@@ -1358,7 +1358,7 @@
          // VISITOR COUNTER CALL
          if (apiResponse && apiResponse.visitor && apiResponse.visitor !== null) 
          {
-            if (Shopify.shop == "directdealstore.myshopify.com") 
+            /*if (Shopify.shop == "directdealstore.myshopify.com") 
             {    setTimeout(function(){
                     $jq321("head").append($jq321("<link/>", {
                         rel: "stylesheet",
@@ -1367,7 +1367,8 @@
                     visitorCounter(apiResponse.visitor);
                 }, 3000);
             }
-            else if (Shopify.shop == "frenchiestuff.myshopify.com") 
+            else*/ 
+            if (Shopify.shop == "frenchiestuff.myshopify.com") 
             {    setTimeout(function(){
                     $jq321("head").append($jq321("<link/>", {
                         rel: "stylesheet",
@@ -2740,7 +2741,7 @@
 
     if (Shopify.shop == "directdealstore.myshopify.com") 
     {
-        $jq321("head").append(
+        /*$jq321("head").append(
             '<style type="text/css">'+ 
                 '.stock-top{display: block !important;}'+
                 '.sold-counter-content-box{height:22px !important; margin-bottom:0px !important;margin-top:0px !important;}'+ 
@@ -2748,6 +2749,12 @@
                 'sold-text{min-height:28px !important;}'+
                 'div.giraffly-right-Bar-Preview-Example{padding-top:4px !important }' +
                 '.visitor-counter-content-box-carecartbysalespop-2020{height:33px !important; min-height:28px !important;}'+  
+            '</style>'
+        );*/
+
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.stock-top{display: block !important;}'+  
             '</style>'
         );
     }
