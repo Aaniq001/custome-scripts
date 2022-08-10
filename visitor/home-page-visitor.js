@@ -125,6 +125,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         productID = 7465197404317;
     }
+    if (Shopify.shop == "chilli-beans-australia.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        productID = 7183257403546;
+    }
 
     $jq321.ajax({
         type: "GET",
