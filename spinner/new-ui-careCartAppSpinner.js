@@ -2945,6 +2945,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'wjl-new-store.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin_a_sale_cc_store_front_module .wheelLogo{display:none;} @media only screen and (max-width: 576px){#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview {height: 530px !important;} #wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {min-height: 484px !important;}#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-content-spinner {padding-top: 28px !important;}}</style>');
+                    //console.log("SAS https://partychampions.com/");
+                }
                 if (Shopify.shop == 'steven-brown-art.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form{box-sizing:border-box !important;}</style>');
                     //console.log("SAS https://partychampions.com/");
