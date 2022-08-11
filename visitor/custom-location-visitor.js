@@ -352,7 +352,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         var meta = {"product":{"id":__st.rid}};
 
-        console.log((meta.product && meta.product.id)?meta.product.id:'');
+        //console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
 
 
@@ -727,7 +727,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         customSelctor = $jq321(".product__title");
         finalSelector = customSelctor[0];
 
-        console.log(customSelctor);
+        //console.log(customSelctor);
     }
 
     function visitorCounter(responseVisitor) 
