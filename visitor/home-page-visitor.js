@@ -131,6 +131,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         productID = 7183257403546;
     }
+    if (Shopify.shop == "sensible-success.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        productID = 6906344636459;
+    }
 
     $jq321.ajax({
         type: "GET",
