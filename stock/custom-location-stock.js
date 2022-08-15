@@ -116,16 +116,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         // Cart Countdown timer
         if (apiResponse && apiResponse.cartTimer && apiResponse.cartTimer !== null)
         {
-            console.clear();
-
-            console.log('local storage: ');
-            console.log(localStorage);
-
-            console.log('Main call');
-            console.log(apiResponse.cartTimer);
-
             $jq321("head").append($jq321("<link/>", { rel: "stylesheet", href: serverUrl.cssCartTimer + "?v" + version }));
-
             cartCountdownTimer(apiResponse.cartTimer);
         }
     };
@@ -199,6 +190,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var meta = {"product":{"id":__st.rid}};
     }
     else if (Shopify.shop == "trap-shoppp.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "redpointgadgets-com.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
 
@@ -456,6 +450,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                               '</style>');
     }
 
+    if (Shopify.shop == "redpointgadgets-com.myshopify.com")
+    {
+        masterSelector = $jq321(".sales-points");
+        finalSelector = masterSelector[1];
+
+        console.log(finalSelector);
+    }
+
     function stockCountdown(response) {
         
         var selectorStock0 = $jq321("form[action='/cart/add']").find(".product__submit__buttons").parent();
@@ -705,58 +707,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     /**
      * Cart Countdown timer
      */
-    /*function cartCountdownTimer(response)
-    {
-        setInterval(function () {
-            var cartContents = fetch('/cart.json', {method: 'GET'})
-            .then(response => response.json())
-            .then(data => {
-                
-                let cartValue = data.items;
-
-                if (cartValue.length == 0) 
-                {
-                    console.log("Cart is empty");
-                    
-                    $jq321("#cc-sc-cart-timer-countdown-bar").remove();
-                    
-                    window.localStorage.removeItem("carecart-scp-cart-timer-end-time");
-                    window.localStorage.removeItem("carecart-scp-cart-timer-repeat");
-                    window.localStorage.setItem("carecart-scp-cart-status", "empty");
-                } 
-                else 
-                {
-                    console.log("there is something in the cart ing");
-                    
-                    window.localStorage.removeItem("carecart-scp-cart-status");
-                    
-                    appendCartTimerBar(response);
-
-                    console.log(response);
-                }
-            });
-        }, 3000);
-    }*/
-
-    /*function getTimeRemainingCartCountdown(endtime) {
-        let currentTime = Date.parse(new Date());
-        let t = endtime - currentTime;
-        let minutes = Math.floor((t / 1000 / 60) % 60);
-        let seconds = Math.floor((t / 1000) % 60);
-
-        window.localStorage.setItem("craecart-scp-cart-timer-minutes", minutes);
-        window.localStorage.setItem("craecart-scp-cart-timer-seconds", seconds);
-
-        return {
-            'total': t,
-            'minutes': minutes,
-            'seconds': seconds
-        };
-    }*/
-
-    /**
-     * Cart Countdown timer
-     */
      function cartCountdownTimer(response)
      {
          setInterval(function () 
@@ -764,15 +714,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
              var cartContents = fetch('/cart.json', {method: 'GET'})
              .then(response => response.json())
              .then(data => {
-
                  let cartValue = data.items;
 
                  if (cartValue.length == 0) 
                  {
                      console.log("Cart is empty");
-
                      $jq321("#cc-sc-cart-timer-countdown-bar").remove();
-                     
                      window.localStorage.removeItem("carecart-scp-cart-timer-end-time");
                      window.localStorage.removeItem("carecart-scp-cart-timer-repeat");
                      window.localStorage.setItem("carecart-scp-cart-status", "empty");
@@ -780,9 +727,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                  else 
                  {
                      console.log("there is something in the cart");
-                     
                      window.localStorage.removeItem("carecart-scp-cart-status");
-                     
                      appendCartTimerBar(response);
                  }
              });
@@ -791,8 +736,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     
      function getTimeRemainingCartCountdown(endtime) 
      {
-        //console.log('in get Time Remaining Cart Countdown: ');
-
         let currentTime = Date.parse(new Date());
         let t = endtime - currentTime;
         let minutes = Math.floor((t / 1000 / 60) % 60);
@@ -810,96 +753,36 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     
      function initializeClockCartCountdown(endtime = 15, settings) 
      {
-        //console.log('in initialize Clock Cart Countdown: ');
-
         let ccCartCountdownTimerDiv = document.getElementById("cc-stock-cart-timer-section");
-
-        //console.log('cc Cart Countdown Timer Div: ');
-        //console.log(ccCartCountdownTimerDiv);
-        
+  
         function updateClock() 
         {
-            //console.log('in update Clock: ');
-
             let cartCountdownTimeRemaining = getTimeRemainingCartCountdown(endtime);
-
-            //console.log('cart Countdown Time Remaining: ');
-            //console.log(cartCountdownTimeRemaining);
-            
             let timerHTML = '<span>' + ('0' + cartCountdownTimeRemaining.minutes).slice(-2) + ' : ' + ('0' + cartCountdownTimeRemaining.seconds).slice(-2) + '</span>';
 
-            //console.log('timer HTML: ');
-            //console.log(timerHTML);
-            
             $jq321(ccCartCountdownTimerDiv).html(timerHTML);
-
-            // console.log('minutes: ');
-            // console.log(cartCountdownTimeRemaining.minutes);
-
-            // console.log('seconds: ');
-            // console.log(cartCountdownTimeRemaining.seconds);
 
             if (cartCountdownTimeRemaining.total <= 0) 
             {
-                // console.log('in update Clock cartCountdownTimeRemaining.total: ');
-
-                // console.log('cartCountdownTimeRemaining.total: ');
-                // console.log(cartCountdownTimeRemaining.total);
-
                 if (settings.barAction == "empty") 
                 {
-                    // console.log('in update Clock settings.barAction:empty ');
-
-                    // console.log('settings.barAction: ');
-                    // console.log(settings.barAction);
-
-                    fetch('/cart/clear.json', {method: 'GET'})
-                    .then(response => response.json())
-                    .then(data => {window.location.reload();});
-
-                    // console.log('time interval Cart Timer: ');
-                    // console.log(timeintervalCartTimer);
-                    
+                    fetch('/cart/clear.json', {method: 'GET'}).then(response => response.json()).then(data => {window.location.reload();});
                     clearInterval(timeintervalCartTimer);
                 } 
                 else if (settings.barAction == "nothing") 
                 {
-                    //console.log('in update Clock settings.barAction:nothing ');
-
-                    $jq321("#cc-sc-cart-timer-countdown-bar").remove();
-                    
+                    $jq321("#cc-sc-cart-timer-countdown-bar").remove();   
                     window.localStorage.setItem("craecart-scp-cart-timer-bar-status", "nothing");
-
-                    //console.log('time interval Cart Timer: ');
-                    //console.log(timeintervalCartTimer);
-                    
                     clearInterval(timeintervalCartTimer);
                 }
                 else if (settings.barAction == "repeat") 
                 { 
-                    //console.log('in update Clock settings.barAction:repeat ');
-
-                    $jq321("#cc-sc-cart-timer-countdown-bar").remove();
-                    
+                    $jq321("#cc-sc-cart-timer-countdown-bar").remove();  
                     window.localStorage.setItem("craecart-scp-cart-timer-minutes", parseInt(settings.totalMinutes));
                     window.localStorage.setItem("craecart-scp-cart-timer-seconds", parseInt(settings.totalSeconds));
                     window.localStorage.setItem("carecart-scp-cart-timer-repeat", "yes");
-
-                    // console.log('settings.totalMinutes: ');
-                    // console.log(settings.totalMinutes);
-
-                    // console.log('settings.totalSeconds: ');
-                    // console.log(settings.totalSeconds);
-                    
                     clearInterval(timeintervalCartTimer);
-
-                    // console.log('time interval Cart Timer: ');
-                    // console.log(timeintervalCartTimer);
-                    
                     appendCartTimerBar(settings, true);
-
-                    // console.log('settings: ');
-                    // console.log(settings);
                 }
             }
         }
@@ -910,162 +793,63 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
      }
     
      function calculateCartCountDownTime(totalMinutes, totalSeconds)
-     {
-         //console.log('in calculate Cart CountDown Time: ');
-         
+     {   
          let totalTimeToBeAdd = parseInt(totalMinutes) * 60 * 1000 + parseInt(totalSeconds) * 1000;
          return endtime = new Date(Date.parse(new Date()) + totalTimeToBeAdd).getTime();
      }
     
      function appendCartTimerBar(response, status = false)
      {
-        //console.log('in append cart timer bar: ');
-
          let cartCountdownTimeStampRepeat = window.localStorage.getItem("carecart-scp-cart-timer-repeat");
-
-         // console.log('cart Countdown Time Stamp Repeat: ');
-         // console.log(cartCountdownTimeStampRepeat);
-
-         // console.log('status: ');
-         // console.log(status);
-
+         
          if (cartCountdownTimeStampRepeat === "yes" && status) 
          {
-             // console.log('in first if of append cart timer bar: ');
-
-             // console.log('total Minutes: ');
-             // console.log(response.totalMinutes);
-
-             // console.log('total Seconds: ');
-             // console.log(response.totalSeconds);
-
              cartCountdownTimeStampRepeat = calculateCartCountDownTime(response.totalMinutes, response.totalSeconds);
-             
              window.localStorage.setItem("carecart-scp-cart-timer-end-time", cartCountdownTimeStampRepeat);
-
-             // console.log('cart Countdown Time Stamp Repeat: ');
-             // console.log(cartCountdownTimeStampRepeat);
          }
  
          let cartCountdownEndTimeStamp = window.localStorage.getItem("carecart-scp-cart-timer-end-time");
-
-         //console.log('cart Countdown End Time Stamp: ');
-         //console.log(cartCountdownEndTimeStamp);
          
          if (cartCountdownEndTimeStamp === null) 
          {
-             // console.log('in second if of append cart timer bar: ');
-
-             // console.log('total Minutes: ');
-             // console.log(response.totalMinutes);
-
-             // console.log('total Seconds: ');
-             // console.log(response.totalSeconds);
-
-             cartCountdownEndTimeStamp = calculateCartCountDownTime(response.totalMinutes, response.totalSeconds);
-             
+             cartCountdownEndTimeStamp = calculateCartCountDownTime(response.totalMinutes, response.totalSeconds);   
              window.localStorage.setItem("carecart-scp-cart-timer-end-time", cartCountdownEndTimeStamp);
-
-             // console.log('cart Countdown End Time Stamp: ');
-             // console.log(cartCountdownEndTimeStamp);
          }
          
          /**
           * Check first if bar already there
           */
          let cartStatus = window.localStorage.getItem("carecart-scp-cart-status");
-
-         // console.log('cartStatus: ');
-         // console.log(cartStatus);
-         
          let barID = $jq321("#cc-sc-cart-timer-countdown-bar");
 
-         // console.log('barID: ');
-         // console.log(barID);
          
          if (barID.length == 0)
          {
-             //console.log('in third if of append cart timer bar: ');
-
              let barStatus = window.localStorage.getItem("craecart-scp-cart-timer-bar-status");
-
-             // console.log('barStatus: ');
-             // console.log(barStatus);
-             
+ 
              if (barStatus !== "nothing") 
              {
-                //console.log('in fourth if of append cart timer bar: ');
-
                  /**
                  * Let make selector
                  */
                  let firstSelector = $jq321("form[action='/cart']").parent();
-
-                 // console.log('firstSelector: ');
-                 // console.log(firstSelector);
-             
                  
                  if (response.barPosition == "top" && cartStatus === null) 
-                 {
-                    // console.log('in fivth if of append cart timer bar: ');
-
-                    // console.log('barPosition: ');
-                    // console.log(response.barPosition);
-
-                    // console.log('cartStatus: ');
-                    // console.log(cartStatus);
-                     
+                 {   
                      if (firstSelector.length > 0) 
                      {
-                         // console.log('in sixth if of append cart timer bar: ');
-
-                         // console.log('length: ');
-                         // console.log(firstSelector.length);
-
-                         // console.log('firstSelector');
-                         // console.log(firstSelector);
-
                          //$jq321(firstSelector[1]).prepend(response.view);
                          $jq321("#cart_form").prepend(response.view);
-                         
-
-                         // console.log('firstSelector[1]: ');
-                         // console.log(firstSelector[1]);
-
-                         // console.log('view: ');
-                         // console.log(response.view);
                      }
                  } 
                  else 
                  { 
-                     //console.log('in else of append cart timer bar: ');
-
                      if (firstSelector.length > 0 && cartStatus === null) 
-                     {
-                         // console.log('in seventh if of append cart timer bar: ');
-
-                         // console.log('length: ');
-                         // console.log(firstSelector.length);
-
-                         // console.log('cartStatus: ');
-                         // console.log(cartStatus);
-                         
+                     {      
                          //$jq321(firstSelector[1]).append(response.view);
                          $jq321("#cart_form").append(response.view);
-
-                         // console.log('firstSelector[1]: ');
-                         // console.log(firstSelector[1]);
-
-                         // console.log('view: ');
-                         // console.log(response.view);
                      }
                  }
-
-                 // console.log('cart Countdown End Time Stamp: ');
-                 // console.log(cartCountdownEndTimeStamp);
-
-                 // console.log('response: ');
-                 // console.log(response);
 
                  initializeClockCartCountdown(cartCountdownEndTimeStamp, response);
              }
