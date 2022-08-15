@@ -195,6 +195,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "redpointgadgets-com.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "itrendy-2.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     /**
@@ -456,6 +459,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         finalSelector = masterSelector[1];
 
         console.log(finalSelector);
+    }
+
+    if (Shopify.shop == "itrendy-2.myshopify.com")
+    {
+        $jq321("head").append('<style type="text/css">'+
+                              '.cart-countdown-desktop-top-center {text-align: center !important;}'+
+                              '</style>');
     }
 
     function stockCountdown(response) {
@@ -839,7 +849,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                      if (firstSelector.length > 0) 
                      {
                          //$jq321(firstSelector[1]).prepend(response.view);
-                         $jq321("#cart_form").prepend(response.view);
+                         $jq321("#cartForm").prepend(response.view);
                      }
                  } 
                  else 
@@ -847,7 +857,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                      if (firstSelector.length > 0 && cartStatus === null) 
                      {      
                          //$jq321(firstSelector[1]).append(response.view);
-                         $jq321("#cart_form").append(response.view);
+                         $jq321("#cartForm").append(response.view);
                      }
                  }
 
