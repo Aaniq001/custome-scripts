@@ -680,7 +680,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     if (Shopify.shop == "wrywryshop.myshopify.com")
     {
-        customSelctor = $jq321(".ProductForm__Variants");
+        customSelctor = $jq321(".QuantitySelector");
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
