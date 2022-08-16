@@ -1701,6 +1701,10 @@
         finalSelector = masterSelector[0];
         console.log(finalSelector);
      }
+     if (Shopify.shop == "brandency.myshopify.com")
+     {
+        productID = 7257079251135;
+     }
 
      $jq321.ajax({
          type: "GET",
