@@ -106,11 +106,22 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         // Time COUNTDOWN CALL
         if(apiResponse && apiResponse.timer && apiResponse.timer!==null)
         {
-            $jq321("head").append($jq321("<link/>", {
-                rel: "stylesheet",
-                href: serverUrl.cssTimer + "?v" + version
-            }));
-            timeCountdown(apiResponse.timer);
+
+            setTimeout(function(){ 
+
+                $jq321("head").append($jq321("<link/>", {
+                    rel: "stylesheet",
+                    href: serverUrl.cssTimer + "?v" + version
+                }));
+
+            }, 2000);
+
+
+            setTimeout(function(){
+
+                timeCountdown(apiResponse.timer);
+
+            }, 4000);
         }
 
         // Cart Countdown timer
@@ -196,6 +207,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var meta = {"product":{"id":__st.rid}};
     }
     else if (Shopify.shop == "itrendy-2.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "eneamaze.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
 
@@ -466,6 +480,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         $jq321("head").append('<style type="text/css">'+
                               '.cart-countdown-desktop-top-center {text-align: center !important;}'+
                               '</style>');
+    }
+
+    if (Shopify.shop == "eneamaze.myshopify.com")
+    {
+        masterSelector = $jq321(".product-form__buttons");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
     }
 
     function stockCountdown(response) {
