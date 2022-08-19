@@ -2777,6 +2777,14 @@
         );
     }
 
+    if (Shopify.shop == "theduffie.myshopify.com") 
+    {
+        masterSelector = $jq321("#m-1647393718809");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
