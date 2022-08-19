@@ -2946,7 +2946,7 @@
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
                 if (Shopify.shop == 'surgisyl.myshopify.com') {
-                    carecartSpinnerJquery('head').append('<style type="text/css"> [class*=" fa-"]:before, [class^=fa-]:before{font-family: inherit !important;} </style>');
+                    carecartSpinnerJquery('head').append('<style type="text/css"> .wheelText{font-weight:bold !important;} [class*=" fa-"]:before, [class^=fa-]:before{font-family: inherit !important;} </style>');
                     //console.log("SAS https://partychampions.com/");
                 }
                 if (Shopify.shop == 'swim-lifes.myshopify.com') {
