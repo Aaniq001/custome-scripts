@@ -1654,6 +1654,9 @@
      };
      /////////////////////// Set flag to get notifications data //////////////////////////
      
+     var masterSelector = '';
+     var finalSelector = '';
+     
      let productID = 0;
      if (Shopify.shop == "mccord-corbin-store-1.myshopify.com")
      {
@@ -1704,6 +1707,10 @@
      if (Shopify.shop == "brandency.myshopify.com")
      {
         productID = 7257079251135;
+     }
+     if (Shopify.shop == "party-scrunchie.myshopify.com")
+     {
+        productID = 7491257860316;
      }
 
      $jq321.ajax({
