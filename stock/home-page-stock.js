@@ -186,10 +186,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 7803071299807;
     }
-    if(Shopify.shop == "7d9808.myshopify.com")
+    if(Shopify.shop == "gyrogrip.myshopify.com")
     {
-        productID = 7795848741078;
+        productID = 7915240292584;
     }
+
 
     $jq321.ajax({
         type: "GET",
@@ -261,6 +262,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         customSelector = $jq321(".product-form__buttons");
         finalSelector = customSelector[0];
+    }
+    if(Shopify.shop == "gyrogrip.myshopify.com")
+    {
+        customSelector = $jq321(".product-form__buttons");
+        finalSelector = customSelector[0];
+
+        console.log(finalSelector);
     }
 
      function stockCountdown(response) {
