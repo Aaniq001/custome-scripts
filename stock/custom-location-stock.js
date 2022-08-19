@@ -94,17 +94,22 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         apiResponse = response;
 
        // STOCK COUNTDOWN CALL
-        if(apiResponse && apiResponse.stock && apiResponse.stock!==null)
+        if (apiResponse && apiResponse.stock && apiResponse.stock!==null)
         {
-            $jq321("head").append($jq321("<link/>", {
-                rel: "stylesheet",
-                href: serverUrl.cssStock + "?v" + version
-            }));
-            stockCountdown(apiResponse.stock);
+            $jq321("head").append($jq321("<link/>", {rel: "stylesheet", href: serverUrl.cssStock + "?v" + version}));
+
+            if (Shopify.shop == "sensible-success.myshopify.com")
+            {
+                setTimeout(function(){ stockCountdown(apiResponse.stock); }, 1000);
+            }
+            else
+            {
+                stockCountdown(apiResponse.stock);   
+            }
         }
 
         // Time COUNTDOWN CALL
-        if(apiResponse && apiResponse.timer && apiResponse.timer!==null)
+        if (apiResponse && apiResponse.timer && apiResponse.timer!==null)
         {
 
             setTimeout(function(){ 
@@ -212,6 +217,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "eneamaze.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "sensible-success.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     /**
@@ -302,32 +310,26 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         $jq321("head").append('<style type="text/css">div.stock-top { display: block !important; }</style>');
     }    
-
     if (Shopify.shop == "internet-retail-connection.myshopify.com") {
         customSelector = $jq321(".add-to-cart-wrapper");
         finalSelector = customSelector[0];
     }    
-
     if (Shopify.shop == "mamano-chocolate.myshopify.com") {
         customSelector = $jq321(".js-qty");
         finalSelector = customSelector[0];
     }
-
     if (Shopify.shop == "fabricatextiles.myshopify.com") {
         customSelector = $jq321(".add-to-cart");
         finalSelector = customSelector[0];
     }
-
     if (Shopify.shop == "rossocoffee.myshopify.com") {
         customSelector = $jq321(".product__cart-actions-holder");
         finalSelector = customSelector[0];
     }
-
     if (Shopify.shop == "happy-nocnoc.myshopify.com") {
         customSelector = $jq321(".product-block--price");
         finalSelector = customSelector[0];
     }
-
     if (Shopify.shop == "smartcooks-de.myshopify.com") {
         customSelector = $jq321(".sc-ehIJor.bCFyQS.pf-19_");
         finalSelector = customSelector[0];
@@ -340,7 +342,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             finalSelector = customSelector[0];
         }
     } 
-    
     if (Shopify.shop == "asia-tea-company-store.myshopify.com") {
         customSelector = $jq321(".ProductForm__BuyButtons");
         finalSelector = customSelector[0];
@@ -348,34 +349,28 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if(Shopify.shop == "confozen-fr.myshopify.com"){
         $jq321("head").append('<style type="text/css">.stock-top{margin-top: 18px; !important}</style>');
     }
-
     if (Shopify.shop == "lloyds-liquid-sunshines.myshopify.com") {
         customSelector = $jq321(".paymentButtonsWrapper");
         finalSelector = customSelector[0];
     }
-
     if (Shopify.shop == "waterlily-products.myshopify.com") {
         customSelector = $jq321(".product-single__add-to-cart");
         finalSelector = customSelector[0];
     }
-
     if (Shopify.shop == "confozen-fr.myshopify.com") {
         customSelector = $jq321(".groups-btn");
         finalSelector = customSelector[0];
     }
-
     if (Shopify.shop == "cengiz-akturk-shop.myshopify.com")
     {
         masterSelector = $jq321(".sharing");
         finalSelector = masterSelector[0];
     }
-
     if (Shopify.shop == "idealzoneofficiel.myshopify.com")
     {
         masterSelector = $jq321(".product-single__add-to-cart");
         finalSelector = masterSelector[0];
     }
-
     if (Shopify.shop == "yipth.myshopify.com")
     {
         masterSelector = $jq321("h6");
@@ -386,13 +381,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                               '@media screen and (max-width: 575px) { .product-form-inline-atc > .product-form-inline-atc-button + .shopify-payment-button {margin-bottom: 25px;}}'+
                               '</style>');
     }
-
     if (Shopify.shop == "athenawear-f7b8.myshopify.com")
     {
         masterSelector = $jq321(".pf-47_");
         finalSelector = masterSelector[0];
     }
-
     if (Shopify.shop == "aspiresportsfiji.myshopify.com")
     {
         console.log('Device');
@@ -425,25 +418,21 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             console.log(masterSelector);
         }
     }
-
     if (Shopify.shop == "the-beardstory.myshopify.com")
     {
         masterSelector = $jq321(".offerssection");
         finalSelector = masterSelector[0];
     }
-
     if (Shopify.shop == "medici-supply-co.myshopify.com")
     {
         masterSelector = $jq321(".add-to-cart");
         finalSelector = masterSelector[0];
     }
-
     if (Shopify.shop == "smartbusiness-pe.myshopify.com")
     {
         masterSelector = $jq321(".qty-add-cart");
         finalSelector = masterSelector[0];
     }
-
     if (Shopify.shop == "thuyn.myshopify.com")
     {
         masterSelector = $jq321(".proReviews");
@@ -451,7 +440,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(finalSelector);
     }
-
     if (Shopify.shop == "fligflag.myshopify.com")
     {
         masterSelector = $jq321(".ProductForm__AddToCart");
@@ -459,14 +447,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(finalSelector);
     }
-
     if (Shopify.shop == "trap-shoppp.myshopify.com")
     {
         $jq321("head").append('<style type="text/css">'+
                               '.cart-countdown-desktop-top-center {display: flex !important;}'+
                               '</style>');
     }
-
     if (Shopify.shop == "redpointgadgets-com.myshopify.com")
     {
         masterSelector = $jq321(".sales-points");
@@ -474,17 +460,22 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(finalSelector);
     }
-
     if (Shopify.shop == "itrendy-2.myshopify.com")
     {
         $jq321("head").append('<style type="text/css">'+
                               '.cart-countdown-desktop-top-center {text-align: center !important;}'+
                               '</style>');
     }
-
     if (Shopify.shop == "eneamaze.myshopify.com")
     {
         masterSelector = $jq321(".product-form__buttons");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+    if (Shopify.shop == "sensible-success.myshopify.com")
+    {
+        masterSelector = $jq321(".visitor-counter-content-box-carecartbysalespop-2020");
         finalSelector = masterSelector[0];
 
         console.log(finalSelector);
