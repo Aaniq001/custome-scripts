@@ -100,7 +100,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
             if (Shopify.shop == "sensible-success.myshopify.com")
             {
-                setTimeout(function(){ stockCountdown(apiResponse.stock); }, 2000);
+                setTimeout(function(){ stockCountdown(apiResponse.stock); }, 5000);
             }
             else
             {
