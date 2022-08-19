@@ -100,7 +100,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
             if (Shopify.shop == "sensible-success.myshopify.com")
             {
-                setTimeout(function(){ stockCountdown(apiResponse.stock); }, 5000);
+                setTimeout(function(){ stockCountdown(apiResponse.stock); }, 4000);
             }
             else
             {
@@ -475,10 +475,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
     if (Shopify.shop == "sensible-success.myshopify.com")
     {
-        masterSelector = $jq321(".visitor-counter-content-box-carecartbysalespop-2020");
-        finalSelector = masterSelector[0];
+        setTimeout(function()
+        {  
+            masterSelector = $jq321(".visitor-counter-content-box-carecartbysalespop-2020");
+            finalSelector = masterSelector[0];
 
-        console.log(finalSelector);
+            console.log(finalSelector);
+        }, 3000);
     }
 
     function stockCountdown(response) {
