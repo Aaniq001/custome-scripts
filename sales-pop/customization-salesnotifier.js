@@ -2779,7 +2779,7 @@
 
     if (Shopify.shop == "theduffie.myshopify.com") 
     {
-        masterSelector = $jq321("#m-1647393718809");
+        masterSelector = $jq321("#r-1647393718862");
         finalSelector = masterSelector[0];
 
         console.log(masterSelector);
