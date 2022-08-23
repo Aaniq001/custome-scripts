@@ -137,6 +137,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         productID = 6906344636459;
     }
+    if (Shopify.shop == "dyo-ministyling.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        productID = 7404143968428;
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -178,6 +184,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if(Shopify.shop == "bon-juice-shop.myshopify.com")
     {
         customSelctor = $jq321("#c-1606899647318").parent();
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
+    }
+    if(Shopify.shop == "dyo-ministyling.myshopify.com")
+    {
+        customSelctor = $jq321(".article__featured-image-link").parent();
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
