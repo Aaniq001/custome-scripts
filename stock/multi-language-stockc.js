@@ -128,10 +128,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         var formUrls = value.action;
         
-        if(formUrls.indexOf('/cart/add') > -1)
+        if (formUrls.indexOf('/cart/add') > -1)
         {
             masterSelector = $jq321(value).find("button[type='submit'],input[type='submit']").parent();
-            
         }
     });
 
@@ -154,6 +153,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
 
     if (Shopify.shop == "poopybuttholeman.myshopify.com")
+    {
+        finalSelector = masterSelector[0];
+    }
+
+    if (Shopify.shop == "bazaarly-online.myshopify.com")
     {
         finalSelector = masterSelector[0];
     }
