@@ -85,11 +85,16 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             visitorCounter(apiResponse.visitor);
         }
     };
+
     /* Hard coded product id's for homa page */
+    
     let productID = 0;
-    if (Shopify.shop == "behappyfr.myshopify.com") {
+    
+    if (Shopify.shop == "behappyfr.myshopify.com") 
+    {
         productID = 6887512703140;
-    } console.log("Hella this is script");
+    } 
+
     $jq321.ajax({
         type: "GET",
         url: salespoplib_vars_obj.backend_url + 'checkStore/',
@@ -134,8 +139,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 $jq321(response.view).insertBefore('.product-form__buttons');
             }
             else if (masterSelector.length > 0) {
-				$jq321(response.view).insertBefore(masterSelector);
-			}
+                $jq321(response.view).insertBefore(masterSelector);
+            }
             else if (selectorVisitor1.length == 1) {
                 selectorVisitor1.prepend(response.view);
             }
@@ -155,8 +160,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 $jq321(response.view).insertAfter('.product-form__buttons');
             }
             else if (masterSelector.length > 0) {
-				$jq321(response.view).insertAfter(masterSelector);
-			}
+                $jq321(response.view).insertAfter(masterSelector);
+            }
             else if (selectorVisitor1.length == 1) {
                 selectorVisitor1.append(response.view);
             }
