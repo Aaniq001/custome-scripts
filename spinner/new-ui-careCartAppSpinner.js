@@ -2945,6 +2945,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'c-monsta-com.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> .wheelLogo{display:none;}</style>');
+                    //console.log("SAS https://partychampions.com/");
+                }
                 if (Shopify.shop == 'woof-inc-uk.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> .checkbox input[type=checkbox]{clip: auto;position: static;height: 20px;width: 20px;z-index: 1;opacity: 1!important;} .checkbox label:after{display:none;}</style>');
                     //console.log("SAS https://partychampions.com/");
