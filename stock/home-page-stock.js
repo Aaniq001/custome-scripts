@@ -190,6 +190,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 7915240292584;
     }
+    if(Shopify.shop == "dualips.myshopify.com")
+    {
+        productID = 7402620190884;
+    }
 
 
     $jq321.ajax({
