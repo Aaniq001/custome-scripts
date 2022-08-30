@@ -274,6 +274,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(finalSelector);
     }
+    if(Shopify.shop == "dualips.myshopify.com")
+    {
+        customSelector = $jq321("h2");
+        finalSelector = customSelector[0];
+
+        console.log(finalSelector);
+    }
 
      function stockCountdown(response) {
          
