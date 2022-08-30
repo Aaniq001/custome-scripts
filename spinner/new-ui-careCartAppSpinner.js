@@ -2970,7 +2970,7 @@
                     //console.log("SAS https://partychampions.com/");
                 }
                 if (Shopify.shop == 'steven-brown-art.myshopify.com') {
-                    carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form{box-sizing:border-box !important;}</style>');
+                    carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form{box-sizing:border-box !important;} @media only screen and (max-width: 576px){#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {padding-top: 27px !important;}}</style>');
                     //console.log("SAS https://partychampions.com/");
                 }
                 if (Shopify.shop == 'hipa360.myshopify.com') {
