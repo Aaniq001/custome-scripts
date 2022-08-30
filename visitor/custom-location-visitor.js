@@ -91,7 +91,18 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         apiResponse = response;
 
         // VISITOR COUNTER CALL
-        if(apiResponse && apiResponse.visitor && apiResponse.visitor!==null){
+        if (apiResponse && apiResponse.visitor && apiResponse.visitor!==null)
+        {
+            if (Shopify.shop == "spakopen.myshopify.com") 
+            {
+                var block_url = window.location.pathname.split("/");
+
+                if (block_url[1] == 'collections')
+                {
+                    console.log('Block visitor counter on collection pages');
+                    return;
+                }
+            }
 
             $jq321(".visitor-counter-content-box-carecartbysalespop-2020").remove();
 
