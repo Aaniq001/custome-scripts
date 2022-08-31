@@ -220,6 +220,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "sensible-success.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "2c690a.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     /**
@@ -847,7 +850,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
           */
          let cartStatus = window.localStorage.getItem("carecart-scp-cart-status");
          let barID = $jq321("#cc-sc-cart-timer-countdown-bar");
-
          
          if (barID.length == 0)
          {
@@ -858,22 +860,28 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                  /**
                  * Let make selector
                  */
-                 let firstSelector = $jq321("form[action='/cart']").parent();
+                 //let firstSelector = $jq321("form[action='/cart']").parent();
+                 let firstSelector = $jq321("#cart").parent();
+
+                 console.log(firstSelector);
                  
                  if (response.barPosition == "top" && cartStatus === null) 
-                 {   
+                 {  
                      if (firstSelector.length > 0) 
                      {
-                         //$jq321(firstSelector[1]).prepend(response.view);
-                         $jq321("#cartForm").prepend(response.view);
+                        $jq321(firstSelector[0]).prepend(response.view);
+                        //$jq321(firstSelector[1]).prepend(response.view); 
+                        //$jq321(".title-wrapper-with-link").prepend(response.view);
                      }
                  } 
                  else 
                  { 
                      if (firstSelector.length > 0 && cartStatus === null) 
-                     {      
-                         //$jq321(firstSelector[1]).append(response.view);
-                         $jq321("#cartForm").append(response.view);
+                     {   
+                        $jq321(firstSelector[0]).append(response.view);
+                        //$jq321(firstSelector[1]).append(response.view);
+                        //$jq321(".title-wrapper-with-link").append(response.view);
+                         
                      }
                  }
 
