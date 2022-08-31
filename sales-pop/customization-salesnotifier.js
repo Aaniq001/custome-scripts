@@ -2785,6 +2785,15 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "toy-city-pk.myshopify.com") 
+    {
+        masterSelector = $jq321(".groups-btn");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
+    
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
