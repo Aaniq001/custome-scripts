@@ -45,6 +45,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             '<style type="text/css"> .share-widget-custom-right {z-index: 20 !important;}</style>'
             );
 	}
+	if(Shopify.shop == "sarahmaier.myshopify.com") {
+		carecartWhatsApp("head").append(
+            '<style type="text/css"> .share-widget-custom-right {z-index: 999 !important;}</style>'
+            );
+	}
 	/** ends **/
 
 
