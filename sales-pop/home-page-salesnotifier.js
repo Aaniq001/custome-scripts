@@ -3,7 +3,7 @@
  * @author CareCart
  * @link https://apps.shopify.com/partners/care-cart
  * @link https://carecart.io/
- * @version 3.0.0
+ * @version 4.2.3
  *
  * Any unauthorized use and distribution of this and related files, is strictly forbidden.
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
@@ -43,7 +43,7 @@
  
      scriptInjection("https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.min.js");
 
-     var version = "3.0.0";
+     var version = "4.2.3";
  
      function notifyPopup($) {
          //IE8 indexOf polyfill
@@ -677,31 +677,40 @@
                  "cssQuick": "https://sales-pop.carecart.io/lib/quick-box.css",
                  "cssTrustBadges": "https://sales-pop.carecart.io/lib/badges-box.css",
                  "cssAnnouncement": "https://sales-pop.carecart.io/lib/announcement.css",
-                 "legacyCss": "https://sales-pop.carecart.io/lib/salesnotifier.css"
+                 "legacyCss": "https://sales-pop.carecart.io/lib/salesnotifier.css",
+                 "cssShareCart": "https://sales-pop.carecart.io/lib/sales-pop-share-cart.css",
+                 "cssStickyCart": "https://sales-pop.carecart.io/lib/sales-pop-sticky-cart.css"
              };
          }
  
          var tempAnchorTag = document.createElement('a');
          tempAnchorTag.href = thisLibUrl;
  
-         //var backend = "https://uat-tracking-sales-pop.carecart.io/index.php/FrontController/";
          var backend = "https://" + tempAnchorTag.hostname + "/index.php/FrontController/";
-         if ("sales-pop.carecart.io" === tempAnchorTag.hostname) {
+         if ("sales-pop.carecart.io" === tempAnchorTag.hostname) 
+         {
              backend = "https://tracking-" + tempAnchorTag.hostname + "/index.php/FrontController/";
          }
-         else if ("lazy-cow-13.telebit.io" === tempAnchorTag.hostname) {
+         else if ("lazy-cow-13.telebit.io" === tempAnchorTag.hostname) 
+         {
             backend = "http://localhost:8501/index.php/FrontController/";
-        }
-        else if ("uat-salespop.carecart.io" === tempAnchorTag.hostname) {
+         }
+         else if ("uat-salespop.carecart.io" === tempAnchorTag.hostname) 
+         {
             backend = "https://uat-tracking-sales-pop.carecart.io/index.php/FrontController/";
-        }
-        else if ("dev-sales-pop.carecart.io" === tempAnchorTag.hostname) {
+         }
+         else if ("dev-sales-pop.carecart.io" === tempAnchorTag.hostname) 
+         {
             backend = "https://dev-tracking-sales-pop.carecart.io/index.php/FrontController/";
-        }
-        else if("odd-earwig-64.telebit.io" === tempAnchorTag.hostname)
-        {
+         }
+         else if("odd-earwig-64.telebit.io" === tempAnchorTag.hostname)
+         {
             backend = "http://localhost:8500/index.php/FrontController/";
-        }
+         }
+         else if ("helpless-insect-91.telebit.io" === tempAnchorTag.hostname) 
+         {
+            backend = "http://localhost:8500/index.php/FrontController/";
+         }
  
          return {
              "backend": backend,
@@ -713,7 +722,9 @@
              "cssQuick": "https://" + tempAnchorTag.hostname + "/lib/quick-box.css?v" + version,
              "cssTrustBadges": "https://" + tempAnchorTag.hostname + "/lib/badges-box.css?v" + version,
              "cssAnnouncement": "https://" + tempAnchorTag.hostname + "/lib/announcement.css?v" + version,
-             "legacyCss": "https://" + tempAnchorTag.hostname + "/lib/salesnotifier.css"
+             "legacyCss": "https://" + tempAnchorTag.hostname + "/lib/salesnotifier.css",
+             "cssShareCart": "https://" + tempAnchorTag.hostname + "/lib/sales-pop-share-cart.css?v" + version,
+             "cssStickyCart": "https://" + tempAnchorTag.hostname + "/lib/sales-pop-sticky-cart.css?v=" + version
          };
      }
  
@@ -1250,12 +1261,6 @@
           // Time COUNTDOWN CALL
          if(apiResponse && apiResponse.timer && apiResponse.timer!==null)
          {
-             /*$jq321("head").append($jq321("<link/>", {
-                     rel: "stylesheet",
-                     href: serverUrl.cssTimer + "?v" + version
-                 }));*/
-             //timeCountdown(apiResponse.timer);
- 
              setTimeout(function(){ $jq321("head").append($jq321("<link/>", {
                      rel: "stylesheet",
                      href: serverUrl.cssTimer + "?v" + version
@@ -1264,15 +1269,20 @@
          }
  
          // VISITOR COUNTER CALL
-         if (apiResponse && apiResponse.visitor && apiResponse.visitor !== null) {
- 
-             $jq321("head").append($jq321("<link/>", {
-                 rel: "stylesheet",
-                 href: serverUrl.cssVisitor + "?v" + version
-             }));
- 
-             visitorCounter(apiResponse.visitor);
-         }
+        if (apiResponse && apiResponse.visitor && apiResponse.visitor !== null) {
+
+            $jq321("head").append($jq321("<link/>", {
+                rel: "stylesheet",
+                href: serverUrl.cssVisitor + "?v" + version
+            }));
+
+            if (apiResponse.visitor.start_visitor_counter != null && apiResponse.visitor.end_visitor_counter != null) {
+
+                customVisitors(apiResponse.visitor.start_visitor_counter, apiResponse.visitor.end_visitor_counter);
+            }
+
+            visitorCounter(apiResponse.visitor);
+        }
  
          // SOLD COUNTER CALL
          if(apiResponse && apiResponse.sold && apiResponse.sold !== null && apiResponse.sold.on_off==1)
@@ -1376,6 +1386,24 @@
                     setTimeout(function () { announcementBar(apiResponse.announcementBar); }, 2000);
                 }
             }
+        }
+
+        //share cart
+        if (apiResponse && apiResponse.shareCart && apiResponse.shareCart !== false) {
+            shareCart(apiResponse.shareCart);
+            $jq321("head").append($jq321("<link/>", {
+                rel: "stylesheet",
+                href: serverUrl.cssShareCart + "?v" + version
+            }));
+        }
+
+        //STICKY CART CALL
+        if (apiResponse && apiResponse.sticky && apiResponse.sticky !== false) {
+            stickyCart(apiResponse.sticky);
+            $jq321("head").append($jq321("<link/>", {
+                rel: "stylesheet",
+                href: serverUrl.cssStickyCart
+            }));
         }
          
          if (shouldStatsBeShown()) {
@@ -1712,6 +1740,10 @@
      {
         productID = 7491257860316;
      }
+     if (Shopify.shop == "ara-smooth.myshopify.com")
+     {
+        productID = 7594344218786;
+     }
 
      $jq321.ajax({
          type: "GET",
@@ -1893,26 +1925,94 @@
         }
     }
 
-    function stockForSelectedVariant(string, data) {
+    function stockForSelectedVariant(string, data, stockSettings) {
+        let stockRestrictionSettings = JSON.parse(stockSettings.stock_restriction_settings);
         if (string !== "") {
             $jq321.each(data, function (key, value) {
                 if (value.title == string) {
                     let stockCountSpan = $jq321("#carecart-salespop-sc-number");
                     if (stockCountSpan.length > 0) {
+                        // if (stockRestrictionSettings.stock_restriction_check !== undefined && stockRestrictionSettings.stock_restriction_check == "on") {
+                        //     if (value.inventory_quantity > stockRestrictionSettings.stock_restriction_value) {
+                        //         $jq321(".cc-sp-sc-stock-div").hide();
+                        //     } else {
+                        //         $jq321(".cc-sp-sc-stock-div").show();
+                        //     }
+                        // } else {
+                        //     $jq321(".cc-sp-sc-stock-div").show();
+                        // }
+                        if (stockSettings.soldOutSettings !== undefined && value.inventory_quantity < 1) {
+                            $jq321(".cc-sp-sc-sold-div").show();
+                        } else {
+                            $jq321(".cc-sp-sc-sold-div").hide();
+                        }
+
+                        //Stock restrictions settings
+                        if (stockRestrictionSettings.stock_restriction_check !== undefined && stockRestrictionSettings.stock_restriction_check == "on") {
+                            if (value.inventory_quantity > stockRestrictionSettings.stock_restriction_value || value.inventory_quantity < 1) {
+                                $jq321(".cc-sp-sc-stock-div").hide();
+                            }
+                            else {
+                                $jq321(".cc-sp-sc-stock-div").show();
+                            }
+                        }
+                        else {
+                            //Sold out message
+                            if (stockSettings.soldOutSettings !== undefined && value.inventory_quantity < 1) {
+                                $jq321(".cc-sp-sc-stock-div").hide();
+                            } else {
+                                $jq321(".cc-sp-sc-stock-div").show();
+                            }
+                        }
                         $jq321(stockCountSpan).html(value.inventory_quantity);
                         let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
                         stockPercentage = stockPercentage + "%";
                         $jq321(".stock-progress-foreground").width(stockPercentage);
                         console.log("SP: Stock for selected variant");
+                    }
+                }
+            });
+        }
+    }
+
+     // CUSTOM VISITOR COUNTER
+
+    function customVisitors(start_limit_number, end_limit_number) {
+
+        let randomNumber = Math.floor(Math.random() * (end_limit_number - start_limit_number + 1) + parseInt(start_limit_number));
+
+        setInterval(changeRandomNumber, 3000);
+
+        function changeRandomNumber() {
+
+            if (Math.floor((Math.random() * 2))) {
+
+                randomNumberTen = Math.floor((Math.random() * 10) + 1);
+                randomNumber = parseInt(randomNumber) + parseInt(randomNumberTen);
+
+                if (randomNumber > end_limit_number) {
+                    randomNumber = end_limit_number;
+                }
+
+            }
+
+            else {
+
+                randomNumberTen = Math.floor((Math.random() * 10) + 1);
+                randomNumber = parseInt(randomNumber) - parseInt(randomNumberTen);;
+
+                if (randomNumber < start_limit_number) {
+                    randomNumber = start_limit_number;
                 }
             }
-       });
-    }
+
+            $jq321("#carecart-salespop-visitor-number").html(randomNumber);
+        }
+
     }
 
-    function enableStockForVariants(variantsData, variantHeading) {
-
-        $jq321(document).ready(function () { 
+    function enableStockForVariants(variantsData, variantHeading, stockSettings) {
+        $jq321(document).ready(function () {
 
             let getSelectors = makeSelectors(variantHeading);
             if (getSelectors != false) {
@@ -1925,54 +2025,54 @@
                     availableOptions = 2;
                 }
                 /** Let's define options here **/
-                
+
                 /** Make the final selectors **/
                 if (getSelectors.selector_number == 2) {
                     let selectedVariantsValuesString = '';
                     $jq321.each(getSelectors.selector_value, function (key, value) {
-                        
-                        attachEventOnOptions(value, variantsData);
+
+                        attachEventOnOptions(value, variantsData, stockSettings);
                         var val = this.checked ? true : false;
                         if (val) {
-                            selectedVariantsValuesString = selectedVariantsValuesString+ $jq321(value).val() + " / ";
+                            selectedVariantsValuesString = selectedVariantsValuesString + $jq321(value).val() + " / ";
                         }
                     });
                     selectedVariantsValuesString = selectedVariantsValuesString.trim();
                     selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
                     selectedVariantsValuesString = selectedVariantsValuesString.trim();
-                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData, stockSettings);
                 } else if (getSelectors.selector_number == 1) {
 
                     let selectedVariantsValuesString = '';
                     for (let i = 0; i <= availableOptions; i++) {
-                        attachEventOnOptions(getSelectors.selector_value[i], variantsData);
+                        attachEventOnOptions(getSelectors.selector_value[i], variantsData, stockSettings);
                         selectedVariantsValuesString = selectedVariantsValuesString + $jq321(getSelectors.selector_value[i]).find(":selected").val() + " / ";
                     }
 
                     selectedVariantsValuesString = selectedVariantsValuesString.trim();
                     selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
                     selectedVariantsValuesString = selectedVariantsValuesString.trim();
-                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData, stockSettings);
                 } else if (getSelectors.selector_number == 3) {
                     let selectedVariantsValuesString = '';
                     for (let i = 0; i <= availableOptions; i++) {
-                        attachEventOnOptions(getSelectors.selector_value[i], variantsData);
+                        attachEventOnOptions(getSelectors.selector_value[i], variantsData, stockSettings);
                         selectedVariantsValuesString = selectedVariantsValuesString + $jq321(getSelectors.selector_value[i]).find(":selected").val() + " / ";
                     }
                     selectedVariantsValuesString = selectedVariantsValuesString.trim();
                     selectedVariantsValuesString = selectedVariantsValuesString.slice(0, -1);
                     selectedVariantsValuesString = selectedVariantsValuesString.trim();
-                    stockForSelectedVariant(selectedVariantsValuesString, variantsData);
+                    stockForSelectedVariant(selectedVariantsValuesString, variantsData, stockSettings);
                 }
             }
             /** Make the final selectors **/
         });
     }
 
-    function attachEventOnOptions(variantSelector, variantsData)
-    {
+    function attachEventOnOptions(variantSelector, variantsData, stockSettings) {
+        let stockRestrictionSettings = JSON.parse(stockSettings.stock_restriction_settings);
         console.log("SP: variant selector found");
-        $jq321(variantSelector).on("change", function () { 
+        $jq321(variantSelector).on("change", function () {
             setTimeout(function () {
 
                 let urlParams = new URLSearchParams(window.location.search);
@@ -1982,93 +2082,129 @@
                         if (value.id == variantID) {
                             let stockCountSpan = $jq321("#carecart-salespop-sc-number");
                             if (stockCountSpan.length > 0) {
+                                //Sold out message
+                                if (stockSettings.soldOutSettings !== undefined && value.inventory_quantity < 1) {
+                                    $jq321(".cc-sp-sc-sold-div").show();
+                                } else {
+                                    $jq321(".cc-sp-sc-sold-div").hide();
+                                }
+
+                                //Stock restrictions settings
+                                if (stockRestrictionSettings.stock_restriction_check !== undefined && stockRestrictionSettings.stock_restriction_check == "on") {
+                                    if (value.inventory_quantity > stockRestrictionSettings.stock_restriction_value || value.inventory_quantity < 1) {
+                                        $jq321(".cc-sp-sc-stock-div").hide();
+                                    }
+                                    else {
+                                        $jq321(".cc-sp-sc-stock-div").show();
+                                    }
+                                }
+                                else {
+                                    //Sold out message
+                                    if (stockSettings.soldOutSettings !== undefined && value.inventory_quantity < 1) {
+                                        $jq321(".cc-sp-sc-stock-div").hide();
+                                    } else {
+                                        $jq321(".cc-sp-sc-stock-div").show();
+                                    }
+                                }
+
                                 $jq321(stockCountSpan).html(value.inventory_quantity);
                                 let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
                                 stockPercentage = stockPercentage + "%";
                                 $jq321(".stock-progress-foreground").width(stockPercentage);
+                            }
                         }
-                    }
-               });
-            }
+                    });
+                }
             }, 1000);
-            }); 
+        });
     }
     /** Stock for variants ends **/
          
     
-      function stockCountdown(responseStock) 
-      {
- 
-         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
-         var selectorStock2 = $jq321("form[action='/cart/add']");
-         var selectorStock3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
-         var selectorStock4 = $jq321("form[action='/cart/add']:first");
-         var selectorStock5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
-         var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
- 
-         if (responseStock.above_cart == 1) 
-         {
-             if (masterSelector.length > 0) 
-             {
-                 $jq321(responseStock.view).insertBefore(finalSelector);
-             }
-             else if (selectorStock1.length == 1) 
-             {
+       function stockCountdown(responseStock) {
+        var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
+        var selectorStock2 = $jq321("form[action='/cart/add']");
+        var selectorStock3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
+        var selectorStock4 = $jq321("form[action='/cart/add']:first");
+        var selectorStock5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
+        var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
+
+        if (responseStock.above_cart == 1) {
+            if (selectorStock1.length == 1) {
                 selectorStock1.prepend(responseStock.view);
-             } 
-             else if (selectorStock2.length == 1) 
-             {
-                 selectorStock2.prepend(responseStock.view);
-             } 
-             else if (selectorStock3.length == 1) 
-             {
-                 $jq321(responseStock.view).insertBefore(selectorStock3);
-             } 
-             else if (selectorStock4.length == 1) 
-             {
-                 selectorStock4.prepend(responseStock.view);
-             } 
-             else if (selectorStock5.length == 1) 
-             {
-                 $jq321(responseStock.view).insertBefore(selectorStock5);
-             }
-             else if (selectorStock6.length == 1) 
-             {
-                 selectorStock6.prepend(responseStock.view);
-             }
-         } 
-         else 
-         {
-             if (masterSelector.length > 0) 
-             {
-                 $jq321(responseStock.view).insertAfter(finalSelector);
-             }
-             else if (selectorStock1.length == 1) 
-             {
-                 selectorStock1.append(responseStock.view);
-             } 
-             else if (selectorStock2.length == 1) 
-             {
-                 selectorStock2.append(responseStock.view);
-             } 
-             else if (selectorStock3.length == 1) 
-             {
-                 $jq321(responseStock.view).insertAfter(selectorStock3);
-             } 
-             else if (selectorStock4.length == 1) 
-             {
-                 selectorStock4.append(responseStock.view);
-             } 
-             else if (selectorStock5.length == 1) 
-             {
-                 $jq321(responseStock.view).insertAfter(selectorStock5);
-             } 
-             else if (selectorStock6.length == 1) 
-             {
-                 selectorStock6.append(responseStock.view);
-             }
-         }
-     }
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                    selectorStock1.prepend(responseStock.soldView);
+                }
+            } else if (selectorStock2.length == 1) {
+                selectorStock2.prepend(responseStock.view);
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                    selectorStock2.prepend(responseStock.soldView);
+                }
+            } else if (selectorStock3.length == 1) {
+                $jq321(responseStock.view).insertBefore(selectorStock3);
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                    $jq321(responseStock.soldView).insertBefore(selectorStock3);
+                }
+            } else if (selectorStock4.length == 1) {
+                selectorStock4.prepend(responseStock.view);
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                    selectorStock4.prepend(responseStock.soldView);
+                }
+            } else if (selectorStock5.length == 1) {
+                $jq321(responseStock.view).insertBefore(selectorStock5);
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                    $jq321(responseStock.soldView).insertBefore(selectorStock5);
+                }
+            } else if (selectorStock6.length == 1) {
+                selectorStock6.prepend(responseStock.view);
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                    selectorStock6.prepend(responseStock.soldView);
+                }
+            }
+        } else {
+            if (selectorStock1.length == 1) {
+                selectorStock1.append(responseStock.view);
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                    selectorStock1.append(responseStock.soldView);
+                }
+            } else if (selectorStock2.length == 1) {
+                selectorStock2.append(responseStock.view);
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                    selectorStock2.append(responseStock.soldView);
+                }
+            } else if (selectorStock3.length == 1) {
+                $jq321(responseStock.view).insertAfter(selectorStock3);
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                    $jq321(responseStock.soldView).insertAfter(selectorStock3);
+                }
+            } else if (selectorStock4.length == 1) {
+                selectorStock4.append(responseStock.view);
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                    selectorStock4.append(responseStock.soldView);
+                }
+            } else if (selectorStock5.length == 1) {
+                $jq321(responseStock.view).insertAfter(selectorStock5);
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                    $jq321(responseStock.soldView).insertAfter(selectorStock5);
+                }
+            } else if (selectorStock6.length == 1) {
+                selectorStock6.append(responseStock.view);
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                    selectorStock6.append(responseStock.soldView);
+                }
+            }
+        }
+
+        if (responseStock.variantCheck == 0 && responseStock.soldOutProduct == 1) {
+            $jq321(".cc-sp-sc-sold-div").show();
+        } else if (responseStock.variantCheck == 0 && responseStock.soldOutProduct === undefined) {
+            $jq321(".cc-sp-sc-stock-div").show();
+        } else if (responseStock.variantCheck == 1 && responseStock.soldOutProduct === undefined) {
+            $jq321(".cc-sp-sc-stock-div").show();
+        } else if (responseStock.variantCheck == 1 && responseStock.soldOutProduct == 1) {
+            $jq321(".cc-sp-sc-sold-div").show();
+        }
+    }
  
        // ---------------------------------- <TIME MODULE> -----------------------------------------
  
@@ -2394,73 +2530,97 @@
     // ---------------------------------- <PRODUCT QUICK VIEW FOR COLLECTION PAGE> -----------------
     // ******************************************************************************************
 
-    function collectionQuickView(quickViewCollectionText, quickViewCollectionLayout, quickViewCollectionPosition) {
+    function collectionQuickView(quickViewCollectionText, quickViewCollectionLayout, quickViewCollectionPosition) 
+    {    
         var allLinks = [];
+
         var product_id = (meta.product && meta.product.id) ? meta.product.id : '';
 
-        if (product_id == '') {
-            $jq321("a").each(function () {
-                var href = $jq321(this).attr('href');
-                var url = href.split("/");
+        var homepage = window.location.pathname;
 
-                if ($jq321.inArray("products", url) != -1) {
-                    allLinks.push(href);
-                }
-            });
-        }
-        else {
-            $jq321("a").each(function () {
-                var href = $jq321(this).attr('href');
-                var url = href.split("/");
-                if ($jq321.inArray("products", url) != -1) {
-                    var otherurl = href.split("=");
-                    var res = otherurl[0].split("?");
-                    if (res[1] == 'pr_prod_strat') {
-                        allLinks.push(href);
+        var currentPageHandle = window.location.pathname.split("/");
+
+        if (product_id == '') 
+        {
+            if (($jq321.inArray("collections", currentPageHandle) != -1) || (homepage == '/')) 
+            {
+                $jq321("main a").each(function () 
+                {
+                    var href = $jq321(this).attr('href');
+                        
+                    if (href !== "/" && href !== undefined && href !== "#") 
+                    {
+                        var url = href.split("/");
+                        
+                        if ($jq321.inArray("products", url) != -1) 
+                        {
+                            allLinks.push(href);
+                        }
                     }
+                });
+
+                $jq321.unique(allLinks);
+            }
+        }
+        
+
+        if (($jq321.inArray("collections", currentPageHandle) != -1) || (homepage == '/')) 
+        {
+            // PRODUCT QUICK VIEW COLLECTION CREATE BUTTON
+            var divCount = 0;
+            var linkCount = 0;
+            var qvselector;
+
+            var cardwrapper = $jq321("main").find('.card-wrapper');
+            if (cardwrapper.length != 0)
+            {
+                qvselector = $jq321("main .card-wrapper").find("img:first");
+            }
+            else
+            {
+                qvselector = $jq321("main").find("img");
+            }
+
+            qvselector.each(function () {
+
+                // GET IMAGE URL
+                var href = $jq321(this).attr('data-srcset');
+                var data_image = $jq321(this).attr('data-image');
+                var srcset = $jq321(this).attr('srcset');
+
+                if (((href !== undefined) && (data_image !== undefined)) || ((srcset !== undefined) && (product_id == ''))) 
+                {
+                    if (quickViewCollectionLayout == 2) 
+                    {
+                        // FOR QUICK VIEW BUTTON
+                        var newButton = '<input type="button" class="quick-view collection-quick-view" value="' + quickViewCollectionText + '" data-product-url="' + allLinks[linkCount] + '" data-quick-view="1">';
+                    }
+                    else if (quickViewCollectionLayout == 1) 
+                    {
+                        // FOR QUICK VIEW EYE
+                        var newButton = '<a id="positon-right" class="EyeViewBtn collection-quick-view ' + quickViewCollectionPosition + '" data-product-url="' + allLinks[linkCount] + '" data-quick-view="1" href="#"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="577.029px" height="577.029px" viewBox="0 0 577.029 577.029" style="enable-background:new 0 0 577.029 577.029;" xml:space="preserve"><path d="M288.514,148.629c73.746,0,136.162,33.616,175.539,61.821c46.652,33.415,70.66,65.737,76.885,78.065   c-6.232,12.327-30.232,44.649-76.885,78.065c-39.377,28.204-101.793,61.82-175.539,61.82c-73.746,0-136.161-33.616-175.539-61.82   c-46.661-33.416-70.66-65.738-76.894-78.065c6.234-12.328,30.233-44.65,76.885-78.065   C152.353,182.245,214.768,148.629,288.514,148.629 M288.514,113.657C129.176,113.657,0,253.543,0,288.515   s129.176,174.857,288.514,174.857c159.339,0,288.515-139.886,288.515-174.857S447.854,113.657,288.514,113.657L288.514,113.657z    M288.514,183.601c-57.939,0-104.914,46.975-104.914,104.914c0,57.938,46.975,104.914,104.914,104.914   s104.914-46.976,104.914-104.914C393.428,230.576,346.453,183.601,288.514,183.601z M260.266,288.515   c-24.515,0-44.388-19.873-44.388-44.388c0-24.515,19.873-44.387,44.388-44.387c24.515,0,44.388,19.873,44.388,44.387   C304.654,268.642,284.781,288.515,260.266,288.515z"/></svg></a>';
+
+                    }
+
+                    var check = $jq321(this).parent();
+
+                    // CREATE DIV
+                    var newDiv = '<div id="image-with-button' + divCount + '" class="button-on-hover"></div>';
+
+                    // INSERT DIV
+                    $jq321(newDiv).insertBefore(check);
+
+                    // APPEND IMAGE IN DIV
+                    $jq321(check).appendTo($jq321('#image-with-button' + divCount));
+
+                    // INSERT BUTTON/EYE IN DIV
+                    $jq321(newButton).insertBefore(this);
+                    divCount++;
+                    linkCount++;
                 }
             });
+
         }
-
-        // PRODUCT QUICK VIEW COLLECTION CREATE BUTTON
-        var divCount = 0;
-        var linkCount = 0;
-
-        $jq321("img").each(function () {
-
-            // GET IMAGE URL
-            var href = $jq321(this).attr('data-srcset');
-            var data_image = $jq321(this).attr('data-image');
-            var srcset = $jq321(this).attr('srcset');
-
-            if (((href !== undefined) && (data_image !== undefined)) || ((srcset !== undefined) && (product_id == ''))) {
-                if (quickViewCollectionLayout == 2) {
-                    // FOR QUICK VIEW BUTTON
-                    var newButton = '<input type="button" class="quick-view collection-quick-view" value="' + quickViewCollectionText + '" data-product-url="' + allLinks[linkCount] + '" data-quick-view="1">';
-                }
-                else if (quickViewCollectionLayout == 1) {
-                    // FOR QUICK VIEW EYE
-                    var newButton = '<a id="positon-right" class="EyeViewBtn collection-quick-view ' + quickViewCollectionPosition + '" data-product-url="' + allLinks[linkCount] + '" data-quick-view="1" href="#"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="577.029px" height="577.029px" viewBox="0 0 577.029 577.029" style="enable-background:new 0 0 577.029 577.029;" xml:space="preserve"><path d="M288.514,148.629c73.746,0,136.162,33.616,175.539,61.821c46.652,33.415,70.66,65.737,76.885,78.065   c-6.232,12.327-30.232,44.649-76.885,78.065c-39.377,28.204-101.793,61.82-175.539,61.82c-73.746,0-136.161-33.616-175.539-61.82   c-46.661-33.416-70.66-65.738-76.894-78.065c6.234-12.328,30.233-44.65,76.885-78.065   C152.353,182.245,214.768,148.629,288.514,148.629 M288.514,113.657C129.176,113.657,0,253.543,0,288.515   s129.176,174.857,288.514,174.857c159.339,0,288.515-139.886,288.515-174.857S447.854,113.657,288.514,113.657L288.514,113.657z    M288.514,183.601c-57.939,0-104.914,46.975-104.914,104.914c0,57.938,46.975,104.914,104.914,104.914   s104.914-46.976,104.914-104.914C393.428,230.576,346.453,183.601,288.514,183.601z M260.266,288.515   c-24.515,0-44.388-19.873-44.388-44.388c0-24.515,19.873-44.387,44.388-44.387c24.515,0,44.388,19.873,44.388,44.387   C304.654,268.642,284.781,288.515,260.266,288.515z"/></svg></a>';
-
-                }
-
-                var check = $jq321(this).parent();
-
-                // CREATE DIV
-                var newDiv = '<div id="image-with-button' + divCount + '" class="button-on-hover"></div>';
-
-                // INSERT DIV
-                $jq321(newDiv).insertBefore(check);
-
-                // APPEND IMAGE IN DIV
-                $jq321(check).appendTo($jq321('#image-with-button' + divCount));
-
-                // INSERT BUTTON/EYE IN DIV
-                $jq321(newButton).insertBefore(this);
-                divCount++;
-                linkCount++;
-            }
-        });
     }
 
     // PRODUCT QUICK VIEW COLLECTION CALL
@@ -2790,6 +2950,186 @@
             });
     }
     // ---------------------------------- </ANNOUNCEMENT BAR MODULE> --------------------------------
+
+    // ---------------------------------- <SHARE CART MODULE> --------------------------------
+    function shareCart(response) {
+        let cartPage = !(!window.location.pathname.match("(.*)/cart/(.*)") && !window.location.pathname.match("(.*)/cart"));
+        if (cartPage) {
+            let firstSelector = $jq321("form[action='/cart']").parent();
+            if (firstSelector.length > 0) {
+                var cartContents = fetch('/cart.json', { method: 'GET' })
+                    .then(response => response.json())
+                    .then(data => {
+                        let copyLink = "https://" + Shopify.shop + "/cart/";
+                        let cartItems = data.items;
+                        if (cartItems.length > 0) {
+                            $jq321(firstSelector[1]).append(response.iconsFile);
+                            for (const items of cartItems) {
+                                copyLink = copyLink + items.variant_id + ":" + items.quantity + ",";
+                            }
+
+                            //Set the link of copy link icon
+                            copyLink = copyLink.slice(0, -1);
+                            $jq321("#cc-sp-share-cart-copy-link-icon").attr("copy-link", copyLink);
+
+                            //Copy icon
+                            $jq321("#cc-sp-share-cart-copy-link-icon").on("click", function () {
+                                $jq321("#cc-sp-share-cart-copied-message-text").show();
+                                navigator.clipboard.writeText($jq321(this).attr("copy-link"));
+                                setTimeout(function () {
+                                    $jq321("#cc-sp-share-cart-copied-message-text").hide();
+                                }, 3000);
+                            });
+
+                            //mail icon
+                            $jq321("#cc-sp-share-cart-mail-icon-anchor").attr("href", "mailto:?subject=Checkout%20my%20cart&body=%0AHi%2C%0A%0ATake%20a%20look%20at%20what%20I%20am%20buying%0A%0A" + copyLink);
+                            $jq321("#cc-sp-share-cart-mail-icon").on("click", function () {
+                                window.location.href = "mailto:?subject=Checkout%20my%20cart&body=" + copyLink;
+                            });
+                        }
+                    });
+            }
+        }
+    }
+    // ---------------------------------- </SHARE CART MODULE> --------------------------------
+
+    // ---------------------------------- < STICKY CART MODULE> --------------------------------
+    function cartUpdateCall(itemID, quantity) {
+        let formData = {
+            'id': itemID,
+            'quantity': quantity
+        };
+        fetch('/cart/change.js', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        }).then(response => {
+        }).catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
+    function fetchItemsForStickyCart() {
+
+        fetch('/cart.json', { method: 'GET' })
+            .then(response => response.json())
+            .then(data => {
+                let cartItems = data.items;
+                if (cartItems.length == 0) {
+                    $jq321(".cc-inner-content").remove();
+                    $jq321("#cc-sp-share-cart-empty-cart-text").show();
+                    $jq321("#cc-sp-share-cart-copy-link-icon").attr("copy-link", "#");
+                    $jq321(".sp-loader").hide();
+                    $jq321("#cc-sp-sticky-cart-count").html('0');
+                    $jq321("#total_text_drawer").html('');
+                    $jq321("#currency").html('');
+                } else {
+                    let copyLink = "https://" + Shopify.shop + "/cart/";
+                    let totalprice = 0;
+                    $jq321("#cc-sp-share-cart-empty-cart-text").hide();
+                    let totalItemsCount = 0;
+                    $jq321(".cc-inner-content").remove();
+                    for (const items of cartItems) {
+                        totalItemsCount = parseInt(totalItemsCount) + parseInt(items.quantity);
+                        copyLink = copyLink + items.variant_id + ":" + items.quantity + ",";
+                        let variantTitle = items.variant_title == null ? "" : '<p class="sp-variant">' + items.variant_title + '</p>';
+                        $jq321(
+                            `<div class="cc-inner-content sp-border">
+                    <div class="img-div">
+                        <img src="${items.image}" class="img-fluid rounded-start" width="50" height="50" alt="...">
+                    </div>
+                    <div class="card-body p-0 pt-2">
+                    <div class="sp-pro-title">
+                        <h5> 
+                            ${items.product_title}
+                        </h5>
+                        <a href="javascript:void(0)" class="closebtn cc-sp-sticky-cart-remove-btn" data-value="${items.id}" style="font-size:19px">&times;</a>
+                    </div>
+                        ${variantTitle}    
+                        <p class="sp-product-price">${Shopify.currency.active}
+                        ${parseInt(items.price) / 100}.00</p>
+                        <div class="cc-sp-quantity buttons_added">
+                <input type="button" value="-" current-quntity="${items.quantity}" class="minus cc-sp-sticky-cart-minus-btn" style="background-color:transparent;" data-value="${items.id}"><input id="cc-sp-sticky-cart-items-count" type="number" step="1" name="cc-sp-quantity" 
+                value= ${items.quantity} title="Quantity" class="cc-sp-input-text cc-qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus cc-sp-sticky-cart-plus-btn" style="background-color:transparent;" current-quntity="${items.quantity}" data-value="${items.id}">
+            </div>
+                    </div>
+                </div>`
+                        ).insertAfter("#cc-sp-share-cart-sidenav-main");
+                        totalprice += (Math.floor(parseInt(items.final_line_price) / 100));
+                    }
+
+                    copyLink = copyLink.slice(0, -1);
+                    $jq321('#currency').html(Shopify.currency.active);
+                    $jq321('#total_text_drawer').html(totalprice + ".00");
+                    $jq321("#cc-sp-sticky-cart-count").html(totalItemsCount);
+                    $jq321("#drawer_button").attr("href", copyLink);
+                    $jq321("#cc-sp-share-cart-copy-link-icon").attr("copy-link", copyLink);
+                    $jq321('#cc-sp-share-cart-mail-icon').attr("href", "mailto:?subject=Checkout%20my%20cart&body=" + copyLink);
+
+                    //When user click on the copy link button
+                    $jq321("#cc-sp-share-cart-copy-link-icon").on("click", function () {
+                        navigator.clipboard.writeText($jq321(this).attr("copy-link"));
+                        $jq321("#cc-sp-sticky-cart-copied-message-text").show();
+                        setTimeout(function () {
+                            $jq321("#cc-sp-sticky-cart-copied-message-text").hide();
+                        }, 2000);
+                    });
+
+                    //Remove cart item
+                    $jq321(".cc-sp-sticky-cart-remove-btn").click(function () {
+                        $jq321(".sp-loader").show();
+                        let itemID = $jq321(this).attr("data-value");
+                        cartUpdateCall(itemID, 0);
+                    });
+
+                    //Minus the quantity
+                    $jq321(".cc-sp-sticky-cart-minus-btn").click(function () {
+                        $jq321(".sp-loader").show();
+                        let itemID = $jq321(this).attr("data-value");
+                        let currentItemsCount = $jq321(this).attr("current-quntity");
+                        currentItemsCount = parseInt(currentItemsCount) - 1;
+                        cartUpdateCall(itemID, currentItemsCount);
+                    });
+
+                    //Plus the quantity
+                    $jq321(".cc-sp-sticky-cart-plus-btn").click(function () {
+                        $jq321(".sp-loader").show();
+                        let itemID = $jq321(this).attr("data-value");
+                        let currentItemsCount = $jq321(this).attr("current-quntity");
+                        currentItemsCount = parseInt(currentItemsCount) + 1;
+                        cartUpdateCall(itemID, currentItemsCount);
+                    });
+                    $jq321(".sp-loader").hide();
+                }
+            });
+    }
+
+    function stickyCart(response) {
+        setTimeout(function () {
+            $jq321("body").prepend(response.cart_icon);
+            $jq321("body").prepend(response.cart_drawer);
+
+            //attach event with widget
+            $jq321("#stickycart_icon").click(function () {
+                $jq321("#cc-sp-share-cart-sidenav").show();
+                $jq321(".sp-comment-sticky").hide();
+            });
+
+            //Attach event of sidenav close
+            $jq321("#drawer_close").click(function () {
+                $jq321("#cc-sp-share-cart-sidenav").hide();
+                $jq321(".sp-comment-sticky").show();
+            });
+
+            fetchItemsForStickyCart();
+            setInterval(function () {
+                fetchItemsForStickyCart();
+            }, 4000);
+        }, 2000);
+    }
+    // ---------------------------------- < /STICKY CART MODULE> --------------------------------
      
      
    });
