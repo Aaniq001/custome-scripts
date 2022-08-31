@@ -2787,7 +2787,7 @@
 
     if (Shopify.shop == "toy-city-pk.myshopify.com") 
     {
-        masterSelector = $jq321(".groups-btn");
+        masterSelector = $jq321(".prices");
         finalSelector = masterSelector[0];
 
         console.log(masterSelector);
