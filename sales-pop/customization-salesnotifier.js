@@ -3951,6 +3951,16 @@
    // ---------------------------------- <ANNOUNCEMENT BAR MODULE> --------------------------------
    function announcementBar(announcementBarResponse)
    {
+        if (Shopify.shop == "kicksmachinetest.myshopify.com") 
+        {   
+            if (window.location.href != "https://www.kicksmachine.com/products/cactus-jack-socks") 
+            {
+                console.log('announcement bar is block on all pages');
+                
+                return;
+            }
+        }
+
         if (Shopify.shop == "naturally-you-me.myshopify.com") 
         {
             $jq321("head").append(
