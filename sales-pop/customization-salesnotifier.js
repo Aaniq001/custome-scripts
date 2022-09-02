@@ -1250,6 +1250,25 @@
             }
         }
 
+        if (Shopify.shop == "global-gochujar.myshopify.com") 
+        {
+            if (block_url[2] == 'login')
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on "Login" page'); 
+            }
+            else if (block_url[2] == 'register')
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on "Register" page'); 
+            }
+            else if (block_url[1] == 'challenge')
+            {
+                b_url = false;
+                console.log('SP Sales Notification Block on "challenge" page'); 
+            }
+        }
+
         return b_url;
 
      };
