@@ -2812,6 +2812,15 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "snatchedbodyus.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.notificationPreview-box-inner{height:115px !important;}'+  
+            '</style>'
+        );
+    }
+
     
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
