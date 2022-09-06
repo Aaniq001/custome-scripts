@@ -223,6 +223,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "2c690a.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "nac89.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     /**
@@ -485,6 +488,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
             console.log(finalSelector);
         }, 3000);
+    }
+    if (Shopify.shop == "nac89.myshopify.com")
+    {
+        $jq321("head").append('<style type="text/css">'+
+                              '.stock-message-font-weight-inherit {font-weight: lighter !important;}'+
+                              '</style>');
     }
 
     function stockCountdown(response) {
