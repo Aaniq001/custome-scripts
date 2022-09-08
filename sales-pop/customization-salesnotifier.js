@@ -2839,6 +2839,14 @@
             '</style>'
         );
     }
+     
+    if (Shopify.shop == "saluhall-se.myshopify.com") 
+    {
+        masterSelector = $jq321("#purchase");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
 
     
      /** Stock for variants **/
@@ -2979,7 +2987,7 @@
     }
     /** Stock for variants ends **/
 
-      function stockCountdown(responseStock) {
+     function stockCountdown(responseStock) {
  
          var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorStock2 = $jq321("form[action='/cart/add']");
