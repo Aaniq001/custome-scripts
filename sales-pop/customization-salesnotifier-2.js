@@ -1604,6 +1604,16 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
 
         // saveImpression(1); Imression save call removed for now
+        /**
+             * Custom fix for store, 
+             * increase the z-index of chat button to display the notification behind chat button 
+             */
+         setTimeout(function () {
+            if (Shopify.shop == "autosparz-india.myshopify.com") {
+                let chatWidgetSelector = $jq321(".spWhatsShare-container");
+                $jq321(".notifyjs-corner").css("z-index", 99999999);
+            }
+        }, 1000);
     };
 
 
@@ -2178,10 +2188,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var selectorTimer6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
 
         if (responseTimer.above_cart == 1) {
-            if (masterSelector.length > 0) {
-                $jq321(responseTimer.view).insertBefore(finalSelector);
-            }
-            else if (selectorTimer1.length == 1) {
+            if (selectorTimer1.length == 1) {
                 selectorTimer1.prepend(responseTimer.view);
             } else if (selectorTimer2.length == 1) {
                 selectorTimer2.prepend(responseTimer.view);
@@ -2195,10 +2202,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 selectorTimer6.prepend(responseTimer.view);
             }
         } else {
-            if (masterSelector.length > 0) {
-                $jq321(responseTimer.view).insertAfter(finalSelector);
-            }
-            else if (selectorTimer1.length == 1) {
+            if (selectorTimer1.length == 1) {
                 selectorTimer1.append(responseTimer.view);
             } else if (selectorTimer2.length == 1) {
                 selectorTimer2.append(responseTimer.view);
@@ -2231,10 +2235,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
 
         if (response.above_cart == 1) {
-            if (masterSelector.length > 0) {
-                $jq321(response.view).insertBefore(finalSelector);
-            }
-            else if (selectorVisitor1.length == 1) {
+            if (selectorVisitor1.length == 1) {
                 selectorVisitor1.prepend(response.view);
             } else if (selectorVisitor2.length == 1) {
                 selectorVisitor2.prepend(response.view);
@@ -2244,10 +2245,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 selectorVisitor4.prepend(response.view);
             }
         } else {
-            if (masterSelector.length > 0) {
-                $jq321(response.view).insertAfter(finalSelector);
-            }
-            else if (selectorVisitor1.length == 1) {
+            if (selectorVisitor1.length == 1) {
                 selectorVisitor1.append(response.view);
             } else if (selectorVisitor2.length == 1) {
                 selectorVisitor2.append(response.view);
@@ -2272,10 +2270,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var selectorSold4 = $jq321("form[action='/cart/add']:first");
 
         if (response.above_cart == 1) {
-            if (masterSelector.length > 0) {
-                $jq321(response.view).insertBefore(finalSelector);
-            }
-            else if (selectorSold1.length == 1) {
+            if (selectorSold1.length == 1) {
                 selectorSold1.prepend(response.view);
             }
             else if (selectorSold2.length == 1) {
@@ -2289,10 +2284,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             }
         }
         else {
-            if (masterSelector.length > 0) {
-                $jq321(response.view).insertAfter(finalSelector);
-            }
-            else if (selectorSold1.length == 1) {
+            if (selectorSold1.length == 1) {
                 selectorSold1.append(response.view);
             }
             else if (selectorSold2.length == 1) {
@@ -2577,10 +2569,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
 
-            if (masterSelector.length > 0) {
-                $jq321(trustBadgesResponse.view).insertAfter(finalSelector);
-            }
-            else if (selectorTrustBadges1.length == 1) {
+            if (selectorTrustBadges1.length == 1) {
                 selectorTrustBadges1.append(trustBadgesResponse.view);
             }
             else if (selectorTrustBadges2.length == 1) {
