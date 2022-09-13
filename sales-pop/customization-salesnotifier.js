@@ -2734,7 +2734,9 @@
             '</style>'
         );
 
-        masterSelector = $jq321("button[data-checkout|='checkout']").parent();
+        //masterSelector = $jq321("button[data-checkout|='checkout']").parent();
+
+        masterSelector = $jq321(".pf-29_");
         finalSelector = masterSelector[0];
 
         console.log(finalSelector);
