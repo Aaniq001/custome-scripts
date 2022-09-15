@@ -466,12 +466,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
     }
 
-    if (Shopify.shop == "nomardic-de.myshopify.com")
-    {
-        customSelctor = $jq321(".ProductForm__Variants");
-        finalSelector = customSelctor[0];
-    }
-
     if (Shopify.shop == "nelsondesign.myshopify.com")
     {
         customSelctor = $jq321(".ProductForm__Variants");
@@ -559,7 +553,15 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         customSelctor = $jq321(".ProductForm__AddToCart");
         finalSelector = customSelctor[0];
+
+        console.log(finalSelector);
     }
+
+    /* if (Shopify.shop == "nomardic-de.myshopify.com")
+    {
+        customSelctor = $jq321(".ProductForm__Variants");
+        finalSelector = customSelctor[0];
+    } */
 
     if (Shopify.shop == "megawheels-com.myshopify.com")
     {
