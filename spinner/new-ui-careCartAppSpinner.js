@@ -2945,6 +2945,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'lammeuld.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> @media only screen and (max-width:575px){#wheelify-spin-trigger-cc{bottom: 0vh !important;}} </style>');
+                    //console.log("SAS https://partychampions.com/");
+                }
                 if (Shopify.shop == 'c-monsta-com.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> .wheelLogo{display:none;}</style>');
                     //console.log("SAS https://partychampions.com/");
