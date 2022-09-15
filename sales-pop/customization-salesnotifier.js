@@ -2850,6 +2850,15 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "stoneary.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.card-wrapper .card .card__inner .card__media{z-index: auto !important;}'+  
+            '</style>'
+        );
+    }
+
     
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
