@@ -2859,6 +2859,25 @@
         );
     }
 
+    if (Shopify.shop == "animami-5731.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '@media screen and (max-width: 500px){.notificationPreview-box{width:244px !important;}'+
+                '.notifyjs-corner{right: -0% !important;bottom: -25px!important;}'+
+                    '.notifyjs-corner{margin:0px !important;}'+
+                    '.notifyjs-corner{margin: 18px !important;}'+
+                    '.notificationPreview-box .np-col-img{width:50px !important;height:50px!important;margin-right:10px}'+
+                    '.notificationPreview-box-inner{width:235px !important; height:70px !important;}'+
+                    '.notificationPreview-box .card-body p.card-text{font-size:10px !important;line-height: 3px !important;}'+
+                    '.notificationPreview-box .card-body h5.card-title{font-size:12px!important;height: auto !important;line-height: 15px !important;margin: 0px 0 !important;}'+
+                    '.notificationPreview-box .card-body .pur-time{margin:0px !important;}'+
+                    '.notificationPreview-box .np-col-right{float:none !important;}'+
+                    '}'+  
+            '</style>'
+        );
+    }
+
     
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
