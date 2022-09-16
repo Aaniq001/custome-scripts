@@ -2901,6 +2901,15 @@
         );
     }
 
+    if (Shopify.shop == "little-foxx-online-concept-store.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.card__badge{z-index:999;}'+  
+            '</style>'
+        );
+    }
+
     
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
