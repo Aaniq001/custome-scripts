@@ -226,6 +226,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "nac89.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "canvasart-dev.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     /**
@@ -494,6 +497,17 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         $jq321("head").append('<style type="text/css">'+
                               '.stock-message-font-weight-inherit {font-weight: lighter !important;}'+
                               '</style>');
+    }
+    if (Shopify.shop == "canvasart-dev.myshopify.com")
+    {
+        $jq321("head").append('<style type="text/css">'+
+                              '.stock-top {margin-top: 14px !important;}'+
+                              '</style>');
+
+        masterSelector = $jq321("strong");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
     }
 
     function stockCountdown(response) {
