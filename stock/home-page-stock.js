@@ -194,7 +194,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 7402620190884;
     }
-
+    if(Shopify.shop == "b-relax-ita.myshopify.com")
+    {
+        productID = 7053959725243;
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -282,6 +285,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         console.log(finalSelector);
     }
 
+    if(Shopify.shop == "b-relax-ita.myshopify.com")
+    {
+        customSelector = $jq321(".product-block--price");
+        finalSelector = customSelector[0];
+
+        console.log(finalSelector);
+    }
+
      function stockCountdown(response) {
          
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -323,7 +334,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if(customSelector.length > 0){
+            if (customSelector.length > 0)
+            {
                 $jq321(response.view).insertAfter(finalSelector);
             }
             else if (selectorStock1.length == 1)
