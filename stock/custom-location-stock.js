@@ -229,6 +229,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "canvasart-dev.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "polyrt.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     /**
@@ -509,6 +512,19 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(finalSelector);
     }
+    if (Shopify.shop == "polyrt.myshopify.com")
+    {
+        $jq321("head").append('<style type="text/css">'+
+                              '.cart-countdown-desktop-top-center {width: 100%;}'+
+                              '</style>');
+
+        masterSelector = $jq321(".product__policies");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
+    
 
     function stockCountdown(response) {
         
@@ -883,8 +899,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                  /**
                  * Let make selector
                  */
-                 //let firstSelector = $jq321("form[action='/cart']").parent();
-                 let firstSelector = $jq321("#cart").parent();
+                 let firstSelector = $jq321("form[action='/cart']").parent();
+                 //let firstSelector = $jq321("#cart").parent();
 
                  console.log(firstSelector);
                  
