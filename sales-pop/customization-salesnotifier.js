@@ -2912,6 +2912,13 @@
 
     if (Shopify.shop == "gotechleb.myshopify.com") 
     {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.visitor-counter-content-box-carecartbysalespop-2020{margin-top:0px !important;}'+
+                '.counter-text-carecartbysalespop-2020{min-height:24px !important;}'+  
+            '</style>'
+        );
+
         masterSelector = $jq321(".product-form__buy-buttons");
         finalSelector = masterSelector[0];
 
