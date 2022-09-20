@@ -2910,6 +2910,14 @@
         );
     }
 
+    if (Shopify.shop == "gotechleb.myshopify.com") 
+    {
+        masterSelector = $jq321(".product-form__buy-buttons");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+
     
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
