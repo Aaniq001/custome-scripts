@@ -2915,7 +2915,9 @@
         $jq321("head").append(
             '<style type="text/css">'+ 
                 '.visitor-counter-content-box-carecartbysalespop-2020{margin-top:0px !important;}'+
-                '.counter-text-carecartbysalespop-2020{min-height:24px !important;}'+  
+                '.counter-text-carecartbysalespop-2020{min-height:24px !important;}'+
+                '.clone-box{padding:0px !important;}'+
+                '.trust-badges-header-center{margin-bottom:0px; !important;}'+  
             '</style>'
         );
 
