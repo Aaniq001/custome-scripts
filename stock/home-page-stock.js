@@ -287,6 +287,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     if(Shopify.shop == "b-relax-ita.myshopify.com")
     {
+        $jq321("head").append('<style type="text/css">.product-block--price{margin-bottom:11px !important;}</style>');
+
         customSelector = $jq321(".product-block--price");
         finalSelector = customSelector[0];
 
