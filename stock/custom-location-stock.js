@@ -232,6 +232,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "polyrt.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "jaxoli.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     /**
@@ -523,8 +526,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(masterSelector);
     }
+    if (Shopify.shop == "jaxoli.myshopify.com")
+    {
+        masterSelector = $jq321(".product__tax");
+        finalSelector = masterSelector[0];
 
-    
+        console.log(finalSelector);
+    }
 
     function stockCountdown(response) {
         
