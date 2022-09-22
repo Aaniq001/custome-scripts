@@ -3741,6 +3741,15 @@
      // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
      function trustBadges(trustBadgesResponse)
      {
+        if (Shopify.shop == "7ac472.myshopify.com")
+        {
+            let text = window.location.pathname;
+            let result = text.indexOf("products");
+
+            if(result == -1){
+                return;
+            }    
+        }
         if (Shopify.shop == "caisermascotas.myshopify.com")
         {
             let text = window.location.pathname;
