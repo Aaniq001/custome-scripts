@@ -250,6 +250,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "trademark-art.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "fusskleidung.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     /**
