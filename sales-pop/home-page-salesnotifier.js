@@ -1287,6 +1287,14 @@
          // SOLD COUNTER CALL
          if(apiResponse && apiResponse.sold && apiResponse.sold !== null && apiResponse.sold.on_off==1)
          {
+            if (Shopify.shop == "xipe-com.myshopify.com") 
+            {
+                if (window.location.href == 'https://xipe-com.myshopify.com/')
+                {
+                    return false;
+                }
+            }
+
              $jq321("head").append($jq321("<link/>", {
                  rel: "stylesheet",
                  href: serverUrl.cssSold + "?v" + version
@@ -1549,107 +1557,112 @@
      };
  
      window.showSalesPopup = function (popUpIndexToDisplay) {
-     if(window.location.href == "https://ovlcollection.com/pages/sms-club"){console.log("SP are disabled on this Page");return;}
- 
- 
-         var now = new Date;
-         var utc_timestamp = new Date(now.getUTCFullYear(),now.getUTCMonth(), now.getUTCDate() , 
-           now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());
-     var s = apiResponse.allNotifications[popUpIndexToDisplay].order_generated_time;
-         var a = s.split(/[^0-9]/);
-         var endtime =new Date (a[0],a[1]-1,a[2],a[3],a[4],a[5] );
-         
-         var timeDifference = utc_timestamp - endtime;
-     timeDifference = Math.floor((timeDifference / 1000) / 60);
-             
-     if(timeDifference >= 60)
-     {
-         timeDifference = Math.floor(timeDifference / 60);
-         if(timeDifference >= 24)
-         {
-             timeDifference = Math.floor(timeDifference / 24);
-             timeDifference = Math.abs(timeDifference) + " day(s) ago";
-         }
-         else 
-         {
-             timeDifference = Math.abs(timeDifference) + " hour(s) ago";
-         }   
-     }else{timeDifference = Math.abs(timeDifference) + " minute(s) ago"}
- 
-         if( isHidePopupCookieSet() ) {
-             return false;
-         }
- 
-         if (typeof $jq321.notify == "undefined") {
-             notifyPopup($jq321);
-         }
- 
-         if (!notificationsToShow[popUpIndexToDisplay].hasOwnProperty('notifications')) {
-             return false;
-         }
- 
-         var dataNotification = notificationsToShow[popUpIndexToDisplay].notifications;
- 
-         $jq321.notify.addStyle('salesPopStyle', {
-             html: dataNotification
-         });
- 
-         /*$jq321.notify("hello world", {
-             globalPosition: apiResponse.desktop_position,
-             style: 'salesPopStyle',
-             autoHideDelay: parseInt(apiResponse.display_time) * 1000,
-             showDuration: 600,
-             hideAnimation: 'slideUp',
-             hideDuration: 600,
-             clickToHide: false
-         });*/
- 
-         if (salespoplib_vars_obj.checkDevice == 'mobile')
-         {
-             if (apiResponse.mobile_display_option == 'undefined')
-             {
-                 $jq321.notify("hello world", {
-                     globalPosition: apiResponse.desktop_position,
-                     style: 'salesPopStyle',
-                     autoHideDelay: parseInt(apiResponse.display_time) * 1000,
-                     showDuration: 600,
-                     hideAnimation: 'slideUp',
-                     hideDuration: 600,
-                     clickToHide: false
-                 });
-             }
-             else
-             {
+        if (apiResponse.allNotifications[popUpIndexToDisplay] == undefined) {
+            return;
+        }
+        var now = new Date;
+        var utc_timestamp = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
+            now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());
+        var s = apiResponse.allNotifications[popUpIndexToDisplay].order_generated_time;
+        var a = s.split(/[^0-9]/);
+        var endtime = new Date(a[0], a[1] - 1, a[2], a[3], a[4], a[5]);
+
+        var timeDifference = utc_timestamp - endtime;
+        timeDifference = Math.floor((timeDifference / 1000) / 60);
+
+        /**
+         * Translated words
+         */
+        let minuteAgo = " minute(s) ago";
+        let hourAgo = " hour(s) ago";
+        let daysAgo = " day(s) ago";
+        if (apiResponse.timeAgoTranslatedData) {
+            minuteAgo = (apiResponse.timeAgoTranslatedData.minutes_ago !== "") ? " " + apiResponse.timeAgoTranslatedData.minutes_ago : minuteAgo;
+            hourAgo = (apiResponse.timeAgoTranslatedData.hours_ago !== "") ? " " + apiResponse.timeAgoTranslatedData.hours_ago : hourAgo;
+            daysAgo = (apiResponse.timeAgoTranslatedData.days_ago !== "") ? " " + apiResponse.timeAgoTranslatedData.days_ago : daysAgo;
+        }
+
+        if (timeDifference >= 60) {
+            timeDifference = Math.floor(timeDifference / 60);
+            if (timeDifference >= 24) {
+                timeDifference = Math.floor(timeDifference / 24);
+                timeDifference = Math.abs(timeDifference) + daysAgo;
+            }
+            else {
+                timeDifference = Math.abs(timeDifference) + hourAgo;
+            }
+        } else { timeDifference = Math.abs(timeDifference) + minuteAgo; }
+
+        if (isHidePopupCookieSet()) {
+            return false;
+        }
+
+        if (typeof $jq321.notify == "undefined") {
+            notifyPopup($jq321);
+        }
+
+        if (!notificationsToShow[popUpIndexToDisplay].hasOwnProperty('notifications')) {
+            return false;
+        }
+
+        var dataNotification = notificationsToShow[popUpIndexToDisplay].notifications;
+
+        $jq321.notify.addStyle('salesPopStyle', {
+            html: dataNotification
+        });
+
+        /*$jq321.notify("hello world", {
+            globalPosition: apiResponse.desktop_position,
+            style: 'salesPopStyle',
+            autoHideDelay: parseInt(apiResponse.display_time) * 1000,
+            showDuration: 600,
+            hideAnimation: 'slideUp',
+            hideDuration: 600,
+            clickToHide: false
+        });*/
+
+        if (salespoplib_vars_obj.checkDevice == 'mobile') {
+            if (apiResponse.mobile_display_option == 'undefined') {
                 $jq321.notify("hello world", {
-                     globalPosition: apiResponse.mobile_display_option,
-                     style: 'salesPopStyle',
-                     autoHideDelay: parseInt(apiResponse.display_time) * 1000,
-                     showDuration: 600,
-                     hideAnimation: 'slideUp',
-                     hideDuration: 600,
-                     clickToHide: false
-                 }); 
-             }
-         }
-         else
-         {
-               $jq321.notify("hello world", {
-                 globalPosition: apiResponse.desktop_position,
-                 style: 'salesPopStyle',
-                 autoHideDelay: parseInt(apiResponse.display_time) * 1000,
-                 showDuration: 600,
-                 hideAnimation: 'slideUp',
-                 hideDuration: 600,
-                 clickToHide: false
-             });  
-         }
- 
-         if(apiResponse.timeText == "{{time_ago}}")
-         {
-             $jq321(".pur-time").html(timeDifference);
-         }
-     
-     };
+                    globalPosition: apiResponse.desktop_position,
+                    style: 'salesPopStyle',
+                    autoHideDelay: parseInt(apiResponse.display_time) * 1000,
+                    showDuration: 600,
+                    hideAnimation: 'slideUp',
+                    hideDuration: 600,
+                    clickToHide: false
+                });
+            }
+            else {
+                $jq321.notify("hello world", {
+                    globalPosition: apiResponse.mobile_display_option,
+                    style: 'salesPopStyle',
+                    autoHideDelay: parseInt(apiResponse.display_time) * 1000,
+                    showDuration: 600,
+                    hideAnimation: 'slideUp',
+                    hideDuration: 600,
+                    clickToHide: false
+                });
+            }
+        }
+        else {
+            $jq321.notify("hello world", {
+                globalPosition: apiResponse.desktop_position,
+                style: 'salesPopStyle',
+                autoHideDelay: parseInt(apiResponse.display_time) * 1000,
+                showDuration: 600,
+                hideAnimation: 'slideUp',
+                hideDuration: 600,
+                clickToHide: false
+            });
+        }
+
+        if (apiResponse.timeText == "{{time_ago}}") {
+            $jq321(".pur-time").html(timeDifference);
+        }
+
+        // saveImpression(1); Imression save call removed for now
+    };
  
  
      var aurl = salespoplib_active_url.split('/');
@@ -1743,6 +1756,13 @@
      if (Shopify.shop == "ara-smooth.myshopify.com")
      {
         productID = 7594344218786;
+     }
+     if (Shopify.shop == "xipe-com.myshopify.com")
+     {
+        productID = 7580701589667;
+        
+        masterSelector = $jq321(".price-reviews");
+        finalSelector = masterSelector[0];
      }
 
      $jq321.ajax({
@@ -2130,7 +2150,9 @@
         var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
 
         if (responseStock.above_cart == 1) {
-            if (selectorStock1.length == 1) {
+            if (masterSelector.length > 0) { 
+                $jq321(responseStock.view).insertBefore(finalSelector);
+            } else if (selectorStock1.length == 1) {
                 selectorStock1.prepend(responseStock.view);
                 if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
                     selectorStock1.prepend(responseStock.soldView);
@@ -2162,7 +2184,9 @@
                 }
             }
         } else {
-            if (selectorStock1.length == 1) {
+            if (masterSelector.length > 0) { 
+                $jq321(responseStock.view).insertAfter(finalSelector);  
+            } else if (selectorStock1.length == 1) {
                 selectorStock1.append(responseStock.view);
                 if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
                     selectorStock1.append(responseStock.soldView);
