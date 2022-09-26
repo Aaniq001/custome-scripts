@@ -198,6 +198,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 7053959725243;
     }
+    if(Shopify.shop == "impactstore123.myshopify.com")
+    {
+        productID = 7861698527453;
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -371,8 +375,29 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     // ---------------------------------- <TIME MODULE> -----------------------------------------
 
+    
+
     // CREATE LIVE TIME COUNTDOWN
     function timeCountdown(t) {
+
+        if (Shopify.shop == "impactstore123.myshopify.com")
+        {
+            if (window.location.href == 'https://impactstore123.myshopify.com/')
+            {
+                customSelector = $jq321(".card__inner");
+                finalSelector = customSelector[0];
+
+                console.log(customSelector);
+            }
+            else
+            {
+                customSelector = $jq321(".global-media-settings");
+                finalSelector = customSelector[0];
+
+                console.log(finalSelector);
+            }
+        }
+
         var selectorTimer1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
         var selectorTimer2 = $jq321("form[action='/cart/add']");
         var selectorTimer3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
