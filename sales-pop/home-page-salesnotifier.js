@@ -1764,6 +1764,15 @@
         masterSelector = $jq321(".price-reviews");
         finalSelector = masterSelector[0];
      }
+     if (Shopify.shop == "puppy-trainer-nl.myshopify.com")
+     {
+        productID = 7826425872604;
+
+        masterSelector = $jq321(".pf-316_");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+     }
 
      $jq321.ajax({
          type: "GET",
