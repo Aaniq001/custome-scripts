@@ -2927,7 +2927,14 @@
         console.log(finalSelector);
     }
 
-    
+    if (Shopify.shop == "slippers-technic.myshopify.com") 
+    {
+        masterSelector = $jq321(".pf-22_");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
