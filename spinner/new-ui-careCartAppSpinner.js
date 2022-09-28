@@ -2945,6 +2945,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'ifaceus.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> .checkbox{width:auto;height:auto;background-color: transparent;border:none}</style>');
+                    //console.log("SAS https://partychampions.com/");
+                }
                 if (Shopify.shop == 'honest-store-m2433.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> .wheelLogo{display:none;}</style>');
                     //console.log("SAS https://partychampions.com/");
