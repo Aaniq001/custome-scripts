@@ -1768,8 +1768,8 @@
      {
         productID = 7826425872604;
 
-        masterSelector = $jq321(".pf-316_");
-        finalSelector = masterSelector[0];
+        masterSelector = $jq321("[data-pf-type=ProductPrice2]");
+        finalSelector = masterSelector[1];
 
         console.log(masterSelector);
      }
