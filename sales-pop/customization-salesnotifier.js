@@ -2935,6 +2935,16 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "beautivo-shop.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '#sp-notification{letter-spacing:normal;}'+
+                '@media only screen and (max-width: 400px) {.notificationPreview-box .card-body h5.card-title {height: auto !important; font-size: 13px !important;}}'+  
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
