@@ -2945,6 +2945,16 @@
         );
     }
 
+    if (Shopify.shop == "chasingtitles.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '#clockdivpreviewSalesCollection{position: absolute;z-index: 999;}'+
+                '.timer-store-front {justify-content: center; display: flex;}'+
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
