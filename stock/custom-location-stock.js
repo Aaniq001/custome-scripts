@@ -91,6 +91,15 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     window.checkmodule_countdown = function (response) {
         console.log("Response received");
 
+        if (Shopify.shop == "mysns.myshopify.com")
+        {
+            if (window.location.href != 'https://strongnation.in/collections/best-sellers/products/tiger-fury-pre-workout')
+            {
+                console.log('countdown pro block on other pages');
+                return false;
+            }
+        }
+
         apiResponse = response;
 
        // STOCK COUNTDOWN CALL
@@ -224,6 +233,30 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var meta = {"product":{"id":__st.rid}};
     }
     else if (Shopify.shop == "nac89.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "canvasart-dev.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "polyrt.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "jaxoli.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "mysns.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "trademark-art.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "fusskleidung.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "imani-jewelery.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "ace-kouture.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
 
@@ -494,6 +527,42 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         $jq321("head").append('<style type="text/css">'+
                               '.stock-message-font-weight-inherit {font-weight: lighter !important;}'+
                               '</style>');
+    }
+    if (Shopify.shop == "canvasart-dev.myshopify.com")
+    {
+        $jq321("head").append('<style type="text/css">'+
+                              '.stock-top {margin-top: 14px !important;}'+
+                              '</style>');
+
+        masterSelector = $jq321("strong");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+    if (Shopify.shop == "polyrt.myshopify.com")
+    {
+        $jq321("head").append('<style type="text/css">'+
+                              '.cart-countdown-desktop-top-center {width: 100%;}'+
+                              '</style>');
+
+        masterSelector = $jq321(".product__policies");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+    if (Shopify.shop == "jaxoli.myshopify.com")
+    {
+        masterSelector = $jq321(".product__tax");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+    if (Shopify.shop == "mysns.myshopify.com")
+    {
+        masterSelector = $jq321(".product-single__vendor");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
     }
 
     function stockCountdown(response) {
@@ -869,8 +938,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                  /**
                  * Let make selector
                  */
-                 //let firstSelector = $jq321("form[action='/cart']").parent();
-                 let firstSelector = $jq321("#cart").parent();
+                 let firstSelector = $jq321("form[action='/cart']").parent();
+                 //let firstSelector = $jq321(".cart--root").parent();
 
                  console.log(firstSelector);
                  

@@ -678,7 +678,9 @@
                 "cssQuick": "https://sales-pop.carecart.io/lib/quick-box.css",
                 "cssTrustBadges": "https://sales-pop.carecart.io/lib/badges-box.css",
                 "cssAnnouncement": "https://sales-pop.carecart.io/lib/announcement.css",
-                "legacyCss": "https://sales-pop.carecart.io/lib/salesnotifier.css"
+                "legacyCss": "https://sales-pop.carecart.io/lib/salesnotifier.css",
+                "cssShareCart": "https://sales-pop.carecart.io/lib/sales-pop-share-cart.css",
+                "cssStickyCart": "https://sales-pop.carecart.io/lib/sales-pop-sticky-cart.css"
             };
          }
  
@@ -708,7 +710,10 @@
             "cssQuick": "https://" + tempAnchorTag.hostname + "/lib/quick-box.css?v" + version,
             "cssTrustBadges": "https://" + tempAnchorTag.hostname + "/lib/badges-box.css?v" + version,
             "cssAnnouncement": "https://" + tempAnchorTag.hostname + "/lib/announcement.css?v" + version,
-            "legacyCss": "https://" + tempAnchorTag.hostname + "/lib/salesnotifier.css"
+            "legacyCss": "https://" + tempAnchorTag.hostname + "/lib/salesnotifier.css",
+            "cssShareCart": "https://" + tempAnchorTag.hostname + "/lib/sales-pop-share-cart.css?v" + version,
+            "cssStickyCart": "https://" + tempAnchorTag.hostname + "/lib/sales-pop-sticky-cart.css?v=" + version
+
         };
      }
  
@@ -1568,6 +1573,24 @@
             {
                trustBadges(apiResponse.trustBadges); 
             } 
+        }
+
+        //share cart
+        if (apiResponse && apiResponse.shareCart && apiResponse.shareCart !== false) {
+            shareCart(apiResponse.shareCart);
+            $jq321("head").append($jq321("<link/>", {
+                rel: "stylesheet",
+                href: serverUrl.cssShareCart + "?v" + version
+            }));
+        }
+
+        //STICKY CART CALL
+        if (apiResponse && apiResponse.sticky && apiResponse.sticky !== false) {
+            stickyCart(apiResponse.sticky);
+            $jq321("head").append($jq321("<link/>", {
+                rel: "stylesheet",
+                href: serverUrl.cssStickyCart
+            }));
         }
 
         var notAllowedBlockSpecificPage = blockSpecificPage();
@@ -2734,7 +2757,9 @@
             '</style>'
         );
 
-        masterSelector = $jq321("button[data-checkout|='checkout']").parent();
+        //masterSelector = $jq321("button[data-checkout|='checkout']").parent();
+
+        masterSelector = $jq321(".pf-29_");
         finalSelector = masterSelector[0];
 
         console.log(finalSelector);
@@ -2848,7 +2873,88 @@
         console.log(masterSelector);
     }
 
-    
+    if (Shopify.shop == "stoneary.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.card-wrapper .card .card__inner .card__media{z-index: auto !important;}'+  
+            '</style>'
+        );
+    }
+
+    if (Shopify.shop == "animami-5731.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '@media screen and (max-width: 500px){.notificationPreview-box{width:244px !important;}'+
+                '.notifyjs-corner{right: -0% !important;bottom: -25px!important;}'+
+                    '.notifyjs-corner{margin:0px !important;}'+
+                    '.notifyjs-corner{margin: 18px !important;}'+
+                    '.notificationPreview-box .np-col-img{width:50px !important;height:50px!important;margin-right:10px}'+
+                    '.notificationPreview-box-inner{width:235px !important; height:70px !important;}'+
+                    '.notificationPreview-box .card-body p.card-text{font-size:10px !important;line-height: 3px !important;}'+
+                    '.notificationPreview-box .card-body h5.card-title{font-size:12px!important;height: auto !important;line-height: 15px !important;margin: 0px 0 !important;}'+
+                    '.notificationPreview-box .card-body .pur-time{margin:0px !important;}'+
+                    '.notificationPreview-box .np-col-right{float:none !important;}'+
+                    '}'+  
+            '</style>'
+        );
+    }
+
+    if (Shopify.shop == "little-foxx-online-concept-store.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.card__badge{z-index:999;}'+  
+            '</style>'
+        );
+    }
+
+    if (Shopify.shop == "gotechleb.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.visitor-counter-content-box-carecartbysalespop-2020{margin-top:0px !important;}'+
+                '.counter-text-carecartbysalespop-2020{min-height:24px !important;}'+
+                '.clone-box{padding:0px !important;}'+
+                '.trust-badges-header-center{margin-bottom:0px; !important;}'+  
+            '</style>'
+        );
+
+        masterSelector = $jq321(".product-form__buy-buttons");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+
+    if (Shopify.shop == "slippers-technic.myshopify.com") 
+    {
+        masterSelector = $jq321(".pf-22_");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
+    if (Shopify.shop == "beautivo-shop.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '#sp-notification{letter-spacing:normal;}'+
+                '@media only screen and (max-width: 400px) {.notificationPreview-box .card-body h5.card-title {height: auto !important; font-size: 13px !important;}}'+  
+            '</style>'
+        );
+    }
+
+    if (Shopify.shop == "chasingtitles.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '#clockdivpreviewSalesCollection{position: absolute;z-index: 999;}'+
+                '.timer-store-front {justify-content: center; display: flex;}'+
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
@@ -3662,6 +3768,24 @@
      // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
      function trustBadges(trustBadgesResponse)
      {
+        if (Shopify.shop == "the-cosmic-aroma-1e67.myshopify.com")
+        {
+            let text = window.location.pathname;
+            let result = text.indexOf("products");
+
+            if(result == -1){
+                return;
+            }    
+        }
+        if (Shopify.shop == "7ac472.myshopify.com")
+        {
+            let text = window.location.pathname;
+            let result = text.indexOf("products");
+
+            if(result == -1){
+                return;
+            }    
+        }
         if (Shopify.shop == "caisermascotas.myshopify.com")
         {
             let text = window.location.pathname;
@@ -4113,6 +4237,186 @@
            });
    }
    // ---------------------------------- </ANNOUNCEMENT BAR MODULE> --------------------------------
+
+   // ---------------------------------- <SHARE CART MODULE> --------------------------------
+   function shareCart(response) {
+    let cartPage = !(!window.location.pathname.match("(.*)/cart/(.*)") && !window.location.pathname.match("(.*)/cart"));
+    if (cartPage) {
+        let firstSelector = $jq321("form[action='/cart']").parent();
+        if (firstSelector.length > 0) {
+            var cartContents = fetch('/cart.json', { method: 'GET' })
+                .then(response => response.json())
+                .then(data => {
+                    let copyLink = "https://" + Shopify.shop + "/cart/";
+                    let cartItems = data.items;
+                    if (cartItems.length > 0) {
+                        $jq321(firstSelector[1]).append(response.iconsFile);
+                        for (const items of cartItems) {
+                            copyLink = copyLink + items.variant_id + ":" + items.quantity + ",";
+                        }
+
+                        //Set the link of copy link icon
+                        copyLink = copyLink.slice(0, -1);
+                        $jq321("#cc-sp-share-cart-copy-link-icon").attr("copy-link", copyLink);
+
+                        //Copy icon
+                        $jq321("#cc-sp-share-cart-copy-link-icon").on("click", function () {
+                            $jq321("#cc-sp-share-cart-copied-message-text").show();
+                            navigator.clipboard.writeText($jq321(this).attr("copy-link"));
+                            setTimeout(function () {
+                                $jq321("#cc-sp-share-cart-copied-message-text").hide();
+                            }, 3000);
+                        });
+
+                        //mail icon
+                        $jq321("#cc-sp-share-cart-mail-icon-anchor").attr("href", "mailto:?subject=Checkout%20my%20cart&body=%0AHi%2C%0A%0ATake%20a%20look%20at%20what%20I%20am%20buying%0A%0A" + copyLink);
+                        $jq321("#cc-sp-share-cart-mail-icon").on("click", function () {
+                            window.location.href = "mailto:?subject=Checkout%20my%20cart&body=" + copyLink;
+                        });
+                    }
+                });
+        }
+    }
+}
+// ---------------------------------- </SHARE CART MODULE> --------------------------------
+
+// ---------------------------------- < STICKY CART MODULE> --------------------------------
+function cartUpdateCall(itemID, quantity) {
+    let formData = {
+        'id': itemID,
+        'quantity': quantity
+    };
+    fetch('/cart/change.js', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    }).then(response => {
+    }).catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+function fetchItemsForStickyCart() {
+
+    fetch('/cart.json', { method: 'GET' })
+        .then(response => response.json())
+        .then(data => {
+            let cartItems = data.items;
+            if (cartItems.length == 0) {
+                $jq321(".cc-inner-content").remove();
+                $jq321("#cc-sp-share-cart-empty-cart-text").show();
+                $jq321("#cc-sp-share-cart-copy-link-icon").attr("copy-link", "#");
+                $jq321(".sp-loader").hide();
+                $jq321("#cc-sp-sticky-cart-count").html('0');
+                $jq321("#total_text_drawer").html('');
+                $jq321("#currency").html('');
+            } else {
+                let copyLink = "https://" + Shopify.shop + "/cart/";
+                let totalprice = 0;
+                $jq321("#cc-sp-share-cart-empty-cart-text").hide();
+                let totalItemsCount = 0;
+                $jq321(".cc-inner-content").remove();
+                for (const items of cartItems) {
+                    totalItemsCount = parseInt(totalItemsCount) + parseInt(items.quantity);
+                    copyLink = copyLink + items.variant_id + ":" + items.quantity + ",";
+                    let variantTitle = items.variant_title == null ? "" : '<p class="sp-variant">' + items.variant_title + '</p>';
+                    $jq321(
+                        `<div class="cc-inner-content sp-border">
+                <div class="img-div">
+                    <img src="${items.image}" class="img-fluid rounded-start" width="50" height="50" alt="...">
+                </div>
+                <div class="card-body p-0 pt-2">
+                <div class="sp-pro-title">
+                    <h5> 
+                        ${items.product_title}
+                    </h5>
+                    <a href="javascript:void(0)" class="closebtn cc-sp-sticky-cart-remove-btn" data-value="${items.id}" style="font-size:19px">&times;</a>
+                </div>
+                    ${variantTitle}    
+                    <p class="sp-product-price">${Shopify.currency.active}
+                    ${parseInt(items.price) / 100}.00</p>
+                    <div class="cc-sp-quantity buttons_added">
+            <input type="button" value="-" current-quntity="${items.quantity}" class="minus cc-sp-sticky-cart-minus-btn" style="background-color:transparent;" data-value="${items.id}"><input id="cc-sp-sticky-cart-items-count" type="number" step="1" name="cc-sp-quantity" 
+            value= ${items.quantity} title="Quantity" class="cc-sp-input-text cc-qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus cc-sp-sticky-cart-plus-btn" style="background-color:transparent;" current-quntity="${items.quantity}" data-value="${items.id}">
+        </div>
+                </div>
+            </div>`
+                    ).insertAfter("#cc-sp-share-cart-sidenav-main");
+                    totalprice += (Math.floor(parseInt(items.final_line_price) / 100));
+                }
+
+                copyLink = copyLink.slice(0, -1);
+                $jq321('#currency').html(Shopify.currency.active);
+                $jq321('#total_text_drawer').html(totalprice + ".00");
+                $jq321("#cc-sp-sticky-cart-count").html(totalItemsCount);
+                $jq321("#drawer_button").attr("href", copyLink);
+                $jq321("#cc-sp-share-cart-copy-link-icon").attr("copy-link", copyLink);
+                $jq321('#cc-sp-share-cart-mail-icon').attr("href", "mailto:?subject=Checkout%20my%20cart&body=" + copyLink);
+
+                //When user click on the copy link button
+                $jq321("#cc-sp-share-cart-copy-link-icon").on("click", function () {
+                    navigator.clipboard.writeText($jq321(this).attr("copy-link"));
+                    $jq321("#cc-sp-sticky-cart-copied-message-text").show();
+                    setTimeout(function () {
+                        $jq321("#cc-sp-sticky-cart-copied-message-text").hide();
+                    }, 2000);
+                });
+
+                //Remove cart item
+                $jq321(".cc-sp-sticky-cart-remove-btn").click(function () {
+                    $jq321(".sp-loader").show();
+                    let itemID = $jq321(this).attr("data-value");
+                    cartUpdateCall(itemID, 0);
+                });
+
+                //Minus the quantity
+                $jq321(".cc-sp-sticky-cart-minus-btn").click(function () {
+                    $jq321(".sp-loader").show();
+                    let itemID = $jq321(this).attr("data-value");
+                    let currentItemsCount = $jq321(this).attr("current-quntity");
+                    currentItemsCount = parseInt(currentItemsCount) - 1;
+                    cartUpdateCall(itemID, currentItemsCount);
+                });
+
+                //Plus the quantity
+                $jq321(".cc-sp-sticky-cart-plus-btn").click(function () {
+                    $jq321(".sp-loader").show();
+                    let itemID = $jq321(this).attr("data-value");
+                    let currentItemsCount = $jq321(this).attr("current-quntity");
+                    currentItemsCount = parseInt(currentItemsCount) + 1;
+                    cartUpdateCall(itemID, currentItemsCount);
+                });
+                $jq321(".sp-loader").hide();
+            }
+        });
+}
+
+function stickyCart(response) {
+    setTimeout(function () {
+        $jq321("body").prepend(response.cart_icon);
+        $jq321("body").prepend(response.cart_drawer);
+
+        //attach event with widget
+        $jq321("#stickycart_icon").click(function () {
+            $jq321("#cc-sp-share-cart-sidenav").show();
+            $jq321(".sp-comment-sticky").hide();
+        });
+
+        //Attach event of sidenav close
+        $jq321("#drawer_close").click(function () {
+            $jq321("#cc-sp-share-cart-sidenav").hide();
+            $jq321(".sp-comment-sticky").show();
+        });
+
+        fetchItemsForStickyCart();
+        setInterval(function () {
+            fetchItemsForStickyCart();
+        }, 4000);
+    }, 2000);
+}
+// ---------------------------------- < /STICKY CART MODULE> --------------------------------
 
 });
    

@@ -134,6 +134,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
     });
 
+    console.log(masterSelector);
+
     //Selectors wil goes from here
     if (Shopify.shop == "collectorbrothers.myshopify.com")
     {
@@ -160,6 +162,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "bazaarly-online.myshopify.com")
     {
         finalSelector = masterSelector[0];
+    }
+
+    if (Shopify.shop == "moalov-com.myshopify.com")
+    {
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
     }
 
      function stockCountdown(response) 

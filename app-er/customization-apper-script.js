@@ -1229,6 +1229,15 @@ function AbandonedCart() {
             carecartJquery('head').append('<style type="text/css"> :root{--customCare-background: transparent !important;} #spin_a_sale_cc_store_front_module .checkbox{background: var(--customCare-background); border:none; height:auto; width:auto; } #spin_a_sale_cc_store_front_module .checkbox label input{-moz-appearance: auto !important;display: flex;} @media only screen and (max-width: 575px){#spin_a_sale_cc_store_front_module .signupContainer{min-height: 530px !important;} #spin-trigger-cc, #spin-trigger-cc:active, #spin-trigger-cc:focus, #spin-trigger-cc:hover, #spin-trigger-cc:visited{left:20px !important;}}</style>');
         }
 
+        if (Shopify.shop == "hello-36c8.myshopify.com") 
+        {
+            carecartJquery('head').append('<style type="text/css">'+
+             '#pn-optin-allow-btn-text{background-color: red !important; border-color: red !important;}'+
+             '#pn-optin-disallow-btn-text{background-color: rgb(0, 0, 0) !important; border-color: rgb(0, 0, 0) !important; color:white !important;}'+
+             '.ccswal2-popup{background-color: #fef4e4;}'+
+             '.ccswal2-styled.ccswal2-confirm {background-color: #13ab37 !important;}</style>');
+        }
+
 
         /*Support for whole sales app*/
         carecartJquery('body').find('#wh-whModal-container').find('form#net-order-form').on('click', 'button', function (e) {
