@@ -2027,6 +2027,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         finalSelector = masterSelector[0];
     }
 
+    if (Shopify.shop == "daw-templates-presets.myshopify.com") {
+        $jq321("body").append("<style>.notifyjs-corner{bottom: -29px !important;left: -4px !important}</style>");
+    }
+
     function stockCountdown(responseStock) {
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
         var selectorStock2 = $jq321("form[action='/cart/add']");
