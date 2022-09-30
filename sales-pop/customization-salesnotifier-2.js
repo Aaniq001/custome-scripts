@@ -1207,14 +1207,33 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                             enableStockForVariants(apiResponse.stock.variantsData, apiResponse.stock.variantHeading, apiResponse.stock);
                         }
                     }
+                } else if (apiResponse.stock.stock_restriction_settings !== null && apiResponse.stock.variantCheck == 1) {
+                    let stock_restriction_setting = JSON.parse(apiResponse.stock.stock_restriction_settings);
+                    if (stock_restriction_setting.stock_restriction_check == "on" && parseInt(stock_restriction_setting.stock_restriction_value) !== parseInt(apiResponse.stock.left_stock) && parseInt(apiResponse.stock.left_stock) > parseInt(stock_restriction_setting.stock_restriction_value)) {
+                        console.log("SP: Stock restricted to display");
+                    } else {
+                        $jq321("head").append($jq321("<link/>", {
+                            rel: "stylesheet",
+                            href: serverUrl.cssStock + "?v" + version
+                        }));
+                        stockCountdown(apiResponse.stock);
+                        if (apiResponse.stock.variantCheck && apiResponse.stock.variantCheck == 1 && apiResponse.stock.variantsData !== null && apiResponse.stock.variantsData.length > 1) {
+                            enableStockForVariants(apiResponse.stock.variantsData, apiResponse.stock.variantHeading, apiResponse.stock);
+                        }
+                    }
                 } else {
-                    $jq321("head").append($jq321("<link/>", {
-                        rel: "stylesheet",
-                        href: serverUrl.cssStock + "?v" + version
-                    }));
-                    stockCountdown(apiResponse.stock);
-                    if (apiResponse.stock.variantCheck && apiResponse.stock.variantCheck == 1 && apiResponse.stock.variantsData !== null && apiResponse.stock.variantsData.length > 1) {
-                        enableStockForVariants(apiResponse.stock.variantsData, apiResponse.stock.variantHeading, apiResponse.stock);
+                    let stock_restriction_setting = JSON.parse(apiResponse.stock.stock_restriction_settings);
+                    if (stock_restriction_setting.stock_restriction_check == "on" && parseInt(stock_restriction_setting.stock_restriction_value) !== parseInt(apiResponse.stock.left_stock) && parseInt(apiResponse.stock.left_stock) > parseInt(stock_restriction_setting.stock_restriction_value)) {
+                        console.log("SP: Stock restricted to display");
+                    } else {
+                        $jq321("head").append($jq321("<link/>", {
+                            rel: "stylesheet",
+                            href: serverUrl.cssStock + "?v" + version
+                        }));
+                        stockCountdown(apiResponse.stock);
+                        if (apiResponse.stock.variantCheck && apiResponse.stock.variantCheck == 1 && apiResponse.stock.variantsData !== null && apiResponse.stock.variantsData.length > 1) {
+                            enableStockForVariants(apiResponse.stock.variantsData, apiResponse.stock.variantHeading, apiResponse.stock);
+                        }
                     }
                 }
             }
@@ -2032,7 +2051,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
 
     if (Shopify.shop == "shopshop.myshopify.com") {
-        console.log("Hella");
         masterSelector = $jq321(".product-description");
         finalSelector = masterSelector[0];
         $jq321("head").append("<style>.stock-top{width: 48% !important}</style>");
@@ -2598,7 +2616,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
 
-            
+
             if (masterSelector.length > 0) {
                 $jq321(trustBadgesResponse.view).insertAfter(masterSelector);
             }
