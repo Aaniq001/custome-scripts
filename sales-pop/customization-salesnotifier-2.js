@@ -2028,7 +2028,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
 
     if (Shopify.shop == "daw-templates-presets.myshopify.com") {
-        $jq321("body").append("<style>.notifyjs-corner{bottom: -29px !important;left: -4px !important}</style>");
+        $jq321("body").append("<style>.notifyjs-corner{left: 34px !important}</style>");
     }
 
     function stockCountdown(responseStock) {
