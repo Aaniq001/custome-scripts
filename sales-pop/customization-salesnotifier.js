@@ -1498,10 +1498,10 @@
                 collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
             }, 2000);
 
-            $jq321(window).scroll(function () {
+            /* $jq321(window).scroll(function () {
                 $jq321(".timer-store-front").remove();
                 collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
-            }); 
+            }); */ 
         }
 
         // ANNOUNCEMENT BAR CALL
@@ -1870,10 +1870,10 @@
                 collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
             }, 2000);
 
-            $jq321(window).scroll(function () {
+            /* $jq321(window).scroll(function () {
                 $jq321(".timer-store-front").remove();
                 collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
-            }); 
+            }); */ 
         }
 
         // ANNOUNCEMENT BAR CALL
@@ -2961,6 +2961,17 @@
         finalSelector = masterSelector[0];
 
         console.log(masterSelector);
+    }
+
+    if (Shopify.shop == "green-elv-nutrition-mex.myshopify.com")
+    {
+        setTimeout(function(){ 
+            $jq321(".daysc").addClass("notranslate");
+            $jq321(".hoursc").addClass("notranslate");
+            $jq321(".minutesc").addClass("notranslate");
+            $jq321(".secondsc").addClass("notranslate");
+            $jq321(".numbers").addClass("notranslate"); 
+        }, 5000);
     }
 
      /** Stock for variants **/
@@ -4109,8 +4120,10 @@
                 {
                     if (checkValue(allLinks[u], responseTimerCollection) == 'Not exist') 
                     {
-                        var selectorTimeView = $jq321("[href='" + allLinks[u] + "']");
+                        //var selectorTimeView = $jq321("[href='" + allLinks[u] + "']");
+                        var selectorTimeView = $jq321("[href='" + allLinks[u] + "'][class='full-unstyled-link']");
                         selectorTimeView = selectorTimeView[0];
+
                         $jq321(responseTimer.view).insertBefore(selectorTimeView);
                     }
                 }
