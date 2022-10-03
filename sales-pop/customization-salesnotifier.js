@@ -2955,6 +2955,14 @@
         );
     }
 
+    if (Shopify.shop == "rajmohar-test.myshopify.com") 
+    {
+        masterSelector = $jq321(".gt_product-price--box");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
