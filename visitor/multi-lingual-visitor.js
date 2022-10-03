@@ -123,7 +123,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     $jq321.each(allForms, function (key, value) {
         var formUrls = value.action;
-        if (formUrls.indexOf('/cart/add') > -1) { masterSelector = $jq321(value).find("button[type='submit'],input[type='submit']").parent(); }
+        if (formUrls.indexOf('/cart/add') > -1) 
+        { 
+            masterSelector = $jq321(value).find("button[type='submit'],input[type='submit']").parent();
+         }
     });
 
     function visitorCounter(response) {
@@ -134,7 +137,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
 
         if (response.above_cart == 1) {
-            if (Shopify.shop == "officialsmootsy.myshopify.com")
+            if (Shopify.shop == "boutique1861.myshopify.com")
+            {
+                $jq321(response.view).insertBefore('.add_to_cart');
+            }
+            else if (Shopify.shop == "officialsmootsy.myshopify.com")
             {
                 $jq321(response.view).insertBefore('.product-form__buttons');
             }
@@ -155,7 +162,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             }
         }
         else {
-            if (Shopify.shop == "officialsmootsy.myshopify.com")
+            if (Shopify.shop == "boutique1861.myshopify.com")
+            {
+                $jq321(response.view).insertAfter('.add_to_cart');
+            }
+            else if (Shopify.shop == "officialsmootsy.myshopify.com")
             {
                 $jq321(response.view).insertAfter('.product-form__buttons');
             }
