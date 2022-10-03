@@ -1436,6 +1436,12 @@
                     rel: "stylesheet",
                     href: serverUrl.cssVisitor + "?v" + version
                 }));
+
+                if (apiResponse.visitor.start_visitor_counter != null && apiResponse.visitor.end_visitor_counter != null) {
+
+                    customVisitors(apiResponse.visitor.start_visitor_counter, apiResponse.visitor.end_visitor_counter);
+                }
+                
                 visitorCounter(apiResponse.visitor);
             }             
          }
@@ -3019,6 +3025,41 @@
             }
        });
     }
+    }
+
+    // CUSTOM VISITOR COUNTER
+
+    function customVisitors(start_limit_number, end_limit_number) {
+
+        let randomNumber = Math.floor(Math.random() * (end_limit_number - start_limit_number + 1) + parseInt(start_limit_number));
+
+        setInterval(changeRandomNumber, 3000);
+
+        function changeRandomNumber() {
+
+            if (Math.floor((Math.random() * 2))) {
+
+                randomNumberTen = Math.floor((Math.random() * 10) + 1);
+                randomNumber = parseInt(randomNumber) + parseInt(randomNumberTen);
+
+                if (randomNumber > end_limit_number) {
+                    randomNumber = end_limit_number;
+                }
+
+            }
+
+            else {
+
+                randomNumberTen = Math.floor((Math.random() * 10) + 1);
+                randomNumber = parseInt(randomNumber) - parseInt(randomNumberTen);;
+
+                if (randomNumber < start_limit_number) {
+                    randomNumber = start_limit_number;
+                }
+            }
+
+            $jq321("#carecart-salespop-visitor-number").html(randomNumber);
+        }
     }
 
     function enableStockForVariants(variantsData, variantHeading) {
