@@ -1235,7 +1235,10 @@ function AbandonedCart() {
              '#pn-optin-allow-btn-text{background-color: red !important; border-color: red !important;}'+
              '#pn-optin-disallow-btn-text{background-color: rgb(0, 0, 0) !important; border-color: rgb(0, 0, 0) !important; color:white !important;}'+
              '.ccswal2-popup{background-color: #fef4e4;}'+
-             '.ccswal2-styled.ccswal2-confirm {background-color: #13ab37 !important;}</style>');
+             '.ccswal2-styled.ccswal2-confirm {background-color: #13ab37 !important;}'+
+             '.ccswal2-confirm span{font-size: 20pt !important;}'+
+             '.ccswal2-title h2 p {color:#000 !important;}'+
+             '</style>');
         }
 
 
