@@ -1430,6 +1430,19 @@
                     visitorCounter(apiResponse.visitor);
                 }, 5000);
             }
+            else if (Shopify.shop == "rajmohar-test.myshopify.com")
+            {
+                $jq321("head").append($jq321("<link/>", {
+                    rel: "stylesheet",
+                    href: serverUrl.cssVisitor + "?v" + version
+                }));
+
+                setTimeout(function(){
+
+                    visitorCounter(apiResponse.visitor);
+                    
+                }, 2000);
+            }
             else
             {
                 $jq321("head").append($jq321("<link/>", {
@@ -1749,7 +1762,7 @@
  
      };
 
-     window.checkmodule_popup1 = function (response) {
+     /* window.checkmodule_popup1 = function (response) {
          spDebuger.storeLog("BACKEND-URL: ", salespoplib_vars_obj.backend_url);
  
          apiResponse = response;
@@ -1845,9 +1858,9 @@
                      collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
                  }, 3000);
 
-                 /*$jq321(window).scroll(function () {
+                 $jq321(window).scroll(function () {
                     collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
-                 });*/ 
+                 }); 
              }
          }
          
@@ -1876,10 +1889,10 @@
                 collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
             }, 2000);
 
-            /* $jq321(window).scroll(function () {
+            $jq321(window).scroll(function () {
                 $jq321(".timer-store-front").remove();
                 collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
-            }); */ 
+            }); 
         }
 
         // ANNOUNCEMENT BAR CALL
@@ -1945,7 +1958,7 @@
 
             trustBadges(apiResponse.trustBadges);
         }
-     };
+     }; */
  
      window.showSalesPopup = function (popUpIndexToDisplay) {
  
@@ -2067,31 +2080,31 @@
      };
      /////////////////////// Set flag to get notifications data //////////////////////////
 
-     $jq321.ajax({
-         type: "GET",
-         url: salespoplib_vars_obj.backend_url + 'checkStore/',
-         dataType: "jsonp",
-         jsonpCallback: "checkmodule_popup",
-         crossDomain: true,
-         data: {
-             "webpage": encodeURIComponent(salespoplib_active_url),
-             "checkDevice": salespoplib_vars_obj.checkDevice,
-             "domain_url": Shopify.shop,
-             "product_id": (meta.product && meta.product.id)?meta.product.id:'',
-             "fetchNotifications": fetchNotifications
-         },
-         beforeSend: function () {
-         },
-         success: function () {
-         },
-         error: function (jqXHR, textStatus, errorThrown) {
-             console.log(jqXHR);
-             console.log("status: " + textStatus);
-             console.log("err: " + errorThrown);
-         },
-         complete: function () {
-         }
-     });
+    $jq321.ajax({
+        type: "GET",
+        url: salespoplib_vars_obj.backend_url + 'checkStore/',
+        dataType: "jsonp",
+        jsonpCallback: "checkmodule_popup",
+        crossDomain: true,
+        data: {
+            "webpage": encodeURIComponent(salespoplib_active_url),
+            "checkDevice": salespoplib_vars_obj.checkDevice,
+            "domain_url": Shopify.shop,
+            "product_id": (meta.product && meta.product.id)?meta.product.id:'',
+            "fetchNotifications": fetchNotifications
+        },
+        beforeSend: function () {
+        },
+        success: function () {
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
+            console.log("status: " + textStatus);
+            console.log("err: " + errorThrown);
+        },
+        complete: function () {
+        }
+    });
       
      /*let lastUrl = location.href;
 
@@ -2963,6 +2976,14 @@
 
     if (Shopify.shop == "rajmohar-test.myshopify.com") 
     {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.visitor-counter-content-box-carecartbysalespop-2020{height:35px !important;}'+
+                '.gt_atom-ukiV0EsKwajhpps_boxPrice{margin-bottom:0px !important;}'+
+                '.visitor-counter-content-box-carecartbysalespop-2020{margin-top:0px !important;}'+
+            '</style>'
+        );
+
         masterSelector = $jq321(".gt_product-price--box");
         finalSelector = masterSelector[0];
 
