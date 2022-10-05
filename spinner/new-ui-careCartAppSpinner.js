@@ -920,6 +920,14 @@
                                             }
                                         }
                     */
+
+                    if (Shopify.shop == 'inkster-shop.myshopify.com') 
+                    {    
+                            var newValue = 'https://cdn.shopify.com/s/files/1/0532/1251/2434/files/Michael.png?v=1664902204';   
+                            carecartSpinnerJquery('.wheelLogo').attr("xlink:href", newValue);
+
+                            console.log('change cental wheel image');
+                    }
                 }
 
                 function hideSpinASaleModule() {
@@ -1076,6 +1084,7 @@
                 }
 
                 function pupulateData(response) {
+
                     setTimeout(function (response) {
                         stopShakeButton(response);
                     }, 1000, response);
@@ -1655,10 +1664,19 @@
 
                                 }, 500);
                                 if (SASGoingToShow()) {
+
                                     setTimeout(function () {
+
                                         var type = 'auto';
+
                                         showSpinASaleModule(type);
+                                        
                                         couponAndMsgAreSetThenLoad();
+
+                                        
+
+
+
                                     }, parseInt(response.records.store_settings.settings_data.delay_time) * 1000);
                                 }
                                 /* *********************************************** Start - Display Urgency Timer Bar ********************************** */
