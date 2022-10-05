@@ -3001,6 +3001,15 @@
         }, 5000);
     }
 
+    if (Shopify.shop == "accountservices-9191.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.notificationPreview-box .card-body h5.card-title{letter-spacing:normal;font-weight:normal;text-transform: none;}'+
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
