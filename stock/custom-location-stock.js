@@ -262,6 +262,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "tirtirus.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "www-kavipoetryart-in.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     /**
