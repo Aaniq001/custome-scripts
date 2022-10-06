@@ -2053,7 +2053,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "shopshop.myshopify.com") {
         masterSelector = $jq321(".product-description");
         finalSelector = masterSelector[0];
-        $jq321("head").append("<style>.stock-top{width: 48% !important}</style>");
+        $jq321("head").append('<style>'+
+        '.stock-top{width: 48% !important;}'+
+        '.cc-shareCart h2{font-weight:bold;}'+
+        '</style>');
+
     }
 
     function stockCountdown(responseStock) {
