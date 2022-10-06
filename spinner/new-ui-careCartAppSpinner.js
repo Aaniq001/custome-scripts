@@ -2963,6 +2963,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'vegicatessen.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> .wheelText{font-weight:bold;} </style>');
+                    //console.log("SAS https://partychampions.com/");
+                }
                 if (Shopify.shop == 'mk-essentials-4921.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> .wheelLogo{display:none;}</style>');
                     //console.log("SAS https://partychampions.com/");
