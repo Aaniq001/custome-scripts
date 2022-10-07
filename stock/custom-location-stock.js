@@ -265,6 +265,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "www-kavipoetryart-in.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "bearsmuscle.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     /**
@@ -573,6 +576,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "tirtirus.myshopify.com")
     {
         masterSelector = $jq321("#add-to-cart-form");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+    if (Shopify.shop == "bearsmuscle.myshopify.com")
+    {
+        masterSelector = $jq321(".gt_button--add-cart");
         finalSelector = masterSelector[0];
 
         console.log(finalSelector);
