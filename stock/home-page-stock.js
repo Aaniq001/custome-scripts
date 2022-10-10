@@ -202,6 +202,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 7861698527453;
     }
+    if (Shopify.shop == "lindispensable-et-moi.myshopify.com")
+    {
+        productID = 7478875685019;
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -288,7 +292,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(finalSelector);
     }
-
     if(Shopify.shop == "b-relax-ita.myshopify.com")
     {
         $jq321("head").append('<style type="text/css">.product-block--price{margin-bottom:11px !important;}</style>');
@@ -298,7 +301,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(finalSelector);
     }
+    if (Shopify.shop == "lindispensable-et-moi.myshopify.com")
+    {
+        customSelector = $jq321(".product-form");
+        finalSelector = customSelector[0];
 
+        console.log(finalSelector);
+    }
+    
      function stockCountdown(response) {
          
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
