@@ -3010,6 +3010,20 @@
         );
     }
 
+    if (Shopify.shop == "phool-co.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.stock-top{display: block !important;}'+ 
+            '</style>'
+        );
+        
+        masterSelector = $jq321(".quantity-submit-row");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
