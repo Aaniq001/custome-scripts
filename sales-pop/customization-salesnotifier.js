@@ -3024,6 +3024,16 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "xn-ymcecs6lc3an.myshopify.com") 
+    {
+        /* $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.fa-eye:before{content: "" !important;}'+
+                '.fa-eye:after{content: "\f06e" !important;}'+ 
+            '</style>'
+        ); */
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
@@ -3348,35 +3358,26 @@
              masterSelector = $jq321(".ProductForm__AddToCart");
              finalSelector = masterSelector[0];
          }
-
-         if (Shopify.shop == "arch-ford.myshopify.com") 
+         else if (Shopify.shop == "arch-ford.myshopify.com") 
          {
 
             masterSelector = $jq321(".product-detail_cart");
             finalSelector = masterSelector[0];
          }
-
-         if (Shopify.shop == "acogeneralstore.myshopify.com")
+         else if (Shopify.shop == "acogeneralstore.myshopify.com")
          {
             masterSelector = $jq321(".price-container-desktop");
             finalSelector = masterSelector[0];
 
             console.log(finalSelector);
          }
-
-         /*if (Shopify.shop == "anotherlevelwigs.myshopify.com") 
-         {
-            masterSelector = $jq321(".price-review");
-            finalSelector = masterSelector[0];
-         }*/
-
-         if (Shopify.shop == "unlimited-create.myshopify.com") 
+         else if (Shopify.shop == "unlimited-create.myshopify.com") 
          {
             masterSelector = $jq321(".stock-top");
             finalSelector = masterSelector[0];
 
             console.log(finalSelector);
-         } 
+         }
          
          if (responseTimer.above_cart == 1) 
          {
@@ -3483,6 +3484,13 @@
          $jq321('m').html(function (i, v) {
              return v.replace(/(\d)/g, '<span ' + response.count + '>$1</span>');
          });
+
+         if (Shopify.shop == "xn-ymcecs6lc3an.myshopify.com")
+         {
+            var customIcon = $jq321(".fa");
+            customIcon.remove();
+            $jq321(customIcon).insertAfter('.visitor-font-size-15px');
+         }
      }
  // ---------------------------------- <VISITOR COUNTER MODULE> --------------------------------
  
