@@ -3024,14 +3024,13 @@
         console.log(masterSelector);
     }
 
-    if (Shopify.shop == "xn-ymcecs6lc3an.myshopify.com") 
+    if (Shopify.shop == "right-here-at-home.myshopify.com") 
     {
-        /* $jq321("head").append(
+        $jq321("head").append(
             '<style type="text/css">'+ 
-                '.fa-eye:before{content: "" !important;}'+
-                '.fa-eye:after{content: "\f06e" !important;}'+ 
+                '.notificationPreview-box.halloween-bg .card-body h5.card-title a {color: #fff !important;}'+ 
             '</style>'
-        ); */
+        );
     }
 
      /** Stock for variants **/
