@@ -1768,12 +1768,13 @@
      {
         productID = 7826425872604;
 
-        masterSelector = $jq321("[data-pf-type=ProductPrice2]");
-        finalSelector = masterSelector[1];
-
-        console.log(masterSelector);
+        //masterSelector = $jq321("[data-pf-type=ProductPrice2]");
+        masterSelector = $jq321(".btnmyodrers");
+        
+        finalSelector = masterSelector[0];
+        console.log(finalSelector);
      }
-
+ 
      $jq321.ajax({
          type: "GET",
          url: salespoplib_vars_obj.backend_url + 'checkStore/',
@@ -2150,91 +2151,152 @@
     /** Stock for variants ends **/
          
     
-       function stockCountdown(responseStock) {
-        var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
-        var selectorStock2 = $jq321("form[action='/cart/add']");
-        var selectorStock3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
-        var selectorStock4 = $jq321("form[action='/cart/add']:first");
-        var selectorStock5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
-        var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
+       function stockCountdown(responseStock) 
+       {
+            var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
+            var selectorStock2 = $jq321("form[action='/cart/add']");
+            var selectorStock3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
+            var selectorStock4 = $jq321("form[action='/cart/add']:first");
+            var selectorStock5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
+            var selectorStock6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
 
-        if (responseStock.above_cart == 1) {
-            if (masterSelector.length > 0) { 
+        if (responseStock.above_cart == 1) 
+        {
+            if (masterSelector.length > 0) 
+            { 
                 $jq321(responseStock.view).insertBefore(finalSelector);
-            } else if (selectorStock1.length == 1) {
+            } 
+            else if (selectorStock1.length == 1) 
+            {
                 selectorStock1.prepend(responseStock.view);
-                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) 
+                {
                     selectorStock1.prepend(responseStock.soldView);
                 }
-            } else if (selectorStock2.length == 1) {
+            } 
+            else if (selectorStock2.length == 1) 
+            {
                 selectorStock2.prepend(responseStock.view);
-                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) 
+                {
                     selectorStock2.prepend(responseStock.soldView);
                 }
-            } else if (selectorStock3.length == 1) {
+            } 
+            else if (selectorStock3.length == 1) 
+            {
                 $jq321(responseStock.view).insertBefore(selectorStock3);
-                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) 
+                {
                     $jq321(responseStock.soldView).insertBefore(selectorStock3);
                 }
-            } else if (selectorStock4.length == 1) {
+            } 
+            else if (selectorStock4.length == 1) 
+            {
                 selectorStock4.prepend(responseStock.view);
-                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) 
+                {
                     selectorStock4.prepend(responseStock.soldView);
                 }
-            } else if (selectorStock5.length == 1) {
+            } 
+            else if (selectorStock5.length == 1) 
+            {
                 $jq321(responseStock.view).insertBefore(selectorStock5);
-                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) 
+                {
                     $jq321(responseStock.soldView).insertBefore(selectorStock5);
                 }
-            } else if (selectorStock6.length == 1) {
+            } 
+            else if (selectorStock6.length == 1) 
+            {
                 selectorStock6.prepend(responseStock.view);
-                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) 
+                {
                     selectorStock6.prepend(responseStock.soldView);
                 }
             }
-        } else {
-            if (masterSelector.length > 0) { 
+        } 
+        else 
+        {
+            if (masterSelector.length > 0) 
+            { 
                 $jq321(responseStock.view).insertAfter(finalSelector);  
-            } else if (selectorStock1.length == 1) {
+            } 
+            else if (selectorStock1.length == 1) 
+            {
                 selectorStock1.append(responseStock.view);
-                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) 
+                {
                     selectorStock1.append(responseStock.soldView);
                 }
-            } else if (selectorStock2.length == 1) {
+            } 
+            else if (selectorStock2.length == 1) 
+            {
                 selectorStock2.append(responseStock.view);
-                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) 
+                {
                     selectorStock2.append(responseStock.soldView);
                 }
-            } else if (selectorStock3.length == 1) {
+            } 
+            else if (selectorStock3.length == 1) 
+            {
                 $jq321(responseStock.view).insertAfter(selectorStock3);
-                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) 
+                {
                     $jq321(responseStock.soldView).insertAfter(selectorStock3);
                 }
-            } else if (selectorStock4.length == 1) {
+            } 
+            else if (selectorStock4.length == 1) 
+            {
                 selectorStock4.append(responseStock.view);
-                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) 
+                {
                     selectorStock4.append(responseStock.soldView);
                 }
-            } else if (selectorStock5.length == 1) {
+            } 
+            else if (selectorStock5.length == 1) 
+            {
                 $jq321(responseStock.view).insertAfter(selectorStock5);
-                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) 
+                {
                     $jq321(responseStock.soldView).insertAfter(selectorStock5);
                 }
-            } else if (selectorStock6.length == 1) {
+            } 
+            else if (selectorStock6.length == 1) 
+            {
                 selectorStock6.append(responseStock.view);
-                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) {
+                
+                if (responseStock.soldOutSettings !== undefined && responseStock.soldOutProduct === undefined) 
+                {
                     selectorStock6.append(responseStock.soldView);
                 }
             }
         }
 
-        if (responseStock.variantCheck == 0 && responseStock.soldOutProduct == 1) {
+        if (responseStock.variantCheck == 0 && responseStock.soldOutProduct == 1) 
+        {
             $jq321(".cc-sp-sc-sold-div").show();
-        } else if (responseStock.variantCheck == 0 && responseStock.soldOutProduct === undefined) {
+        } 
+        else if (responseStock.variantCheck == 0 && responseStock.soldOutProduct === undefined) 
+        {
             $jq321(".cc-sp-sc-stock-div").show();
-        } else if (responseStock.variantCheck == 1 && responseStock.soldOutProduct === undefined) {
+        } 
+        else if (responseStock.variantCheck == 1 && responseStock.soldOutProduct === undefined) 
+        {
             $jq321(".cc-sp-sc-stock-div").show();
-        } else if (responseStock.variantCheck == 1 && responseStock.soldOutProduct == 1) {
+        } 
+        else if (responseStock.variantCheck == 1 && responseStock.soldOutProduct == 1) 
+        {
             $jq321(".cc-sp-sc-sold-div").show();
         }
     }
@@ -2294,7 +2356,8 @@
      }
  
      // CREATE LIVE TIME COUNTDOWN
-     function timeCountdown(responseTimer) {
+     function timeCountdown(responseTimer) 
+     {
          var selectorTimer1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorTimer2 = $jq321("form[action='/cart/add']");
          var selectorTimer3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
@@ -2302,38 +2365,70 @@
          var selectorTimer5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorTimer6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
  
-         if (responseTimer.above_cart == 1) {
-              if (selectorTimer1.length == 1) {
+         if (responseTimer.above_cart == 1) 
+         {
+            if (masterSelector.length > 0) 
+            { 
+                $jq321(responseTimer.view).insertBefore(finalSelector);
+            }
+            else if (selectorTimer1.length == 1) 
+            {
                  selectorTimer1.prepend(responseTimer.view);
-             } else if (selectorTimer2.length == 1) {
+            } 
+            else if (selectorTimer2.length == 1) 
+            {
                  selectorTimer2.prepend(responseTimer.view);
-             } else if (selectorTimer3.length == 1) {
+            } 
+            else if (selectorTimer3.length == 1) 
+            {
                  $jq321(responseTimer.view).insertBefore(selectorTimer3);
-             } else if (selectorTimer4.length == 1) {
+            } 
+            else if (selectorTimer4.length == 1) 
+            {
                  selectorTimer4.prepend(responseTimer.view);
-             } else if (selectorTimer5.length == 1) {
+            } 
+            else if (selectorTimer5.length == 1) 
+            {
                  $jq321(responseTimer.view).insertBefore(selectorTimer5);
-             } else if (selectorTimer6.length == 1) {
+            } 
+            else if (selectorTimer6.length == 1) 
+            {
                  selectorTimer6.prepend(responseTimer.view);
-             }
-         } else {
-             if (selectorTimer1.length == 1) {
+            }
+         } 
+         else 
+         {
+            if (masterSelector.length > 0) 
+            { 
+                $jq321(responseTimer.view).insertAfter(finalSelector);  
+            }
+            else if (selectorTimer1.length == 1) 
+            {
                  selectorTimer1.append(responseTimer.view);
-             } else if (selectorTimer2.length == 1) {
+            } 
+            else if (selectorTimer2.length == 1) 
+            {
                  selectorTimer2.append(responseTimer.view);
-             } else if (selectorTimer3.length == 1) {
+            } 
+            else if (selectorTimer3.length == 1) 
+            {
                  $jq321(responseTimer.view).insertAfter(selectorTimer3);
-             } else if (selectorTimer4.length == 1) {
+            } 
+            else if (selectorTimer4.length == 1) 
+            {
                  selectorTimer4.append(responseTimer.view);
-             } else if (selectorTimer5.length == 1) {
+            } 
+            else if (selectorTimer5.length == 1) 
+            {
                  $jq321(responseTimer.view).insertAfter(selectorTimer5);
-             } else if (selectorTimer6.length == 1) {
+            } 
+            else if (selectorTimer6.length == 1) 
+            {
                  selectorTimer6.append(responseTimer.view);
-             }
+            }
          }
  
          var deadline = responseTimer.time;
-         //initializeClock('clockdivpreview', deadline);
          initializeClock('clockdivpreviewSales', deadline);
      }
  
