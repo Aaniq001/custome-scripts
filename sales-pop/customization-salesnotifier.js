@@ -2065,11 +2065,11 @@
             $jq321(".pur-time").html(timeDifference);
         }
 
-        let salesNotificationImpressions = {
+        /* let salesNotificationImpressions = {
             id: impressionsID,
             salesNotification : 1
         }
-        postImpressions(salesNotificationImpressions, "sp_sales_notifications_impressions");
+        postImpressions(salesNotificationImpressions, "sp_sales_notifications_impressions"); */
     };
  
  
