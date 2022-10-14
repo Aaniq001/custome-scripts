@@ -3041,6 +3041,15 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "customlove-nl.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.notificationPreview-box .card-body h5.card-title{ letter-spacing:normal; text-transform:capitalize;font-weight:normal; }'+ 
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
@@ -3089,7 +3098,6 @@
     }
 
     // CUSTOM VISITOR COUNTER
-
     function customVisitors(start_limit_number, end_limit_number) {
 
         let randomNumber = Math.floor(Math.random() * (end_limit_number - start_limit_number + 1) + parseInt(start_limit_number));
