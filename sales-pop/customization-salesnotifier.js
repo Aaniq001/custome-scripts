@@ -3068,7 +3068,7 @@
         $jq321("head").append(
             '<style type="text/css">'+ 
                 '.notificationPreview-box .card-body h5.card-title{ letter-spacing:normal; text-transform:capitalize;font-weight:normal; }'+
-                '@media only screen and (max-width:576px){.notifyjs-corner .notifyjs-wrapper, .notifyjs-corner .notifyjs-container {bottom: -1px;}}'+ 
+                '@media only screen and (max-width:576px){.notifyjs-corner .notifyjs-wrapper, .notifyjs-corner .notifyjs-container {bottom: -5px;}}'+ 
             '</style>'
         );
     }
