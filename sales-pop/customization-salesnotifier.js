@@ -3073,6 +3073,15 @@
         );
     }
 
+    if (Shopify.shop == "furniture-valley-store.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.notificationPreview-box .card-body h5.card-title{ letter-spacing: normal; font-weight: normal;font-size: 14px !important;}'+ 
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
