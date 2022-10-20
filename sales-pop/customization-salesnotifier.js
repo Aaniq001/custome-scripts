@@ -3082,6 +3082,15 @@
         );
     }
 
+    if (Shopify.shop == "nicchiabeauty-1750.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.annFullsection .getDiscoundText {margin-bottom: 0px;}'+ 
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
