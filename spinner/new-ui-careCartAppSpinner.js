@@ -78,8 +78,10 @@
                     //console.log('User IP Address Already Exists: ' + window.localStorage.getItem('cc-sas-spinner-user-ip-address'));
                 }
 
-
                 if (window.localStorage.getItem('cc-sas-spinner-cookies-data') === null) {
+
+                    var timeForATCH = Math.round((new Date()).getTime() / 1000);
+            
                     var ccCareCartSpinnerUserCookieInfo = document.cookie;
 
                     //console.log('ccCareCartSpinnerUserCookieInfo: ' + ccCareCartSpinnerUserCookieInfo);
@@ -89,6 +91,9 @@
                     ccCareCartSpinnerUserCookieInfo = ccCareCartSpinnerUserCookieInfo.substring(0, secondBracket);
                     ccCareCartSpinnerUserCookieInfo = ccCareCartSpinnerUserCookieInfo.split(';')[1];
                     ccCareCartSpinnerUserCookieInfo = carecartSpinnerJquery.trim(ccCareCartSpinnerUserCookieInfo);
+                    
+                    ccCareCartSpinnerUserCookieInfo = ccCareCartSpinnerUserCookieInfo + timeForATCH;
+
                     window.localStorage.setItem('cc-sas-spinner-cookies-data', 'cc-sas-spinner-coo-' + ccCareCartSpinnerUserCookieInfo);
                     //console.log('ccCareCartSpinner Data Updated: ' + window.localStorage.getItem('cc-sas-spinner-cookies-data'));
                 }
