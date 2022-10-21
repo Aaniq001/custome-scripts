@@ -143,6 +143,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         productID = 7404143968428;
     }
+    if (Shopify.shop == "cactusrecords.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        productID = 7953728930098;
+    }
 
     $jq321.ajax({
         type: "GET",
