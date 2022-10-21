@@ -3091,6 +3091,14 @@
         );
     }
 
+    if (Shopify.shop == "sleep-beds.myshopify.com") 
+    {
+        masterSelector = $jq321(".payment-and-quantity");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
@@ -3504,6 +3512,13 @@
          else if (Shopify.shop == "acogeneralstore.myshopify.com")
          {
             masterSelector = $jq321(".product-single__add-to-cart");
+            finalSelector = masterSelector[0];
+
+            console.log(finalSelector);
+         }
+         else if (Shopify.shop == "sleep-beds.myshopify.com")
+         {
+            masterSelector = $jq321(".payment-and-quantity");
             finalSelector = masterSelector[0];
 
             console.log(finalSelector);
