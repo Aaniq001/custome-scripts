@@ -712,10 +712,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         else if ("helpless-insect-91.telebit.io" === tempAnchorTag.hostname) {
             backend = "http://localhost:8500/index.php/FrontController/";
             impressionURL = "http://localhost:8501/index.php/ImpressionsCount/";
-        }else{
-            backend = "https://tracking-sales-pop.carecart.io/index.php/FrontController/";
-            impressionURL = "https://tracking-sales-pop.carecart.io/index.php/ImpressionsCount/";
-        }
+        }//else{
+           // backend = "https://tracking-sales-pop.carecart.io/index.php/FrontController/";
+            //impressionURL = "https://tracking-sales-pop.carecart.io/index.php/ImpressionsCount/";
+        //}
         
         return {
             "backend": backend,
