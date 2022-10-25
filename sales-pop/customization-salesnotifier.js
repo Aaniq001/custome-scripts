@@ -712,11 +712,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         else if ("helpless-insect-91.telebit.io" === tempAnchorTag.hostname) {
             backend = "http://localhost:8500/index.php/FrontController/";
             impressionURL = "http://localhost:8501/index.php/ImpressionsCount/";
-        }//else{
-           // backend = "https://tracking-sales-pop.carecart.io/index.php/FrontController/";
-            //impressionURL = "https://tracking-sales-pop.carecart.io/index.php/ImpressionsCount/";
-        //}
-        
+        }
+
         return {
             "backend": backend,
             "impressionURL": impressionURL,
@@ -1204,7 +1201,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             console.log(msg);
         }
         //////////////////////////////// .end local storage check
-       
+
         // STOCK COUNTDOWN CALL
         if (apiResponse && apiResponse.stock && apiResponse.stock !== null) {
             if (apiResponse.stock.on_off == 1) {
@@ -1237,6 +1234,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         // Time COUNTDOWN CALL
         if (apiResponse && apiResponse.timer && apiResponse.timer !== null) {
+            
             timeCountdownForImpression = 1;
             setTimeout(function () {
                 $jq321("head").append($jq321("<link/>", {
@@ -2169,7 +2167,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     // CREATE LIVE TIME COUNTDOWN
     function timeCountdown(responseTimer) {
-        
         var selectorTimer1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
         var selectorTimer2 = $jq321("form[action='/cart/add']");
         var selectorTimer3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
@@ -2177,7 +2174,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var selectorTimer5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
         var selectorTimer6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
         var selectorTimer7 = $jq321("form[action='/cart/add']").find('.ProductForm__BuyButtons');
-        
+
         if (responseTimer.above_cart == 1) {
             if (selectorTimer1.length == 1) {
                 selectorTimer1.prepend(responseTimer.view);
