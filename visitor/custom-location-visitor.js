@@ -953,8 +953,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     if (Shopify.shop == "carboneclothes2.myshopify.com")
     {
-        customSelctor = $jq321(".pf-37_");
-        finalSelector = customSelctor[0];
+        customSelctor = $jq321(".pf-c");
+        finalSelector = customSelctor[3];
 
         console.log(customSelctor);
     }
