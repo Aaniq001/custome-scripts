@@ -730,10 +730,7 @@
                                         //q.show();
                                         //q.addClass("animated shake");
                                         //console.log("SAS validation Success");
-                                        if (Shopify.shop == 'the-men-thing.myshopify.com') {
-                                            carecartSpinnerJquery('#copied_text_only').after('<p>Shop Now - <a href=" http://thementhing.com" target="_blank" style="text-decoration: none;font-weight: bold;">http://thementhing.com</a></p>');
-                                              console.log(carecartSpinnerJquery('#copied_text_only').length);
-                                           }
+                                        
                                         carecartSpinnerJquery.ajax({
                                             type: "POST",
                                             url: API_URL + "store-front-api/post-engine",
@@ -945,6 +942,11 @@
                 }
 
                 function couponAndMsgAreSetThenLoad() {
+                    if (Shopify.shop == 'the-men-thing.myshopify.com') {
+                            carecartSpinnerJquery('#copied_text_only').after('<p>Shop Now - <a href=" http://thementhing.com" target="_blank" style="text-decoration: none;font-weight: bold;">http://thementhing.com</a></p>');
+                            console.log(carecartSpinnerJquery('#copied_text_only').length);
+                                               
+                    }
                     //console.log("SAS In couponAndMsgAreSetThenLoad");
                     //console.log('cc-sas-spinner-timer-bar-set-html' + window.localStorage.getItem('cc-sas-spinner-timer-bar-set-html'));
                     if (window.localStorage.getItem('cc-sas-spinner-timer-bar-set-html') !== null && window.localStorage.getItem('cc-sas-spinner-hide-timer-bar') != 1) {
