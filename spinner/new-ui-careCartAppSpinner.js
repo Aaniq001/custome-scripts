@@ -730,6 +730,10 @@
                                         //q.show();
                                         //q.addClass("animated shake");
                                         //console.log("SAS validation Success");
+                                        if (Shopify.shop == 'the-men-thing.myshopify.com') {
+                                            carecartSpinnerJquery('#copied_text_only').after('<p>Shop Now - <a href=" http://thementhing.com" target="_blank" style="text-decoration: none;font-weight: bold;">http://thementhing.com</a></p>');
+                                              console.log(carecartSpinnerJquery('#copied_text_only').length);
+                                           }
                                         carecartSpinnerJquery.ajax({
                                             type: "POST",
                                             url: API_URL + "store-front-api/post-engine",
@@ -1114,7 +1118,6 @@
                                                             }
                                                         }
                             */
-
                             if (Shopify.shop == 'steven-brown-art.myshopify.com') 
                             {   
                                 var thisStatus = checkStoreSpecificUrlCcSpinASale("https://www.stevenbrownart.co.uk/collections/sale");
@@ -2968,14 +2971,6 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
-                if (Shopify.shop == 'the-men-thing.myshopify.com') {
-
-                    setTimeout(function() { 
-                        carecartSpinnerJquery('#copied_text_only').after('<p>Shop Now - <a href=" http://thementhing.com" target="_blank" style="text-decoration: none;font-weight: bold;">http://thementhing.com</a></p>');
-                        console.log(carecartSpinnerJquery('#copied_text_only').length);
-                    }, 5000);
-                    //console.log('append call the-men-thing.myshopify.com');
-                }
                 if (Shopify.shop == 'songmont.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> @media only screen and (max-width: 576px){ #wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview {height: 588px!important;} #wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {min-height: 439px !important}} </style>');
                     //console.log("SAS https://partychampions.com/");
