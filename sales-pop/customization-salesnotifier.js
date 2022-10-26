@@ -1,5 +1,5 @@
 /**
- * @package Sales Pop up ‑ Social Proof
+ * @package Sales Pop up â€‘ Social Proof
  * @author CareCart
  * @link https://apps.shopify.com/partners/care-cart
  * @link https://carecart.io/
@@ -3086,15 +3086,9 @@
     {
         $jq321("head").append(
             '<style type="text/css">'+ 
-                '.annFullsection .getDiscoundText {margin-bottom: 0px;}'+
-                '.stock-top{display: block !important;}'+    
+                '.annFullsection .getDiscoundText {margin-bottom: 0px;}'+ 
             '</style>'
         );
-
-        masterSelector = $jq321(".product-single__add-to-cart");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
     }
 
     if (Shopify.shop == "sleep-beds.myshopify.com") 
@@ -3422,6 +3416,8 @@
          var selectorTimer4 = $jq321("form[action='/cart/add']:first");
          var selectorTimer5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorTimer6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
+         var selectorTimer7 = $jq321("form[action='/cart/add']").find('.sc-gHjyzD');
+         var selectorTimer8 = $jq321("form[action='/cart/add']").find('.sc-jYmNlR')
          
          if (Shopify.shop == "the-senset.myshopify.com")
          {
@@ -3462,7 +3458,11 @@
              } else if (selectorTimer3.length == 1) {
                  $jq321(responseTimer.view).insertBefore(selectorTimer3);
              } else if (selectorTimer4.length == 1) {
-                 selectorTimer4.prepend(responseTimer.view);
+                if (Shopify.shop == "sheettracker.myshopify.com"){
+                    selectorTimer7.after(responseTimer.view);
+                }else{
+                    selectorTimer4.prepend(responseTimer.view);
+                }
              } else if (selectorTimer5.length == 1) {
                  $jq321(responseTimer.view).insertBefore(selectorTimer5);
              } else if (selectorTimer6.length == 1) {
@@ -3478,7 +3478,11 @@
              } else if (selectorTimer3.length == 1) {
                  $jq321(responseTimer.view).insertAfter(selectorTimer3);
              } else if (selectorTimer4.length == 1) {
-                 selectorTimer4.append(responseTimer.view);
+                if (Shopify.shop == "sheettracker.myshopify.com"){
+                    selectorTimer8.before(responseTimer.view);
+                }else{
+                    selectorTimer4.append(responseTimer.view);
+                }
              } else if (selectorTimer5.length == 1) {
                  $jq321(responseTimer.view).insertAfter(selectorTimer5);
              } else if (selectorTimer6.length == 1) {
