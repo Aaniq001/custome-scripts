@@ -2232,10 +2232,17 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var selectorVisitor2 = $jq321("form[action='/cart/add']");
         var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
         var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
+        var selectorVisitor5 = $jq321("form[action='/cart/add']").find("#ProductSelect-template--14539371053171__main");
+        var selectorVisitor6 = $jq321("form[action='/cart/add']").find('.product-form__quantity-submit');
 
         if (response.above_cart == 1) {
             if (selectorVisitor1.length == 1) {
-                selectorVisitor1.prepend(response.view);
+                if(Shopify.shop == 'rochahats.myshopify.com'){
+                    selectorVisitor5.before(response.view);
+                    $jq321("span.icon-specific-text-carecartbysalespop-2020").css("display","inline");
+                }else{
+                    selectorVisitor1.prepend(response.view);
+                }
             } else if (selectorVisitor2.length == 1) {
                 selectorVisitor2.prepend(response.view);
             } else if (selectorVisitor3.length == 1) {
@@ -2245,7 +2252,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             }
         } else {
             if (selectorVisitor1.length == 1) {
-                selectorVisitor1.append(response.view);
+                if(Shopify.shop == 'rochahats.myshopify.com'){
+                    selectorVisitor6.after(response.view);
+                    $jq321("span.icon-specific-text-carecartbysalespop-2020").css("display","inline");
+                }else{
+                    selectorVisitor1.append(response.view);
+                }
             } else if (selectorVisitor2.length == 1) {
                 selectorVisitor2.append(response.view);
             } else if (selectorVisitor3.length == 1) {
