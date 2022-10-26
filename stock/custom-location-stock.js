@@ -274,6 +274,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "yourpetsclosetco.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "doit4brazil.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
     /**
      * check the status of cart page
@@ -598,6 +601,15 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                               '.cart-countdown-desktop-top-center { display: flex !important; }'+
                               '</style>');
     }
+    if (Shopify.shop == "doit4brazil.myshopify.com")
+    {
+        masterSelector = $jq321(".product-form__buttons");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+
+    product-form__buttons
 
     function stockCountdown(response) {
         
