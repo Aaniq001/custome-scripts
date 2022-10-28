@@ -2973,6 +2973,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'paintlablimited.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> .wheelify-signupContainer .checkbox input { display:block; } </style>');
+                    //console.log("SAS paintlablimited.myshopify.com");
+                }
                 if (Shopify.shop == 'songmont.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> @media only screen and (max-width: 576px){ #wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview {height: 588px!important;} #wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {min-height: 439px !important}} </style>');
                     //console.log("SAS https://partychampions.com/");
