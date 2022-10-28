@@ -3052,6 +3052,16 @@
             '<style type="text/css">'+ 
                 '.notificationPreview-box.halloween-bg .card-body h5.card-title a {color: #fff !important;}'+
                 '.notificationPreview-box.christmas-bg .card-body h5.card-title a {color: #fff !important;}'+ 
+                '.notificationPreview-box.christmas_new-bg .card-body h5.card-title a {color: #fff !important;}'+
+                '.notificationPreview-box.black-friday-bg .card-body h5.card-title a {color: #fff !important;}'+
+                '.notificationPreview-box.black_friday_new-bg .card-body h5.card-title a {color: #fff !important;}'+
+                '.notificationPreview-box.halloween_new-bg .card-body h5.card-title a {color: #fff !important;}'+
+                '.notificationPreview-box.new-yearBg .card-body h5.card-title a {color: #fff !important;}'+
+                '.notificationPreview-box.china_new_year-bg .card-body h5.card-title a {color: #fff !important;}'+
+                '.notificationPreview-box.cyber-monday-bg .card-body h5.card-title a {color: #fff !important;}'+
+                '.notificationPreview-box.eid-bg .card-body h5.card-title a {color: #fff !important;}'+
+                '.notificationPreview-box.diwali-bg .card-body h5.card-title a {color: #fff !important;}'+
+                '.notificationPreview-box.easter-bg .card-body h5.card-title a {color: #fff !important;}'+
             '</style>'
         );
     }
