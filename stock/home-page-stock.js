@@ -206,6 +206,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 7478875685019;
     }
+    if (Shopify.shop == "collection-play.myshopify.com")
+    {
+        productID = 7973031117075;
+    }
 
     $jq321.ajax({
         type: "GET",
