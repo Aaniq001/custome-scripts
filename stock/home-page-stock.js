@@ -94,13 +94,27 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         apiResponse = response;
 
        // STOCK COUNTDOWN CALL
-        if(apiResponse && apiResponse.stock && apiResponse.stock!==null)
+        if (apiResponse && apiResponse.stock && apiResponse.stock!==null)
         {
-            $jq321("head").append($jq321("<link/>", {
-                rel: "stylesheet",
-                href: serverUrl.cssStock + "?v" + version
-            }));
-            stockCountdown(apiResponse.stock);
+            if (Shopify.shop == "collection-play.myshopify.com") 
+            {
+                if (window.location.href != 'https://collectionplay.fr/')
+                {
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssStock + "?v" + version
+                    }));
+                    stockCountdown(apiResponse.stock);
+                }
+            }
+            else
+            {
+                $jq321("head").append($jq321("<link/>", {
+                    rel: "stylesheet",
+                    href: serverUrl.cssStock + "?v" + version
+                }));
+                stockCountdown(apiResponse.stock);
+            }
         }
 
         // Time COUNTDOWN CALL
