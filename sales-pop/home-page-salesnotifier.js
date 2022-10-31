@@ -1774,6 +1774,17 @@
         finalSelector = masterSelector[0];
         console.log(finalSelector);
      }
+     if (Shopify.shop == "spikes-bone.myshopify.com")
+     {
+        productID = 7916627034366;
+
+        masterSelector = $jq321(".payment-buttons");
+        
+        finalSelector = masterSelector[0];
+        console.log(finalSelector);
+     }
+
+     
  
      $jq321.ajax({
          type: "GET",
@@ -2437,7 +2448,8 @@
      // *****************************************************************************************
  // ---------------------------------- <VISITOR COUNTER MODULE> ------------------------------
  // ******************************************************************************************
-     function visitorCounter(response) {
+     function visitorCounter(response) 
+     {
          var selectorVisitor1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorVisitor2 = $jq321("form[action='/cart/add']");
          var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
@@ -2446,7 +2458,7 @@
          if (response.above_cart == 1) {
             if (masterSelector.length > 0) 
              {
-                 $jq321(responseStock.view).insertBefore(finalSelector);
+                 $jq321(response.view).insertBefore(finalSelector);
              }
              else if (selectorVisitor1.length == 1) {
                  selectorVisitor1.prepend(response.view);
@@ -2460,7 +2472,7 @@
          } else {
              if (masterSelector.length > 0) 
              {
-                 $jq321(responseStock.view).insertAfter(finalSelector);
+                 $jq321(response.view).insertAfter(finalSelector);
              }
              else if (selectorVisitor1.length == 1) {
                  selectorVisitor1.append(response.view);
