@@ -1783,9 +1783,11 @@
         finalSelector = masterSelector[0];
         console.log(finalSelector);
      }
+     if (Shopify.shop == "bea864-2.myshopify.com")
+     {
+        productID = 7977088844058;
+     }
 
-     
- 
      $jq321.ajax({
          type: "GET",
          url: salespoplib_vars_obj.backend_url + 'checkStore/',
