@@ -223,6 +223,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             {
                 $jq321(response.view).insertBefore('.product-form__buttons');
             }
+            else if (Shopify.shop == "bbhmaroc.myshopify.com")
+            {
+                $jq321(response.view).insertBefore('.ProductForm__AddToCart');
+            }
             else if (masterSelector.length > 0) 
             {
                 $jq321(response.view).insertBefore(finalSelector);
@@ -265,6 +269,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             else if (Shopify.shop == "togalway2.myshopify.com")
             {
                 $jq321(response.view).insertAfter('.product-form__buttons');
+            }
+            else if (Shopify.shop == "bbhmaroc.myshopify.com")
+            {
+                $jq321(response.view).insertAfter('.ProductForm__AddToCart');
             }
             else if (masterSelector.length > 0) 
             {
