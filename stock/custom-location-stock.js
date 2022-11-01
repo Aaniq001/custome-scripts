@@ -280,6 +280,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "e40253.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "jprindia.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
     /**
      * check the status of cart page
@@ -620,6 +623,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         finalSelector = masterSelector[0];
 
         console.log(finalSelector);
+    }
+    if (Shopify.shop == "jprindia.myshopify.com")
+    {
+        $jq321("head").append('<style type="text/css">'+
+                              '.btn--status[data-button-status=select][data-button-select-disable]{margin-bottom:10px;}'+
+                              '</style>');
     }
 
     function stockCountdown(response) {
