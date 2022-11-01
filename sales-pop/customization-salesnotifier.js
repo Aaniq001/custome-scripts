@@ -3116,6 +3116,14 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "looki-dev.myshopify.com") 
+    {
+        masterSelector = $jq321(".pf-45_");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
