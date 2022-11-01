@@ -277,6 +277,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "doit4brazil.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "e40253.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
     /**
      * check the status of cart page
@@ -608,8 +611,16 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(finalSelector);
     }
+    if (Shopify.shop == "e40253.myshopify.com")
+    {
+        $jq321("head").append('<style type="text/css">'+
+                              '.product-details-des .price-box {display: flex; align-items: center;}'+
+                              '</style>');
+        masterSelector = $jq321("del");
+        finalSelector = masterSelector[0];
 
-    product-form__buttons
+        console.log(finalSelector);
+    }
 
     function stockCountdown(response) {
         
