@@ -3128,7 +3128,8 @@
     {
         $jq321("head").append(
             '<style type="text/css">'+ 
-                '.stock-top{display: block !important;}'+    
+                '.stock-top{display: block !important;}'+ 
+                '.visitor-counter-content-box-carecartbysalespop-2020 {height: 34px !important;}'+   
             '</style>'
         );
 
