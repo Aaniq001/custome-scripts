@@ -3124,6 +3124,20 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "kaledinis.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.stock-top{display: block !important;}'+    
+            '</style>'
+        );
+
+        masterSelector = $jq321(".product-form__buttons");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
