@@ -224,6 +224,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 7973031117075;
     }
+    if (Shopify.shop == "glowinghero.myshopify.com")
+    {
+        productID = 7780666966228;
+    }
 
     $jq321.ajax({
         type: "GET",
