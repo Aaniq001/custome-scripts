@@ -3668,6 +3668,13 @@
          $jq321('ms').html(function(i, v){
              return v.replace(/(\d)/g, '<span '+response.count+'>$1</span>');
          });
+
+         if (Shopify.shop == "xn-ymcecs6lc3an.myshopify.com")
+         {
+            var customIcon1 = $jq321(".fa-bolt");
+            customIcon1.remove();
+            $jq321(customIcon1).insertAfter('.sold-font-size-15px');
+         }
      }
  // ---------------------------------- </SOLD COUNTER MODULE> --------------------------------
  
