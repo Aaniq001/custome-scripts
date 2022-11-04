@@ -934,6 +934,13 @@
 
                             console.log('change cental wheel image');
                     }
+                    else if (Shopify.shop == 'amantelingerie.myshopify.com') 
+                    {    
+                            var newValue = 'https://cdn.jsdelivr.net/gh/carecartapp/custome-scripts@1.6.61/spinner/trademark-01-01_1fznd7u-removebg-preview.png';   
+                            carecartSpinnerJquery('.wheelLogo').attr("xlink:href", newValue);
+
+                            console.log('change cental wheel image');
+                    }
                 }
 
                 function hideSpinASaleModule() {
