@@ -633,6 +633,12 @@
                             //carecartSpinnerJquery('#wheelify-couponwheel_notice_timer').html(timerDiv);
                             carecartSpinnerJquery('#wheelify-spin_a_sale_cc_urgency_time_bar_text').html(spinASaleCcUrgencyTimeBarText);
                             //console.log('spinASaleCcUrgencyTimeBarText 2: ' + spinASaleCcUrgencyTimeBarText);
+
+                            if (Shopify.shop == 'mascullino.myshopify.com') {
+                                carecartSpinnerJquery('head').append('<style type="text/css"> .site-header{margin-top: 38px;} @media screen only and (max-wdith: 409px){.site-header{margin-top: 61px;}}</style>');
+                                //console.log("SAS paintlablimited.myshopify.com");
+                            }
+
                             carecartSpinnerJquery('#wheelify-couponwheel_notice_content').show();
                             //console.log('deadlineSpinAWheel deadlineSpinAWheel: ' + deadlineSpinAWheel);
                             initializeClockSpinAWheel('cc-spin-a-sale-clock-div-preview', deadlineSpinAWheel);
