@@ -2986,6 +2986,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'svantto.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> .checkbox { width:100%; border:none; margin-bottom:36px; background-color:transparent;} button{text-align:center!important;} </style>');
+                    //console.log("SAS paintlablimited.myshopify.com");
+                }
                 if (Shopify.shop == 'bronze-snake-1.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> .wheelify-text-description{margin-top: 10px !important; margin-bottom: 10px !important;} </style>');
                     //console.log("SAS paintlablimited.myshopify.com");
