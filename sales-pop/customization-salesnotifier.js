@@ -4276,6 +4276,25 @@
 
                 });  
             }
+            else if (Shopify.shop == "label-of-love-studio.myshopify.com")
+            {
+                $jq321(".productitem--image-link").each(function () {
+
+                    var href = $jq321(this).attr('href');                    
+                    var url = href.split("/");
+
+                    if (($jq321.inArray("products", url) != -1)) 
+                    {
+                        if ($jq321.inArray(href, allLinks) == -1) 
+                        {
+                            allLinks.push(href);
+                        }
+                    }
+
+                });
+                
+                //console.log(allLinks);
+            }
             else
             {
                 $jq321("a").each(function () 
@@ -4340,8 +4359,8 @@
                 {
                     if (checkValue(allLinks[u], responseTimerCollection) == 'Not exist') 
                     {
-                        //var selectorTimeView = $jq321("[href='" + allLinks[u] + "']");
-                        var selectorTimeView = $jq321("[href='" + allLinks[u] + "'][class='full-unstyled-link']");
+                        var selectorTimeView = $jq321("[href='" + allLinks[u] + "']");
+                        //var selectorTimeView = $jq321("[href='" + allLinks[u] + "'][class='full-unstyled-link']");
                         selectorTimeView = selectorTimeView[0];
 
                         $jq321(responseTimer.view).insertBefore(selectorTimeView);
