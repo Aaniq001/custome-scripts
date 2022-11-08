@@ -24,7 +24,7 @@
  if(ndoubleCheck == 2)
  {
      //window.stop();
-     throw new Error("DOUBLE APP JS");
+     //throw new Error("DOUBLE APP JS");
  }
  
  function scriptInjection(src, callback) {
