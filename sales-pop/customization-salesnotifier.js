@@ -24,7 +24,7 @@
  if(ndoubleCheck == 2)
  {
      //window.stop();
-     //throw new Error("DOUBLE APP JS");
+     throw new Error("DOUBLE APP JS");
  }
  
  function scriptInjection(src, callback) {
@@ -3137,6 +3137,16 @@
         finalSelector = masterSelector[0];
 
         console.log(masterSelector);
+    }
+
+    if (Shopify.shop == "xn-ymcecs6lc3an.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.product-form {padding-top: 0rem !important;}'+ 
+                '.sold-counter-content-box {height: 24px !important;}'+   
+            '</style>'
+        );
     }
 
      /** Stock for variants **/
