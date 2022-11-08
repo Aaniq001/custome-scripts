@@ -286,6 +286,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "workoutlabs.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "meatmore.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
     /**
      * check the status of cart page
@@ -639,6 +642,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         finalSelector = masterSelector[0];
 
         console.log(finalSelector);
+    }
+    if (Shopify.shop == "meatmore.myshopify.com")
+    {
+        masterSelector = $jq321(".variations_button");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
     }
 
     function stockCountdown(response) {
