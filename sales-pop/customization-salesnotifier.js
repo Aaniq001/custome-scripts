@@ -3149,6 +3149,17 @@
         );
     }
 
+    if (Shopify.shop == "faunus-plant-ro.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+
+                '.stock-top{display: block !important;}'+ 
+                'div.stock-progress-background {display: block !important;}'+ 
+                'div.cc-sp-sc-stock-div>div:nth-of-type(1) {display: block !important; }'+   
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
