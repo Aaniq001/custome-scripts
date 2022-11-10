@@ -3160,6 +3160,14 @@
         );
     }
 
+    if (Shopify.shop == "neonpilot.myshopify.com") 
+    {
+        masterSelector = $jq321(".product-form__payment-container");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
