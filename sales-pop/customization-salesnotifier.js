@@ -3155,7 +3155,8 @@
             '<style type="text/css">'+
                 '.stock-top{display: block !important;}'+ 
                 'div.stock-progress-background {display: block !important;}'+ 
-                'div.cc-sp-sc-stock-div>div:nth-of-type(1) {display: block !important; }'+   
+                'div.cc-sp-sc-stock-div>div:nth-of-type(1) {display: block !important; }'+
+                '.CC-SP-progress-bar-striped{height:18px;}'+   
             '</style>'
         );
     }
