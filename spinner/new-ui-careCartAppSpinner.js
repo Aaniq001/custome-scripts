@@ -635,7 +635,7 @@
                             //console.log('spinASaleCcUrgencyTimeBarText 2: ' + spinASaleCcUrgencyTimeBarText);
 
                             if (Shopify.shop == 'mascullino.myshopify.com') {
-                                carecartSpinnerJquery('head').append('<style type="text/css"> .site-header{margin-top: 38px;} @media screen only and (max-wdith: 409px){.site-header{margin-top: 61px;}}</style>');
+                                carecartSpinnerJquery('head').append('<style type="text/css"> .site-header{margin-top: 61px;} @media screen only and (max-wdith: 409px){.site-header{margin-top: 61px;}}</style>');
                                 //console.log("SAS paintlablimited.myshopify.com");
                             }
 
@@ -966,7 +966,7 @@
                         carecartSpinnerJquery('#cc-spin-a-sale-clock-div-preview').html(window.localStorage.getItem('cc-sas-spinner-timer-bar-set-html'));
                         
                         if (Shopify.shop == 'mascullino.myshopify.com') {
-                            carecartSpinnerJquery('head').append('<style type="text/css"> .site-header{margin-top: 38px;} @media screen only and (max-wdith: 409px){.site-header{margin-top: 61px;}}</style>');
+                            carecartSpinnerJquery('head').append('<style type="text/css"> .site-header{margin-top: 61px;} @media screen only and (max-wdith: 409px){.site-header{margin-top: 61px;}}</style>');
                             //console.log("SAS paintlablimited.myshopify.com");
                         }
 
@@ -2993,6 +2993,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'mascullino.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> @media only screen and (max-width: 575px){#wheelify-spin-trigger-cc{left: -41px !important;}} #wheelify-couponwheel_notice_content{ z-index: 100000 !important;}}} </style>');
+                    //console.log("SAS paintlablimited.myshopify.com");
+                }
                 if (Shopify.shop == 'stuffcoa.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> @media only screen and (max-width: 575px){#wheelify-spin-trigger-cc {bottom: 1vh !important;}} </style>');
                     //console.log("SAS paintlablimited.myshopify.com");
