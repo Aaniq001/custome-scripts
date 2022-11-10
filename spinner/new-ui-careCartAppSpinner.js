@@ -2998,7 +2998,7 @@
                     //console.log("SAS paintlablimited.myshopify.com");
                 }
                 if (Shopify.shop == 'stuffcoa.myshopify.com') {
-                    carecartSpinnerJquery('head').append('<style type="text/css">  #wheelify-spin-trigger-cc{bottom:-1vh !important;} </style>');
+                    carecartSpinnerJquery('head').append('<style type="text/css">  #wheelify-couponwheel_notice_content + #wheelify-spin-trigger-cc{ bottom:1.25vh !important;} @media only screen and (max-width: 575px){#wheelify-spin-trigger-cc {bottom: -1vh !important;}} </style>');
                     //console.log("SAS paintlablimited.myshopify.com");
                 }
                 if (Shopify.shop == 'svantto.myshopify.com') {
