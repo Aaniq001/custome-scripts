@@ -2993,6 +2993,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'stuffcoa.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> @media only screen and (max-width: 575px){#wheelify-spin-trigger-cc {bottom: 1vh !important;}} </style>');
+                    //console.log("SAS paintlablimited.myshopify.com");
+                }
                 if (Shopify.shop == 'svantto.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> .checkbox { width:100%; border:none; margin-bottom:36px; background-color:transparent;} button{text-align:center!important;} </style>');
                     //console.log("SAS paintlablimited.myshopify.com");
