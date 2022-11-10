@@ -3169,6 +3169,15 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "fullcurlbridge.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+
+                '.notificationPreview-box .np-col-img{background-size: contain !important;}'+
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
