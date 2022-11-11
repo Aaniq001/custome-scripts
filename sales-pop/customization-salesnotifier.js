@@ -1486,9 +1486,9 @@
                      collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
                  }, 3000);
 
-                 /*$jq321(window).scroll(function () {
+                 $jq321(window).scroll(function () {
                     collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
-                 });*/ 
+                 }); 
              }
          }
          
@@ -3902,7 +3902,7 @@
                          }
                      });
 
-                     console.log(allLinks);
+                     //console.log(allLinks);
                 }
                 else
                 {
@@ -3938,12 +3938,8 @@
              var divCount = 0;
              var linkCount = 0;
 
-             //var selectorStock3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
-             
-             $jq321(".card-wrapper").find("img:first").each(function () {
+             $jq321(".product--image").each(function () {
 
-                //console.log(1)
- 
          // GET IMAGE URL
                  var href = $jq321(this).attr('data-srcset');
                  var data_image = $jq321(this).attr('data-image');
@@ -3968,9 +3964,9 @@
          // CREATE DIV
                      var newDiv = '<div id="image-with-button'+divCount+'" class="button-on-hover"></div>';
 
-                     /*var checkButton=check.find('.collection-quick-view');
+                     var checkButton=check.find('.collection-quick-view');
                      if (checkButton.length < 1)
-                     {*/
+                     {
                         // INSERT DIV
                         $jq321(newDiv).insertBefore(check);
 
@@ -3979,9 +3975,7 @@
 
                         // INSERT BUTTON/EYE IN DIV
                         $jq321(newButton).insertBefore(this);
-
-                        //console.log(newButton);
-                     //}
+                     }
 
                      divCount++;
                      linkCount++;
