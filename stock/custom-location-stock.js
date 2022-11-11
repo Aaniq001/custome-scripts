@@ -653,7 +653,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(masterSelector);
     }
-    if (Shopify.shop == "jprindia.myshopify.com")
+    if (Shopify.shop == "egyp-shops.myshopify.com")
     {
         $jq321("head").append('<style type="text/css">'+
                               '.cart-countdown-desktop-top-center { display: flex !important;}'+
