@@ -3173,7 +3173,7 @@
     {
         $jq321("head").append(
             '<style type="text/css">'+
-                '.notificationPreview-box .np-col-img{background-size: contain !important;}'+
+            '.notificationPreview-box .np-col-img{background-size: contain !important;width:82px!important;}'+
             '</style>'
         );
     }
