@@ -2993,6 +2993,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'i-am-battleworn.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> @media only screen and (max-width:576px){ #wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview {height: 651px !important;}} </style>');
+                    //console.log("SAS paintlablimited.myshopify.com");
+                }
                 if (Shopify.shop == 'mascullino.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> @media only screen and (max-width: 575px){#wheelify-spin-trigger-cc{left: -41px !important;}} #wheelify-couponwheel_notice_content{ z-index: 100000 !important;}}} </style>');
                     //console.log("SAS paintlablimited.myshopify.com");
