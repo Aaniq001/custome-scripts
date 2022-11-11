@@ -289,6 +289,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "meatmore.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "egyp-shops.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
     /**
      * check the status of cart page
@@ -650,7 +653,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(masterSelector);
     }
-
+    if (Shopify.shop == "jprindia.myshopify.com")
+    {
+        $jq321("head").append('<style type="text/css">'+
+                              '.cart-countdown-desktop-top-center { display: flex !important;}'+
+                              '</style>');
+    }
+    
     function stockCountdown(response) {
         
         var selectorStock0 = $jq321("form[action='/cart/add']").find(".product__submit__buttons").parent();
@@ -1024,8 +1033,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                  /**
                  * Let make selector
                  */
-                 let firstSelector = $jq321("form[action='/cart']").parent();
-                 //let firstSelector = $jq321(".cart--root").parent();
+                 //let firstSelector = $jq321("form[action='/cart']").parent();
+                 let firstSelector = $jq321(".cart__body").parent();
 
                  console.log(firstSelector);
                  
