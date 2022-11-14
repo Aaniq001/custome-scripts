@@ -2858,7 +2858,8 @@
 
         $jq321("head").append(
             '<style type="text/css">'+ 
-                '.stock-top{display: block !important;}'+  
+                '.stock-top{display: block !important;}'+ 
+                '#clockdivpreviewSales{display:flex; flex-direction:row-reverse; justify-content: center;} .colon{top:2px !important;}'+ 
             '</style>'
         );
     }
