@@ -3186,6 +3186,15 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "frenchiestuff.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+
+            '#clockdivpreviewSales{display:flex; flex-direction:row-reverse; justify-content: center;} .colon{top:2px !important;}'+
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
