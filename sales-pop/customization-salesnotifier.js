@@ -4039,6 +4039,15 @@
      // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
      function trustBadges(trustBadgesResponse)
      {
+        if (Shopify.shop == "abigzail-s.myshopify.com")
+        {
+            let text = window.location.pathname;
+            let result = text.indexOf("products");
+
+            if(result == -1){
+                return;
+            }    
+        }
         if (Shopify.shop == "the-cosmic-aroma-1e67.myshopify.com")
         {
             let text = window.location.pathname;
