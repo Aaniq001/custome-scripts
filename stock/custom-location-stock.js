@@ -292,6 +292,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "egyp-shops.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "fratemateclub.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
     /**
      * check the status of cart page
@@ -658,6 +661,26 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         $jq321("head").append('<style type="text/css">'+
                               '.cart-countdown-desktop-top-center { display: flex !important;}'+
                               '</style>');
+    }
+    if (Shopify.shop == "fratemateclub.myshopify.com")
+    {
+        console.log('Device');
+        console.log(salespoplib_vars_obj.checkDevice);
+
+        if (salespoplib_vars_obj.checkDevice == 'desktop')
+        {
+            masterSelector = $jq321(".product-single__title");
+            finalSelector = masterSelector[0];
+    
+            console.log(masterSelector); 
+        }
+        else if (salespoplib_vars_obj.checkDevice == 'mobile')
+        {
+            masterSelector = $jq321("#new-form-atc");
+            finalSelector = masterSelector[0];
+
+            console.log(masterSelector);
+        }
     }
     
     function stockCountdown(response) {
