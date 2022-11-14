@@ -467,6 +467,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         //console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "store-webook.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        //console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -1000,6 +1006,17 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
+    }
+
+    if (Shopify.shop == "store-webook.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.sales-points{margin-bottom: 0px !important;}' +
+            '.product-block--sales-point+.product-block--sales-point{margin-bottom: 0 !important;}' +
+            '.visitor-counter-content-box-carecartbysalespop-2020{margin-top: 0 !important;}' +
+            '</style>'
+           );
     }
 
     function visitorCounter(responseVisitor) 
