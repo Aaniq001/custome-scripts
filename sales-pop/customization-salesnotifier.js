@@ -1486,9 +1486,9 @@
                      collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
                  }, 3000);
 
-                 $jq321(window).scroll(function () {
+                 /* $jq321(window).scroll(function () {
                     collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
-                 }); 
+                 }); */ 
              }
          }
          
@@ -3196,6 +3196,16 @@
         );
     }
 
+    if (Shopify.shop == "fashviews-us.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+
+            '.product-card-wrapper .card .card__inner .card__media{z-index: 2!important; }'+
+            '.card__content .card__badge{z-index: 3;}' +
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
@@ -3905,8 +3915,6 @@
                              allLinks.push(href);
                          }
                      });
-
-                     //console.log(allLinks);
                 }
                 else if (Shopify.shop == "shopmunekawear.myshopify.com") 
                 {
@@ -3919,8 +3927,18 @@
                              allLinks.push(href);
                          }
                      });
-
-                     //console.log(allLinks);
+                }
+                else if (Shopify.shop == "fashviews-us.myshopify.com") 
+                {
+                     $jq321(".media").find('a').each(function() {
+                         var href = $jq321(this).attr('href');
+                         var url = href.split("/");
+     
+                         if ($jq321.inArray("products", url) != -1)
+                         {
+                             allLinks.push(href);
+                         }
+                     });
                 }
                 else
                 {
@@ -3956,7 +3974,7 @@
              var divCount = 0;
              var linkCount = 0;
 
-             $jq321(".product--image").each(function () {
+             $jq321("main").find("img").each(function () {
 
          // GET IMAGE URL
                  var href = $jq321(this).attr('data-srcset');
