@@ -664,23 +664,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
     if (Shopify.shop == "fratemateclub.myshopify.com")
     {
-        console.log('Device');
-        console.log(salespoplib_vars_obj.checkDevice);
+        masterSelector = $jq321("#new-form-atc");
+        finalSelector = masterSelector[0];
 
-        if (salespoplib_vars_obj.checkDevice == 'desktop')
-        {
-            masterSelector = $jq321(".product-single__title");
-            finalSelector = masterSelector[0];
-    
-            console.log(masterSelector); 
-        }
-        else if (salespoplib_vars_obj.checkDevice == 'mobile')
-        {
-            masterSelector = $jq321("#new-form-atc");
-            finalSelector = masterSelector[0];
-
-            console.log(masterSelector);
-        }
+        console.log(masterSelector);
     }
     
     function stockCountdown(response) {
