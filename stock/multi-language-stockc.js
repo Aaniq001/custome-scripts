@@ -597,7 +597,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                  {  
                      if (firstSelector.length > 0) 
                      {
+                        console.log(response.view);
+
                         $jq321(firstSelector[0]).prepend(response.view);
+
+                        $jq321(".cc-stock-pro-message").addClass("notranslate"); 
+     
                         //$jq321(firstSelector[1]).prepend(response.view); 
                         //$jq321(".title-wrapper-with-link").prepend(response.view);
                      }
