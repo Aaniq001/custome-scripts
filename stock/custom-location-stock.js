@@ -295,6 +295,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "fratemateclub.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "motiivart.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
     /**
      * check the status of cart page
@@ -665,6 +668,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "fratemateclub.myshopify.com")
     {
         masterSelector = $jq321("#new-form-atc");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+    if (Shopify.shop == "motiivart.myshopify.com")
+    {
+        masterSelector = $jq321(".variations_button");
         finalSelector = masterSelector[0];
 
         console.log(masterSelector);
