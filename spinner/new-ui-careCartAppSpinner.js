@@ -2993,6 +2993,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'comfylampgv.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> .LoaderOnClick .btn-submit-form{text-align:center;}.copy-button{text-align:center;} </style>');
+                    //console.log("SAS paintlablimited.myshopify.com");
+                }
                 if (Shopify.shop == 'i-am-battleworn.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> @media only screen and (max-width:576px){ #wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview {height: 651px !important;}} </style>');
                     //console.log("SAS paintlablimited.myshopify.com");
