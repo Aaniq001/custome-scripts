@@ -3206,6 +3206,14 @@
         );
     }
 
+    if (Shopify.shop == "weartaara.myshopify.com") 
+    {
+        masterSelector = $jq321(".wrap-cart-size");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
