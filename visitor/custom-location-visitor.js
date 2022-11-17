@@ -1025,6 +1025,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
            );
     }
 
+    if (Shopify.shop == "slinger-8108.myshopify.com")
+    {
+        customSelctor = $jq321(".stock-top");
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
+    }
+
     function visitorCounter(responseVisitor) 
     {
         var selectorVisitor1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
