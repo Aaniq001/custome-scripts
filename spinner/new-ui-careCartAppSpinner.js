@@ -2993,6 +2993,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'melmarie-skin-care.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> .wheelify-signupContainer .checkbox input{width:22px;} #wheelify-spin_a_sale_cc_store_front_module .checkbox{padding-bottom:10px!important;} .wheelify-cc-spin-a-sale-couponwheel_offers_progressbar{margin-top:0;} #wheelify-spin_a_sale_cc_store_front_module .wheelify-text-heading{font-size:24px} span#cc-spin-a-sale-consent-text{font-size:14px;} </style>');
+                    //console.log("SAS paintlablimited.myshopify.com");
+                }
                 if (Shopify.shop == 'prestigemob.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin_a_sale_cc_store_front_module .checkbox{ width: 100%;height: auto;background: transparent;border: none;box-shadow: none; } </style>');
                     //console.log("SAS paintlablimited.myshopify.com");
