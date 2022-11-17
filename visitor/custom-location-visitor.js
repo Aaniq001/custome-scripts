@@ -10,7 +10,7 @@
  */
 
  //Create the element using the createElement method.
- var myDiv = document.createElement("ji");
+ /* var myDiv = document.createElement("ji");
  
  //Set its class.
  myDiv.className = 'doubleCheck';
@@ -22,8 +22,8 @@
  var ndoubleCheck = doubleCheck.length;
  if (ndoubleCheck == 2) {
      //window.stop();
-     //throw new Error("DOUBLE APP JS");
- }
+     throw new Error("DOUBLE APP JS");
+ } */
 
  function scriptInjection(src, callback) {
     var script = document.createElement('script');
