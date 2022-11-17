@@ -1400,17 +1400,7 @@
 
          // VISITOR COUNTER CALL
          if (apiResponse && apiResponse.visitor && apiResponse.visitor !== null) 
-         {
-            /*if (Shopify.shop == "directdealstore.myshopify.com") 
-            {    setTimeout(function(){
-                    $jq321("head").append($jq321("<link/>", {
-                        rel: "stylesheet",
-                        href: serverUrl.cssVisitor + "?v" + version
-                    }));
-                    visitorCounter(apiResponse.visitor);
-                }, 3000);
-            }
-            else*/ 
+         { 
             if (Shopify.shop == "frenchiestuff.myshopify.com") 
             {    setTimeout(function(){
                     $jq321("head").append($jq321("<link/>", {
@@ -1436,11 +1426,8 @@
                     rel: "stylesheet",
                     href: serverUrl.cssVisitor + "?v" + version
                 }));
-
                 setTimeout(function(){
-
                     visitorCounter(apiResponse.visitor);
-                    
                 }, 2000);
             }
             else
@@ -3388,6 +3375,14 @@
 
      function stockCountdown(responseStock) {
  
+        if (Shopify.shop == "slinger-8108.myshopify.com") 
+         {
+            masterSelector = $jq321(".product-form__submit");
+            finalSelector = masterSelector[0];
+
+            console.log(masterSelector);
+         }
+         
          var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorStock2 = $jq321("form[action='/cart/add']");
          var selectorStock3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
@@ -3610,7 +3605,20 @@
          var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
          var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
          
-         if(Shopify.shop == "onlydoveacollection.myshopify.com")
+         if (Shopify.shop == "slinger-8108.myshopify.com") 
+         {
+            $jq321("head").append(
+                '<style type="text/css">' + 
+                '.stock-top{display: block !important;}' +
+                '</style>'
+            );
+
+            masterSelector = $jq321(".stock-top");
+            finalSelector = masterSelector[0];
+
+            console.log(masterSelector);
+         }
+         else if(Shopify.shop == "onlydoveacollection.myshopify.com")
          {
              masterSelector = $jq321(".payment-buttons");
              masterSelector = masterSelector[0];
