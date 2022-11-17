@@ -22,7 +22,7 @@
  var ndoubleCheck = doubleCheck.length;
  if (ndoubleCheck == 2) {
      //window.stop();
-     throw new Error("DOUBLE APP JS");
+     //throw new Error("DOUBLE APP JS");
  }
 
  function scriptInjection(src, callback) {
@@ -468,6 +468,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         //console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
     if (Shopify.shop == "store-webook.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        //console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
+    if (Shopify.shop == "slinger-8108.myshopify.com") 
     {
         var meta = {"product":{"id":__st.rid}};
 
