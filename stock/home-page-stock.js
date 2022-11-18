@@ -228,6 +228,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 7780666966228;
     }
+    if (Shopify.shop == "aceva-cbd.myshopify.com")
+    {
+        productID = 7473658036452;
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -330,7 +334,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(finalSelector);
     }
-    
+    if (Shopify.shop == "aceva-cbd.myshopify.com")
+    {
+        customSelector = $jq321(".product-form__buttons");
+        finalSelector = customSelector[0];
+
+        console.log(finalSelector);
+    }
+
      function stockCountdown(response) {
          
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
