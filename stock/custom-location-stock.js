@@ -23,7 +23,7 @@ var ndoubleCheck = doubleCheck.length;
 
 console.log(ndoubleCheck);
 
-if(ndoubleCheck == 2)
+if(ndoubleCheck == 3)
 {
     //window.stop();
     throw new Error("DOUBLE APP JS COUNTDOWN PRO");
@@ -50,6 +50,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     salespoplib_active_url += (window.location.pathname.substr(-1) !== "/") ? window.location.pathname : window.location.pathname.substr(0, window.location.pathname.length - 1);
 
     function getServerUrls() {
+
         // Finding the URL of this library among all the script tags
         var allScripts = document.getElementsByTagName('script');
         allScripts = Array.prototype.slice.call(allScripts);
@@ -325,6 +326,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var meta = {"product":{"id":__st.rid}};
     }
     else if (Shopify.shop == "anatomylifeshop.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "duasdesignloja.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
 
@@ -722,6 +726,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(masterSelector);
     }
+    if (Shopify.shop == "duasdesignloja.myshopify.com")
+    {
+        $jq321("head").append('<style type="text/css">'+
+                              '.cart-countdown-desktop-top-center { display: flex !important;}'+
+                              '</style>');
+    }
+
 
     function stockCountdown(response) {
         
@@ -1097,8 +1108,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                  * Let make selector
                  */
                  //let firstSelector = $jq321("form[action='/cart']").parent();
-                 let firstSelector = $jq321(".cart__body").parent();
-
+                 let firstSelector = $jq321("#CartPageForm");
+                
+                 console.log('selector');
                  console.log(firstSelector);
                  
                  if (response.barPosition == "top" && cartStatus === null) 
