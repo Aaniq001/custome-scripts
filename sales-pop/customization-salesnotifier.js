@@ -3132,7 +3132,8 @@
         $jq321("head").append(
             '<style type="text/css">'+ 
                 '.product-form {padding-top: 0rem !important;}'+ 
-                '.sold-counter-content-box {height: 24px !important;}'+   
+                '.sold-counter-content-box {height: 24px !important;}'+ 
+                '.stock-top{display: block !important;}'+   
             '</style>'
         );
     }
@@ -3200,6 +3201,8 @@
 
         console.log(masterSelector);
     }
+
+
 
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
