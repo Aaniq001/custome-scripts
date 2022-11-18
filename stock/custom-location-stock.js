@@ -23,7 +23,7 @@ var ndoubleCheck = doubleCheck.length;
 
 console.log(ndoubleCheck);
 
-if(ndoubleCheck == 1)
+if(ndoubleCheck == 2)
 {
     //window.stop();
     throw new Error("DOUBLE APP JS COUNTDOWN PRO");
@@ -322,6 +322,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var meta = {"product":{"id":__st.rid}};
     }
     else if (Shopify.shop == "scholl-shoes-markets.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "anatomylifeshop.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
 
@@ -712,7 +715,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(masterSelector);
     }
-    
+    if (Shopify.shop == "anatomylifeshop.myshopify.com")
+    {
+        masterSelector = $jq321("#m-1666945863630");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
     function stockCountdown(response) {
         
         var selectorStock0 = $jq321("form[action='/cart/add']").find(".product__submit__buttons").parent();
