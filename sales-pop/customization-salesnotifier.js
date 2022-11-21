@@ -3225,6 +3225,20 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "wonderlandforchildren.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+
+                '.stock-top{display: block !important;}'+   
+            '</style>'
+        );
+
+        masterSelector = $jq321(".t4s-product-form__buttons");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
