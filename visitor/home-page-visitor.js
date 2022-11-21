@@ -149,6 +149,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         productID = 7953728930098;
     }
+    if (Shopify.shop == "gohoa.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        productID = 8002445869354;
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -197,6 +203,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if(Shopify.shop == "dyo-ministyling.myshopify.com")
     {
         customSelctor = $jq321(".article__featured-image-link").parent();
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
+    }
+    if(Shopify.shop == "gohoa.myshopify.com")
+    {
+        customSelctor = $jq321(".footer__content-bottom-wrapper").parent();
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
