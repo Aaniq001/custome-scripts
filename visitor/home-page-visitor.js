@@ -209,7 +209,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
     if(Shopify.shop == "gohoa.myshopify.com")
     {
-        customSelctor = $jq321(".footer__content-bottom-wrapper").parent();
+        customSelctor = $jq321(".footer__content-bottom-wrapper");
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
