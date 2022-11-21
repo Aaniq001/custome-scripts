@@ -3210,6 +3210,21 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "energy-junkies.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+
+            '.icon-specific-text-carecartbysalespop-2020 .light-icon{font-family: "FontAwesome" !important;}'+
+            '.icon-specific-text .sold-light-icon{font-family: "FontAwesome" !important;}'+
+            '</style>'
+        );
+
+        masterSelector = $jq321(".gAddToCartWrapper");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
