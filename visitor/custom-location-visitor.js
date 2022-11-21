@@ -479,6 +479,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         //console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "vitapur-home-cz.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        //console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -1028,6 +1034,20 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "slinger-8108.myshopify.com")
     {
         customSelctor = $jq321(".stock-top");
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
+    }
+
+    if (Shopify.shop == "vitapur-home-cz.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.visitor-counter-content-box-carecartbysalespop-2020{  height: auto !important; margin-top: 0 !important; }' +
+            '</style>'
+           );
+
+        customSelctor = $jq321(".product__title");
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
