@@ -9,6 +9,26 @@
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
 
+//Create the element using the createElement method.
+var myDiv = document.createElement("jis");
+
+//Set its class.
+myDiv.className = 'doubleCheckS';
+
+//Finally, append the element to the HTML body
+document.body.appendChild(myDiv);
+
+var doubleCheck = document.getElementsByClassName("doubleCheckS");
+var ndoubleCheck = doubleCheck.length;
+
+console.log(ndoubleCheck);
+
+if(ndoubleCheck == 1)
+{
+    //window.stop();
+    throw new Error("DOUBLE APP JS COUNTDOWN PRO");
+}
+
  function scriptInjection(src, callback) {
     var script = document.createElement('script');
     script.type = "text/javascript";
@@ -197,6 +217,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
 
     if (Shopify.shop == "konstnarsportalen-se.myshopify.com")
+    {
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+
+    if (Shopify.shop == "scholl-shoes-markets.myshopify.com")
     {
         finalSelector = masterSelector[0];
 
