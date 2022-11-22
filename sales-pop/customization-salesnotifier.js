@@ -3214,8 +3214,9 @@
     {
         $jq321("head").append(
             '<style type="text/css">'+
-            '.icon-specific-text-carecartbysalespop-2020 .light-icon{font-family: "FontAwesome" !important;}'+
-            '.icon-specific-text .sold-light-icon{font-family: "FontAwesome" !important;}'+
+            '.icon-specific-text-carecartbysalespop-2020 i{font-family: "FontAwesome" !important;}'+
+            '.icon-specific-text i{font-family: "FontAwesome" !important;}'+
+            '.sp-comment-sticky.cc-position-b-right{right: 28px !important;}'+
             '</style>'
         );
 
