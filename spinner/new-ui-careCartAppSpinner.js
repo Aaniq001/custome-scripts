@@ -947,6 +947,13 @@
 
                             console.log('change cental wheel image');
                     }
+                    else if (Shopify.shop == 'neulo.myshopify.com') 
+                    {    
+                            var newValue = 'https://cdn.jsdelivr.net/gh/carecartapp/custome-scripts@1.7.20/spinner/neuloemblemeorangervb_1jxckyi-removebg-preview.png';   
+                            carecartSpinnerJquery('.wheelLogo').attr("xlink:href", newValue);
+
+                            console.log('change cental wheel image');
+                    }
                 }
 
                 function hideSpinASaleModule() {
@@ -2993,6 +3000,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'neulo.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin-trigger-cc span{color: #fdaa63 !important;} </style>');
+                    //console.log("SAS paintlablimited.myshopify.com");
+                }
                 if (Shopify.shop == 'melmarie-skin-care.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> .wheelify-signupContainer .checkbox input{width:22px;} #wheelify-spin_a_sale_cc_store_front_module .checkbox{padding-bottom:10px!important;} .wheelify-cc-spin-a-sale-couponwheel_offers_progressbar{margin-top:0;} #wheelify-spin_a_sale_cc_store_front_module .wheelify-text-heading{font-size:24px} span#cc-spin-a-sale-consent-text{font-size:14px;} </style>');
                     //console.log("SAS paintlablimited.myshopify.com");
