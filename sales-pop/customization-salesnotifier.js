@@ -3217,6 +3217,7 @@
             '.icon-specific-text-carecartbysalespop-2020 i{font-family: "FontAwesome" !important;}'+
             '.icon-specific-text i{font-family: "FontAwesome" !important;}'+
             '.sp-comment-sticky.cc-position-b-right{right: 28px !important;}'+
+            '.stock-top{display: block !important;}'+
             '</style>'
         );
 
