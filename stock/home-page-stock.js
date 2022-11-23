@@ -232,6 +232,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 7473658036452;
     }
+    if (Shopify.shop == "agape-boutique-and-spa.myshopify.com")
+    {
+        productID = 8002445869354;
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -337,6 +341,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "aceva-cbd.myshopify.com")
     {
         customSelector = $jq321(".product-form__buttons");
+        finalSelector = customSelector[0];
+
+        console.log(finalSelector);
+    }
+    if (Shopify.shop == "agape-boutique-and-spa.myshopify.com")
+    {
+        customSelector = $jq321(".announcement-bar__message");
         finalSelector = customSelector[0];
 
         console.log(finalSelector);
