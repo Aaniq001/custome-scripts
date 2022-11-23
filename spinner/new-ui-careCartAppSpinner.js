@@ -3000,6 +3000,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'getrektlabs.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> .wheelify-signupContainer .checkbox input{background-color: transparent; border: none; height: auto; appearance: auto;} </style>');
+                    //console.log("SAS paintlablimited.myshopify.com");
+                }
                 if (Shopify.shop == 'neulo.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin-trigger-cc span{color: #fdaa63 !important;} </style>');
                     //console.log("SAS paintlablimited.myshopify.com");
