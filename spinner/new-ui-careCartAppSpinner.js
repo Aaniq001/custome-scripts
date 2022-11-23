@@ -3001,7 +3001,7 @@
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
                 if (Shopify.shop == 'amaris-prerna.myshopify.com') {
-                    carecartSpinnerJquery('head').append('<style type="text/css"> @media screen and (max-width: 575px) { .wheelText{font-size:52px !important; font-weight:bold;}} </style>');
+                    carecartSpinnerJquery('head').append('<style type="text/css"> @media screen and (max-width: 575px) { .wheelText{font-size:52px !important; font-weight:bold;}} @media screen and (max-width: 575px) {.wheelify-wrapper-spinner , #wheelify-spin-trigger-cc{display:none !important;}} </style>');
                     //console.log("SAS paintlablimited.myshopify.com");
                 }
                 if (Shopify.shop == 'getrektlabs.myshopify.com') {
