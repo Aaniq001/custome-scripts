@@ -3000,6 +3000,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'amaris-prerna.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> @media screen and (max-width: 575px) { .wheelText{font-size:52px !important; font-weight:bold;}} </style>');
+                    //console.log("SAS paintlablimited.myshopify.com");
+                }
                 if (Shopify.shop == 'getrektlabs.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> .wheelify-signupContainer .checkbox input{background-color: transparent; border: none; height: auto; appearance: auto;} </style>');
                     //console.log("SAS paintlablimited.myshopify.com");
