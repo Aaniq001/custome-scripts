@@ -3218,6 +3218,7 @@
             '.icon-specific-text i{font-family: "FontAwesome" !important;}'+
             '.sp-comment-sticky.cc-position-b-right{right: 28px !important;}'+
             '.stock-top{display: block !important;}'+
+            '.sp-comment-sticky.cc-position-b-right{bottom: 106px !important;}'+
             '</style>'
         );
 
