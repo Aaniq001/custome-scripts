@@ -3249,6 +3249,18 @@
             '</style>'
         );
     }
+
+    if (Shopify.shop == "multipower-online.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+
+                '.t_position-Stick {position: -webkit-fixed!important;position: fixed !important;top: 0;width: 100%;}'+
+                '#shopify-section-header{margin-top: 58px;}'+
+                '.notificationPreview-box .np-col-right{text-align:left !important;}'+
+                '.notificationPreview-box.black-friday-bg .notificationPreview-box-inner:before{top:58px !important; right:0 !important;}'+   
+            '</style>'
+        );
+    }
     
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
