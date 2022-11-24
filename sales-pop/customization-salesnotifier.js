@@ -3241,6 +3241,15 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "comiso-coffee.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+
+                '.timer-store-front{margin-top: 14px;}'+   
+            '</style>'
+        );
+    }
+    
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
