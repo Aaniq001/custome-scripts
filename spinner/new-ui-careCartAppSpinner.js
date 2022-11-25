@@ -3007,6 +3007,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'your-touch-f2ad.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> @media screen and (max-width: 575px) { #wheelify-spin-trigger-cc{bottom: 3vh !important;}} </style>');
+                    //console.log("SAS paintlablimited.myshopify.com");
+                }
                 if (Shopify.shop == 'test-ssp-crocs-1.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> .wheelify-text-heading{line-height: 45px;} #wheelify-spin_a_sale_cc_store_front_module p.wheelify-text-description{line-height: 26px;} </style>');
                     //console.log("SAS paintlablimited.myshopify.com");
