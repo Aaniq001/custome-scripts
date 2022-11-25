@@ -954,6 +954,13 @@
 
                             console.log('change cental wheel image');
                     }
+                    else if (Shopify.shop == 'www-metoyou-com.myshopify.com') 
+                    {    
+                            var newValue = 'https://cdn.jsdelivr.net/gh/carecartapp/custome-scripts@1.7.36/spinner/2019-mty-logo-col-bg_1t1p8q0-removebg-preview.png';   
+                            carecartSpinnerJquery('.wheelLogo').attr("xlink:href", newValue);
+
+                            console.log('change cental wheel image');
+                    }
                 }
 
                 function hideSpinASaleModule() {
