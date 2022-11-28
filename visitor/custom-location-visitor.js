@@ -1089,7 +1089,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     if (Shopify.shop == "kina-tam.myshopify.com")
     {
-        customSelctor = $jq321(".product-low-stock--root");
+        customSelctor = $jq321("div[data-block-type|='low-stock']");
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
