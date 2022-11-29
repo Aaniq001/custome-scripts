@@ -3028,7 +3028,7 @@
                     //console.log("SAS paintlablimited.myshopify.com");
                 }
                 if (Shopify.shop == 'neulo.myshopify.com') {
-                    carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin-trigger-cc span{color: #fdaa63 !important;} </style>');
+                    carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin-trigger-cc span{color: #fdaa63 !important;}#wheelify-spin_a_sale_cc_store_front_module .wheelify-signupContainer p , #wheelify-spin_a_sale_cc_store_front_module p.wheelify-text-description , span#cc-spin-a-sale-consent-text , #wheelify-spin_a_sale_cc_store_front_module .wheelify-text-heading , #wheelify-spin_a_sale_cc_store_front_module p.wheelify-text-description {color: #253746 !important;}#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form-ok, #wheelify-spin_a_sale_cc_store_front_module .form-group input{border: 1px solid #253746 !important;} </style>');
                     //console.log("SAS paintlablimited.myshopify.com");
                 }
                 if (Shopify.shop == 'melmarie-skin-care.myshopify.com') {
