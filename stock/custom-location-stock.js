@@ -334,6 +334,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "tula-baba-pty-ltd.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "kate-hewko.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
     /**
      * check the status of cart page
@@ -1117,7 +1120,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                  * Let make selector
                  */
                  //let firstSelector = $jq321("form[action='/cart']").parent();
-                 let firstSelector = $jq321("#CartPageForm");
+                 let firstSelector = $jq321(".cart-summary__close");
                 
                  console.log('selector');
                  console.log(firstSelector);
@@ -1135,7 +1138,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                  { 
                      if (firstSelector.length > 0 && cartStatus === null) 
                      {   
-                        $jq321(firstSelector[0]).append(response.view);
+                        $jq321(response.view).insertAfter(firstSelector[0]);
+                        //$jq321(firstSelector[0]).append(response.view);
                         //$jq321(firstSelector[1]).append(response.view);
                         //$jq321(".title-wrapper-with-link").append(response.view);
                          
