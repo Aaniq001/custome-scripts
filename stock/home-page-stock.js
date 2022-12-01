@@ -245,6 +245,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 8002445869354;
     }
+    if (Shopify.shop == "fantacalcio-madrigal.myshopify.com")
+    {
+        productID = 6762078339271;
+    }
 
     /**
      * check the status of cart page
