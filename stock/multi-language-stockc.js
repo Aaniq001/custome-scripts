@@ -26,7 +26,7 @@ console.log(ndoubleCheck);
 if(ndoubleCheck == 1)
 {
     //window.stop();
-    throw new Error("DOUBLE APP JS COUNTDOWN PRO");
+    //throw new Error("DOUBLE APP JS COUNTDOWN PRO");
 }
 
  function scriptInjection(src, callback) {
@@ -241,7 +241,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         if (response.above_cart == 1)
         {
-            if (Shopify.shop == "aria-and-tom.myshopify.com")
+            if (Shopify.shop == "epidoseon.myshopify.com")
+            {
+                $jq321(response.view).insertBefore('.product-form__buttons');
+            }
+            else if (Shopify.shop == "aria-and-tom.myshopify.com")
             {
                 $jq321(response.view).insertBefore('.product-single__add-to-cart');
             }
@@ -292,7 +296,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if (Shopify.shop == "aria-and-tom.myshopify.com")
+            if (Shopify.shop == "epidoseon.myshopify.com")
+            {
+                $jq321(response.view).insertAfter('.product-form__buttons');
+            }
+            else if (Shopify.shop == "aria-and-tom.myshopify.com")
             {
                 $jq321(response.view).insertAfter('.product-single__add-to-cart');
             }
