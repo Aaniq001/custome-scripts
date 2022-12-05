@@ -1119,14 +1119,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         console.log(customSelctor);
     }
 
-    if (Shopify.shop == "www-minkymyles-com.myshopify.com")
-    {
-        customSelctor = $jq321(".ak_review_product");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
     function visitorCounter(responseVisitor) 
     {
         var selectorVisitor1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -1136,7 +1128,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         
         if (responseVisitor.above_cart == 1)
         {
-            if(customSelctor.length > 0){
+            if (Shopify.shop == "www-minkymyles-com.myshopify.com")
+            {
+                $jq321(responseVisitor.view).insertBefore(".ak_review_product");
+            }
+            else if(customSelctor.length > 0){
                 $jq321(responseVisitor.view).insertBefore(finalSelector);
             }
             else if (selectorVisitor1.length == 1)
@@ -1158,7 +1154,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if(customSelctor.length > 0){
+            if (Shopify.shop == "www-minkymyles-com.myshopify.com")
+            {
+                $jq321(responseVisitor.view).insertAfter(".ak_review_product");
+            }
+            else if(customSelctor.length > 0){
                 $jq321(responseVisitor.view).insertAfter(finalSelector);
             }
             else if (selectorVisitor1.length == 1)
