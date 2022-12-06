@@ -3265,15 +3265,28 @@
     {
         $jq321("head").append(
             '<style type="text/css">'+
-                '@media screen and (max-width: 575px){.features--heading-large .notifyjs-corner{bottom:34px !important;}}'+
-                '@media screen and (max-width: 487px){.features--heading-large .notifyjs-corner{left: 60% !important;}'+
-                '.features--heading-large .notificationPreview-box{width: 293px;}'+
-                '.features--heading-large .notificationPreview-box-inner{ width: 298px;}'+
-                '.notificationPreview-box .np-col-right{width: 200px !important;}'+
-                '#noti-rsn-id .notificationPreview-box-inner{height:90px;}}'+
-                '@media screen and (max-width: 394px){.features--heading-large .notifyjs-corner {left: 58% !important;}}'+
-                '@media screen and (max-width: 370px){.features--heading-large .notifyjs-corner {left: 57% !important;}.features--heading-large .notificationPreview-box .np-col-img {width: 60px;line-height: 60px;height: 60px;}.features--heading-large .notificationPreview-box .card-body p.card-text{font-size:10px;}.features--heading-large .notificationPreview-box .card-body .pur-time{font-size:9px;}.features--heading-large .notificationPreview-box .card-body h5.card-title{font-size:12px;}}'+
-                '@media screen and (max-width: 360px){.features--heading-large .notificationPreview-box .np-col-img {width: 40px;line-height: 45px;height: 45px;}.features--heading-large .notificationPreview-box .card-body p.card-text{font-size:8px;}.features--heading-large .notificationPreview-box .card-body .pur-time{font-size:8px;}.features--heading-large .notificationPreview-box .card-body h5.card-title{font-size:10px;}.features--heading-large .notificationPreview-box-inner{width: 266px;}.features--heading-large .notificationPreview-box{width: 255px;}}'+
+                '@media screen and (max-width: 575px){'+
+                    '.features--heading-large .notifyjs-corner{bottom:34px !important;}}'+
+                '@media screen and (max-width: 487px){'+
+                    '.features--heading-large .notifyjs-corner{left: 60% !important;}'+ 
+                    '.notificationPreview-box .card-body p.card-text , .notificationPreview-box .card-body h5.card-title {margin:0px !important;}'+ 
+                    '.features--heading-large .notificationPreview-box{width: 293px;}'+ 
+                    '.features--heading-large  .notificationPreview-box .np-col-right{height: 50px; width: 233px;}'+ 
+                    '.features--heading-large .notificationPreview-box{height:65px;}'+ 
+                    '.features--heading-large #noti-rsn-id .notificationPreview-box-inner{height:62px;}'+ 
+                    '.features--heading-large .notificationPreview-box .np-inside{height:70px;}'+ 
+                    '.features--heading-large .notificationPreview-box .card-body h5.card-title{height:13px;}'+ 
+                    '.features--heading-large .notifyjs-corner{bottom:19px !important;}'+
+                    '.features--heading-large .notificationPreview-box-inner{ width: 298px;}'+
+                    '.features--heading-large .notificationPreview-box .np-col-img {width: 40px;line-height: 45px;height: 45px;}'+
+                    '.features--heading-large .notificationPreview-box .card-body p.card-text{font-size:8px;}'+
+                    '.features--heading-large .notificationPreview-box .card-body .pur-time{font-size:8px;}'+
+                    '.features--heading-large .notificationPreview-box .card-body h5.card-title{font-size:10px;}'+
+                    '#noti-rsn-id .notificationPreview-box-inner{height:90px;}}'+
+                '@media screen and (max-width: 394px){.features--heading-large .notifyjs-corner {left: 58% !important;}'+
+                    '.features--heading-large .notificationPreview-box .np-col-right {width: 203px;}'+
+                    '.features--heading-large .notificationPreview-box-inner{width: 266px;}'+
+                    '.features--heading-large .notificationPreview-box{width: 255px;}}'+
             '</style>'
         );
     }
