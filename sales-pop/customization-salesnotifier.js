@@ -3304,7 +3304,15 @@
 
         console.log(masterSelector);
     }
-    
+
+    if (Shopify.shop == "giftyprint.myshopify.com") 
+    {
+        masterSelector = $jq321(".product-single__add-to-cart");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
