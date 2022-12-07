@@ -3008,7 +3008,7 @@
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
                 if (Shopify.shop == 'bushwakka.myshopify.com') {
-                    carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin-trigger-cc{left: -64px !important;} #wheelify-spin-trigger-cc span{font-size: 20px;}</style>');
+                    carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin-trigger-cc{left: -70px !important;} #wheelify-spin-trigger-cc span{font-size: 22px;}</style>');
                     //console.log("SAS paintlablimited.myshopify.com");
                 }
                 if (Shopify.shop == 'maaji-co.myshopify.com') {
