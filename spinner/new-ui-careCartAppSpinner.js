@@ -3007,6 +3007,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'bushwakka.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin-trigger-cc{left: -64px !important;} #wheelify-spin-trigger-cc span{font-size: 20px;}</style>');
+                    //console.log("SAS paintlablimited.myshopify.com");
+                }
                 if (Shopify.shop == 'maaji-co.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin_a_sale_cc_store_front_module .wheelText{fill:black;} #wheelify-spin_a_sale_cc_store_front_module .wheelLogo {display: none;}#wheelify-spin_a_sale_cc_store_front_module .wheelify-signupContainer p , #wheelify-spin_a_sale_cc_store_front_module p.wheelify-text-description , span#cc-spin-a-sale-consent-text ,span#cc-spin-a-sale-consent-text , #wheelify-spin_a_sale_cc_store_front_module .wheelify-text-heading ,#wheelify-spin_a_sale_cc_store_front_module p.wheelify-text-description {color:black !important; letter-spacing: normal;} #wheelify-spin_a_sale_cc_store_front_module .wheelText {font-size: 27px !important;} #wheelify-spin-trigger-cc span{color:black;} #wheelify-spin_a_sale_cc_store_front_module .wheelify-closeButton i{color:black !important;} #wheelify-spin_a_sale_cc_store_front_module .wheelify-signupContainer p{margin-bottom:10px !important;}</style>');
                     //console.log("SAS paintlablimited.myshopify.com");
