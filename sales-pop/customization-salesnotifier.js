@@ -3313,14 +3313,6 @@
         console.log(masterSelector);
     }
 
-    if (Shopify.shop == "ellieandeve.myshopify.com") 
-    {
-        masterSelector = $jq321(".product-page__tabs");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
@@ -3647,7 +3639,14 @@
          var selectorTimer5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorTimer6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
          
-         if (Shopify.shop == "the-senset.myshopify.com")
+         if (Shopify.shop == "ellieandeve.myshopify.com") 
+         {
+              masterSelector = $jq321(".product-page__tabs");
+              finalSelector = masterSelector[0];
+
+              console.log(masterSelector);
+         }
+         else if (Shopify.shop == "the-senset.myshopify.com")
          {
              masterSelector = $jq321(".ProductForm__AddToCart");
              finalSelector = masterSelector[0];
