@@ -3313,6 +3313,14 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "ellieandeve.myshopify.com") 
+    {
+        masterSelector = $jq321(".product-page__tabs");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
