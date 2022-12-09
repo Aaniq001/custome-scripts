@@ -111,11 +111,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 href: serverUrl.cssVisitor + "?v" + version
             }));
 
-            if (Shopify.shop == "www-minkymyles-com.myshopify.com") 
+            /* if (Shopify.shop == "www-minkymyles-com.myshopify.com") 
             {
                 setTimeout(function () {visitorCounter(apiResponse.visitor)}, 10000);
             }
-            else if (Shopify.shop == "juliteste.myshopify.com") 
+            else */ 
+            if (Shopify.shop == "juliteste.myshopify.com") 
             {
                 setTimeout(function () {visitorCounter(apiResponse.visitor)}, 3000);
             }
@@ -1119,6 +1120,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         console.log(customSelctor);
     }
 
+    if (Shopify.shop == "www-minkymyles-com.myshopify.com")
+    {
+        customSelctor = $jq321(".product-form__buttons");
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
+    }
+
     function visitorCounter(responseVisitor) 
     {
         var selectorVisitor1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -1128,11 +1137,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         
         if (responseVisitor.above_cart == 1)
         {
-            if (Shopify.shop == "www-minkymyles-com.myshopify.com")
+            /* if (Shopify.shop == "www-minkymyles-com.myshopify.com")
             {
                 $jq321(responseVisitor.view).insertBefore(".ak_review_product");
             }
-            else if(customSelctor.length > 0){
+            else */ 
+            if(customSelctor.length > 0){
                 $jq321(responseVisitor.view).insertBefore(finalSelector);
             }
             else if (selectorVisitor1.length == 1)
@@ -1154,11 +1164,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if (Shopify.shop == "www-minkymyles-com.myshopify.com")
+            /* if (Shopify.shop == "www-minkymyles-com.myshopify.com")
             {
                 $jq321(responseVisitor.view).insertAfter(".ak_review_product");
             }
-            else if(customSelctor.length > 0){
+            else */ 
+            if(customSelctor.length > 0){
                 $jq321(responseVisitor.view).insertAfter(finalSelector);
             }
             else if (selectorVisitor1.length == 1)
