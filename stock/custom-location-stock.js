@@ -340,6 +340,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "aesthelry.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "techstacy-7045.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
     /**
      * check the status of cart page
@@ -752,6 +755,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         masterSelector = $jq321(".product-form__buttons");
         finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+    if (Shopify.shop == "techstacy-7045.myshopify.com")
+    {
+        masterSelector = $jq321(".product-info");
+        finalSelector = masterSelector[6];
 
         console.log(masterSelector);
     }
