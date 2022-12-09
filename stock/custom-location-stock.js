@@ -760,6 +760,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
     if (Shopify.shop == "techstacy-7045.myshopify.com")
     {
+        $jq321("head").append('<style type="text/css">'+
+                              '.stock-top{margin-top:14px;}'+
+                              '</style>');
+        
         masterSelector = $jq321(".product-info");
         finalSelector = masterSelector[6];
 
