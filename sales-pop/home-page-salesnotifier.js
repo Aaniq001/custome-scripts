@@ -1787,6 +1787,15 @@
      {
         productID = 7977088844058;
      }
+     if (Shopify.shop == "theheatedapparel.myshopify.com")
+     {
+        productID = 8025348931818;
+
+        masterSelector = $jq321(".buy-buttons--multiple");
+        
+        finalSelector = masterSelector[0];
+        console.log(finalSelector);
+     }
 
      $jq321.ajax({
          type: "GET",
