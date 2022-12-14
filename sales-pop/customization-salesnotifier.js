@@ -3327,6 +3327,15 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "de-makerij.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+
+                '.stock-top{display: block !important;}'+   
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
@@ -3476,26 +3485,79 @@
     function attachEventOnOptions(variantSelector, variantsData)
     {
         console.log("SP: variant selector found");
-        $jq321(variantSelector).on("click", function () { 
-            setTimeout(function () {
 
-                let urlParams = new URLSearchParams(window.location.search);
-                let variantID = urlParams.get('variant');
-                if (variantsData !== null && variantID !== null) {
-                    $jq321.each(variantsData, function (key, value) {
-                        if (value.id == variantID) {
-                            let stockCountSpan = $jq321("#carecart-salespop-sc-number");
-                            if (stockCountSpan.length > 0) {
-                                $jq321(stockCountSpan).html(value.inventory_quantity);
-                                let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
-                                stockPercentage = stockPercentage + "%";
-                                $jq321(".stock-progress-foreground").width(stockPercentage);
-                        }
+        if (Shopify.shop == "de-makerij.myshopify.com") 
+        {
+            $jq321(variantSelector).on("click", function () { 
+
+                var VariantTitle0 = $jq321("#ProductSelect-product-template-option-0").val();
+                var VariantTitle1 = $jq321("#ProductSelect-product-template-option-1").val();
+                
+                if (VariantTitle1 === undefined)
+                {
+                    var VariantTitle = VariantTitle0;
+                }
+                else
+                {
+                    var VariantTitle = VariantTitle0 + ' / ' + VariantTitle1;
+                }
+                
+                setTimeout(function () {
+
+                    //let urlParams = new URLSearchParams(window.location.search);
+                    //let variantID = urlParams.get('variant');
+
+                    let variantID = VariantTitle;
+
+                    if (variantsData !== null && variantID !== null) 
+                    {
+                        $jq321.each(variantsData, function (key, value) 
+                        {
+                            //if (value.id == variantID)
+                            if (value.title == variantID) 
+                            {
+                                let stockCountSpan = $jq321("#carecart-salespop-sc-number");
+                                if (stockCountSpan.length > 0) 
+                                {
+                                    $jq321(stockCountSpan).html(value.inventory_quantity);
+                                    
+                                    let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
+                                    stockPercentage = stockPercentage + "%";
+                                    
+                                    $jq321(".stock-progress-foreground").width(stockPercentage);
+                                }
+                            }
+                        });
                     }
-               });
-            }
-            }, 1000);
-        }); 
+                }, 1000);
+            });
+        }
+        else 
+        {
+            $jq321(variantSelector).on("click", function () { 
+                setTimeout(function () {
+                    let urlParams = new URLSearchParams(window.location.search);
+                    let variantID = urlParams.get('variant');
+                    if (variantsData !== null && variantID !== null) 
+                    {
+                        $jq321.each(variantsData, function (key, value) 
+                        {
+                            if (value.id == variantID)
+                            {
+                                let stockCountSpan = $jq321("#carecart-salespop-sc-number");
+                                if (stockCountSpan.length > 0) 
+                                {
+                                    $jq321(stockCountSpan).html(value.inventory_quantity);
+                                    let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
+                                    stockPercentage = stockPercentage + "%";
+                                    $jq321(".stock-progress-foreground").width(stockPercentage);
+                                }
+                            }
+                        });
+                    }
+                }, 1000);
+            });
+        }
     }
     /** Stock for variants ends **/
 
