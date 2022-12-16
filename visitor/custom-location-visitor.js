@@ -10,7 +10,7 @@
  */
 
  //Create the element using the createElement method.
- /* var myDiv = document.createElement("ji");
+ var myDiv = document.createElement("ji");
  
  //Set its class.
  myDiv.className = 'doubleCheck';
@@ -20,10 +20,10 @@
  
  var doubleCheck = document.getElementsByClassName("doubleCheck");
  var ndoubleCheck = doubleCheck.length;
- if (ndoubleCheck == 2) {
+ if (ndoubleCheck == 1) {
      //window.stop();
      throw new Error("DOUBLE APP JS");
- } */
+ }
 
  function scriptInjection(src, callback) {
     var script = document.createElement('script');
@@ -527,6 +527,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         //console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
     if (Shopify.shop == "monnarc.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        //console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
+    if (Shopify.shop == "geschenkplaza.myshopify.com") 
     {
         var meta = {"product":{"id":__st.rid}};
 
