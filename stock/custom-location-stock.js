@@ -23,7 +23,7 @@ var ndoubleCheck = doubleCheck.length;
 
 console.log(ndoubleCheck);
 
-if(ndoubleCheck == 3)
+if(ndoubleCheck == 1)
 {
     //window.stop();
     throw new Error("DOUBLE APP JS COUNTDOWN PRO");
@@ -341,6 +341,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var meta = {"product":{"id":__st.rid}};
     }
     else if (Shopify.shop == "techstacy-7045.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "geschenkplaza.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
 
