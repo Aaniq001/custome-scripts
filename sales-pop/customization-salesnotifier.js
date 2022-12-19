@@ -3347,6 +3347,14 @@
         );
     }
 
+    if (Shopify.shop == "creativegift2020.myshopify.com") 
+    {
+        masterSelector = $jq321(".modal_price");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
