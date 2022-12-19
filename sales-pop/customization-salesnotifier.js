@@ -4297,6 +4297,15 @@
      // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
      function trustBadges(trustBadgesResponse)
      {
+        if (Shopify.shop == "cuddle-baby-pink.myshopify.com")
+        {
+            let text = window.location.pathname;
+            let result = text.indexOf("products");
+
+            if(result == -1){
+                return;
+            }    
+        }
         if (Shopify.shop == "abigzail-s.myshopify.com")
         {
             let text = window.location.pathname;
