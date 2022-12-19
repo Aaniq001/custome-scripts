@@ -3007,6 +3007,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'congo-tropicals.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> .checkbox input[type=checkbox]:before, input[type=radio]:before{display:none;} #wheelify-spin_a_sale_cc_store_front_module .wheelify-signupContainer p{margin-bottom:auto !important;} @media only screen and (max-width: 576px){ #wheelify-spin_a_sale_cc_store_front_module .wheelify-content-spinner{width:auto!important; min-width:auto!important;} #wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview{height: 556px !important;}#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight{min-height:517px !important;}}  #wheelify-spin_a_sale_cc_store_front_module .wheelify-signupContainer p{padding-bottom: 4px;padding-top: 6px;}}</style>');
+                    //console.log("SAS paintlablimited.myshopify.com");
+                }
                 if (Shopify.shop == 'haden-reid-tampa.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> .wheelLogo{display:none;}</style>');
                     //console.log("SAS paintlablimited.myshopify.com");
