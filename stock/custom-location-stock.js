@@ -23,7 +23,7 @@ var ndoubleCheck = doubleCheck.length;
 
 console.log(ndoubleCheck);
 
-if(ndoubleCheck == 1)
+if(ndoubleCheck == 2)
 {
     //window.stop();
     throw new Error("DOUBLE APP JS COUNTDOWN PRO");
@@ -344,6 +344,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var meta = {"product":{"id":__st.rid}};
     }
     else if (Shopify.shop == "geschenkplaza.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "pawpals-1.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
 
@@ -774,6 +777,20 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
 
     function stockCountdown(response) {
+
+        if (Shopify.shop == "pawpals-1.myshopify.com")
+        {
+            $jq321("head").append('<style type="text/css">'+
+                                  '[data-product-blocks]{position: relative;}[data-product-blocks] .stock-top{position: absolute;right: 0;top: 0;width: auto;font-size:16px;}'+
+                                  '@media screen and (max-width: 1238px){[data-product-blocks] .stock-top{position:static;}}'+
+                                 
+                                  '</style>');
+
+            masterSelectorStock = $jq321(".product-block--price");
+            finalSelectorStock = masterSelectorStock[0];
+
+            console.log(masterSelectorStock);
+        }
         
         var selectorStock0 = $jq321("form[action='/cart/add']").find(".product__submit__buttons").parent();
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -785,7 +802,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         if (response.above_cart == 1)
         {
-            if (masterSelector.length > 0) 
+            if (masterSelectorStock.length > 0) 
+            {
+                $jq321(response.view).insertBefore(finalSelectorStock);
+            }
+            else if (masterSelector.length > 0) 
             {
                 $jq321(response.view).insertBefore(finalSelector);
             } 
@@ -824,7 +845,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if (masterSelector.length > 0) 
+            if (masterSelectorStock.length > 0) 
+            {
+                $jq321(response.view).insertAfter(finalSelectorStock);       
+            }
+            else if (masterSelector.length > 0) 
             {
                 $jq321(response.view).insertAfter(finalSelector);       
             } 
