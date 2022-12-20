@@ -828,7 +828,8 @@
          return M.join(' ');
      })();
  
-     Array.prototype.filterRelevantNotifications = function (a) {
+     /* Array.prototype.filterRelevantNotifications = function (a) {
+
         if (Shopify.shop == "the-diva-shop-nigeria.myshopify.com") 
         {
             if($jq321.isArray(a)) 
@@ -844,7 +845,7 @@
                 return a.indexOf(i) === -1;
             });
         }
-     };
+     }; */
  
      var getNotificationsByCollectionHandles = function (collectionHandles) {
          spDebuger.storeLog("getNotificationsByCollectionHandles called");
@@ -1668,7 +1669,7 @@
  
          spDebuger.storeLog("Total Relevant Notifications: " + relevantNotifications.length);
  
-         var irrevantNotifications = apiResponse.allNotifications.filterRelevantNotifications(relevantNotifications);
+         //var irrevantNotifications = apiResponse.allNotifications.filterRelevantNotifications(relevantNotifications);
          var notificationCount = relevantNotifications.length;
  
          window.notificationsToShow = relevantNotifications;
