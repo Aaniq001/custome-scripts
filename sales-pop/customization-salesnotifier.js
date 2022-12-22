@@ -3820,6 +3820,24 @@
          var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
          var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
          
+         if (Shopify.shop == "crafty-fisherman.myshopify.com") 
+         {
+            $jq321("head").append(
+                '<style type="text/css">' + 
+                '#price-template--15535416442927__main{display: flex;justify-content: space-between;align-items: center;}'+
+                '#price-template--15535416442927__main .visitor-counter-content-box-carecartbysalespop-2020{width: auto;height: auto;margin-top: 0;margin-bottom: 0.5rem;}'+
+                '.counter-text-carecartbysalespop-2020{min-height: auto !important;}'+
+                '.content-div-visitor-detail-carecartbysalespop-2020{font-size:13px !important;}'+
+                '@media only screen and (max-width: 992px) {#price-template--15535416442927__main{display: block;}}' +
+                '</style>'
+            );
+
+            masterSelector = $jq321(".price");
+            finalSelector = masterSelector[0];
+
+            console.log(masterSelector);
+         }
+         else 
          if (Shopify.shop == "slinger-8108.myshopify.com") 
          {
             $jq321("head").append(
