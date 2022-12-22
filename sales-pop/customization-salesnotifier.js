@@ -3356,6 +3356,16 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "original-moon-store-8647.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+
+                '.stock-top{display: block !important;}'+
+                '.stock-style {border-radius: 1rem !important;}'+   
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
