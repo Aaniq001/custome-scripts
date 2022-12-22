@@ -20,7 +20,7 @@
  
  var doubleCheck = document.getElementsByClassName("doubleCheck");
  var ndoubleCheck = doubleCheck.length;
- if (ndoubleCheck == 1) {
+ if (ndoubleCheck == 2) {
      //window.stop();
      throw new Error("DOUBLE APP JS");
  }
@@ -533,6 +533,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         //console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
     if (Shopify.shop == "geschenkplaza.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        //console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
+    if (Shopify.shop == "todoentregas.myshopify.com") 
     {
         var meta = {"product":{"id":__st.rid}};
 
@@ -1160,6 +1166,17 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
+    }
+
+    if (Shopify.shop == "todoentregas.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.visitor-counter-content-box-carecartbysalespop-2020{ height: 17px !important;}'+
+            '.counter-text-carecartbysalespop-2020{min-height:10px !important;}' +
+            '.product-single__add-to-cart{margin-bottom:0px !important}' +
+            '</style>'
+           );
     }
 
     function visitorCounter(responseVisitor) 
