@@ -19,7 +19,13 @@
  document.body.appendChild(myDiv);
  
  var doubleCheck = document.getElementsByClassName("doubleCheck");
+ 
+ console.log(doubleCheck);
+ 
  var ndoubleCheck = doubleCheck.length;
+ 
+ console.log(ndoubleCheck);
+
  if (ndoubleCheck == 1) {
      //window.stop();
      throw new Error("DOUBLE APP JS");
@@ -1183,6 +1189,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             '.product-single__add-to-cart{margin-bottom:0px !important}' +
             '</style>'
            );
+    }
+
+    if (Shopify.shop == "pradic1212.myshopify.com")
+    {
+        customSelctor = $jq321(".product-single__add-to-cart");
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
     }
 
     function visitorCounter(responseVisitor) 
