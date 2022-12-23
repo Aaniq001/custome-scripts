@@ -249,6 +249,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 6762078339271;
     }
+    if (Shopify.shop == "next-level-paramount-deals.myshopify.com")
+    {
+        productID = 7579597209799;
+    }
 
     /**
      * check the status of cart page
