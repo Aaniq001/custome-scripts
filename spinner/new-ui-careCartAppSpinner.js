@@ -3007,6 +3007,10 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+                if (Shopify.shop == 'swisspedics.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> .checkbox label:after{display:none;} .wheelify-signupContainer .checkbox input[type=checkbox]{position: static;height: auto;width: auto;z-index: 1;opacity: 1!important;} #wheelify-spin_a_sale_cc_store_front_module .checkbox{line-height:1;}</style>');
+                    //console.log("SAS swisspedics.myshopify.com");
+                }
                 if (Shopify.shop == 'ozoneayurvedics.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> .btn-submit-form .svg-inline--fa{display:none;}</style>');
                     //console.log("SAS paintlablimited.myshopify.com");
