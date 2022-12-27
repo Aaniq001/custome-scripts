@@ -3010,7 +3010,7 @@
 
                 
                 if (Shopify.shop == 'crocsvietnam.myshopify.com') {
-                    carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin_a_sale_cc_store_front_module p.wheelify-text-description{margin-top:10px !important;}</style>');
+                    carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin_a_sale_cc_store_front_module p.wheelify-text-description{margin-top:10px !important;} #wheelify-spin_a_sale_cc_store_front_module .wheelify-text-heading{font-size: 30px !important; font-weight: bolder !important;}</style>');
                     //console.log("SAS swisspedics.myshopify.com");
                 }
                 if (Shopify.shop == 'swisspedics.myshopify.com') {
