@@ -3007,6 +3007,12 @@
                 //***************** End - Countdown Timer function min & sec ********************
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
+
+                
+                if (Shopify.shop == 'crocsvietnam.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin_a_sale_cc_store_front_module p.wheelify-text-description{margin-top:10px !important;}</style>');
+                    //console.log("SAS swisspedics.myshopify.com");
+                }
                 if (Shopify.shop == 'swisspedics.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> .checkbox label:after{display:none;} .wheelify-signupContainer .checkbox input[type=checkbox]{position: static;height: auto;width: auto;z-index: 1;opacity: 1!important;} #wheelify-spin_a_sale_cc_store_front_module .checkbox{line-height:1;}</style>');
                     //console.log("SAS swisspedics.myshopify.com");
