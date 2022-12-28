@@ -53,7 +53,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var thisLibUrl = "";
         allScripts.forEach(function (script) {
             if (script.src && script.src.indexOf('lib/custom-location-stock.js') !== -1) {
-                thisLibUrl = "";console.log("hella");
+                thisLibUrl = "";
             }
         });
 
@@ -122,11 +122,20 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         // Time COUNTDOWN CALL
         if(apiResponse && apiResponse.timer && apiResponse.timer!==null)
         {
-            $jq321("head").append($jq321("<link/>", {
-                rel: "stylesheet",
-                href: serverUrl.cssTimer + "?v" + version
-            }));
-            timeCountdown(apiResponse.timer);
+            if (Shopify.shop == "next-level-paramount-deals.myshopify.com") 
+            {
+                if (window.location.pathname != '/cart')
+                {
+                    $jq321("head").append($jq321("<link/>", { rel: "stylesheet", href: serverUrl.cssTimer + "?v" + version }));
+                    timeCountdown(apiResponse.timer);
+                }
+            }
+            else
+            {
+                $jq321("head").append($jq321("<link/>", { rel: "stylesheet", href: serverUrl.cssTimer + "?v" + version }));
+                timeCountdown(apiResponse.timer);
+            }
+            
         }
 
         // Cart Countdown timer
@@ -385,7 +394,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(finalSelector);
     }
-
+    if(Shopify.shop == "next-level-paramount-deals.myshopify.com")
+    {
+        $jq321("head").append('<style type="text/css">.cart-countdown-desktop-top-center { display: flex !important; }</style>');
+    }
+    
      function stockCountdown(response) {
          
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -741,11 +754,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                  /**
                  * Let make selector
                  */
-                 //let firstSelector = $jq321("form[action='/cart']").parent();
-                 let firstSelector = $jq321("#cart");
+                 let firstSelector = $jq321("form[action='/cart']").parent();
+                 //let firstSelector = $jq321(".cart");
                 
-                 console.log('selector');
-                 console.log(firstSelector);
+                 //console.log('selector');
+                 //console.log(firstSelector);
                  
                  if (response.barPosition == "top" && cartStatus === null) 
                  {  
