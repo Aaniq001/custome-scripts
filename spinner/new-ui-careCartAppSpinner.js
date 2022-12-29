@@ -3008,7 +3008,11 @@
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
 
-                
+                if (Shopify.shop == 'healthybud-us.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form, #wheelify-spin_a_sale_cc_store_front_module .btn-submit-form-ok, #wheelify-spin_a_sale_cc_store_front_module .copy-button{padding: inherit; min-width: auto; font-size: 14px !important;}'+
+                    '@media only screen and (max-width: 575px){#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight {min-height: 452px !important;}}</style>');
+                    //console.log("SAS healthybud-us.myshopify.com");
+                }
                 if (Shopify.shop == 'crocsvietnam.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> #wheelify-spin_a_sale_cc_store_front_module p.wheelify-text-description{margin-top:10px !important;} #wheelify-spin_a_sale_cc_store_front_module .wheelify-text-heading{font-size: 30px !important; font-weight: bolder !important;}' + 
                     '@media only screen and (max-width: 576px){ #wheelify-spin_a_sale_cc_store_front_module .wheelify-text-heading{font-size:26px !important;}} .wheelText{fill:black; font-weight:bold; font-size:34px !important;}' +
