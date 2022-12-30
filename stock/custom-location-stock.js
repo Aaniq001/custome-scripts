@@ -355,6 +355,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "green4life-8417.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "ideal-zone.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
     /**
      * check the status of cart page
@@ -778,6 +781,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         
         masterSelector = $jq321(".product-info");
         finalSelector = masterSelector[6];
+
+        console.log(masterSelector);
+    }
+    if (Shopify.shop == "ideal-zone.myshopify.com")
+    {
+        masterSelector = $jq321(".under_cta_atc");
+        finalSelector = masterSelector[0];
 
         console.log(masterSelector);
     }
