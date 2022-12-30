@@ -719,10 +719,8 @@
  
      var serverUrl = getServerUrls();
  
-     function salesPopDebugger() {        // $srData = array('event' => 'onload', 'src' => 'https://good-wolverine-16.telebit.io/sales-pop/multi-lingual-salesnotifier.js');
-         // $shopify->ScriptTag->post($srData);
- 
-         // $shopify->ScriptTag(197684429012)->delete();         
+     function salesPopDebugger() {        
+        
          var spDebugger = {
              log: [],
              storeLog: function (logMsg) {
@@ -1838,6 +1836,10 @@
             masterSelector = $jq321(".add-to-cart ");
             finalSelector = masterSelector[0];
             //console.log(finalSelector);
+         }
+         if(Shopify.shop == "sheabiscus.myshopify.com")
+         {
+             finalSelector = masterSelector[0];
          }
 
 
