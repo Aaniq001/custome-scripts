@@ -9,7 +9,7 @@
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
 
- function scriptInjection(src, callback) {
+function scriptInjection(src, callback) {
     var script = document.createElement('script');
     script.type = "text/javascript";
 
@@ -137,7 +137,16 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
 
         if (response.above_cart == 1) {
-            if (Shopify.shop == "boutique1861.myshopify.com")
+            if (Shopify.shop == "browlabfrance.myshopify.com")
+            {
+                $jq321("head").append(
+                    '<style type="text/css">'+
+                        '.visitor-counter-content-box-carecartbysalespop-2020{margin-left:60px;}'+   
+                    '</style>'
+                );
+                $jq321(response.view).insertBefore('.Product__Gallery--withThumbnails');
+            }
+            else if (Shopify.shop == "boutique1861.myshopify.com")
             {
                 $jq321(response.view).insertBefore('.add_to_cart');
             }
@@ -162,7 +171,16 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             }
         }
         else {
-            if (Shopify.shop == "boutique1861.myshopify.com")
+            if (Shopify.shop == "browlabfrance.myshopify.com")
+            {
+                $jq321("head").append(
+                    '<style type="text/css">'+
+                        '.visitor-counter-content-box-carecartbysalespop-2020{margin-left:60px;}'+   
+                    '</style>'
+                );
+                $jq321(response.view).insertAfter('.Product__Gallery--withThumbnails');
+            }
+            else if (Shopify.shop == "boutique1861.myshopify.com")
             {
                 $jq321(response.view).insertAfter('.add_to_cart');
             }
