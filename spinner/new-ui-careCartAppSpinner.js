@@ -3008,6 +3008,14 @@
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
 
+                if (Shopify.shop == 'crocsvietnam.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css">@media only screen and (max-width:575px){'+
+                        '#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview{min-width: 323px!important;height: 551px!important;}'+
+                        '#wheelify-spin_a_sale_cc_store_front_module.popupview .wheelify-text-heading {font-size: 22px !important;padding-top: 20px;}'+    
+                        '#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight{min-height: 513px !important;}'+
+                        '#wheelify-spin_a_sale_cc_store_front_module .win_text{display: inline-block;padding-top: 10px;}}</style>');
+                    //console.log("SAS healthybud-us.myshopify.com");
+                }
                 if (Shopify.shop == 'swisspedic.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">.wheelify-signupContainer .checkbox label:after{display:none;} .wheelify-signupContainer .checkbox input[type=checkbox]{position: static; height: auto; width: auto; z-index: 1; opacity: 1!important;} #wheelify-spin_a_sale_cc_store_front_module .checkbox{line-height:1;}</style>');
                     //console.log("SAS healthybud-us.myshopify.com");
