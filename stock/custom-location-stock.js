@@ -358,6 +358,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "ideal-zone.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "sometimes-co.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "purebaebe.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
     /**
      * check the status of cart page
@@ -1187,8 +1193,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                  /**
                  * Let make selector
                  */
-                 //let firstSelector = $jq321("form[action='/cart']").parent();
-                 let firstSelector = $jq321(".cart-summary__close");
+                 let firstSelector = $jq321("form[action='/cart']").parent();
+                 //let firstSelector = $jq321(".cart-summary__close");
                 
                  console.log('selector');
                  console.log(firstSelector);
