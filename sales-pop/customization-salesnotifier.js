@@ -3398,6 +3398,16 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "80a6c1.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+
+                '.payment-buttons .visitor-counter-content-box-carecartbysalespop-2020{height: 55px;margin-top: 1px;}'+
+                '.product-block--sales-point ul.sales-points{margin-bottom:0 !important;}.product-block.product-block--sales-point{margin-bottom:0px !important;}'+   
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
