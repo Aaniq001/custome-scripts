@@ -51,6 +51,8 @@
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
     
+   
+
     cssFileInjection(API_URL + "public/phone/css/intlTelInput.css?v=" + new Date().toLocaleTimeString());               // Dev and UAT URL
     cssFileInjection(API_URL + "public/phone/css/phoneStyle.css?v=" + new Date().toLocaleTimeString());                 // Dev and UAT URL
     //cssFileInjection(API_URL +"public/phone/js/intlTelInput.js?v=" + new Date().toLocaleTimeString());                 // Dev and UAT URL
@@ -3010,7 +3012,8 @@
 
                 if (Shopify.shop == 'crocsvietnam.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">@media only screen and (max-width:575px){'+
-                        '#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview{min-width: 323px!important;height: 551px!important;}'+
+                        '#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview {height: 691px!important;}'+
+                        '#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview{min-width: 323px!important;}'+
                         '#wheelify-spin_a_sale_cc_store_front_module.popupview .wheelify-text-heading {font-size: 22px !important;padding-top: 20px;}'+    
                         '#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight{min-height: 513px !important;}'+
                         '#wheelify-spin_a_sale_cc_store_front_module .win_text{display: inline-block;padding-top: 10px;}}</style>');
