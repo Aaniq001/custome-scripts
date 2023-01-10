@@ -3408,6 +3408,14 @@
         );
     }
 
+    if (Shopify.shop == "novocook.myshopify.com") 
+    {   
+        masterSelector = $jq321(".product__form_row");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
@@ -4475,7 +4483,11 @@
             var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
 
-            if (Shopify.shop == "framecarts-com.myshopify.com")
+            if (Shopify.shop == "novocook.myshopify.com")
+            {
+                $jq321(trustBadgesResponse.view).insertAfter('.product__form_row');
+            }
+            else if (Shopify.shop == "framecarts-com.myshopify.com")
             {
                 $jq321(trustBadgesResponse.view).insertAfter('.product-form__buttons');
             }
