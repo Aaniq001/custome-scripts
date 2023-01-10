@@ -26,7 +26,7 @@
  
  console.log(ndoubleCheck);
 
- if (ndoubleCheck == 1) {
+ if (ndoubleCheck == 2) {
      //window.stop();
      throw new Error("DOUBLE APP JS");
  }
@@ -551,6 +551,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         //console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
     if (Shopify.shop == "pradic1212.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        //console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
+    if (Shopify.shop == "orne-decor-studio.myshopify.com") 
     {
         var meta = {"product":{"id":__st.rid}};
 
@@ -1194,6 +1200,14 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "pradic1212.myshopify.com")
     {
         customSelctor = $jq321(".product-single__add-to-cart");
+        finalSelector = customSelctor[0];
+
+        console.log(customSelctor);
+    }
+
+    if (Shopify.shop == "orne-decor-studio.myshopify.com")
+    {
+        customSelctor = $jq321(".pf-63_");
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
