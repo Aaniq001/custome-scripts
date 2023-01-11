@@ -3010,6 +3010,10 @@
                 //***************************** Store Specific Styling ***********************************************************
                 //***************************** Fix Text Positioning of Store in Spinner Pop-up **********************************
 
+                if (Shopify.shop == 'truffe-delice.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .wheelify-signupContainer p , #wheelify-spin_a_sale_cc_store_front_module p.wheelify-text-description , span#cc-spin-a-sale-consent-text , div#wheelify-cc-spin-a-sale-powered-by-carecart , #wheelify-spin_a_sale_cc_store_front_module .wheelify-text-heading{color:#000 !important;}</style>');
+                    //console.log("SAS healthybud-us.myshopify.com");
+                }
                 if (Shopify.shop == 'crocsvietnam.myshopify.com') 
                 {
                     if (window.location.pathname == '/en')
