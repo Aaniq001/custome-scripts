@@ -3022,12 +3022,20 @@
                     }
 
                     carecartSpinnerJquery('head').append('<style type="text/css">@media only screen and (max-width:575px){'+
-                        '#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview {height: 691px!important;}'+
+                        '.wheelify-signupContainer .label, .wheelify-signupContainer  label:not(.variant__button-label):not(.text-label){font-size: 14px;line-height: 13px;}'+
+                        '#wheelify-spin_a_sale_cc_store_front_module .checkbox {padding: 5px 0 8px 1px !important;}'+
+                        '#wheelify-spin_a_sale_cc_store_front_module .form-group{margin: 0 auto 13px;}'+
+                        '.wheelify-cc-spin-a-sale-couponwheel_offers_text{font-size:12px;}'+
+                        '#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview {height: 563px!important;}'+
                         '#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview{min-width: 323px!important;}'+
-                        '#wheelify-spin_a_sale_cc_store_front_module.popupview .wheelify-text-heading {font-size: 22px !important;padding-top: 20px;}'+    
-                        '#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight{min-height: 513px !important;}'+
+                        '#wheelify-spin_a_sale_cc_store_front_module.popupview .wheelify-text-heading {font-size: 22px !important;padding-top: 12px;}'+    
+                        '#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight{min-height: 429px !important;}'+
                         '#wheelify-spin_a_sale_cc_store_front_module .win_text{display: inline-block;padding-top: 10px;}'+
-                        '#wheelify-couponwheel_notice_content + #wheelify-spin-trigger-cc{right: -30px !important; bottom: 30vh !important;}}</style>');
+                        '#wheelify-couponwheel_notice_content + #wheelify-spin-trigger-cc{right: -30px !important; bottom: 30vh !important;}'+
+                        '#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview {min-width: 373px!important;}'+
+                        '#wheelify-spin_a_sale_cc_store_front_module .wheelify-wheelContainer {width: 59%!important;}'+
+                        '#wheelify-spin_a_sale_cc_store_front_module p.wheelify-text-description {margin-top: 4px !important;}'+
+                        '}</style>');
                     //console.log("SAS healthybud-us.myshopify.com");
                 }
                 if (Shopify.shop == 'swisspedic.myshopify.com') {
