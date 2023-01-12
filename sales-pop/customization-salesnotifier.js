@@ -3416,6 +3416,16 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "carupgradeco.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+
+                '.payment-buttons .visitor-counter-content-box-carecartbysalespop-2020{ height: 45px;}'+
+                '.counter-text-carecartbysalespop-2020{min-height: auto !important;}'+   
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
