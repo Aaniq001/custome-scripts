@@ -3440,6 +3440,15 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "vapeology-ashford.myshopify.com") 
+    {  
+        $jq321("head").append(
+            '<style type="text/css">'+
+                '.stock-top{display: block !important;}'+   
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
