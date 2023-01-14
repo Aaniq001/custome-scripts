@@ -3676,13 +3676,26 @@
 
      function stockCountdown(responseStock) {
  
-        if (Shopify.shop == "slinger-8108.myshopify.com") 
-         {
+        if (Shopify.shop == "wis-team.myshopify.com") 
+        {  
+            $jq321("head").append(
+                '<style type="text/css">'+
+                    '.stock-top{display: block !important;}'+   
+                '</style>'
+            );
+
+            masterSelectorStock = $jq321("#price-template--17392894181663__main");
+            finalSelectorStock = masterSelectorStock[0];
+
+            console.log(masterSelector);
+        }
+        else if (Shopify.shop == "slinger-8108.myshopify.com") 
+        {
             masterSelector = $jq321(".product-form__submit");
             finalSelector = masterSelector[0];
 
             console.log(masterSelector);
-         }
+        }
          
          var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorStock2 = $jq321("form[action='/cart/add']");
@@ -3693,7 +3706,11 @@
  
          if (responseStock.above_cart == 1) 
          {
-            if (masterSelector2.length > 0) 
+            if (masterSelectorStock.length > 0) 
+            { 
+                $jq321(responseStock.view).insertBefore(finalSelectorStock);
+            }
+            else if (masterSelector2.length > 0) 
             { 
                 $jq321(responseStock.view).insertBefore(finalSelector2);
             }
@@ -3728,7 +3745,11 @@
          } 
          else 
          {
-            if (masterSelector2.length > 0) 
+            if (masterSelectorStock.length > 0) 
+            { 
+                $jq321(responseStock.view).insertAfter(finalSelectorStock);  
+            }
+            else if (masterSelector2.length > 0) 
             { 
                 $jq321(responseStock.view).insertAfter(finalSelector2);  
             }
