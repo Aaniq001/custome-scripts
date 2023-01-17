@@ -2285,6 +2285,8 @@
      var finalSelector = '';
      var masterSelector2 = '';
      var finalSelector2 = '';
+     var masterSelectorStock = '';
+     var finalSelectorStock = '';
 
      if (Shopify.shop == "woodpixlde.myshopify.com") {
         $jq321("head").append(
@@ -3447,6 +3449,20 @@
                 '.stock-top{display: block !important;}'+   
             '</style>'
         );
+    }
+
+    if (Shopify.shop == "bypuffsite.myshopify.com") 
+    {  
+        $jq321("head").append(
+            '<style type="text/css">'+
+                '.stock-top{display: block !important;}'+   
+            '</style>'
+        );
+         
+        masterSelector = $jq321(".product-form__buttons");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
     }
 
      /** Stock for variants **/
