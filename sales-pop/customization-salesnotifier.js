@@ -828,7 +828,7 @@
          return M.join(' ');
      })();
  
-     /* Array.prototype.filterRelevantNotifications = function (a) {
+     Array.prototype.filterRelevantNotifications = function (a) {
 
         if (Shopify.shop == "the-diva-shop-nigeria.myshopify.com") 
         {
@@ -845,7 +845,7 @@
                 return a.indexOf(i) === -1;
             });
         }
-     }; */
+     };
  
      var getNotificationsByCollectionHandles = function (collectionHandles) {
          spDebuger.storeLog("getNotificationsByCollectionHandles called");
@@ -1669,7 +1669,7 @@
  
          spDebuger.storeLog("Total Relevant Notifications: " + relevantNotifications.length);
  
-         //var irrevantNotifications = apiResponse.allNotifications.filterRelevantNotifications(relevantNotifications);
+         var irrevantNotifications = apiResponse.allNotifications.filterRelevantNotifications(relevantNotifications);
          var notificationCount = relevantNotifications.length;
  
          window.notificationsToShow = relevantNotifications;
@@ -3460,6 +3460,20 @@
         );
          
         masterSelector = $jq321(".product-form__buttons");
+        finalSelector = masterSelector[0];
+
+        console.log(masterSelector);
+    }
+
+    if (Shopify.shop == "tecmaro.myshopify.com") 
+    {  
+        $jq321("head").append(
+            '<style type="text/css">'+
+                '.stock-top{display: block !important;}'+   
+            '</style>'
+        );
+         
+        masterSelector = $jq321(".product-single__add-to-cart");
         finalSelector = masterSelector[0];
 
         console.log(masterSelector);
