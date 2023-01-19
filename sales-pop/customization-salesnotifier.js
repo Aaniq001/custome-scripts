@@ -12,7 +12,7 @@
 
  //Create the element using the createElement method.
  var myDiv = document.createElement("ji");
-
+    
  //Set its class.
  myDiv.className = 'doubleCheck';
  
@@ -829,7 +829,6 @@
      })();
  
      Array.prototype.filterRelevantNotifications = function (a) {
-
         if (Shopify.shop == "the-diva-shop-nigeria.myshopify.com") 
         {
             if($jq321.isArray(a)) 
@@ -1401,7 +1400,17 @@
 
          // VISITOR COUNTER CALL
          if (apiResponse && apiResponse.visitor && apiResponse.visitor !== null) 
-         { 
+         {
+            /*if (Shopify.shop == "directdealstore.myshopify.com") 
+            {    setTimeout(function(){
+                    $jq321("head").append($jq321("<link/>", {
+                        rel: "stylesheet",
+                        href: serverUrl.cssVisitor + "?v" + version
+                    }));
+                    visitorCounter(apiResponse.visitor);
+                }, 3000);
+            }
+            else*/ 
             if (Shopify.shop == "frenchiestuff.myshopify.com") 
             {    setTimeout(function(){
                     $jq321("head").append($jq321("<link/>", {
@@ -1421,28 +1430,12 @@
                     visitorCounter(apiResponse.visitor);
                 }, 5000);
             }
-            else if (Shopify.shop == "rajmohar-test.myshopify.com")
-            {
-                $jq321("head").append($jq321("<link/>", {
-                    rel: "stylesheet",
-                    href: serverUrl.cssVisitor + "?v" + version
-                }));
-                setTimeout(function(){
-                    visitorCounter(apiResponse.visitor);
-                }, 2000);
-            }
             else
             {
                 $jq321("head").append($jq321("<link/>", {
                     rel: "stylesheet",
                     href: serverUrl.cssVisitor + "?v" + version
                 }));
-
-                if (apiResponse.visitor.start_visitor_counter != null && apiResponse.visitor.end_visitor_counter != null) {
-
-                    customVisitors(apiResponse.visitor.start_visitor_counter, apiResponse.visitor.end_visitor_counter);
-                }
-                
                 visitorCounter(apiResponse.visitor);
             }             
          }
@@ -1474,9 +1467,9 @@
                      collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
                  }, 3000);
 
-                 /* $jq321(window).scroll(function () {
+                 /*$jq321(window).scroll(function () {
                     collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
-                 }); */ 
+                 });*/ 
              }
          }
          
@@ -1505,10 +1498,10 @@
                 collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
             }, 2000);
 
-            /* $jq321(window).scroll(function () {
+            $jq321(window).scroll(function () {
                 $jq321(".timer-store-front").remove();
                 collectionTimer(apiResponse.timerCollection, apiResponse.timerCollectionOff);
-            }); */ 
+            }); 
         }
 
         // ANNOUNCEMENT BAR CALL
@@ -1750,7 +1743,7 @@
  
      };
 
-     /* window.checkmodule_popup1 = function (response) {
+     window.checkmodule_popup1 = function (response) {
          spDebuger.storeLog("BACKEND-URL: ", salespoplib_vars_obj.backend_url);
  
          apiResponse = response;
@@ -1846,9 +1839,9 @@
                      collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
                  }, 3000);
 
-                 $jq321(window).scroll(function () {
+                 /*$jq321(window).scroll(function () {
                     collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
-                 }); 
+                 });*/ 
              }
          }
          
@@ -1946,119 +1939,97 @@
 
             trustBadges(apiResponse.trustBadges);
         }
-     }; */
+     };
  
      window.showSalesPopup = function (popUpIndexToDisplay) {
-        if (apiResponse.allNotifications[popUpIndexToDisplay] == undefined) {
-            return;
-        }
-        var now = new Date;
-        var utc_timestamp = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
-            now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());
-        var s = apiResponse.allNotifications[popUpIndexToDisplay].order_generated_time;
-        var a = s.split(/[^0-9]/);
-        var endtime = new Date(a[0], a[1] - 1, a[2], a[3], a[4], a[5]);
-
-        var timeDifference = utc_timestamp - endtime;
-        timeDifference = Math.floor((timeDifference / 1000) / 60);
-
-        /**
-         * Translated words
-         */
-        let minuteAgo = " minute(s) ago";
-        let hourAgo = " hour(s) ago";
-        let daysAgo = " day(s) ago";
-        if (apiResponse.timeAgoTranslatedData) {
-            minuteAgo = (apiResponse.timeAgoTranslatedData.minutes_ago !== "") ? " " + apiResponse.timeAgoTranslatedData.minutes_ago : minuteAgo;
-            hourAgo = (apiResponse.timeAgoTranslatedData.hours_ago !== "") ? " " + apiResponse.timeAgoTranslatedData.hours_ago : hourAgo;
-            daysAgo = (apiResponse.timeAgoTranslatedData.days_ago !== "") ? " " + apiResponse.timeAgoTranslatedData.days_ago : daysAgo;
-        }
-
-        if (timeDifference >= 60) {
-            timeDifference = Math.floor(timeDifference / 60);
-            if (timeDifference >= 24) {
-                timeDifference = Math.floor(timeDifference / 24);
-                timeDifference = Math.abs(timeDifference) + daysAgo;
-            }
-            else {
-                timeDifference = Math.abs(timeDifference) + hourAgo;
-            }
-        } else { timeDifference = Math.abs(timeDifference) + minuteAgo; }
-
-        if (isHidePopupCookieSet()) {
-            return false;
-        }
-
-        if (typeof $jq321.notify == "undefined") {
-            notifyPopup($jq321);
-        }
-
-        if (!notificationsToShow[popUpIndexToDisplay].hasOwnProperty('notifications')) {
-            return false;
-        }
-
-        var dataNotification = notificationsToShow[popUpIndexToDisplay].notifications;
-
-        $jq321.notify.addStyle('salesPopStyle', {
-            html: dataNotification
-        });
-
-        /*$jq321.notify("hello world", {
-            globalPosition: apiResponse.desktop_position,
-            style: 'salesPopStyle',
-            autoHideDelay: parseInt(apiResponse.display_time) * 1000,
-            showDuration: 600,
-            hideAnimation: 'slideUp',
-            hideDuration: 600,
-            clickToHide: false
-        });*/
-
-        if (salespoplib_vars_obj.checkDevice == 'mobile') {
-            if (apiResponse.mobile_display_option == 'undefined') {
+ 
+         var now = new Date;
+         var utc_timestamp = new Date(now.getUTCFullYear(),now.getUTCMonth(), now.getUTCDate() , 
+           now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());
+     var s = apiResponse.allNotifications[popUpIndexToDisplay].order_generated_time;
+         var a = s.split(/[^0-9]/);
+         var endtime =new Date (a[0],a[1]-1,a[2],a[3],a[4],a[5] );
+         
+         var timeDifference = utc_timestamp - endtime;
+     timeDifference = Math.floor((timeDifference / 1000) / 60);
+             
+     if(timeDifference >= 60)
+     {
+         timeDifference = Math.floor(timeDifference / 60);
+         if(timeDifference >= 24)
+         {
+             timeDifference = Math.floor(timeDifference / 24);
+             timeDifference = Math.abs(timeDifference) + " day(s) ago";
+         }
+         else 
+         {
+             timeDifference = Math.abs(timeDifference) + " hour(s) ago";
+         }   
+     }else{timeDifference = Math.abs(timeDifference) + " minute(s) ago"}
+ 
+         if( isHidePopupCookieSet() ) {
+             return false;
+         }
+ 
+         if (typeof $jq321.notify == "undefined") {
+             notifyPopup($jq321);
+         }
+ 
+         if (!notificationsToShow[popUpIndexToDisplay].hasOwnProperty('notifications')) {
+             return false;
+         }
+ 
+         var dataNotification = notificationsToShow[popUpIndexToDisplay].notifications;
+ 
+         $jq321.notify.addStyle('salesPopStyle', {
+             html: dataNotification
+         });
+ 
+         if (salespoplib_vars_obj.checkDevice == 'mobile')
+         {
+             if (apiResponse.mobile_display_option == 'undefined')
+             {
+                 $jq321.notify("hello world", {
+                     globalPosition: apiResponse.desktop_position,
+                     style: 'salesPopStyle',
+                     autoHideDelay: parseInt(apiResponse.display_time) * 1000,
+                     showDuration: 600,
+                     hideAnimation: 'slideUp',
+                     hideDuration: 600,
+                     clickToHide: false
+                 });
+             }
+             else
+             {
                 $jq321.notify("hello world", {
-                    globalPosition: apiResponse.desktop_position,
-                    style: 'salesPopStyle',
-                    autoHideDelay: parseInt(apiResponse.display_time) * 1000,
-                    showDuration: 600,
-                    hideAnimation: 'slideUp',
-                    hideDuration: 600,
-                    clickToHide: false
-                });
-            }
-            else {
-                $jq321.notify("hello world", {
-                    globalPosition: apiResponse.mobile_display_option,
-                    style: 'salesPopStyle',
-                    autoHideDelay: parseInt(apiResponse.display_time) * 1000,
-                    showDuration: 600,
-                    hideAnimation: 'slideUp',
-                    hideDuration: 600,
-                    clickToHide: false
-                });
-            }
-        }
-        else {
-            $jq321.notify("hello world", {
-                globalPosition: apiResponse.desktop_position,
-                style: 'salesPopStyle',
-                autoHideDelay: parseInt(apiResponse.display_time) * 1000,
-                showDuration: 600,
-                hideAnimation: 'slideUp',
-                hideDuration: 600,
-                clickToHide: false
-            });
-        }
-
-        if (apiResponse.timeText == "{{time_ago}}") {
-            $jq321(".pur-time").html(timeDifference);
-        }
-
-        /* let salesNotificationImpressions = {
-            id: impressionsID,
-            salesNotification : 1
-        }
-        postImpressions(salesNotificationImpressions, "sp_sales_notifications_impressions"); */
-    };
+                     globalPosition: apiResponse.mobile_display_option,
+                     style: 'salesPopStyle',
+                     autoHideDelay: parseInt(apiResponse.display_time) * 1000,
+                     showDuration: 600,
+                     hideAnimation: 'slideUp',
+                     hideDuration: 600,
+                     clickToHide: false
+                 }); 
+             }
+         }
+         else
+         {
+               $jq321.notify("hello world", {
+                 globalPosition: apiResponse.desktop_position,
+                 style: 'salesPopStyle',
+                 autoHideDelay: parseInt(apiResponse.display_time) * 1000,
+                 showDuration: 600,
+                 hideAnimation: 'slideUp',
+                 hideDuration: 600,
+                 clickToHide: false
+             });  
+         }
+ 
+         if(apiResponse.timeText == "{{time_ago}}")
+         {
+             $jq321(".pur-time").html(timeDifference);
+         }
+     };
  
  
      var aurl = salespoplib_active_url.split('/');
@@ -2090,31 +2061,31 @@
      };
      /////////////////////// Set flag to get notifications data //////////////////////////
 
-    $jq321.ajax({
-        type: "GET",
-        url: salespoplib_vars_obj.backend_url + 'checkStore/',
-        dataType: "jsonp",
-        jsonpCallback: "checkmodule_popup",
-        crossDomain: true,
-        data: {
-            "webpage": encodeURIComponent(salespoplib_active_url),
-            "checkDevice": salespoplib_vars_obj.checkDevice,
-            "domain_url": Shopify.shop,
-            "product_id": (meta.product && meta.product.id)?meta.product.id:'',
-            "fetchNotifications": fetchNotifications
-        },
-        beforeSend: function () {
-        },
-        success: function () {
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR);
-            console.log("status: " + textStatus);
-            console.log("err: " + errorThrown);
-        },
-        complete: function () {
-        }
-    });
+     $jq321.ajax({
+         type: "GET",
+         url: salespoplib_vars_obj.backend_url + 'checkStore/',
+         dataType: "jsonp",
+         jsonpCallback: "checkmodule_popup",
+         crossDomain: true,
+         data: {
+             "webpage": encodeURIComponent(salespoplib_active_url),
+             "checkDevice": salespoplib_vars_obj.checkDevice,
+             "domain_url": Shopify.shop,
+             "product_id": (meta.product && meta.product.id)?meta.product.id:'',
+             "fetchNotifications": fetchNotifications
+         },
+         beforeSend: function () {
+         },
+         success: function () {
+         },
+         error: function (jqXHR, textStatus, errorThrown) {
+             console.log(jqXHR);
+             console.log("status: " + textStatus);
+             console.log("err: " + errorThrown);
+         },
+         complete: function () {
+         }
+     });
       
      /*let lastUrl = location.href;
 
@@ -2285,8 +2256,6 @@
      var finalSelector = '';
      var masterSelector2 = '';
      var finalSelector2 = '';
-     var masterSelectorStock = '';
-     var finalSelectorStock = '';
 
      if (Shopify.shop == "woodpixlde.myshopify.com") {
         $jq321("head").append(
@@ -2848,8 +2817,7 @@
 
         $jq321("head").append(
             '<style type="text/css">'+ 
-                '.stock-top{display: block !important;}'+ 
-                '#clockdivpreviewSales{display:flex; flex-direction:row-reverse; justify-content: center;} .colon{top:2px !important;}'+ 
+                '.stock-top{display: block !important;}'+  
             '</style>'
         );
     }
@@ -2959,533 +2927,20 @@
         console.log(finalSelector);
     }
 
+    if (Shopify.shop == "thatlittlehome.myshopify.com") 
+    {
+        masterSelector = $jq321(".product__submit__buttons");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+
     if (Shopify.shop == "slippers-technic.myshopify.com") 
     {
         masterSelector = $jq321(".pf-22_");
         finalSelector = masterSelector[0];
 
         console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "beautivo-shop.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+ 
-                '#sp-notification{letter-spacing:normal;}'+
-                '@media only screen and (max-width: 400px) {.notificationPreview-box .card-body h5.card-title {height: auto !important; font-size: 13px !important;}}'+  
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "chasingtitles.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+ 
-                '#clockdivpreviewSalesCollection{position: absolute;z-index: 999;}'+
-                '.timer-store-front {justify-content: center; display: flex;}'+
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "rajmohar-test.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+ 
-                '.visitor-counter-content-box-carecartbysalespop-2020{height:35px !important;}'+
-                '.gt_atom-ukiV0EsKwajhpps_boxPrice{margin-bottom:0px !important;}'+
-                '.visitor-counter-content-box-carecartbysalespop-2020{margin-top:0px !important;}'+
-            '</style>'
-        );
-
-        masterSelector = $jq321(".gt_product-price--box");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "green-elv-nutrition-mex.myshopify.com")
-    {
-        setTimeout(function(){ 
-            $jq321(".daysc").addClass("notranslate");
-            $jq321(".hoursc").addClass("notranslate");
-            $jq321(".minutesc").addClass("notranslate");
-            $jq321(".secondsc").addClass("notranslate");
-            $jq321(".numbers").addClass("notranslate"); 
-        }, 5000);
-    }
-
-    if (Shopify.shop == "accountservices-9191.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+ 
-                '.notificationPreview-box .card-body h5.card-title{letter-spacing:normal;font-weight:normal;text-transform: none;}'+
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "phool-co.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+ 
-                '.stock-top{display: block !important;}'+ 
-            '</style>'
-        );
-        
-        masterSelector = $jq321(".quantity-submit-row");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "right-here-at-home.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+ 
-                '.notificationPreview-box.halloween-bg .card-body h5.card-title a {color: #fff !important;}'+
-                '.notificationPreview-box.christmas-bg .card-body h5.card-title a {color: #fff !important;}'+ 
-                '.notificationPreview-box.christmas_new-bg .card-body h5.card-title a {color: #fff !important;}'+
-                '.notificationPreview-box.black-friday-bg .card-body h5.card-title a {color: #fff !important;}'+
-                '.notificationPreview-box.black_friday_new-bg .card-body h5.card-title a {color: #fff !important;}'+
-                '.notificationPreview-box.halloween_new-bg .card-body h5.card-title a {color: #fff !important;}'+
-                '.notificationPreview-box.new-yearBg .card-body h5.card-title a {color: #fff !important;}'+
-                '.notificationPreview-box.china_new_year-bg .card-body h5.card-title a {color: #fff !important;}'+
-                '.notificationPreview-box.cyber-monday-bg .card-body h5.card-title a {color: #fff !important;}'+
-                '.notificationPreview-box.eid-bg .card-body h5.card-title a {color: #fff !important;}'+
-                '.notificationPreview-box.diwali-bg .card-body h5.card-title a {color: #fff !important;}'+
-                '.notificationPreview-box.easter-bg .card-body h5.card-title a {color: #fff !important;}'+
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "gh3-import.myshopify.com") 
-    {
-        masterSelector = $jq321(".product-form__payment-container");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "customlove-nl.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+ 
-                '.notificationPreview-box .card-body h5.card-title{ letter-spacing:normal; text-transform:capitalize;font-weight:normal; }'+
-                '@media only screen and (max-width:576px){.notifyjs-corner .notifyjs-wrapper, .notifyjs-corner .notifyjs-container {bottom: -5px;}}'+ 
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "furniture-valley-store.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+ 
-                '.notificationPreview-box .card-body h5.card-title{ letter-spacing: normal; font-weight: normal; text-transform: capitalize;}'+ 
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "nicchiabeauty-1750.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+ 
-                '.annFullsection .getDiscoundText {margin-bottom: 0px;}'+
-                '.stock-top{display: block !important;}'+    
-            '</style>'
-        );
-
-        masterSelector = $jq321(".product-single__add-to-cart");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "sleep-beds.myshopify.com") 
-    {
-        masterSelector = $jq321(".payment-and-quantity");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "looki-dev.myshopify.com") 
-    {
-        masterSelector = $jq321(".pf-45_");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "kaledinis.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+ 
-                '.stock-top{display: block !important;}'+ 
-                '.visitor-counter-content-box-carecartbysalespop-2020 {height: 34px !important;}'+   
-            '</style>'
-        );
-
-        masterSelector = $jq321(".product-form__buttons");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "xn-ymcecs6lc3an.myshopify.com")
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+ 
-                '.product-form {padding-top: 0rem !important;}'+ 
-                '.sold-counter-content-box {height: 24px !important;}'+ 
-                '.stock-top{display: block !important;}'+   
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "faunus-plant-ro.myshopify.com")
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.stock-top{display: block !important;}'+ 
-                'div.stock-progress-background {display: block !important;}'+ 
-                'div.cc-sp-sc-stock-div>div:nth-of-type(1) {display: block !important; }'+
-                '.CC-SP-progress-bar-striped{height:18px;}'+   
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "neonpilot.myshopify.com") 
-    {
-        masterSelector = $jq321(".product-form__payment-container");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "fullcurlbridge.myshopify.com")
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-            '.notificationPreview-box .np-col-img{background-size: contain !important;width:82px!important;}'+
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "framecarts-com.myshopify.com") 
-    {
-        masterSelector = $jq321(".product-form__quantity");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "frenchiestuff.myshopify.com")
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-            '#clockdivpreviewSales{display:flex; flex-direction:row-reverse; justify-content: center;} .colon{top:2px !important;}'+
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "fashviews-us.myshopify.com")
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-            '.product-card-wrapper .card .card__inner .card__media{z-index: 2!important; }'+
-            '.card__content .card__badge{z-index: 3;}' +
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "weartaara.myshopify.com") 
-    {
-        masterSelector = $jq321(".wrap-cart-size");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "sale4christmas.myshopify.com") 
-    {
-        masterSelector = $jq321(".product-form__buttons");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "energy-junkies.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-            '.icon-specific-text-carecartbysalespop-2020 i{font-family: "FontAwesome" !important;}'+
-            '.icon-specific-text i{font-family: "FontAwesome" !important;}'+
-            '.sp-comment-sticky.cc-position-b-right{right: 28px !important;}'+
-            '.stock-top{display: block !important;}'+
-            '.sp-comment-sticky.cc-position-b-right{bottom: 106px !important;}'+
-            '</style>'
-        );
-
-        masterSelector = $jq321(".gAddToCartWrapper");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "wonderlandforchildren.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.stock-top{display: block !important;}'+   
-            '</style>'
-        );
-
-        masterSelector = $jq321(".t4s-product-form__buttons");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "comiso-coffee.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.timer-store-front{margin-top: 14px;}'+   
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "multipower-online.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.notificationPreview-box .np-col-right{text-align:left !important;}'+
-                '.notificationPreview-box.black-friday-bg .notificationPreview-box-inner:before{top:58px !important; right:0 !important;}'+   
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "benessereschiena.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '@media screen and (max-width: 575px){'+
-                    '.features--heading-large .notifyjs-corner{bottom:34px !important;}}'+
-                '@media screen and (max-width: 487px){'+
-                    '.features--heading-large .notifyjs-corner{left: 60% !important;}'+ 
-                    '.notificationPreview-box .card-body p.card-text , .notificationPreview-box .card-body h5.card-title {margin:0px !important;}'+ 
-                    '.features--heading-large .notificationPreview-box{width: 293px;}'+ 
-                    '.features--heading-large  .notificationPreview-box .np-col-right{height: 50px; width: 233px;}'+ 
-                    '.features--heading-large .notificationPreview-box{height:65px;}'+ 
-                    '.features--heading-large #noti-rsn-id .notificationPreview-box-inner{height:62px;}'+ 
-                    '.features--heading-large .notificationPreview-box .np-inside{height:70px;}'+ 
-                    '.features--heading-large .notificationPreview-box .card-body h5.card-title{height:13px;}'+ 
-                    '.features--heading-large .notifyjs-corner{bottom:19px !important;}'+
-                    '.features--heading-large .notificationPreview-box-inner{ width: 298px;}'+
-                    '.features--heading-large .notificationPreview-box .np-col-img {width: 40px;line-height: 45px;height: 45px;}'+
-                    '.features--heading-large .notificationPreview-box .card-body p.card-text{font-size:8px;}'+
-                    '.features--heading-large .notificationPreview-box .card-body .pur-time{font-size:8px;}'+
-                    '.features--heading-large .notificationPreview-box .card-body h5.card-title{font-size:10px;}'+
-                    '#noti-rsn-id .notificationPreview-box-inner{height:90px;}}'+
-                '@media screen and (max-width: 394px){.features--heading-large .notifyjs-corner {left: 58% !important;}'+
-                    '.features--heading-large .notificationPreview-box .np-col-right {width: 203px;}'+
-                    '.features--heading-large .notificationPreview-box-inner{width: 266px;}'+
-                    '.features--heading-large .notificationPreview-box{width: 255px;}}'+
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "kate-hewko.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.stock-top{display: block !important;}'+   
-            '</style>'
-        );
-
-        masterSelector = $jq321(".payment-and-quantity__add");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "giftyprint.myshopify.com") 
-    {
-        masterSelector = $jq321(".product-single__add-to-cart");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "kate-hewko.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.stock-top{display: block !important;}'+   
-            '</style>'
-        );
-        
-        masterSelector = $jq321(".payment-and-quantity");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "de-makerij.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.stock-top{display: block !important;}'+   
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "kate-hewko.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.visitor-counter-content-box-carecartbysalespop-2020{height: 15px !important}'+
-                '.counter-text-carecartbysalespop-2020{min-height: 18px !important;}'+
-                '.visitor-counter-content-box-carecartbysalespop-2020{margin-top:0 !important;}'+   
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "creativegift2020.myshopify.com") 
-    {
-        masterSelector = $jq321(".modal_price");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "original-moon-store-8647.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.stock-top{display: block !important;}'+
-                '.stock-style {border-radius: 1rem !important;}'+   
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "cuddle-baby-pink.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.stock-top{display: block !important;}'+   
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "bold-goodly.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.notificationPreview-box .card-body h5.card-title{letter-spacing: normal;text-transform: capitalize;font-weight: 500;}'+   
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "mingachevir.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.stock-top{display: block !important;}'+   
-            '</style>'
-        );
-        
-        masterSelector = $jq321(".product-form__buttons");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "80a6c1.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.payment-buttons .visitor-counter-content-box-carecartbysalespop-2020{height: 55px;margin-top: 1px;}'+
-                '.product-block--sales-point ul.sales-points{margin-bottom:0 !important;}.product-block.product-block--sales-point{margin-bottom:0px !important;}'+   
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "novocook.myshopify.com") 
-    {   
-        masterSelector = $jq321(".product__form_row");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "carupgradeco.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.payment-buttons .visitor-counter-content-box-carecartbysalespop-2020{ height: 45px;}'+
-                '.counter-text-carecartbysalespop-2020{min-height: auto !important;}'+   
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "bar-stool-gems.myshopify.com") 
-    {  
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.stock-top{display: block !important;}'+   
-            '</style>'
-        );
-         
-        masterSelector = $jq321("#addToCartForm");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "vapeology-ashford.myshopify.com") 
-    {  
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.stock-top{display: block !important;}'+   
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "bypuffsite.myshopify.com") 
-    {  
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.stock-top{display: block !important;}'+   
-            '</style>'
-        );
-         
-        masterSelector = $jq321(".product-form__buttons");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "tecmaro.myshopify.com") 
-    {  
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '.stock-top{display: block !important;}'+   
-            '</style>'
-        );
-         
-        masterSelector = $jq321(".product-single__add-to-cart");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "allpesosnobesos-com.myshopify.com") 
-    {  
-        $jq321("head").append(
-            '<style type="text/css">'+
-                '@media screen and (max-width: 575px){.notifyjs-corner{bottom: 28px !important;}}'+   
-            '</style>'
-        );
     }
 
      /** Stock for variants **/
@@ -3533,40 +2988,6 @@
             }
        });
     }
-    }
-
-    // CUSTOM VISITOR COUNTER
-    function customVisitors(start_limit_number, end_limit_number) {
-
-        let randomNumber = Math.floor(Math.random() * (end_limit_number - start_limit_number + 1) + parseInt(start_limit_number));
-
-        setInterval(changeRandomNumber, 3000);
-
-        function changeRandomNumber() {
-
-            if (Math.floor((Math.random() * 2))) {
-
-                randomNumberTen = Math.floor((Math.random() * 10) + 1);
-                randomNumber = parseInt(randomNumber) + parseInt(randomNumberTen);
-
-                if (randomNumber > end_limit_number) {
-                    randomNumber = end_limit_number;
-                }
-
-            }
-
-            else {
-
-                randomNumberTen = Math.floor((Math.random() * 10) + 1);
-                randomNumber = parseInt(randomNumber) - parseInt(randomNumberTen);;
-
-                if (randomNumber < start_limit_number) {
-                    randomNumber = start_limit_number;
-                }
-            }
-
-            $jq321("#carecart-salespop-visitor-number").html(randomNumber);
-        }
     }
 
     function enableStockForVariants(variantsData, variantHeading) {
@@ -3637,105 +3058,31 @@
     function attachEventOnOptions(variantSelector, variantsData)
     {
         console.log("SP: variant selector found");
+        $jq321(variantSelector).on("click", function () { 
+            setTimeout(function () {
 
-        if (Shopify.shop == "de-makerij.myshopify.com") 
-        {
-            $jq321(variantSelector).on("click", function () { 
-
-                var VariantTitle0 = $jq321("#ProductSelect-product-template-option-0").val();
-                var VariantTitle1 = $jq321("#ProductSelect-product-template-option-1").val();
-                
-                if (VariantTitle1 === undefined)
-                {
-                    var VariantTitle = VariantTitle0;
-                }
-                else
-                {
-                    var VariantTitle = VariantTitle0 + ' / ' + VariantTitle1;
-                }
-                
-                setTimeout(function () {
-
-                    //let urlParams = new URLSearchParams(window.location.search);
-                    //let variantID = urlParams.get('variant');
-
-                    let variantID = VariantTitle;
-
-                    if (variantsData !== null && variantID !== null) 
-                    {
-                        $jq321.each(variantsData, function (key, value) 
-                        {
-                            //if (value.id == variantID)
-                            if (value.title == variantID) 
-                            {
-                                let stockCountSpan = $jq321("#carecart-salespop-sc-number");
-                                if (stockCountSpan.length > 0) 
-                                {
-                                    $jq321(stockCountSpan).html(value.inventory_quantity);
-                                    
-                                    let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
-                                    stockPercentage = stockPercentage + "%";
-                                    
-                                    $jq321(".stock-progress-foreground").width(stockPercentage);
-                                }
-                            }
-                        });
+                let urlParams = new URLSearchParams(window.location.search);
+                let variantID = urlParams.get('variant');
+                if (variantsData !== null && variantID !== null) {
+                    $jq321.each(variantsData, function (key, value) {
+                        if (value.id == variantID) {
+                            let stockCountSpan = $jq321("#carecart-salespop-sc-number");
+                            if (stockCountSpan.length > 0) {
+                                $jq321(stockCountSpan).html(value.inventory_quantity);
+                                let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
+                                stockPercentage = stockPercentage + "%";
+                                $jq321(".stock-progress-foreground").width(stockPercentage);
+                        }
                     }
-                }, 1000);
-            });
-        }
-        else 
-        {
-            $jq321(variantSelector).on("click", function () { 
-                setTimeout(function () {
-                    let urlParams = new URLSearchParams(window.location.search);
-                    let variantID = urlParams.get('variant');
-                    if (variantsData !== null && variantID !== null) 
-                    {
-                        $jq321.each(variantsData, function (key, value) 
-                        {
-                            if (value.id == variantID)
-                            {
-                                let stockCountSpan = $jq321("#carecart-salespop-sc-number");
-                                if (stockCountSpan.length > 0) 
-                                {
-                                    $jq321(stockCountSpan).html(value.inventory_quantity);
-                                    let stockPercentage = Math.round((parseInt(value.inventory_quantity) / 100) * 100);
-                                    stockPercentage = stockPercentage + "%";
-                                    $jq321(".stock-progress-foreground").width(stockPercentage);
-                                }
-                            }
-                        });
-                    }
-                }, 1000);
-            });
-        }
+               });
+            }
+            }, 1000);
+        }); 
     }
     /** Stock for variants ends **/
 
      function stockCountdown(responseStock) {
  
-        if (Shopify.shop == "wis-team.myshopify.com") 
-        {  
-            $jq321("head").append(
-                '<style type="text/css">'+
-                    '.stock-top{display: block !important;}'+   
-                '</style>'
-            );
-
-            masterSelectorStock = $jq321("#price-template--17392894181663__main");
-            finalSelectorStock = masterSelectorStock[0];
-
-            console.log(masterSelector);
-        }
-        else if (Shopify.shop == "slinger-8108.myshopify.com") 
-        {
-            masterSelector = $jq321(".product-form__submit");
-            finalSelector = masterSelector[0];
-
-            console.log(masterSelector);
-        }
-         
          var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorStock2 = $jq321("form[action='/cart/add']");
          var selectorStock3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
@@ -3745,11 +3092,7 @@
  
          if (responseStock.above_cart == 1) 
          {
-            if (masterSelectorStock.length > 0) 
-            { 
-                $jq321(responseStock.view).insertBefore(finalSelectorStock);
-            }
-            else if (masterSelector2.length > 0) 
+            if (masterSelector2.length > 0) 
             { 
                 $jq321(responseStock.view).insertBefore(finalSelector2);
             }
@@ -3784,11 +3127,7 @@
          } 
          else 
          {
-            if (masterSelectorStock.length > 0) 
-            { 
-                $jq321(responseStock.view).insertAfter(finalSelectorStock);  
-            }
-            else if (masterSelector2.length > 0) 
+            if (masterSelector2.length > 0) 
             { 
                 $jq321(responseStock.view).insertAfter(finalSelector2);  
             }
@@ -3888,38 +3227,40 @@
          var selectorTimer5 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
          var selectorTimer6 = $jq321("#shopify-section-product-template").find("form[action='/cart/add']");
          
-         if (Shopify.shop == "ellieandeve.myshopify.com") 
-         {
-              masterSelector = $jq321(".product-page__tabs");
-              finalSelector = masterSelector[0];
-
-              console.log(masterSelector);
-         }
-         else if (Shopify.shop == "the-senset.myshopify.com")
+         if (Shopify.shop == "the-senset.myshopify.com")
          {
              masterSelector = $jq321(".ProductForm__AddToCart");
              finalSelector = masterSelector[0];
          }
-         else if (Shopify.shop == "arch-ford.myshopify.com") 
+
+         if (Shopify.shop == "arch-ford.myshopify.com") 
          {
 
             masterSelector = $jq321(".product-detail_cart");
             finalSelector = masterSelector[0];
          }
-         else if (Shopify.shop == "acogeneralstore.myshopify.com")
+
+         if (Shopify.shop == "acogeneralstore.myshopify.com")
          {
             masterSelector = $jq321(".price-container-desktop");
             finalSelector = masterSelector[0];
 
             console.log(finalSelector);
          }
-         else if (Shopify.shop == "unlimited-create.myshopify.com") 
+
+         /*if (Shopify.shop == "anotherlevelwigs.myshopify.com") 
+         {
+            masterSelector = $jq321(".price-review");
+            finalSelector = masterSelector[0];
+         }*/
+
+         if (Shopify.shop == "unlimited-create.myshopify.com") 
          {
             masterSelector = $jq321(".stock-top");
             finalSelector = masterSelector[0];
 
             console.log(finalSelector);
-         }
+         } 
          
          if (responseTimer.above_cart == 1) 
          {
@@ -3973,38 +3314,7 @@
          var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
          var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
          
-         if (Shopify.shop == "crafty-fisherman.myshopify.com") 
-         {
-            $jq321("head").append(
-                '<style type="text/css">' + 
-                '#price-template--15535416442927__main{display: flex;justify-content: space-between;align-items: center;}'+
-                '#price-template--15535416442927__main .visitor-counter-content-box-carecartbysalespop-2020{width: auto;height: auto;margin-top: 0;margin-bottom: 0.5rem;}'+
-                '.counter-text-carecartbysalespop-2020{min-height: auto !important;}'+
-                '.content-div-visitor-detail-carecartbysalespop-2020{font-size:13px !important;}'+
-                '@media only screen and (max-width: 992px) {#price-template--15535416442927__main{display: block;}}' +
-                '</style>'
-            );
-
-            masterSelector = $jq321(".price");
-            finalSelector = masterSelector[0];
-
-            console.log(masterSelector);
-         }
-         else 
-         if (Shopify.shop == "slinger-8108.myshopify.com") 
-         {
-            $jq321("head").append(
-                '<style type="text/css">' + 
-                '.stock-top{display: block !important;}' +
-                '</style>'
-            );
-
-            masterSelector = $jq321(".stock-top");
-            finalSelector = masterSelector[0];
-
-            console.log(masterSelector);
-         }
-         else if(Shopify.shop == "onlydoveacollection.myshopify.com")
+         if(Shopify.shop == "onlydoveacollection.myshopify.com")
          {
              masterSelector = $jq321(".payment-buttons");
              masterSelector = masterSelector[0];
@@ -4021,13 +3331,6 @@
          else if (Shopify.shop == "acogeneralstore.myshopify.com")
          {
             masterSelector = $jq321(".product-single__add-to-cart");
-            finalSelector = masterSelector[0];
-
-            console.log(finalSelector);
-         }
-         else if (Shopify.shop == "sleep-beds.myshopify.com")
-         {
-            masterSelector = $jq321(".payment-and-quantity");
             finalSelector = masterSelector[0];
 
             console.log(finalSelector);
@@ -4064,13 +3367,6 @@
          $jq321('m').html(function (i, v) {
              return v.replace(/(\d)/g, '<span ' + response.count + '>$1</span>');
          });
-
-         if (Shopify.shop == "xn-ymcecs6lc3an.myshopify.com")
-         {
-            var customIcon = $jq321(".fa");
-            customIcon.remove();
-            $jq321(customIcon).insertAfter('.visitor-font-size-15px');
-         }
      }
  // ---------------------------------- <VISITOR COUNTER MODULE> --------------------------------
  
@@ -4137,13 +3433,6 @@
          $jq321('ms').html(function(i, v){
              return v.replace(/(\d)/g, '<span '+response.count+'>$1</span>');
          });
-
-         if (Shopify.shop == "xn-ymcecs6lc3an.myshopify.com")
-         {
-            var customIcon1 = $jq321(".fa-bolt");
-            customIcon1.remove();
-            $jq321(customIcon1).insertAfter('.sold-font-size-15px');
-         }
      }
  // ---------------------------------- </SOLD COUNTER MODULE> --------------------------------
  
@@ -4317,6 +3606,8 @@
                              allLinks.push(href);
                          }
                      });
+
+                     //console.log(allLinks);
                 }
                 else if (Shopify.shop == "shopmunekawear.myshopify.com") 
                 {
@@ -4329,18 +3620,8 @@
                              allLinks.push(href);
                          }
                      });
-                }
-                else if (Shopify.shop == "fashviews-us.myshopify.com") 
-                {
-                     $jq321(".media").find('a').each(function() {
-                         var href = $jq321(this).attr('href');
-                         var url = href.split("/");
-     
-                         if ($jq321.inArray("products", url) != -1)
-                         {
-                             allLinks.push(href);
-                         }
-                     });
+
+                     console.log(allLinks);
                 }
                 else
                 {
@@ -4376,8 +3657,12 @@
              var divCount = 0;
              var linkCount = 0;
 
-             $jq321("main").find("img").each(function () {
+             //var selectorStock3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
+             
+             $jq321(".card-wrapper").find("img:first").each(function () {
 
+                //console.log(1)
+ 
          // GET IMAGE URL
                  var href = $jq321(this).attr('data-srcset');
                  var data_image = $jq321(this).attr('data-image');
@@ -4402,9 +3687,9 @@
          // CREATE DIV
                      var newDiv = '<div id="image-with-button'+divCount+'" class="button-on-hover"></div>';
 
-                     var checkButton=check.find('.collection-quick-view');
+                     /*var checkButton=check.find('.collection-quick-view');
                      if (checkButton.length < 1)
-                     {
+                     {*/
                         // INSERT DIV
                         $jq321(newDiv).insertBefore(check);
 
@@ -4413,7 +3698,9 @@
 
                         // INSERT BUTTON/EYE IN DIV
                         $jq321(newButton).insertBefore(this);
-                     }
+
+                        //console.log(newButton);
+                     //}
 
                      divCount++;
                      linkCount++;
@@ -4469,42 +3756,6 @@
      // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
      function trustBadges(trustBadgesResponse)
      {
-        if (Shopify.shop == "vapeology-ashford.myshopify.com")
-        {
-            let text = window.location.pathname;
-            let result = text.indexOf("products");
-
-            if(result == -1){
-                return;
-            }    
-        }
-        if (Shopify.shop == "cuddle-baby-pink.myshopify.com")
-        {
-            let text = window.location.pathname;
-            let result = text.indexOf("products");
-
-            if(result == -1){
-                return;
-            }    
-        }
-        if (Shopify.shop == "abigzail-s.myshopify.com")
-        {
-            let text = window.location.pathname;
-            let result = text.indexOf("products");
-
-            if(result == -1){
-                return;
-            }    
-        }
-        if (Shopify.shop == "the-cosmic-aroma-1e67.myshopify.com")
-        {
-            let text = window.location.pathname;
-            let result = text.indexOf("products");
-
-            if(result == -1){
-                return;
-            }    
-        }
         if (Shopify.shop == "7ac472.myshopify.com")
         {
             let text = window.location.pathname;
@@ -4568,15 +3819,6 @@
                 return;
             }    
         }
-        if (Shopify.shop == "maziqa.myshopify.com")
-        {
-            let text = window.location.pathname;
-            let result = text.indexOf("products");
-
-            if(result == -1){
-                return;
-            }    
-        }
 
          if (trustBadgesResponse.product_page_show_hide == 1)
          {
@@ -4585,15 +3827,7 @@
             var selectorTrustBadges3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
             var selectorTrustBadges4 = $jq321("form[action='/cart/add']:first");
 
-            if (Shopify.shop == "novocook.myshopify.com")
-            {
-                $jq321(trustBadgesResponse.view).insertAfter('.product__form_row');
-            }
-            else if (Shopify.shop == "framecarts-com.myshopify.com")
-            {
-                $jq321(trustBadgesResponse.view).insertAfter('.product-form__buttons');
-            }
-            else if (Shopify.shop == "slippers-technic.myshopify.com")
+            if (Shopify.shop == "slippers-technic.myshopify.com")
             {
                 $jq321(trustBadgesResponse.view).insertAfter('.stock-top');
             }
@@ -4782,25 +4016,6 @@
 
                 });  
             }
-            else if (Shopify.shop == "label-of-love-studio.myshopify.com")
-            {
-                $jq321(".productitem--image-link").each(function () {
-
-                    var href = $jq321(this).attr('href');                    
-                    var url = href.split("/");
-
-                    if (($jq321.inArray("products", url) != -1)) 
-                    {
-                        if ($jq321.inArray(href, allLinks) == -1) 
-                        {
-                            allLinks.push(href);
-                        }
-                    }
-
-                });
-                
-                //console.log(allLinks);
-            }
             else
             {
                 $jq321("a").each(function () 
@@ -4866,9 +4081,7 @@
                     if (checkValue(allLinks[u], responseTimerCollection) == 'Not exist') 
                     {
                         var selectorTimeView = $jq321("[href='" + allLinks[u] + "']");
-                        //var selectorTimeView = $jq321("[href='" + allLinks[u] + "'][class='full-unstyled-link']");
                         selectorTimeView = selectorTimeView[0];
-
                         $jq321(responseTimer.view).insertBefore(selectorTimeView);
                     }
                 }
@@ -4936,16 +4149,6 @@
             );
         }
 
-        if (Shopify.shop == "multipower-online.myshopify.com") 
-        {
-            $jq321("head").append(
-                '<style type="text/css">'+
-                    '.t_position-Stick {position: -webkit-fixed!important;position: fixed !important;top: 0;width: 100%;}'+
-                    '#shopify-section-header{margin-top: 58px;}'+      
-                '</style>'
-            );
-        }
-
        var selectorAnnouncementBar = $jq321("body");
        var placement = announcementBarResponse.placement;
        
@@ -4969,16 +4172,6 @@
        e.preventDefault();
 
        $jq321('#ccannouncement-main').fadeOut();
-
-       if (Shopify.shop == "multipower-online.myshopify.com") 
-       {
-           $jq321("head").append(
-               '<style type="text/css">'+
-                   '#shopify-section-header{margin-top: 0px !important;}'+      
-               '</style>'
-           );
-       }
-
        setCookie("sp-hide-announcement", 1, 15);  // 15 minutes (UTC)
    });
 
