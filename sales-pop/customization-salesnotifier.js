@@ -3479,6 +3479,15 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "allpesosnobesos-com.myshopify.com") 
+    {  
+        $jq321("head").append(
+            '<style type="text/css">'+
+                '@media screen and (max-width: 575px){.notifyjs-corner{bottom: 28px !important;}}'+   
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
