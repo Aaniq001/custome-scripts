@@ -8,7 +8,7 @@
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
 
- function scriptInjection(src, callback) {
+function scriptInjection(src, callback) {
 	let script = document.createElement('script');
 	script.type = "text/javascript";
 
@@ -50,6 +50,11 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             '<style type="text/css"> .share-widget-custom-right {z-index: 999 !important;} .share-widget-static-right {z-index: 999 !important;}</style>'
             );
 	}
+	if(Shopify.shop == "angaja-silver.myshopify.com") {
+		carecartWhatsApp("head").append(
+            '<style type="text/css"> .share-widget-custom-left{z-index: 999;left: -14px !important;}</style>'
+            );
+	}
 	/** ends **/
 
 
@@ -65,7 +70,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 			carecartWhatsApp('#chat-box').hide();
 			if (chatWidgetAllow(settings)) {
 				carecartWhatsApp('#chat-box').hide();
-				carecartWhatsApp('#chat-box-icon').hide();
+		                 		carecartWhatsApp('#chat-box-icon').hide();
 			}
 
 			agentID = response.chatAgents[0].country_code + response.chatAgents[0].phone_number;
