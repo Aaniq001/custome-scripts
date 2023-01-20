@@ -2943,6 +2943,17 @@
         console.log(masterSelector);
     }
 
+    if (Shopify.shop == "new-babify.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.notificationPreview-box.valentine_new-bg .card-body p.card-text {color: #FFF !important;}'+
+                '.notificationPreview-box.valentine_new-bg .card-body h5.card-title a {color: #FFFFFF !important;}'+
+                '.notificationPreview-box.valentine_new-bg .card-body .pur-time {color: #FFFFFF !important;}'+
+            '</style>'
+        );
+    }
+
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
         
