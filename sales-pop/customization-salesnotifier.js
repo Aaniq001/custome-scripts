@@ -2296,6 +2296,13 @@
     }  
 
 
+    if (Shopify.shop == "new-babify.myshopify.com") {
+        $jq321("head").append(
+            '<style type="text/css"> .notificationPreview-box .np-col-img{border-radius:4px;} .notificationPreview-box-inner .np-inside .np-col-right .card-body p.buyer-name , .notificationPreview-box .card-body h5.card-title a#sp-notification , .notificationPreview-box.valentine_new-bg .np-col-right .card-body span.pur-time{color:#fff !important;}</style>'
+            );
+    } 
+
+
     if (Shopify.shop == "naptural-queen-hair-care.myshopify.com") {
         masterSelector = $jq321(".groups-btn");
         finalSelector = masterSelector[0];
@@ -2941,17 +2948,6 @@
         finalSelector = masterSelector[0];
 
         console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "new-babify.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+ 
-                '.notificationPreview-box.valentine_new-bg .card-body p.card-text {color: #FFF !important;}'+
-                '.notificationPreview-box.valentine_new-bg .card-body h5.card-title a {color: #FFFFFF !important;}'+
-                '.notificationPreview-box.valentine_new-bg .card-body .pur-time {color: #FFFFFF !important;}'+
-            '</style>'
-        );
     }
 
      /** Stock for variants **/
