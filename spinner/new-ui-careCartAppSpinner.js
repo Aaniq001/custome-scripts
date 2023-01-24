@@ -1,4 +1,4 @@
-//******* @author: CareCart App-Wheelify - Rehan Azaz *******************************************
+//******* @author: CareCart App-Wheelify - AJMAL ZEB *******************************************
 //****** Store Frontend JS - carecartSpinnerApp.js GH v.6.0.0 - Build ver 2.0.29 *******************
 //****** Updated at: 24-Jan-2022, 12:10 PM  ********************************************************
 
