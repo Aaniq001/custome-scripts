@@ -1467,9 +1467,9 @@
                      collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
                  }, 3000);
 
-                 $jq321(window).scroll(function () {
+                 /*$jq321(window).scroll(function () {
                     collectionQuickView(apiResponse.quickViewCollectionText, apiResponse.quickViewCollectionLayout, apiResponse.quickViewCollectionPosition);
-                 }); 
+                 });*/ 
              }
          }
          
@@ -3011,15 +3011,6 @@
     }
 
     function enableStockForVariants(variantsData, variantHeading) {
-
-        /* console.log('variantsData: ');
-
-        console.log(variantsData);
-
-        console.log('variantHeading: ');
-
-        console.log(variantHeading); */
-
         $jq321(document).ready(function () { 
 
             let getSelectors = makeSelectors(variantHeading);
@@ -3043,7 +3034,7 @@
                 }
                 else if (Shopify.shop == "scarters.myshopify.com")
                 {
-                    attachEventOnOptions(".ProductForm__SelectedValue", variantsData);
+                    attachEventOnOptions(".Popover__Value", variantsData);
                 }
                 else if (getSelectors.selector_number == 2) {
                     let selectedVariantsValuesString = '';
@@ -3089,21 +3080,9 @@
 
     function attachEventOnOptions(variantSelector, variantsData)
     {
-        /* console.log('variantSelector: ');
-
-        console.log(variantSelector);
-
-        console.log('variantsData: ');
-
-        console.log(variantsData); */
-
-        console.log("SP: variant selector found belal");
+        console.log("SP: variant selector found");
         $jq321(variantSelector).on("click", function () { 
-
-            console.log('belal');
-
             setTimeout(function () {
-
                 let urlParams = new URLSearchParams(window.location.search);
                 let variantID = urlParams.get('variant');
                 if (variantsData !== null && variantID !== null) {
@@ -3623,127 +3602,132 @@
          {
              var allLinks = [];
              var product_id = (meta.product && meta.product.id) ? meta.product.id : '';
-             var currentPageHandle = window.location.pathname.split("/");
  
              if (product_id == '')
              {
-                if (($jq321.inArray("collections", currentPageHandle) != -1)) 
+                if (Shopify.shop == "naturally-you-me.myshopify.com") 
                 {
-                    if (Shopify.shop == "naturally-you-me.myshopify.com") 
-                    {
-                        $jq321(".lazy-image").each(function() {
-                            var href = $jq321(this).attr('href');
-                            var url = href.split("/");
-        
-                            if ($jq321.inArray("products", url) != -1)
-                            {
-                                allLinks.push(href);
-                            }
-                        });
-                    }
-                    else if (Shopify.shop == "estornes-boor-boutique.myshopify.com") 
-                    {
-                        $jq321(".grid-product__image-link").each(function() {
-                            var href = $jq321(this).attr('href');
-                            var url = href.split("/");
-        
-                            if ($jq321.inArray("products", url) != -1)
-                            {
-                                allLinks.push(href);
-                            }
-                        });
-                    }
-                    else if (Shopify.shop == "shopmunekawear.myshopify.com") 
-                    {
-                        $jq321(".full-unstyled-link").each(function() {
-                            var href = $jq321(this).attr('href');
-                            var url = href.split("/");
-        
-                            if ($jq321.inArray("products", url) != -1)
-                            {
-                                allLinks.push(href);
-                            }
-                        });
-                    }
-                    else if (Shopify.shop == "the-vape-society-cbd.myshopify.com") 
-                    {
-                        $jq321(".grid-link").each(function() {
-                            var href = $jq321(this).attr('href');
-                            var url = href.split("/");
-        
-                            if ($jq321.inArray("products", url) != -1)
-                            {
-                                allLinks.push(href);
-                            }
-                        });
-                    }
-                    else
-                    {
-                        $jq321("a").each(function() {
-                            var href = $jq321(this).attr('href');
-                            var url = href.split("/");
-        
-                            if ($jq321.inArray("products", url) != -1)
-                            {
-                                allLinks.push(href);
-                            }
-                        });   
-                    }
+                     $jq321(".lazy-image").each(function() {
+                         var href = $jq321(this).attr('href');
+                         var url = href.split("/");
+     
+                         if ($jq321.inArray("products", url) != -1)
+                         {
+                             allLinks.push(href);
+                         }
+                     });
+                }
+                else if (Shopify.shop == "estornes-boor-boutique.myshopify.com") 
+                {
+                     $jq321(".grid-product__image-link").each(function() {
+                         var href = $jq321(this).attr('href');
+                         var url = href.split("/");
+     
+                         if ($jq321.inArray("products", url) != -1)
+                         {
+                             allLinks.push(href);
+                         }
+                     });
+
+                     //console.log(allLinks);
+                }
+                else if (Shopify.shop == "shopmunekawear.myshopify.com") 
+                {
+                     $jq321(".full-unstyled-link").each(function() {
+                         var href = $jq321(this).attr('href');
+                         var url = href.split("/");
+     
+                         if ($jq321.inArray("products", url) != -1)
+                         {
+                             allLinks.push(href);
+                         }
+                     });
+
+                     console.log(allLinks);
+                }
+                else
+                {
+                    $jq321("a").each(function() {
+                         var href = $jq321(this).attr('href');
+                         var url = href.split("/");
+     
+                         if ($jq321.inArray("products", url) != -1)
+                         {
+                             allLinks.push(href);
+                         }
+                     });   
                 }
              }
+             else
+             {
+                 $jq321("a").each(function() {
+                     var href = $jq321(this).attr('href');
+                     var url = href.split("/");
+                     if ($jq321.inArray("products", url) != -1)
+                     {
+                         var otherurl = href.split("=");
+                         var res = otherurl[0].split("?");
+                         if (res[1] == 'pr_prod_strat')
+                         {
+                             allLinks.push(href);
+                         }
+                     }
+                 });
+             }
+ 
+         // PRODUCT QUICK VIEW COLLECTION CREATE BUTTON
+             var divCount = 0;
+             var linkCount = 0;
+
+             //var selectorStock3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']").parent();
              
-            if (($jq321.inArray("collections", currentPageHandle) != -1)) 
-            {
-            // PRODUCT QUICK VIEW COLLECTION CREATE BUTTON
-                var divCount = 0;
-                var linkCount = 0;
-                
-                $jq321("main").find("img").each(function () {
+             $jq321(".card-wrapper").find("img:first").each(function () {
 
-            // GET IMAGE URL
-                    var href = $jq321(this).attr('data-srcset');
-                    var data_image = $jq321(this).attr('data-image');
-                    var srcset = $jq321(this).attr('srcset');
-    
-                    if (((href !== undefined) && (data_image !== undefined)) || ((srcset !== undefined) && (product_id == '')))
-                    {
-                        if (quickViewCollectionLayout == 2)
-                        {
-            // FOR QUICK VIEW BUTTON
-                            var newButton = '<input type="button" class="quick-view collection-quick-view" value="'+quickViewCollectionText+'" data-product-url="' + allLinks[linkCount] + '" data-quick-view="1">';
-                        }
-                        else if (quickViewCollectionLayout == 1)
-                        {
-            // FOR QUICK VIEW EYE
-                            var newButton = '<a id="positon-right" class="EyeViewBtn collection-quick-view ' + quickViewCollectionPosition + '" data-product-url="' + allLinks[linkCount] + '" data-quick-view="1" href="#"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="577.029px" height="577.029px" viewBox="0 0 577.029 577.029" style="enable-background:new 0 0 577.029 577.029;" xml:space="preserve"><path d="M288.514,148.629c73.746,0,136.162,33.616,175.539,61.821c46.652,33.415,70.66,65.737,76.885,78.065   c-6.232,12.327-30.232,44.649-76.885,78.065c-39.377,28.204-101.793,61.82-175.539,61.82c-73.746,0-136.161-33.616-175.539-61.82   c-46.661-33.416-70.66-65.738-76.894-78.065c6.234-12.328,30.233-44.65,76.885-78.065   C152.353,182.245,214.768,148.629,288.514,148.629 M288.514,113.657C129.176,113.657,0,253.543,0,288.515   s129.176,174.857,288.514,174.857c159.339,0,288.515-139.886,288.515-174.857S447.854,113.657,288.514,113.657L288.514,113.657z    M288.514,183.601c-57.939,0-104.914,46.975-104.914,104.914c0,57.938,46.975,104.914,104.914,104.914   s104.914-46.976,104.914-104.914C393.428,230.576,346.453,183.601,288.514,183.601z M260.266,288.515   c-24.515,0-44.388-19.873-44.388-44.388c0-24.515,19.873-44.387,44.388-44.387c24.515,0,44.388,19.873,44.388,44.387   C304.654,268.642,284.781,288.515,260.266,288.515z"/></svg></a>';
-    
-                        }
-    
-                        var check = $jq321(this).parent();
-                        
-            // CREATE DIV
-                        var newDiv = '<div id="image-with-button'+divCount+'" class="button-on-hover"></div>';
+                //console.log(1)
+ 
+         // GET IMAGE URL
+                 var href = $jq321(this).attr('data-srcset');
+                 var data_image = $jq321(this).attr('data-image');
+                 var srcset = $jq321(this).attr('srcset');
+ 
+                 if (((href !== undefined) && (data_image !== undefined)) || ((srcset !== undefined) && (product_id == '')))
+                 {
+                     if (quickViewCollectionLayout == 2)
+                     {
+         // FOR QUICK VIEW BUTTON
+                         var newButton = '<input type="button" class="quick-view collection-quick-view" value="'+quickViewCollectionText+'" data-product-url="' + allLinks[linkCount] + '" data-quick-view="1">';
+                     }
+                     else if (quickViewCollectionLayout == 1)
+                     {
+         // FOR QUICK VIEW EYE
+                         var newButton = '<a id="positon-right" class="EyeViewBtn collection-quick-view ' + quickViewCollectionPosition + '" data-product-url="' + allLinks[linkCount] + '" data-quick-view="1" href="#"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="577.029px" height="577.029px" viewBox="0 0 577.029 577.029" style="enable-background:new 0 0 577.029 577.029;" xml:space="preserve"><path d="M288.514,148.629c73.746,0,136.162,33.616,175.539,61.821c46.652,33.415,70.66,65.737,76.885,78.065   c-6.232,12.327-30.232,44.649-76.885,78.065c-39.377,28.204-101.793,61.82-175.539,61.82c-73.746,0-136.161-33.616-175.539-61.82   c-46.661-33.416-70.66-65.738-76.894-78.065c6.234-12.328,30.233-44.65,76.885-78.065   C152.353,182.245,214.768,148.629,288.514,148.629 M288.514,113.657C129.176,113.657,0,253.543,0,288.515   s129.176,174.857,288.514,174.857c159.339,0,288.515-139.886,288.515-174.857S447.854,113.657,288.514,113.657L288.514,113.657z    M288.514,183.601c-57.939,0-104.914,46.975-104.914,104.914c0,57.938,46.975,104.914,104.914,104.914   s104.914-46.976,104.914-104.914C393.428,230.576,346.453,183.601,288.514,183.601z M260.266,288.515   c-24.515,0-44.388-19.873-44.388-44.388c0-24.515,19.873-44.387,44.388-44.387c24.515,0,44.388,19.873,44.388,44.387   C304.654,268.642,284.781,288.515,260.266,288.515z"/></svg></a>';
+ 
+                     }
+ 
+                     var check = $jq321(this).parent();
+                     
+         // CREATE DIV
+                     var newDiv = '<div id="image-with-button'+divCount+'" class="button-on-hover"></div>';
 
-                        /*var checkButton=check.find('.collection-quick-view');
-                        if (checkButton.length < 1)
-                        {*/
-                            // INSERT DIV
-                            $jq321(newDiv).insertBefore(check);
+                     /*var checkButton=check.find('.collection-quick-view');
+                     if (checkButton.length < 1)
+                     {*/
+                        // INSERT DIV
+                        $jq321(newDiv).insertBefore(check);
 
-                            // APPEND IMAGE IN DIV
-                            $jq321(check).appendTo($jq321('#image-with-button' + divCount));
+                        // APPEND IMAGE IN DIV
+                        $jq321(check).appendTo($jq321('#image-with-button' + divCount));
 
-                            // INSERT BUTTON/EYE IN DIV
-                            $jq321(newButton).insertBefore(this);
+                        // INSERT BUTTON/EYE IN DIV
+                        $jq321(newButton).insertBefore(this);
 
-                            //console.log(newButton);
-                        //}
+                        //console.log(newButton);
+                     //}
 
-                        divCount++;
-                        linkCount++;
-                    }
-                });
-            }
+                     divCount++;
+                     linkCount++;
+                 }
+             });
          }
  
  // PRODUCT QUICK VIEW COLLECTION CALL
