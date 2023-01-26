@@ -9,26 +9,6 @@
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
 
-//Create the element using the createElement method.
-var myDiv = document.createElement("jis");
-
-//Set its class.
-myDiv.className = 'doubleCheckS';
-
-//Finally, append the element to the HTML body
-document.body.appendChild(myDiv);
-
-var doubleCheck = document.getElementsByClassName("doubleCheckS");
-var ndoubleCheck = doubleCheck.length;
-
-console.log(ndoubleCheck);
-
-if(ndoubleCheck == 2)
-{
-    //window.stop();
-    throw new Error("DOUBLE APP JS COUNTDOWN PRO");
-}
-
  function scriptInjection(src, callback) {
     var script = document.createElement('script');
     script.type = "text/javascript";
@@ -50,7 +30,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     salespoplib_active_url += (window.location.pathname.substr(-1) !== "/") ? window.location.pathname : window.location.pathname.substr(0, window.location.pathname.length - 1);
 
     function getServerUrls() {
-
         // Finding the URL of this library among all the script tags
         var allScripts = document.getElementsByTagName('script');
         allScripts = Array.prototype.slice.call(allScripts);
@@ -274,105 +253,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "fusskleidung.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
-    else if (Shopify.shop == "imani-jewelery.myshopify.com") {
+    else if (Shopify.shop == "rbion.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
-    else if (Shopify.shop == "ace-kouture.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "tirtirus.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "www-kavipoetryart-in.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "bearsmuscle.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "colcham-uk.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "yourpetsclosetco.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "doit4brazil.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "e40253.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "jprindia.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "workoutlabs.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "meatmore.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "egyp-shops.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "fratemateclub.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "motiivart.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "safe-cam-shop.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "scholl-shoes-markets.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "anatomylifeshop.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "duasdesignloja.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "tula-baba-pty-ltd.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "kate-hewko.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "aesthelry.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "techstacy-7045.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "geschenkplaza.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "pawpals-1.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "next-level-paramount-deals.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "green4life-8417.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "ideal-zone.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "sometimes-co.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "purebaebe.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "61057c.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "sembootss.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
-    else if (Shopify.shop == "ainasana.myshopify.com") {
-        var meta = {"product":{"id":__st.rid}};
-    }
+
 
     /**
      * check the status of cart page
@@ -612,7 +496,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(finalSelector);
     }
-    if (Shopify.shop == "itrendy-2.myshopify.com")
+    if (Shopify.shop == "rbion.myshopify.com")
     {
         $jq321("head").append('<style type="text/css">'+
                               '.cart-countdown-desktop-top-center {text-align: center !important;}'+
@@ -677,157 +561,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(finalSelector);
     }
-    if (Shopify.shop == "tirtirus.myshopify.com")
-    {
-        masterSelector = $jq321("#add-to-cart-form");
-        finalSelector = masterSelector[0];
-
-        console.log(finalSelector);
-    }
-    if (Shopify.shop == "bearsmuscle.myshopify.com")
-    {
-        masterSelector = $jq321(".gt_button--add-cart");
-        finalSelector = masterSelector[0];
-
-        console.log(finalSelector);
-    }
-    if (Shopify.shop == "colcham-uk.myshopify.com")
-    {
-        $jq321("head").append('<style type="text/css">'+
-                              '.cart-countdown-desktop-top-center { display: flex !important; }'+
-                              '</style>');
-    }
-    if (Shopify.shop == "doit4brazil.myshopify.com")
-    {
-        masterSelector = $jq321(".product-form__buttons");
-        finalSelector = masterSelector[0];
-
-        console.log(finalSelector);
-    }
-    if (Shopify.shop == "e40253.myshopify.com")
-    {
-        $jq321("head").append('<style type="text/css">'+
-                              '.product-details-des .price-box {display: flex; align-items: center;}'+
-                              '</style>');
-        masterSelector = $jq321("del");
-        finalSelector = masterSelector[0];
-
-        console.log(finalSelector);
-    }
-    if (Shopify.shop == "jprindia.myshopify.com")
-    {
-        $jq321("head").append('<style type="text/css">'+
-                              '.btn--status[data-button-status=select][data-button-select-disable]{margin-bottom:10px;}'+
-                              '</style>');
-    }
-    if (Shopify.shop == "workoutlabs.myshopify.com")
-    {
-        masterSelector = $jq321("#AddToCart");
-        finalSelector = masterSelector[0];
-
-        console.log(finalSelector);
-    }
-    if (Shopify.shop == "meatmore.myshopify.com")
-    {
-        masterSelector = $jq321(".variations_button");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-    if (Shopify.shop == "egyp-shops.myshopify.com")
-    {
-        $jq321("head").append('<style type="text/css">'+
-                              '.cart-countdown-desktop-top-center { display: flex !important;}'+
-                              '</style>');
-    }
-    if (Shopify.shop == "fratemateclub.myshopify.com")
-    {
-        masterSelector = $jq321("#new-form-atc");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-    if (Shopify.shop == "motiivart.myshopify.com")
-    {
-        masterSelector = $jq321(".variations_button");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-    if (Shopify.shop == "safe-cam-shop.myshopify.com")
-    {
-        masterSelector = $jq321("#new-form-atc");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-    if (Shopify.shop == "anatomylifeshop.myshopify.com")
-    {
-        masterSelector = $jq321("#m-1666945863630");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-    if (Shopify.shop == "duasdesignloja.myshopify.com")
-    {
-        $jq321("head").append('<style type="text/css">'+
-                              '.cart-countdown-desktop-top-center { display: flex !important;}'+
-                              '</style>');
-    }
-    if (Shopify.shop == "tula-baba-pty-ltd.myshopify.com")
-    {
-        masterSelector = $jq321(".gift-reggie-buttons");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-    if (Shopify.shop == "aesthelry.myshopify.com")
-    {
-        masterSelector = $jq321(".product-form__buttons");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-    if (Shopify.shop == "techstacy-7045.myshopify.com")
-    {
-        $jq321("head").append('<style type="text/css">'+
-                              '.stock-top{margin-top:14px;}'+
-                              '</style>');
-        
-        masterSelector = $jq321(".product-info");
-        finalSelector = masterSelector[6];
-
-        console.log(masterSelector);
-    }
-    if (Shopify.shop == "ideal-zone.myshopify.com")
-    {
-        masterSelector = $jq321(".under_cta_atc");
-        finalSelector = masterSelector[0];
-
-        console.log(masterSelector);
-    }
-    if (Shopify.shop == "61057c.myshopify.com")
-    {
-        $jq321("head").append('<style type="text/css">'+
-                              '.cart-countdown-desktop-top-center { display: flex !important;}'+
-                              '</style>');
-    }
 
     function stockCountdown(response) {
-
-        if (Shopify.shop == "pawpals-1.myshopify.com")
-        {
-            $jq321("head").append('<style type="text/css">'+
-                                  '[data-product-blocks]{position: relative;}[data-product-blocks] .stock-top{position: absolute;right: 0;top: 0;width: auto;font-size:16px;}'+
-                                  '@media screen and (max-width: 1238px){[data-product-blocks] .stock-top{position:static;}}'+
-                                 
-                                  '</style>');
-
-            masterSelectorStock = $jq321(".product-block--price");
-            finalSelectorStock = masterSelectorStock[0];
-
-            console.log(masterSelectorStock);
-        }
         
         var selectorStock0 = $jq321("form[action='/cart/add']").find(".product__submit__buttons").parent();
         var selectorStock1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -839,11 +574,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         if (response.above_cart == 1)
         {
-            if (masterSelectorStock.length > 0) 
-            {
-                $jq321(response.view).insertBefore(finalSelectorStock);
-            }
-            else if (masterSelector.length > 0) 
+            if (masterSelector.length > 0) 
             {
                 $jq321(response.view).insertBefore(finalSelector);
             } 
@@ -882,11 +613,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            if (masterSelectorStock.length > 0) 
-            {
-                $jq321(response.view).insertAfter(finalSelectorStock);       
-            }
-            else if (masterSelector.length > 0) 
+            if (masterSelector.length > 0) 
             {
                 $jq321(response.view).insertAfter(finalSelector);       
             } 
@@ -1092,7 +819,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
              .then(response => response.json())
              .then(data => {
                  let cartValue = data.items;
-
                  if (cartValue.length == 0) 
                  {
                      console.log("Cart is empty");
@@ -1106,6 +832,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                      console.log("there is something in the cart");
                      window.localStorage.removeItem("carecart-scp-cart-status");
                      appendCartTimerBar(response);
+                     
                  }
              });
          }, 3000);
@@ -1131,7 +858,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
      function initializeClockCartCountdown(endtime = 15, settings) 
      {
         let ccCartCountdownTimerDiv = document.getElementById("cc-stock-cart-timer-section");
-  
+        
         function updateClock() 
         {
             let cartCountdownTimeRemaining = getTimeRemainingCartCountdown(endtime);
@@ -1209,9 +936,8 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                  * Let make selector
                  */
                  let firstSelector = $jq321("form[action='/cart']").parent();
-                 //let firstSelector = $jq321(".cart-summary__close");
-                
-                 console.log('selector');
+                 //let firstSelector = $jq321("#cart").parent();
+
                  console.log(firstSelector);
                  
                  if (response.barPosition == "top" && cartStatus === null) 
@@ -1227,8 +953,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                  { 
                      if (firstSelector.length > 0 && cartStatus === null) 
                      {   
-                        $jq321(response.view).insertAfter(firstSelector[0]);
-                        //$jq321(firstSelector[0]).append(response.view);
+                        $jq321(firstSelector[0]).append(response.view);
                         //$jq321(firstSelector[1]).append(response.view);
                         //$jq321(".title-wrapper-with-link").append(response.view);
                          
