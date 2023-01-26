@@ -2296,6 +2296,13 @@
     }  
 
 
+    if (Shopify.shop == "new-babify.myshopify.com") {
+        $jq321("head").append(
+            '<style type="text/css"> .notificationPreview-box .np-col-img{border-radius:4px;} .notificationPreview-box-inner .np-inside .np-col-right .card-body p.buyer-name , .notificationPreview-box .card-body h5.card-title a#sp-notification , .notificationPreview-box.valentine_new-bg .np-col-right .card-body span.pur-time{color:#fff !important;}</style>'
+            );
+    } 
+
+
     if (Shopify.shop == "naptural-queen-hair-care.myshopify.com") {
         masterSelector = $jq321(".groups-btn");
         finalSelector = masterSelector[0];
@@ -2345,6 +2352,20 @@
                 '.add-to-cart-loader{display: none;}' +
             '</style>'
             );
+    }
+
+    if (Shopify.shop == "viraltechplace.myshopify.com") {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+                'form.form button + div{display:none;}' +
+            '</style>'
+        );
+    }
+
+    if (Shopify.shop == "estornes-boor-boutique.myshopify.com") {
+        $jq321("head").append(
+        '<style type="text/css">.cc-sp-sc-stock-div {display: block !important;}</style>'
+        );
     }
 
     if (Shopify.shop == "timbresonic.myshopify.com") {
@@ -2624,7 +2645,9 @@
                 '.content-div-visitor-detail-carecartbysalespop-2020{font-size:14px !important;}'+ 
             '</style>'
         );
-    } 
+    }
+    
+    
 
     if (Shopify.shop == "pinkrevolver-shop.myshopify.com") {
         $jq321("head").append(
@@ -2935,32 +2958,20 @@
         console.log(finalSelector);
     }
 
+    if (Shopify.shop == "suti-sancha.myshopify.com") 
+    {
+        masterSelector = $jq321(".shopify-payment-button");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+
     if (Shopify.shop == "slippers-technic.myshopify.com") 
     {
         masterSelector = $jq321(".pf-22_");
         finalSelector = masterSelector[0];
 
         console.log(masterSelector);
-    }
-
-    if (Shopify.shop == "new-babify.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+ 
-                '.notificationPreview-box.valentine_new-bg .card-body p.card-text {color: #FFF !important;}'+
-                '.notificationPreview-box.valentine_new-bg .card-body h5.card-title a {color: #FFFFFF !important;}'+
-                '.notificationPreview-box.valentine_new-bg .card-body .pur-time {color: #FFFFFF !important;}'+
-            '</style>'
-        );
-    }
-
-    if (Shopify.shop == "scarters.myshopify.com") 
-    {
-        $jq321("head").append(
-            '<style type="text/css">'+ 
-                '.stock-top{display: block !important;}'+ 
-            '</style>'
-        );
     }
 
      /** Stock for variants **/
@@ -3011,6 +3022,7 @@
     }
 
     function enableStockForVariants(variantsData, variantHeading) {
+
         $jq321(document).ready(function () { 
 
             let getSelectors = makeSelectors(variantHeading);
@@ -3031,10 +3043,6 @@
                 if (Shopify.shop == "herman-store.myshopify.com")
                 {
                     attachEventOnOptions(".disclosure--option-link", variantsData);
-                }
-                else if (Shopify.shop == "scarters.myshopify.com")
-                {
-                    attachEventOnOptions(".Popover__Value", variantsData);
                 }
                 else if (getSelectors.selector_number == 2) {
                     let selectedVariantsValuesString = '';
@@ -3083,6 +3091,7 @@
         console.log("SP: variant selector found");
         $jq321(variantSelector).on("click", function () { 
             setTimeout(function () {
+
                 let urlParams = new URLSearchParams(window.location.search);
                 let variantID = urlParams.get('variant');
                 if (variantsData !== null && variantID !== null) {
@@ -3778,15 +3787,6 @@
      // ---------------------------------- <TRUST BADGES MODULE> --------------------------------
      function trustBadges(trustBadgesResponse)
      {
-        if (Shopify.shop == "viraltechplace.myshopify.com")
-        {
-            let text = window.location.pathname;
-            let result = text.indexOf("products");
-
-            if(result == -1){
-                return;
-            }    
-        }
         if (Shopify.shop == "7ac472.myshopify.com")
         {
             let text = window.location.pathname;
