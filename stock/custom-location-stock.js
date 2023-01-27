@@ -9,7 +9,7 @@
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
 
- function scriptInjection(src, callback) {
+function scriptInjection(src, callback) {
     var script = document.createElement('script');
     script.type = "text/javascript";
 
@@ -254,6 +254,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var meta = {"product":{"id":__st.rid}};
     }
     else if (Shopify.shop == "rbion.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
+    else if (Shopify.shop == "ideal-zone.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
 
@@ -557,6 +560,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "mysns.myshopify.com")
     {
         masterSelector = $jq321(".product-single__vendor");
+        finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+    if (Shopify.shop == "ideal-zone.myshopify.com")
+    {
+        masterSelector = $jq321("#AddToCart--product-template");
         finalSelector = masterSelector[0];
 
         console.log(finalSelector);
