@@ -19,13 +19,7 @@
  document.body.appendChild(myDiv);
  
  var doubleCheck = document.getElementsByClassName("doubleCheck");
- 
- console.log(doubleCheck);
- 
  var ndoubleCheck = doubleCheck.length;
- 
- console.log(ndoubleCheck);
-
  if (ndoubleCheck == 2) {
      //window.stop();
      throw new Error("DOUBLE APP JS");
@@ -110,18 +104,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
                 }
             }
 
-            //$jq321(".visitor-counter-content-box-carecartbysalespop-2020").remove();
+            $jq321(".visitor-counter-content-box-carecartbysalespop-2020").remove();
 
             $jq321("head").append($jq321("<link/>", {
                 rel: "stylesheet",
                 href: serverUrl.cssVisitor + "?v" + version
             }));
 
-            /* if (Shopify.shop == "www-minkymyles-com.myshopify.com") 
-            {
-                setTimeout(function () {visitorCounter(apiResponse.visitor)}, 10000);
-            }
-            else */ 
             if (Shopify.shop == "juliteste.myshopify.com") 
             {
                 setTimeout(function () {visitorCounter(apiResponse.visitor)}, 3000);
@@ -418,151 +407,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         //console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
-    if (Shopify.shop == "protectich.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "mirable-life.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "viryaws.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "oostduits.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "direct-flamingo.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "hookedonglam.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "carboneclothes2.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "sancta-maria-epl.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "escape-accessories-2021.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "glamkart-india.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "store-webook.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "slinger-8108.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "vitapur-home-cz.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "buyur-ltd.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "cengiz-akturk-shop.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "kina-tam.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "osim-germany.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "www-minkymyles-com.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "simplemerit-store.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "monnarc.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "geschenkplaza.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "todoentregas.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "pradic1212.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "orne-decor-studio.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        //console.log((meta.product && meta.product.id)?meta.product.id:'');
-    }
-    if (Shopify.shop == "monvica.myshopify.com") 
+    if (Shopify.shop == "shopcindel-com.myshopify.com") 
     {
         var meta = {"product":{"id":__st.rid}};
 
@@ -678,6 +523,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         customSelctor = $jq321(".product-single__add-to-cart");
         finalSelector = customSelctor[0];
     }
+    
     if (Shopify.shop == "newnorway.myshopify.com")
     {
         customSelctor = $jq321(".product-title-container");
@@ -740,6 +586,16 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         customSelctor = $jq321(".product__price");
         finalSelector = customSelctor[0];
+    }
+    if (Shopify.shop == "shopcindel-com.myshopify.com")
+    {
+        customSelctor = $jq321(".product-container");
+        finalSelector = customSelctor[0];
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.visitor-left{text-align:center !important;}' +
+            '</style>'
+           );
     }
 
     if (Shopify.shop == "colombiahit.myshopify.com")
@@ -1016,217 +872,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         console.log(customSelctor);
     }
 
-    if (Shopify.shop == "protectich.myshopify.com")
-    {
-        customSelctor = $jq321(".product__tax");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "mirable-life.myshopify.com")
-    {
-        customSelctor = $jq321(".pf-360_");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "viryaws.myshopify.com")
-    {
-        customSelctor = $jq321(".quickview_plus_minus");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "oostduits.myshopify.com")
-    {
-        customSelctor = $jq321(".product-single__add-to-cart");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "direct-flamingo.myshopify.com")
-    {
-        customSelctor = $jq321("#shopify-section-announcement-bar");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "hookedonglam.myshopify.com")
-    {
-        customSelctor = $jq321(".product__atc");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "carboneclothes2.myshopify.com")
-    {
-        customSelctor = $jq321(".pf-c");
-        finalSelector = customSelctor[3];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "sancta-maria-epl.myshopify.com")
-    {
-        $jq321("head").append(
-            '<style type="text/css">' + 
-            '.visitor-counter-content-box-carecartbysalespop-2020 {display: block !important;}' +
-            '#effectiveAppsProductVisitorsCounterElement, .visitor-counter-content-box-carecartbysalespop-2020, .visitor-left {display: block!important; }' +
-            '</style>'
-           );
-
-        customSelctor = $jq321(".prd-block_actions");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "escape-accessories-2021.myshopify.com")
-    {
-        customSelctor = $jq321(".product-form__buttons");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "glamkart-india.myshopify.com")
-    {
-        customSelctor = $jq321(".btns_group_1");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "store-webook.myshopify.com")
-    {
-        $jq321("head").append(
-            '<style type="text/css">' + 
-            '.sales-points{margin-bottom: 0px !important;}' +
-            '.product-block--sales-point+.product-block--sales-point{margin-bottom: 0 !important;}' +
-            '.visitor-counter-content-box-carecartbysalespop-2020{margin-top: 0 !important;}' +
-            '</style>'
-           );
-    }
-
-    if (Shopify.shop == "slinger-8108.myshopify.com")
-    {
-        customSelctor = $jq321(".stock-top");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "vitapur-home-cz.myshopify.com")
-    {
-        $jq321("head").append(
-            '<style type="text/css">' + 
-            '.visitor-counter-content-box-carecartbysalespop-2020{  height: auto !important; margin-top: 0 !important; }' +
-            '</style>'
-           );
-
-        customSelctor = $jq321(".product__title");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "buyur-ltd.myshopify.com")
-    {
-        customSelctor = $jq321(".product-form__payment-container");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "cengiz-akturk-shop.myshopify.com")
-    {
-        customSelctor = $jq321(".product__submit__buttons");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "kina-tam.myshopify.com")
-    {
-        customSelctor = $jq321("div[data-block-type|='low-stock']");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "osim-germany.myshopify.com")
-    {
-        customSelctor = $jq321(".flex");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "www-minkymyles-com.myshopify.com")
-    {
-        customSelctor = $jq321(".product-form__buttons");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "simplemerit-store.myshopify.com")
-    {
-        customSelctor = $jq321(".product-single__add-to-cart");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "monnarc.myshopify.com")
-    {
-        customSelctor = $jq321(".payment-and-quantity");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "todoentregas.myshopify.com")
-    {
-        $jq321("head").append(
-            '<style type="text/css">' + 
-            '.visitor-counter-content-box-carecartbysalespop-2020{ height: 17px !important;}'+
-            '.counter-text-carecartbysalespop-2020{min-height:10px !important;}' +
-            '.product-single__add-to-cart{margin-bottom:0px !important}' +
-            '</style>'
-           );
-    }
-
-    if (Shopify.shop == "pradic1212.myshopify.com")
-    {
-        customSelctor = $jq321(".product-single__add-to-cart");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "orne-decor-studio.myshopify.com")
-    {
-        customSelctor = $jq321(".pf-63_");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
-    if (Shopify.shop == "monvica.myshopify.com")
-    {
-        customSelctor = $jq321(".ProductForm__AddToCart");
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-
     function visitorCounter(responseVisitor) 
     {
         var selectorVisitor1 = $jq321("form[action='/cart/add']").find("button[type='submit'],input[type='submit']").parent();
@@ -1236,11 +881,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         
         if (responseVisitor.above_cart == 1)
         {
-            /* if (Shopify.shop == "www-minkymyles-com.myshopify.com")
-            {
-                $jq321(responseVisitor.view).insertBefore(".ak_review_product");
-            }
-            else */ 
             if(customSelctor.length > 0){
                 $jq321(responseVisitor.view).insertBefore(finalSelector);
             }
@@ -1263,11 +903,6 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         }
         else
         {
-            /* if (Shopify.shop == "www-minkymyles-com.myshopify.com")
-            {
-                $jq321(responseVisitor.view).insertAfter(".ak_review_product");
-            }
-            else */ 
             if(customSelctor.length > 0){
                 $jq321(responseVisitor.view).insertAfter(finalSelector);
             }
