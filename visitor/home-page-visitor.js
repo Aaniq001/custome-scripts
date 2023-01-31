@@ -9,7 +9,7 @@
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
 
- function scriptInjection(src, callback) {
+function scriptInjection(src, callback) {
     var script = document.createElement('script');
     script.type = "text/javascript";
 
@@ -75,7 +75,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         apiResponse = response;
 
         // VISITOR COUNTER CALL
-        if(apiResponse && apiResponse.visitor && apiResponse.visitor!==null){
+        if (apiResponse && apiResponse.visitor && apiResponse.visitor !== null) {
 
             $jq321("head").append($jq321("<link/>", {
                 rel: "stylesheet",
@@ -85,75 +85,61 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             visitorCounter(apiResponse.visitor);
         }
     };
-    
+
     /* Hard coded product id's for homa page */
     let productID = 0;
-    if(Shopify.shop == "behappyfr.myshopify.com"){
+    if (Shopify.shop == "behappyfr.myshopify.com") {
         productID = 6887512703140;
     }
-
-    if(Shopify.shop == "blissin-skin.myshopify.com"){
+    if (Shopify.shop == "blissin-skin.myshopify.com") {
         productID = 6939770716332;
     }
-    if (Shopify.shop == "security-coque.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
+
+    if (Shopify.shop == "87-shopper.myshopify.com") {
+        var meta = { "product": { "id": __st.rid } };
+
+        productID = 224892191018;
+    }
+
+    if (Shopify.shop == "security-coque.myshopify.com") {
+        var meta = { "product": { "id": __st.rid } };
 
         productID = 6681807159347;
     }
-    if (Shopify.shop == "simplifryco.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
+    if (Shopify.shop == "simplifryco.myshopify.com") {
+        var meta = { "product": { "id": __st.rid } };
 
         productID = 7646184538365;
     }
-    if (Shopify.shop == "e-cbdfrance.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
+    if (Shopify.shop == "e-cbdfrance.myshopify.com") {
+        var meta = { "product": { "id": __st.rid } };
 
         productID = 6895186772153;
     }
-    if (Shopify.shop == "custorus.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
+    if (Shopify.shop == "custorus.myshopify.com") {
+        var meta = { "product": { "id": __st.rid } };
 
         productID = 7717997183209;
     }
-    if (Shopify.shop == "bon-juice-shop.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
+    if (Shopify.shop == "bon-juice-shop.myshopify.com") {
+        var meta = { "product": { "id": __st.rid } };
 
         productID = 7465197404317;
     }
-    if (Shopify.shop == "chilli-beans-australia.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
+    if (Shopify.shop == "chilli-beans-australia.myshopify.com") {
+        var meta = { "product": { "id": __st.rid } };
 
         productID = 7183257403546;
     }
-    if (Shopify.shop == "sensible-success.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
+    if (Shopify.shop == "sensible-success.myshopify.com") {
+        var meta = { "product": { "id": __st.rid } };
 
         productID = 6906344636459;
     }
-    if (Shopify.shop == "dyo-ministyling.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
+    if (Shopify.shop == "dyo-ministyling.myshopify.com") {
+        var meta = { "product": { "id": __st.rid } };
 
         productID = 7404143968428;
-    }
-    if (Shopify.shop == "cactusrecords.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        productID = 7953728930098;
-    }
-    if (Shopify.shop == "gohoa.myshopify.com") 
-    {
-        var meta = {"product":{"id":__st.rid}};
-
-        productID = 8002445869354;
     }
 
     $jq321.ajax({
@@ -164,7 +150,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         crossDomain: true,
         data: {
             "domain_url": Shopify.shop,
-            "product_id": (meta.product && meta.product.id)?meta.product.id:productID
+            "product_id": (meta.product && meta.product.id) ? meta.product.id : productID
         },
         beforeSend: function () {
         },
@@ -183,33 +169,22 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     /* Custom script goes from here */
     let customSelctor = "";
     let finalSelector = "";
-    if(Shopify.shop == "walea-shop.myshopify.com")
-    {
+    if (Shopify.shop == "walea-shop.myshopify.com") {
         customSelctor = $jq321(".one-whole");
         finalSelector = customSelctor[1];
     }
-    if(Shopify.shop == "e-cbdfrance.myshopify.com")
-    {
+    if (Shopify.shop == "e-cbdfrance.myshopify.com") {
         customSelctor = $jq321(".circle-divider");
         finalSelector = customSelctor[0];
     }
-    if(Shopify.shop == "bon-juice-shop.myshopify.com")
-    {
+    if (Shopify.shop == "bon-juice-shop.myshopify.com") {
         customSelctor = $jq321("#c-1606899647318").parent();
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
     }
-    if(Shopify.shop == "dyo-ministyling.myshopify.com")
-    {
+    if (Shopify.shop == "dyo-ministyling.myshopify.com") {
         customSelctor = $jq321(".article__featured-image-link").parent();
-        finalSelector = customSelctor[0];
-
-        console.log(customSelctor);
-    }
-    if(Shopify.shop == "gohoa.myshopify.com")
-    {
-        customSelctor = $jq321(".footer__content-bottom-wrapper");
         finalSelector = customSelctor[0];
 
         console.log(customSelctor);
@@ -222,56 +197,46 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var selectorVisitor3 = $jq321("form[action='/cart/add']:first").find("button[type='submit'],input[type='submit']");
         var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
 
-        if (response.above_cart == 1)
-        {
-            if(customSelctor.length > 0){
+        if (response.above_cart == 1) {
+            if (customSelctor.length > 0) {
                 $jq321(response.view).insertBefore(finalSelector);
             }
-            else if (selectorVisitor1.length == 1)
-            {
+            else if (selectorVisitor1.length == 1) {
                 selectorVisitor1.prepend(response.view);
             }
-            else if (selectorVisitor2.length == 1)
-            {
+            else if (selectorVisitor2.length == 1) {
                 selectorVisitor2.prepend(response.view);
             }
-            else if (selectorVisitor3.length == 1)
-            {
+            else if (selectorVisitor3.length == 1) {
                 $jq321(response.view).insertBefore(selectorVisitor3);
             }
-            else if (selectorVisitor4.length == 1)
-            {
+            else if (selectorVisitor4.length == 1) {
                 selectorVisitor4.prepend(response.view);
             }
         }
-        else
-        {
-            if(customSelctor.length > 0){
+        else {
+            if (customSelctor.length > 0) {
                 $jq321(response.view).insertAfter(finalSelector);
             }
-            else if (selectorVisitor1.length == 1)
-            {
+            else if (selectorVisitor1.length == 1) {
                 selectorVisitor1.append(response.view);
             }
-            else if (selectorVisitor2.length == 1)
-            {
+            else if (selectorVisitor2.length == 1) {
                 selectorVisitor2.append(response.view);
             }
-            else if (selectorVisitor3.length == 1)
-            {
+            else if (selectorVisitor3.length == 1) {
                 $jq321(response.view).insertAfter(selectorVisitor3);
             }
-            else if (selectorVisitor4.length == 1)
-            {
+            else if (selectorVisitor4.length == 1) {
                 selectorVisitor4.append(response.view);
             }
         }
 
-        $jq321('n').html(function(i, v){
-            return v.replace(/(\d)/g, '<span '+response.count+'>$1</span>');
+        $jq321('n').html(function (i, v) {
+            return v.replace(/(\d)/g, '<span ' + response.count + '>$1</span>');
         });
     }
 
     // ---------------------------------- <VISITOR COUNTER MODULE> --------------------------------
 
-  });
+});
