@@ -206,6 +206,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 8080598827297;
     }
+    if(Shopify.shop == "steam-excellence.myshopify.com")
+    {
+        productID = 8085789311268;
+    }
 
     $jq321.ajax({
         type: "GET",
