@@ -262,6 +262,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "frstclassbeauty.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "ainasana.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     /**
