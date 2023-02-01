@@ -9,7 +9,7 @@
  * In case of any inquiries, please contact here: https://carecart.io/contact-us/
  */
 
-function scriptInjection(src, callback) {
+ function scriptInjection(src, callback) {
     var script = document.createElement('script');
     script.type = "text/javascript";
 
@@ -94,6 +94,18 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         productID = 6887512703140;
     } 
+    if (Shopify.shop == "velvet-toni.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.product__info-container .product-form{margin-top:0px !important;}'+
+            '.visitor-counter-content-box-carecartbysalespop-2020{ height: 37px !important;}'+
+            '.counter-text-carecartbysalespop-2020{min-height: 24px !important;}'+
+            '.edt-p + p{margin-bottom: -10px;}' +
+            '</style>'
+        );
+    }
+    
 
     $jq321.ajax({
         type: "GET",
@@ -123,10 +135,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
     $jq321.each(allForms, function (key, value) {
         var formUrls = value.action;
-        if (formUrls.indexOf('/cart/add') > -1) 
-        { 
-            masterSelector = $jq321(value).find("button[type='submit'],input[type='submit']").parent();
-         }
+        if (formUrls.indexOf('/cart/add') > -1) { masterSelector = $jq321(value).find("button[type='submit'],input[type='submit']").parent(); }
     });
 
     function visitorCounter(response) {
@@ -137,20 +146,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         var selectorVisitor4 = $jq321("form[action='/cart/add']:first");
 
         if (response.above_cart == 1) {
-            if (Shopify.shop == "browlabfrance.myshopify.com")
-            {
-                $jq321("head").append(
-                    '<style type="text/css">'+
-                        '.visitor-counter-content-box-carecartbysalespop-2020{margin-left:60px;}'+   
-                    '</style>'
-                );
-                $jq321(response.view).insertBefore('.Product__Gallery--withThumbnails');
-            }
-            else if (Shopify.shop == "boutique1861.myshopify.com")
-            {
-                $jq321(response.view).insertBefore('.add_to_cart');
-            }
-            else if (Shopify.shop == "officialsmootsy.myshopify.com")
+            if (Shopify.shop == "officialsmootsy.myshopify.com")
             {
                 $jq321(response.view).insertBefore('.product-form__buttons');
             }
@@ -171,20 +167,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             }
         }
         else {
-            if (Shopify.shop == "browlabfrance.myshopify.com")
-            {
-                $jq321("head").append(
-                    '<style type="text/css">'+
-                        '.visitor-counter-content-box-carecartbysalespop-2020{margin-left:60px;}'+   
-                    '</style>'
-                );
-                $jq321(response.view).insertAfter('.Product__Gallery--withThumbnails');
-            }
-            else if (Shopify.shop == "boutique1861.myshopify.com")
-            {
-                $jq321(response.view).insertAfter('.add_to_cart');
-            }
-            else if (Shopify.shop == "officialsmootsy.myshopify.com")
+            if (Shopify.shop == "officialsmootsy.myshopify.com")
             {
                 $jq321(response.view).insertAfter('.product-form__buttons');
             }
