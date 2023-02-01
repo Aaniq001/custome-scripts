@@ -413,6 +413,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         //console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "velvet-toni.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        //console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -675,6 +681,18 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
            );
     }
 
+    if (Shopify.shop == "velvet-toni.myshopify.com")
+    {
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.product__info-container .product-form{margin-top:0px !important;}'+
+            '.visitor-counter-content-box-carecartbysalespop-2020{ height: 37px !important;}'+
+            '.counter-text-carecartbysalespop-2020{min-height: 24px !important;}'+
+            '.edt-p + p{margin-bottom: -10px;}' +
+            '</style>'
+           );
+    }
+
     if (Shopify.shop == "usesthetics.myshopify.com")
     {
         customSelctor = $jq321(".product-form__buttons");
@@ -871,6 +889,7 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         console.log(customSelctor);
     }
+    
 
     function visitorCounter(responseVisitor) 
     {
