@@ -265,6 +265,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "ainasana.myshopify.com") {
         var meta = {"product":{"id":__st.rid}};
     }
+    else if (Shopify.shop == "gokals-fiji.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     /**
@@ -499,6 +502,15 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         $jq321("head").append('<style type="text/css">'+
                               '.cart-countdown-desktop-top-center {display: flex !important;}'+
+                              '</style>');
+    }
+    if (Shopify.shop == "gokals-fiji.myshopify.com")
+    {
+        $jq321("head").append('<style type="text/css">'+
+                              '@media only screen and (max-width:575px){.timer-store-front{display: flex;'+
+                                'flex-direction: column;'+
+                                'align-items: end;}'+
+                                '#clockdivpreview{margin-right: 19px;}}'+
                               '</style>');
     }
     if (Shopify.shop == "redpointgadgets-com.myshopify.com")
