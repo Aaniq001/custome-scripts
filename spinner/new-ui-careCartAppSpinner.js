@@ -50,7 +50,7 @@
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
-    
+
     cssFileInjection(API_URL + "public/phone/css/intlTelInput.css?v=" + new Date().toLocaleTimeString());               // Dev and UAT URL
     cssFileInjection(API_URL + "public/phone/css/phoneStyle.css?v=" + new Date().toLocaleTimeString());                 // Dev and UAT URL
     //cssFileInjection(API_URL +"public/phone/js/intlTelInput.js?v=" + new Date().toLocaleTimeString());                 // Dev and UAT URL
@@ -1050,7 +1050,7 @@
                         let settings = response.records.store_settings.settings_data;
 
                         if (settings.button_position === 'middle_right' || settings.button_position === 'middle_left') {
-                             carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
+                            carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
                         } else {
                             carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake triggerButton_shake');
                         }
@@ -1101,8 +1101,7 @@
                                                         }
                             */
 
-                            if (Shopify.shop == 'steven-brown-art.myshopify.com') 
-                            {   
+                            if (Shopify.shop == 'steven-brown-art.myshopify.com') {
                                 var thisStatus = checkStoreSpecificUrlCcSpinASale("https://www.stevenbrownart.co.uk/collections/sale");
 
                                 console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
@@ -1110,38 +1109,33 @@
                                 var thisStatus1 = checkStoreSpecificUrlCcSpinASale("https://www.stevenbrownart.co.uk/collections/heather-mccoo-highland-cow-art");
 
                                 console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus1);
-                                
-                                if (thisStatus || thisStatus1) 
-                                {
+
+                                if (thisStatus || thisStatus1) {
                                     console.log('SAS Block Page Matched for store: ' + Shopify.shop);
                                     return;
                                 }
-                                else 
-                                {
-                                    console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);  
+                                else {
+                                    console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
                                 }
                             }
-                            
-                            if(Shopify.shop == 'homesteadsupplier.myshopify.com')
-                            {
+
+                            if (Shopify.shop == 'homesteadsupplier.myshopify.com') {
                                 var thisStatus = checkStoreSpecificUrlCcSpinASale("https://homesteadsupplier.com/collections/ez-fit-chicken-coops-sheds-kennels/products/ez-fit-riverside-shed-outdoor-garden-tool-shed-storage-solution");
-                                
+
                                 console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus);
-                                
+
                                 var thisStatus1 = checkStoreSpecificUrlCcSpinASale("https://homesteadsupplier.com/collections/ez-fit-chicken-coops-sheds-kennels/products/ez-fit-sheds-homestead-outdoor-garden-shed-storage-solution");
-                                
+
                                 console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus1);
 
                                 var thisStatus2 = checkStoreSpecificUrlCcSpinASale("https://homesteadsupplier.com/collections/ez-fit-chicken-coops-sheds-kennels/products/ez-fit-sheds-heritage-outdoor-garden-shed-storage-solution");
-                                
+
                                 console.log('checkStoreSpecificUrlCcSpinASale Status: ' + thisStatus2);
-                                
-                                if(thisStatus || thisStatus1 || thisStatus2)
-                                {
+
+                                if (thisStatus || thisStatus1 || thisStatus2) {
                                     console.log('SAS Custom Page Matched for store: ' + Shopify.shop);
                                 }
-                                else
-                                {
+                                else {
                                     console.log('SAS Custom Page NOT Matched for store: ' + Shopify.shop);
                                     return;
                                 }
@@ -1353,154 +1347,154 @@
                                 });
 
                                 if (response.records.store_settings.settings_data.collect_phone_number_mandatory == 1) {
-                                   isPhoneNumberMandatory = 1;
+                                    isPhoneNumberMandatory = 1;
                                 }
-                                
+
                                 if (response.records.store_settings.settings_data.collect_phone_number_mandatory == 0) {
-                                   isPhoneNumberMandatory = 0;
+                                    isPhoneNumberMandatory = 0;
                                 }
 
                                 /*********** Phone Number Collection ************/
-                                
+
                                 /*********** Wheel Margin ************/
-                               
+
                                 carecartSpinnerJquery("head").append(
                                     '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {min-height: 468px;}} </style>'
-                                );  
-                                    carecartSpinnerJquery("head").append(
+                                );
+                                carecartSpinnerJquery("head").append(
                                     '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight{ min-height: 560px;}} </style>'
                                 );
 
                                 /* Append triggered button */
-                                    if (response.records.store_settings.settings_data.is_triggered_enable && parseInt(response.records.store_settings.settings_data.is_triggered_enable) == 1) {
-                                        carecartSpinnerJquery("body").append(response.records.store_front_trigger_button);
-                                        if ("our-little-hero.myshopify.com" == Shopify.shop) {
-                                            carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "none");
-                                        }
-                                        const settingsData = response.records.store_settings.settings_data;
-                                        var tBtn = carecartSpinnerJquery('body').find('#wheelify-spin-trigger-cc');
-                                    
-                                        // if (settingsData.button_position === 'middle_right') {  
-                                        //     tBtn.css({
-                                        //         bottom: '48vh',
-                                        //         right: '-45px',
-                                        //         transform: 'rotate(270deg)'
-                                        //     });
-                                        // }
-                                        // else if (settingsData.button_position === 'bottom_right') {
-                                        //     tBtn.css({
-                                        //         bottom: '8vh',
-                                        //         right: '20px'
-                                        //     });
-                                        // }//new added
-                                        // else if (settingsData.button_position === 'bottom_left') {
-                                        //     tBtn.css({
-                                        //         left: '20px'
-                                        //     });
-                                        // } else if (settingsData.button_position === 'middle_left') {
-                                        //     tBtn.css({
-                                        //         left: '-48px',
-                                        //         bottom: '48vh',
-                                        //         transform: 'rotate(270deg)'
-                                        //     });
-                                        // }
+                                if (response.records.store_settings.settings_data.is_triggered_enable && parseInt(response.records.store_settings.settings_data.is_triggered_enable) == 1) {
+                                    carecartSpinnerJquery("body").append(response.records.store_front_trigger_button);
+                                    if ("our-little-hero.myshopify.com" == Shopify.shop) {
+                                        carecartSpinnerJquery("#wheelify-spin-trigger-cc").css("display", "none");
+                                    }
+                                    const settingsData = response.records.store_settings.settings_data;
+                                    var tBtn = carecartSpinnerJquery('body').find('#wheelify-spin-trigger-cc');
 
-                                        // Trigger Button Margin
-                                        
-                                        if(settingsData.button_position === 'middle_right' ) {
-                                            let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+                                    // if (settingsData.button_position === 'middle_right') {  
+                                    //     tBtn.css({
+                                    //         bottom: '48vh',
+                                    //         right: '-45px',
+                                    //         transform: 'rotate(270deg)'
+                                    //     });
+                                    // }
+                                    // else if (settingsData.button_position === 'bottom_right') {
+                                    //     tBtn.css({
+                                    //         bottom: '8vh',
+                                    //         right: '20px'
+                                    //     });
+                                    // }//new added
+                                    // else if (settingsData.button_position === 'bottom_left') {
+                                    //     tBtn.css({
+                                    //         left: '20px'
+                                    //     });
+                                    // } else if (settingsData.button_position === 'middle_left') {
+                                    //     tBtn.css({
+                                    //         left: '-48px',
+                                    //         bottom: '48vh',
+                                    //         transform: 'rotate(270deg)'
+                                    //     });
+                                    // }
+
+                                    // Trigger Button Margin
+
+                                    if (settingsData.button_position === 'middle_right') {
+                                        let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
+                                        triggerBottom === 0 ? triggerBottom = 8 : triggerBottom += 8;
+                                        tBtn.css({
+                                            right: '-45px',
+                                            bottom: triggerBottom + 'vh',
+                                            transform: 'rotate(270deg)'
+                                        });
+                                        if (carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')) {
+                                            carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
+                                            setInterval(function () {
+                                                shakeVertical('#wheelify-spin-trigger-cc', 50, triggerBottom, 10);
+                                            }, 3000);
+                                        }
+                                    }
+
+                                    else if (settingsData.button_position === 'middle_left') {
+                                        let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
+                                        triggerBottom === 0 ? triggerBottom = 8 : triggerBottom += 8;
+                                        tBtn.css({
+                                            left: '-45px',
+                                            bottom: triggerBottom + 'vh',
+                                            transform: 'rotate(270deg)'
+                                        });
+                                        if (carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')) {
+                                            carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
+                                            setInterval(function () {
+                                                shakeVertical('#wheelify-spin-trigger-cc', 50, triggerBottom, 10);
+                                            }, 3000);
+                                        }
+                                    }
+
+                                    else if (settingsData.button_position === 'bottom_right') {
+                                        let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
+                                        triggerBottom === 0 ? triggerBottom = 8 : triggerBottom += 8;
+                                        tBtn.css({
+                                            bottom: triggerBottom + 'vh',
+                                            right: '20px'
+                                        });
+                                    }
+
+                                    else if (settingsData.button_position === 'bottom_left') {
+                                        let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
+                                        triggerBottom === 0 ? triggerBottom = 8 : triggerBottom += 8;
+                                        tBtn.css({
+                                            bottom: triggerBottom + 'vh',
+                                            left: '20px'
+                                        });
+                                    }
+
+                                    var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
+
+                                    if (windowWidth < 575) {
+                                        if (settingsData.button_position === 'middle_right') {
+                                            let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
+                                            triggerBottom === 0 ? triggerBottom = 15 : triggerBottom += 15;
                                             tBtn.css({
-                                                right: '-45px', 
-                                                bottom: triggerBottom+'vh',
+                                                right: '-45px',
+                                                bottom: triggerBottom + 'vh',
                                                 transform: 'rotate(270deg)'
                                             });
-                                            if(carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')){
-                                                carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
-                                                setInterval(function(){
-                                                    shakeVertical('#wheelify-spin-trigger-cc', 50, triggerBottom, 10);
-                                                }, 3000);
-                                            }
                                         }
 
-                                        else if(settingsData.button_position === 'middle_left' ) {
-                                            let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+                                        else if (settingsData.button_position === 'middle_left') {
+                                            let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
+                                            triggerBottom === 0 ? triggerBottom = 15 : triggerBottom += 15;
                                             tBtn.css({
-                                                left: '-45px',
-                                                bottom: triggerBottom+'vh',
+                                                left: '60px',
+                                                bottom: triggerBottom + 'vh',
                                                 transform: 'rotate(270deg)'
                                             });
-                                            if(carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')){
-                                                carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
-                                                setInterval(function(){
-                                                    shakeVertical('#wheelify-spin-trigger-cc', 50, triggerBottom, 10);
-                                                }, 3000);
-                                            }
                                         }
-                                        
-                                        else if(settingsData.button_position === 'bottom_right' ) {
-                                            let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+
+                                        else if (settingsData.button_position === 'bottom_right') {
+                                            let triggerBottom = settingsData.trigger_btn_margin_mobile / 4;
+                                            triggerBottom === 0 ? triggerBottom = 10 : triggerBottom += 10;
+                                            console.log(triggerBottom)
                                             tBtn.css({
-                                                bottom: triggerBottom+'vh',
+                                                bottom: triggerBottom + 'vh',
                                                 right: '20px'
                                             });
                                         }
-                                        
-                                        else if(settingsData.button_position === 'bottom_left' ) {
-                                            let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+
+                                        else if (settingsData.button_position === 'bottom_left') {
+                                            let triggerBottom = settingsData.trigger_btn_margin_mobile / 4;
+                                            triggerBottom === 0 ? triggerBottom = 10 : triggerBottom += 10;
                                             tBtn.css({
-                                                bottom: triggerBottom+'vh',
+                                                bottom: triggerBottom + 'vh',
                                                 left: '20px'
                                             });
                                         }
-
-                                        var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
-
-                                        if (windowWidth < 575) {
-                                            if(settingsData.button_position === 'middle_right' ) {
-                                                let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
-                                                triggerBottom === 0 ? triggerBottom =  15 : triggerBottom += 15;
-                                                tBtn.css({
-                                                    right: '-45px', 
-                                                    bottom: triggerBottom+'vh',
-                                                    transform: 'rotate(270deg)'
-                                                });
-                                            }
-                                            
-                                            else if(settingsData.button_position === 'middle_left' ) {
-                                                let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
-                                                triggerBottom === 0 ? triggerBottom =  15 : triggerBottom += 15;
-                                                tBtn.css({
-                                                    left: '60px',
-                                                    bottom: triggerBottom+'vh',
-                                                    transform: 'rotate(270deg)'
-                                                });
-                                            }
-                                            
-                                            else if(settingsData.button_position === 'bottom_right' ) {
-                                                let triggerBottom = settingsData.trigger_btn_margin_mobile / 4;
-                                                triggerBottom === 0 ? triggerBottom =  10 : triggerBottom += 10;
-                                                console.log(triggerBottom)
-                                                tBtn.css({
-                                                    bottom: triggerBottom+'vh',
-                                                    right: '20px'
-                                                });
-                                            }
-                                            
-                                            else if(settingsData.button_position === 'bottom_left' ) {
-                                                let triggerBottom = settingsData.trigger_btn_margin_mobile / 4;
-                                                triggerBottom === 0 ? triggerBottom =  10 : triggerBottom += 10;
-                                                tBtn.css({
-                                                    bottom: triggerBottom+'vh',
-                                                    left: '20px'
-                                                });
-                                            }
-                                        }
                                     }
-                                
+                                }
+
                                 else {
                                     carecartSpinnerJquery("body").append(response.records.store_front_trigger_button);
                                     var tBtn = carecartSpinnerJquery('body').find('#wheelify-spin-trigger-cc');
@@ -1763,26 +1757,24 @@
                                 } else {
                                     spinnerBgImage = response.records.store_settings.spinner_bg_image;
                                 }
-                                
+
                                 var themeBgImageURL = CDN_WHEELIFY_URL + spinnerBgImage;
 
                                 carecartSpinnerJquery('.wheelify-content-spinner').css('background-image', 'url(' + themeBgImageURL + ')');
                             } else {
-                                if(response.records.store_settings.spinner_theme && response.records.store_settings.spinner_theme == 'customTheme') {
+                                if (response.records.store_settings.spinner_theme && response.records.store_settings.spinner_theme == 'customTheme') {
                                     var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
-                               
-                                    if(response.records.store_settings.spinner_background_image_url)
-                                    {
+
+                                    if (response.records.store_settings.spinner_background_image_url) {
                                         var defaultThemeBgImage = response.records.store_settings.spinner_background_image_url;
                                         carecartSpinnerJquery('.wheelify-content-spinner').css('background-image', 'url(' + defaultThemeBgImage + ')');
                                         window.localStorage.setItem("spinner_background_image_url_desktop", defaultThemeBgImage);
                                     }
 
-                                    if(response.records.store_settings.spinner_background_image_url_mobile)
-                                    {
+                                    if (response.records.store_settings.spinner_background_image_url_mobile) {
                                         var isMobile = false; //initiate as false
                                         // device detection
-                                        if (windowWidth < 575) {                                        
+                                        if (windowWidth < 575) {
                                             isMobile = true;
                                             console.log('Mobile View');
                                             var defaultThemeBgImage = response.records.store_settings.spinner_background_image_url_mobile;
@@ -1791,23 +1783,23 @@
                                         } else {
                                             console.log('Not Mobile View');
                                         }
-                                        
+
                                         var windowSize = window.matchMedia("(max-width: 575px)")
                                         myFunction(windowSize) // Call listener function at run time
                                         windowSize.addListener(myFunction) // Attach listener function on state changes
                                     } else {
-                                        if (windowWidth < 575) {                                        
+                                        if (windowWidth < 575) {
                                             var defaultThemeBgImage = response.records.store_settings.spinner_background_image_url_mobile;
                                             carecartSpinnerJquery('.wheelify-content-spinner').css('background-image', 'url(' + defaultThemeBgImage + ')');
                                             window.localStorage.setItem("spinner_background_image_url_mobile", defaultThemeBgImage);
-                                        } 
-                                        
+                                        }
+
                                         var windowSize = window.matchMedia("(max-width: 575px)")
                                         myFunction(windowSize) //Call listener function at run time
                                         windowSize.addListener(myFunction) // Attach listener function on state changes
                                     }
                                 }
-                               
+
                             }
                             /* ************************************** Display Background Image - End *********************************************************** */
                             if (Shopify.shop == 'srnsmart.myshopify.com') {
@@ -1828,12 +1820,12 @@
                 }
 
                 function myFunction(windowSize) {
-                    
+
                     console.log(windowSize);
                     console.log(localStorage.getItem("spinner_background_image_url_desktop"));
                     console.log(localStorage.getItem("spinner_background_image_url_mobile"));
-                    
-                    if (windowSize.matches) {                                                
+
+                    if (windowSize.matches) {
                         carecartSpinnerJquery('.wheelify-content-spinner').css('background-image', 'url(' + localStorage.getItem("spinner_background_image_url_mobile") + ')');
                     } else {
                         carecartSpinnerJquery('.wheelify-content-spinner').css('background-image', 'url(' + localStorage.getItem("spinner_background_image_url_desktop") + ')');
@@ -1841,11 +1833,11 @@
                 }
 
 
-                function shakeVertical(div, interval=100, distance, times=6){
-                    for(var iter=0;iter<(times+1);iter++){
-                        carecartSpinnerJquery(div).animate({ "bottom": ((iter%2==0 ? distance : distance-1))+"vh"}, interval);
+                function shakeVertical(div, interval = 100, distance, times = 6) {
+                    for (var iter = 0; iter < (times + 1); iter++) {
+                        carecartSpinnerJquery(div).animate({ "bottom": ((iter % 2 == 0 ? distance : distance - 1)) + "vh" }, interval);
                     }
-                    carecartSpinnerJquery(div).animate({ "bottom": distance+"vh"}, interval);
+                    carecartSpinnerJquery(div).animate({ "bottom": distance + "vh" }, interval);
                 }
 
                 function displaySpinnerOnTigger() {
@@ -2335,15 +2327,15 @@
                                     /* Append template*/
                                     carecartSpinnerJquery("body").append(response.records.store_front_template);
                                     /*********** Wheel Margin ************/
-                               
-                                carecartSpinnerJquery("head").append(
-                                    '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {min-height: 468px;}} </style>'
-                                );  
-                                    carecartSpinnerJquery("head").append(
-                                    '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight{ min-height: 560px;}} </style>'
-                                );
 
-                                   /*********** Phone Number Collection ************/
+                                    carecartSpinnerJquery("head").append(
+                                        '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview .wheelify-ContentRight {min-height: 468px;}} </style>'
+                                    );
+                                    carecartSpinnerJquery("head").append(
+                                        '<style type="text/css"> @media only screen and (max-width: 575px) {#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight{ min-height: 560px;}} </style>'
+                                    );
+
+                                    /*********** Phone Number Collection ************/
 
                                     //var phoneNumber = document.querySelector("#cc-spinner-phone-number");
 
@@ -2383,7 +2375,7 @@
                                     });
 
                                     /* Append triggered button */
-                                    
+
                                     if (response.records.store_settings.settings_data.is_triggered_enable && parseInt(response.records.store_settings.settings_data.is_triggered_enable) == 1) {
                                         carecartSpinnerJquery("body").append(response.records.store_front_trigger_button);
                                         if ("our-little-hero.myshopify.com" == Shopify.shop) {
@@ -2391,55 +2383,55 @@
                                         }
                                         const settingsData = response.records.store_settings.settings_data;
                                         var tBtn = carecartSpinnerJquery('body').find('#wheelify-spin-trigger-cc');
-                                    
+
                                         // Trigger Button Margin
-                                        
-                                        if(settingsData.button_position === 'middle_right' ) {
+
+                                        if (settingsData.button_position === 'middle_right') {
                                             let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+                                            triggerBottom === 0 ? triggerBottom = 8 : triggerBottom += 8;
                                             tBtn.css({
-                                                right: '-45px', 
-                                                bottom: triggerBottom+'vh',
+                                                right: '-45px',
+                                                bottom: triggerBottom + 'vh',
                                                 transform: 'rotate(270deg)'
                                             });
-                                            if(carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')){
+                                            if (carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')) {
                                                 carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
-                                                setInterval(function(){
+                                                setInterval(function () {
                                                     shakeVertical('#wheelify-spin-trigger-cc', 50, triggerBottom, 10);
                                                 }, 3000);
                                             }
                                         }
 
-                                        else if(settingsData.button_position === 'middle_left' ) {
+                                        else if (settingsData.button_position === 'middle_left') {
                                             let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+                                            triggerBottom === 0 ? triggerBottom = 8 : triggerBottom += 8;
                                             tBtn.css({
                                                 left: '-45px',
-                                                bottom: triggerBottom+'vh',
+                                                bottom: triggerBottom + 'vh',
                                                 transform: 'rotate(270deg)'
                                             });
-                                            if(carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')){
+                                            if (carecartSpinnerJquery('#wheelify-spin-trigger-cc').hasClass('shake vtriggerButton_shake')) {
                                                 carecartSpinnerJquery('#wheelify-spin-trigger-cc').removeClass('shake vtriggerButton_shake');
-                                                setInterval(function(){
+                                                setInterval(function () {
                                                     shakeVertical('#wheelify-spin-trigger-cc', 50, triggerBottom, 10);
                                                 }, 3000);
                                             }
                                         }
-                                        
-                                        else if(settingsData.button_position === 'bottom_right' ) {
+
+                                        else if (settingsData.button_position === 'bottom_right') {
                                             let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+                                            triggerBottom === 0 ? triggerBottom = 8 : triggerBottom += 8;
                                             tBtn.css({
-                                                bottom: triggerBottom+'vh',
+                                                bottom: triggerBottom + 'vh',
                                                 right: '20px'
                                             });
                                         }
-                                        
-                                        else if(settingsData.button_position === 'bottom_left' ) {
+
+                                        else if (settingsData.button_position === 'bottom_left') {
                                             let triggerBottom = settingsData.trigger_btn_margin_desktop / 3;
-                                            triggerBottom === 0 ? triggerBottom =  8 : triggerBottom += 8;
+                                            triggerBottom === 0 ? triggerBottom = 8 : triggerBottom += 8;
                                             tBtn.css({
-                                                bottom: triggerBottom+'vh',
+                                                bottom: triggerBottom + 'vh',
                                                 left: '20px'
                                             });
                                         }
@@ -2447,41 +2439,41 @@
                                         var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
 
                                         if (windowWidth < 575) {
-                                            if(settingsData.button_position === 'middle_right' ) {
+                                            if (settingsData.button_position === 'middle_right') {
                                                 let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
-                                                triggerBottom === 0 ? triggerBottom =  15 : triggerBottom += 15;
+                                                triggerBottom === 0 ? triggerBottom = 15 : triggerBottom += 15;
                                                 tBtn.css({
-                                                    right: '-45px', 
-                                                    bottom: triggerBottom+'vh',
+                                                    right: '-45px',
+                                                    bottom: triggerBottom + 'vh',
                                                     transform: 'rotate(270deg)'
                                                 });
                                             }
-                                            
-                                            else if(settingsData.button_position === 'middle_left' ) {
+
+                                            else if (settingsData.button_position === 'middle_left') {
                                                 let triggerBottom = settingsData.trigger_btn_margin_mobile / 3;
-                                                triggerBottom === 0 ? triggerBottom =  15 : triggerBottom += 15;
+                                                triggerBottom === 0 ? triggerBottom = 15 : triggerBottom += 15;
                                                 tBtn.css({
                                                     left: '-48px',
-                                                    bottom: triggerBottom+'vh',
+                                                    bottom: triggerBottom + 'vh',
                                                     transform: 'rotate(270deg)'
                                                 });
                                             }
-                                            
-                                            else if(settingsData.button_position === 'bottom_right' ) {
+
+                                            else if (settingsData.button_position === 'bottom_right') {
                                                 let triggerBottom = settingsData.trigger_btn_margin_mobile / 4;
-                                                triggerBottom === 0 ? triggerBottom =  10 : triggerBottom += 10;
+                                                triggerBottom === 0 ? triggerBottom = 10 : triggerBottom += 10;
                                                 console.log(triggerBottom)
                                                 tBtn.css({
-                                                    bottom: triggerBottom+'vh',
+                                                    bottom: triggerBottom + 'vh',
                                                     right: '20px'
                                                 });
                                             }
-                                            
-                                            else if(settingsData.button_position === 'bottom_left' ) {
+
+                                            else if (settingsData.button_position === 'bottom_left') {
                                                 let triggerBottom = settingsData.trigger_btn_margin_mobile / 4;
-                                                triggerBottom === 0 ? triggerBottom =  10 : triggerBottom += 10;
+                                                triggerBottom === 0 ? triggerBottom = 10 : triggerBottom += 10;
                                                 tBtn.css({
-                                                    bottom: triggerBottom+'vh',
+                                                    bottom: triggerBottom + 'vh',
                                                     left: '20px'
                                                 });
                                             }
@@ -2535,22 +2527,20 @@
                                         var themeBgImageURL = CDN_WHEELIFY_URL + spinnerBgImage;
                                         carecartSpinnerJquery('.wheelify-content-spinner').css('background-image', 'url(' + themeBgImageURL + ')');
                                     } else {
-                                        if(response.records.store_settings.spinner_theme && response.records.store_settings.spinner_theme == 'customTheme') {
+                                        if (response.records.store_settings.spinner_theme && response.records.store_settings.spinner_theme == 'customTheme') {
                                             var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
-                                       
-                                            if(response.records.store_settings.spinner_background_image_url)
-                                            {
+
+                                            if (response.records.store_settings.spinner_background_image_url) {
                                                 var defaultThemeBgImage = response.records.store_settings.spinner_background_image_url;
                                                 carecartSpinnerJquery('.wheelify-content-spinner').css('background-image', 'url(' + defaultThemeBgImage + ')');
                                                 window.localStorage.setItem("spinner_background_image_url_desktop", defaultThemeBgImage);
                                             }
                                             console.log(" BG image")
 
-                                            if(response.records.store_settings.spinner_background_image_url_mobile)
-                                            {
+                                            if (response.records.store_settings.spinner_background_image_url_mobile) {
                                                 var isMobile = false; //initiate as false
                                                 // device detection
-                                                if (windowWidth < 575) {                                        
+                                                if (windowWidth < 575) {
                                                     isMobile = true;
                                                     console.log('Mobile View');
                                                     var defaultThemeBgImage = response.records.store_settings.spinner_background_image_url_mobile;
@@ -2559,80 +2549,80 @@
                                                 } else {
                                                     console.log('Not Mobile View');
                                                 }
-                                                
+
                                                 var windowSize = window.matchMedia("(max-width: 575px)")
                                                 myFunction(windowSize) // Call listener function at run time
                                                 windowSize.addListener(myFunction) // Attach listener function on state changes
                                             } else {
                                                 console.log(" BG image")
 
-                                                if (windowWidth < 575) {                                        
+                                                if (windowWidth < 575) {
                                                     var defaultThemeBgImage = response.records.store_settings.spinner_background_image_url_mobile;
                                                     carecartSpinnerJquery('.wheelify-content-spinner').css('background-image', 'url(' + defaultThemeBgImage + ')');
                                                     window.localStorage.setItem("spinner_background_image_url_mobile", defaultThemeBgImage);
-                                                } 
-                                                
+                                                }
+
                                                 var windowSize = window.matchMedia("(max-width: 575px)")
                                                 myFunction(windowSize) //Call listener function at run time
                                                 windowSize.addListener(myFunction) // Attach listener function on state changes
                                             }
                                         }
-                                       
+
                                     }
                                     /* ************************************** Display Background Image - End *********************************************************** */
                                     /* *********************************************** Start - Display Urgency Timer Bar ********************************** */
-                                if (response.records.store_settings.conversion_booster_settings != null && response.records.store_settings.conversion_booster_settings.is_urgency_timer_bar_enabled != null && parseInt(response.records.store_settings.conversion_booster_settings.is_urgency_timer_bar_enabled) == 1) {
-                                    window.localStorage.setItem('urgencyTimerBarEnabled', 1);
-                                    //console.log('SAS Urgency Bar is Active');
-                                    //carecartSpinnerJquery('#wheelify-couponwheel_notice_content').show();
-                                    var spinASaleCcUrgencyTimeBarTextHtml = '<span class="cc-spin-a-sale-clock-div" id="cc-spin-a-sale-clock-div-preview">' + response.records.store_settings.conversion_booster_settings.urgency_timer_bar_text + '</span>';
-                                    carecartSpinnerJquery('#wheelify-spin_a_sale_cc_urgency_time_bar_text').html(spinASaleCcUrgencyTimeBarTextHtml);
-                                    var spinASaleCcUrgencyTimeBarText = carecartSpinnerJquery('#wheelify-spin_a_sale_cc_urgency_time_bar_text').html();
-                                    //var wonCouponCode = '<strong>' + window.localStorage.getItem('cc-sas-spinner-cached-coupon-code') + '</strong>';
-                                    //spinASaleCcUrgencyTimeBarText = spinASaleCcUrgencyTimeBarText.replace('{{coupon_code}}',wonCouponCode);
-                                    //console.log('SAS spinASaleCcUrgencyTimeBarText ' + spinASaleCcUrgencyTimeBarText);
-                                    window.localStorage.setItem('urgencyTimerBarTimeInMin', response.records.store_settings.conversion_booster_settings.urgency_timer_bar_display_time_in_min);
-                                    var spinASaleCcUrgencyTimeBarInMin = window.localStorage.getItem('urgencyTimerBarTimeInMin');
-                                    //console.log('SAS spinASaleCcUrgencyTimeBarInMin: ' + spinASaleCcUrgencyTimeBarInMin);
-                                    var deadlineSpinAWheel = new Date(Date.parse(new Date()) + spinASaleCcUrgencyTimeBarInMin * 60 * 1000);
-                                    var timerDiv = '<span style="font-weight: bold;"><span class="cc-spin-a-sale-minutes">' + spinASaleCcUrgencyTimeBarInMin + '</span>:<span class="cc-spin-a-sale-seconds">00</span></span>';
-                                    //console.log('SAS timerDiv: ' + timerDiv);
-                                    //console.log('SAS spinASaleCcUrgencyTimeBarText: ' + spinASaleCcUrgencyTimeBarText);
-                                    spinASaleCcUrgencyTimeBarText = spinASaleCcUrgencyTimeBarText.replace('{{time}}', timerDiv);
-                                    spinASaleCcUrgencyTimeBarText = spinASaleCcUrgencyTimeBarText.replace('{{ time }}', timerDiv);
-                                    var urgencyTimeBarBackgroundColor = '#FFD400';
-                                    if (response.records.store_settings.conversion_booster_settings.urgency_time_bar_background_color && response.records.store_settings.conversion_booster_settings.urgency_time_bar_background_color != null) {
-                                        urgencyTimeBarBackgroundColor = response.records.store_settings.conversion_booster_settings.urgency_time_bar_background_color;
+                                    if (response.records.store_settings.conversion_booster_settings != null && response.records.store_settings.conversion_booster_settings.is_urgency_timer_bar_enabled != null && parseInt(response.records.store_settings.conversion_booster_settings.is_urgency_timer_bar_enabled) == 1) {
+                                        window.localStorage.setItem('urgencyTimerBarEnabled', 1);
+                                        //console.log('SAS Urgency Bar is Active');
+                                        //carecartSpinnerJquery('#wheelify-couponwheel_notice_content').show();
+                                        var spinASaleCcUrgencyTimeBarTextHtml = '<span class="cc-spin-a-sale-clock-div" id="cc-spin-a-sale-clock-div-preview">' + response.records.store_settings.conversion_booster_settings.urgency_timer_bar_text + '</span>';
+                                        carecartSpinnerJquery('#wheelify-spin_a_sale_cc_urgency_time_bar_text').html(spinASaleCcUrgencyTimeBarTextHtml);
+                                        var spinASaleCcUrgencyTimeBarText = carecartSpinnerJquery('#wheelify-spin_a_sale_cc_urgency_time_bar_text').html();
+                                        //var wonCouponCode = '<strong>' + window.localStorage.getItem('cc-sas-spinner-cached-coupon-code') + '</strong>';
+                                        //spinASaleCcUrgencyTimeBarText = spinASaleCcUrgencyTimeBarText.replace('{{coupon_code}}',wonCouponCode);
+                                        //console.log('SAS spinASaleCcUrgencyTimeBarText ' + spinASaleCcUrgencyTimeBarText);
+                                        window.localStorage.setItem('urgencyTimerBarTimeInMin', response.records.store_settings.conversion_booster_settings.urgency_timer_bar_display_time_in_min);
+                                        var spinASaleCcUrgencyTimeBarInMin = window.localStorage.getItem('urgencyTimerBarTimeInMin');
+                                        //console.log('SAS spinASaleCcUrgencyTimeBarInMin: ' + spinASaleCcUrgencyTimeBarInMin);
+                                        var deadlineSpinAWheel = new Date(Date.parse(new Date()) + spinASaleCcUrgencyTimeBarInMin * 60 * 1000);
+                                        var timerDiv = '<span style="font-weight: bold;"><span class="cc-spin-a-sale-minutes">' + spinASaleCcUrgencyTimeBarInMin + '</span>:<span class="cc-spin-a-sale-seconds">00</span></span>';
+                                        //console.log('SAS timerDiv: ' + timerDiv);
+                                        //console.log('SAS spinASaleCcUrgencyTimeBarText: ' + spinASaleCcUrgencyTimeBarText);
+                                        spinASaleCcUrgencyTimeBarText = spinASaleCcUrgencyTimeBarText.replace('{{time}}', timerDiv);
+                                        spinASaleCcUrgencyTimeBarText = spinASaleCcUrgencyTimeBarText.replace('{{ time }}', timerDiv);
+                                        var urgencyTimeBarBackgroundColor = '#FFD400';
+                                        if (response.records.store_settings.conversion_booster_settings.urgency_time_bar_background_color && response.records.store_settings.conversion_booster_settings.urgency_time_bar_background_color != null) {
+                                            urgencyTimeBarBackgroundColor = response.records.store_settings.conversion_booster_settings.urgency_time_bar_background_color;
+                                        }
+                                        //console.log('SAS urgencyTimeBarBackgroundColor: ' + urgencyTimeBarBackgroundColor);
+                                        carecartSpinnerJquery('#wheelify-couponwheel_notice_content').css("background-color", urgencyTimeBarBackgroundColor);
+                                        var urgencyTimeBarTextColor = '#000000';
+                                        if (response.records.store_settings.conversion_booster_settings.urgency_time_bar_text_color && response.records.store_settings.conversion_booster_settings.urgency_time_bar_text_color != null) {
+                                            urgencyTimeBarTextColor = response.records.store_settings.conversion_booster_settings.urgency_time_bar_text_color;
+                                        }
+                                        //console.log('SAS urgencyTimeBarTextColor: ' + urgencyTimeBarTextColor);
+                                        carecartSpinnerJquery('#wheelify-couponwheel_notice_content').css("color", urgencyTimeBarTextColor);
+                                        if (response.records.store_settings.conversion_booster_settings.urgency_timer_bar_position_top_or_bottom == 'top') {
+                                            carecartSpinnerJquery('#wheelify-couponwheel_notice_content').removeClass('bar-bottom').addClass('bar-top');
+                                        }
+                                        //console.log('SAS spinASaleCcUrgencyTimeBarText after Timer Replacement: ' + spinASaleCcUrgencyTimeBarText);
+                                        //carecartSpinnerJquery('#wheelify-couponwheel_notice_timer').html(timerDiv);
+                                        //carecartSpinnerJquery('#wheelify-spin_a_sale_cc_urgency_time_bar_text').html(spinASaleCcUrgencyTimeBarText);
+                                        //console.log('SAS spinASaleCcUrgencyTimeBarText: ' + spinASaleCcUrgencyTimeBarText);
+                                        //carecartSpinnerJquery('#wheelify-couponwheel_notice_content').show();
+                                        //console.log('SAS deadlineSpinAWheel deadlineSpinAWheel: ' + deadlineSpinAWheel);
+                                        //initializeClockSpinAWheel('cc-spin-a-sale-clock-div-preview', deadlineSpinAWheel);
                                     }
-                                    //console.log('SAS urgencyTimeBarBackgroundColor: ' + urgencyTimeBarBackgroundColor);
-                                    carecartSpinnerJquery('#wheelify-couponwheel_notice_content').css("background-color", urgencyTimeBarBackgroundColor);
-                                    var urgencyTimeBarTextColor = '#000000';
-                                    if (response.records.store_settings.conversion_booster_settings.urgency_time_bar_text_color && response.records.store_settings.conversion_booster_settings.urgency_time_bar_text_color != null) {
-                                        urgencyTimeBarTextColor = response.records.store_settings.conversion_booster_settings.urgency_time_bar_text_color;
+                                    /* *********************************************** End - Display Urgency Timer Bar **********************************   */
+                                    /* *********************************************** Start - Conversion Booster Progress Bar **********************************   */
+                                    if (response.records.store_settings.conversion_booster_settings != null && response.records.store_settings.conversion_booster_settings.conversion_booster_show_offers_claimed != null && parseInt(response.records.store_settings.conversion_booster_settings.conversion_booster_show_offers_claimed) == 1) {
+                                        console.log('SAS Conversion Booster Progress Bar is Active');
+                                        carecartSpinnerJquery('.wheelify-cc-spin-a-sale-spinner-progress-bar').css("visibility", "visible");
+                                        carecartSpinnerJquery('.wheelify-cc-spin-a-sale-spinner-progress-bar-inner').width(response.records.store_settings.conversion_booster_settings.conversion_booster_percentage_offers_claimed + '%');
+                                        carecartSpinnerJquery('.wheelify-cc-spin-a-sale-spinner-progress-bar-inner').css({ "background-color": response.records.store_settings.conversion_booster_settings.conversion_booster_progress_bar_color, "display": "block" });
+                                        carecartSpinnerJquery('.wheelify-cc-spin-a-sale-couponwheel_offers_text').text(response.records.store_settings.conversion_booster_settings.conversion_booster_offers_claimed_text);
                                     }
-                                    //console.log('SAS urgencyTimeBarTextColor: ' + urgencyTimeBarTextColor);
-                                    carecartSpinnerJquery('#wheelify-couponwheel_notice_content').css("color", urgencyTimeBarTextColor);
-                                    if (response.records.store_settings.conversion_booster_settings.urgency_timer_bar_position_top_or_bottom == 'top') {
-                                        carecartSpinnerJquery('#wheelify-couponwheel_notice_content').removeClass('bar-bottom').addClass('bar-top');
-                                    }
-                                    //console.log('SAS spinASaleCcUrgencyTimeBarText after Timer Replacement: ' + spinASaleCcUrgencyTimeBarText);
-                                    //carecartSpinnerJquery('#wheelify-couponwheel_notice_timer').html(timerDiv);
-                                    //carecartSpinnerJquery('#wheelify-spin_a_sale_cc_urgency_time_bar_text').html(spinASaleCcUrgencyTimeBarText);
-                                    //console.log('SAS spinASaleCcUrgencyTimeBarText: ' + spinASaleCcUrgencyTimeBarText);
-                                    //carecartSpinnerJquery('#wheelify-couponwheel_notice_content').show();
-                                    //console.log('SAS deadlineSpinAWheel deadlineSpinAWheel: ' + deadlineSpinAWheel);
-                                    //initializeClockSpinAWheel('cc-spin-a-sale-clock-div-preview', deadlineSpinAWheel);
-                                }
-                                /* *********************************************** End - Display Urgency Timer Bar **********************************   */
-                                /* *********************************************** Start - Conversion Booster Progress Bar **********************************   */
-                                if (response.records.store_settings.conversion_booster_settings != null && response.records.store_settings.conversion_booster_settings.conversion_booster_show_offers_claimed != null && parseInt(response.records.store_settings.conversion_booster_settings.conversion_booster_show_offers_claimed) == 1) {
-                                    console.log('SAS Conversion Booster Progress Bar is Active');
-                                    carecartSpinnerJquery('.wheelify-cc-spin-a-sale-spinner-progress-bar').css("visibility", "visible");
-                                    carecartSpinnerJquery('.wheelify-cc-spin-a-sale-spinner-progress-bar-inner').width(response.records.store_settings.conversion_booster_settings.conversion_booster_percentage_offers_claimed + '%');
-                                    carecartSpinnerJquery('.wheelify-cc-spin-a-sale-spinner-progress-bar-inner').css({ "background-color": response.records.store_settings.conversion_booster_settings.conversion_booster_progress_bar_color, "display": "block" });
-                                    carecartSpinnerJquery('.wheelify-cc-spin-a-sale-couponwheel_offers_text').text(response.records.store_settings.conversion_booster_settings.conversion_booster_offers_claimed_text);
-                                }
-                                /* *********************************************** End - Conversion Booster Progress Bar ********************************** */
+                                    /* *********************************************** End - Conversion Booster Progress Bar ********************************** */
                                     /* ************************************** Display Spinner if percentage scroll is enabled  - START *********************************************************** */
                                     if (response.records.store_settings.settings_data.is_scroll_spinner_percentage_enabled && parseInt(response.records.store_settings.settings_data.is_scroll_spinner_percentage_enabled) == 1) {
                                         //console.log("SAS is_scroll_spinner_percentage_enabled is ENABLED");
@@ -2997,6 +2987,10 @@
                     carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .checkbox {padding: 5px 100px 15px 1px;text-align: left;text-indent: 5px;line-height: 1;background: transparent;border: none;width: 100%;height: auto;box-shadow: none;margin: 0 !important;}</style>');
                     //console.log("SAS blackhawksurvival.myshopify.com");
                 }
+                if (Shopify.shop == 'hydraquench.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css">@media only screen and (max-width: 576px){#wheelify-spin_a_sale_cc_store_front_module.wheelify-wrapper-spinner.popupview{height: 620px !important;}}</style>');
+                    //console.log("SAS blackhawksurvival.myshopify.com");
+                }
                 if (Shopify.shop == 'beauty-box-by-tori-spelling.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .wheelify-signupContainer,#wheelify-spin_a_sale_cc_store_front_module .wheelify-winContainer, #wheelify-spin_a_sale_cc_store_front_module .wheelify-loseContainer{width: 52%; float: right; padding: 0 3%;}</style>');
                 }
@@ -3014,12 +3008,6 @@
                 if (Shopify.shop == 'sugar-ruff.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .wheelText {fill: #000;}</style>');
                 }
-                if (Shopify.shop == 'healthybud-us.myshopify.com') {
-                    carecartSpinnerJquery('head').append('<style type="text/css"> button{padding:0 !important;} #wheelify-spin_a_sale_cc_store_front_module .wheelify-winContainer .wheelify-text-heading{font-size:23px; white-space:nowrap;}</style>');
-                }
-                if (Shopify.shop == 'presstiletto.myshopify.com') {
-                    carecartSpinnerJquery('head').append('<style type="text/css">.wheelLogo{display:none !important;}</style>');
-                }
                 //********************** In mobile view, hide the Spinner Trigger Text and display ONLY the wheel ***********************************
                 (function (a) {
                     (carecartSpinnerJquery.browser = carecartSpinnerJquery.browser || {}).mobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))
@@ -3030,34 +3018,34 @@
                     }
                 }
                 if (Shopify.shop == 'iinyouths.myshopify.com') {
-                        carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .checkbox{width:auto !important; height:auto !important; border:none !important; background-color:transparent !important;}</style>');
-                        carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form{text-align:center !important;}</style>');
-                        carecartSpinnerJquery('head').append('<style type="text/css">@media only screen and (max-width: 575px){#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight {min-height: 600px !important;}}</style>');
+                    carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .checkbox{width:auto !important; height:auto !important; border:none !important; background-color:transparent !important;}</style>');
+                    carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form{text-align:center !important;}</style>');
+                    carecartSpinnerJquery('head').append('<style type="text/css">@media only screen and (max-width: 575px){#wheelify-spin_a_sale_cc_store_front_module .wheelify-ContentRight {min-height: 600px !important;}}</style>');
 
                 }
                 if (Shopify.shop == 'lokithorshop.myshopify.com') {
-                        carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .checkbox{width:auto !important; height:auto !important; border:none !important; background-color:transparent !important;}</style>');
-                        carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form{text-align:center !important;}</style>');
-                    
-                        var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
-                        if (windowWidth < 575) {
-                            carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {left: -45px !important;}</style>');
-                        }
+                    carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .checkbox{width:auto !important; height:auto !important; border:none !important; background-color:transparent !important;}</style>');
+                    carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form{text-align:center !important;}</style>');
+
+                    var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
+                    if (windowWidth < 575) {
+                        carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {left: -45px !important;}</style>');
+                    }
                 }
                 if (Shopify.shop == 'ollny.myshopify.com') {
                     closeBtn = '<svg style="color: white" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16"> <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" fill="white"></path> </svg>'
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         carecartSpinnerJquery("#spin_a_sale_cc_store_front_module_close_button i").replaceWith(closeBtn);
                     }, 5000)
                 }
                 if (Shopify.shop == 'aleromano-7840.myshopify.com') {
-                var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
+                    var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
 
-                if (windowWidth < 575) {
-                    carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {bottom: 0px !important;}</style>');
-                } else{
-                    carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {bottom: 4vh !important;}</style>');
-                }
+                    if (windowWidth < 575) {
+                        carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {bottom: 0px !important;}</style>');
+                    } else {
+                        carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin-trigger-cc {bottom: 4vh !important;}</style>');
+                    }
                 }
             });
 
