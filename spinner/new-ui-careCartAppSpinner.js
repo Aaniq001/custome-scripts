@@ -2951,8 +2951,13 @@
                     carecartSpinnerJquery('head').append('<style type="text/css"> .checkbox input[type=checkbox]{clip: auto;position: static;height: 20px;width: 20px;z-index: 1;opacity: 1!important;} .checkbox label:after{display:none;}</style>');
                     //console.log("SAS https://partychampions.com/");
                 }
+
                 if (Shopify.shop == 'kalaya-ca.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css"> .wheelify-signupContainer .checkbox input{width:auto;} </style>');
+                    //console.log("SAS https://partychampions.com/");
+                }
+                if (Shopify.shop == 'no-more-beauty.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css"> .wheelify-signupContainer .checkbox input { width: 20px !important;background-color: white; } :root{ --color-background: transparent;} body>.page {background-color: var(--color-background); </style> ');
                     //console.log("SAS https://partychampions.com/");
                 }
                 if (Shopify.shop == 'surgisyl.myshopify.com') {
