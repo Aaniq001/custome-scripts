@@ -198,6 +198,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             {
                 $jq321(response.view).insertBefore('.product-form__cart-submit');
             }
+            else if (Shopify.shop == "ap-breaks.myshopify.com")
+            {
+                $jq321(response.view).insertBefore('.product-form__submit');
+            }
             else if (masterSelector.length > 0) 
             {
                 $jq321(response.view).insertBefore(finalSelector);
@@ -240,6 +244,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
             else if (Shopify.shop == "moalov-com.myshopify.com")
             {
                 $jq321(response.view).insertAfter('.product-form__cart-submit');
+            }
+            else if (Shopify.shop == "ap-breaks.myshopify.com")
+            {
+                $jq321(response.view).insertAfter('..product-form__submit');
             }
             else if (masterSelector.length > 0) 
             {
