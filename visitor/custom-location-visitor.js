@@ -419,6 +419,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
 
         //console.log((meta.product && meta.product.id)?meta.product.id:'');
     }
+    if (Shopify.shop == "lendthetrendmx.myshopify.com") 
+    {
+        var meta = {"product":{"id":__st.rid}};
+
+        //console.log((meta.product && meta.product.id)?meta.product.id:'');
+    }
 
     $jq321.ajax({
         type: "GET",
@@ -528,6 +534,18 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     {
         customSelctor = $jq321(".product-single__add-to-cart");
         finalSelector = customSelctor[0];
+    }
+    if (Shopify.shop == "lendthetrendmx.myshopify.com")
+    {
+        customSelctor = $jq321("div#ltt-producto.ltt-section");
+        finalSelector = customSelctor[0];
+
+        $jq321("head").append(
+            '<style type="text/css">' + 
+            '.visitor-counter-content-box-carecartbysalespop-2020 {height: 40px !important; background:white;}' +
+            '.content-div-visitor-detail-carecartbysalespop-2020{text-align:right !important; width:48% !important; padding-left:0 !important;}'+
+            '</style>'
+           );
     }
     
     if (Shopify.shop == "newnorway.myshopify.com")
