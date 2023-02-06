@@ -537,13 +537,12 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
     if (Shopify.shop == "lendthetrendmx.myshopify.com")
     {
-        customSelctor = $jq321("div#ltt-producto.ltt-section");
+        customSelctor = $jq321(".trickcenterdiv");
         finalSelector = customSelctor[0];
 
         $jq321("head").append(
             '<style type="text/css">' + 
-            '.visitor-counter-content-box-carecartbysalespop-2020 {height: 40px !important; background:white;}' +
-            '.content-div-visitor-detail-carecartbysalespop-2020{text-align:right !important; width:48% !important; padding-left:0 !important;}'+
+            '.ltt-section span:not(.jdgm-star,.jdgm-prev-badge__text,.jdgm-prev-badge__stars){float:none!important;}' +
             '</style>'
            );
     }
