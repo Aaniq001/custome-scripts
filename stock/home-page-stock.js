@@ -233,6 +233,10 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "next-level-paramount-deals.myshopify.com") {
         productID = 7579597209799;
     }
+    if(Shopify.shop == "brick-stick-ny.myshopify.com")
+    {
+        productID = 7329564459247;
+    }
 
     /**
      * check the status of cart page
@@ -284,6 +288,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     }
     if (Shopify.shop == "opar-off-road.myshopify.com") {
         $jq321("head").append('<style type="text/css">.stock-message{font-size:14px !important}</style>');
+    }
+    if(Shopify.shop == "brick-stick-ny.myshopify.com"){
+        $jq321("head").append('<style type="text/css">.stock-top{margin-top:10px !important}</style>');
     }
     if (Shopify.shop == "sweatbuffy.myshopify.com") {
         customSelector = $jq321(".addCart");
