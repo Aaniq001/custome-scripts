@@ -244,6 +244,9 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     else if (Shopify.shop == "fusskleidung.myshopify.com") {
         var meta = { "product": { "id": __st.rid } };
     }
+    else if (Shopify.shop == "hdmsolar.myshopify.com") {
+        var meta = {"product":{"id":__st.rid}};
+    }
 
 
     /**
@@ -522,6 +525,13 @@ scriptInjection("https://code.jquery.com/jquery-3.2.1.min.js", function () {
     if (Shopify.shop == "mysns.myshopify.com") {
         masterSelector = $jq321(".product-single__vendor");
         finalSelector = masterSelector[0];
+
+        console.log(finalSelector);
+    }
+    if (Shopify.shop == "hdmsolar.myshopify.com")
+    {
+        masterSelector = $jq321("button").attr('data-name','product-submit');
+        finalSelector = masterSelector[16];
 
         console.log(finalSelector);
     }
