@@ -2973,6 +2973,14 @@
 
         console.log(masterSelector);
     }
+    if (Shopify.shop == "cuddle-baby-pink.myshopify.com") 
+    {
+        $jq321("head").append(
+            '<style type="text/css">'+ 
+                '.stock-top{display: block !important;}'+ 
+            '</style>'
+        );
+    }
 
      /** Stock for variants **/
      function makeSelectors(variantHeading) {
@@ -3842,6 +3850,15 @@
             }    
         }
         if (Shopify.shop == "slippers-technic.myshopify.com")
+        {
+            let text = window.location.pathname;
+            let result = text.indexOf("products");
+
+            if(result == -1){
+                return;
+            }    
+        }
+        if (Shopify.shop == "cuddle-baby-pink.myshopify.com")
         {
             let text = window.location.pathname;
             let result = text.indexOf("products");
