@@ -920,6 +920,42 @@
                                             }
                                         }
                     */
+
+                    if (Shopify.shop == 'inkster-shop.myshopify.com') 
+                    {    
+                            var newValue = 'https://cdn.shopify.com/s/files/1/0532/1251/2434/files/Michael.png?v=1664902204';   
+                            carecartSpinnerJquery('.wheelLogo').attr("xlink:href", newValue);
+
+                            console.log('change cental wheel image');
+                    }
+                    else if (Shopify.shop == 'amantelingerie.myshopify.com') 
+                    {    
+                            var newValue = 'https://cdn.jsdelivr.net/gh/carecartapp/custome-scripts@1.6.61/spinner/trademark-01-01_1fznd7u-removebg-preview.png';   
+                            carecartSpinnerJquery('.wheelLogo').attr("xlink:href", newValue);
+
+                            console.log('change cental wheel image');
+                    }
+                    else if (Shopify.shop == 'neulo.myshopify.com') 
+                    {    
+                            var newValue = 'https://cdn.jsdelivr.net/gh/carecartapp/custome-scripts@1.7.20/spinner/neuloemblemeorangervb_1jxckyi-removebg-preview.png';   
+                            carecartSpinnerJquery('.wheelLogo').attr("xlink:href", newValue);
+
+                            console.log('change cental wheel image');
+                    }
+                    else if (Shopify.shop == 'www-metoyou-com.myshopify.com') 
+                    {    
+                            var newValue = 'https://cdn.jsdelivr.net/gh/carecartapp/custome-scripts@1.7.36/spinner/2019-mty-logo-col-bg_1t1p8q0-removebg-preview.png';   
+                            carecartSpinnerJquery('.wheelLogo').attr("xlink:href", newValue);
+
+                            console.log('change cental wheel image');
+                    }
+                    else if (Shopify.shop == 'electromisttest.myshopify.com') 
+                    {    
+                            var newValue = 'https://cdn.jsdelivr.net/gh/carecartapp/custome-scripts@1.8.65/spinner/My%20project.png';   
+                            carecartSpinnerJquery('.wheelLogo').attr("xlink:href", newValue);
+
+                            console.log('change cental wheel image');
+                    }
                 }
 
                 function hideSpinASaleModule() {
@@ -3012,6 +3048,9 @@
                 //*********************** Custom Fix - sugar-ruff.myshopify.com ***** Make Slices Text Color Black **********************************
                 if (Shopify.shop == 'sugar-ruff.myshopify.com') {
                     carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .wheelText {fill: #000;}</style>');
+                }
+                if (Shopify.shop == 'electromisttest.myshopify.com') {
+                    carecartSpinnerJquery('head').append('<style type="text/css">#wheelify-spin_a_sale_cc_store_front_module .btn-submit-form, #wheelify-spin_a_sale_cc_store_front_module .btn-submit-form-ok, #wheelify-spin_a_sale_cc_store_front_module .copy-button{text-align:center;} #wheelify-spin_a_sale_cc_store_front_module .checkbox{width: auto;height: auto;background-color: transparent;border: none;} .wheelify-signupContainer .checkbox input{margin-top:4px;}</style>');
                 }
                 //********************** In mobile view, hide the Spinner Trigger Text and display ONLY the wheel ***********************************
                 (function (a) {
